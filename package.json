@@ -1,0 +1,55 @@
+{
+	"private": true,
+	"name": "unified-doc",
+	"workspaces": [
+		"packages/*"
+	],
+	"author": "Chris Zhou <chrisrzhou@pm.me>",
+	"license": "MIT",
+	"repository": "https://github.com/chrisrzhou/unified-doc",
+	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
+	"homepage": "https://unified-doc.netlify.com/",
+	"scripts": {
+		"clean": "rm -rf .docz",
+		"docs": "docz dev",
+		"lint": "xo --fix",
+		"test": "jest packages"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.8.7",
+		"@babel/preset-env": "^7.8.7",
+		"babel-jest": "^25.1.0",
+		"docz": "^2.2.0",
+		"eslint-config-xo-react": "^0.23.0",
+		"eslint-config-xo-typescript": "^0.26.0",
+		"husky": "^4.2.3",
+		"jest": "^25.1.0",
+		"react-dom": "^16.13.0",
+		"typescript": "^3.8.3",
+		"xo": "^0.27.2"
+	},
+	"husky": {
+		"hooks": {
+			"pre-push": "yarn lint"
+		}
+	},
+	"prettier": {
+		"bracketSpacing": true,
+		"jsxBracketSameLine": true,
+		"trailingComma": "all"
+	},
+	"xo": {
+		"prettier": true,
+		"env": [
+			"jest"
+		],
+		"extends": [
+			"xo-react"
+		],
+		"rules": {
+			"import/no-unassigned-import": "off",
+			"react/function-component-definition": "off",
+			"react/prop-types": "off"
+		}
+	}
+}

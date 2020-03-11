@@ -1,0 +1,44 @@
+{
+	"name": "@unified-doc/react-unified-doc",
+	"version": "0.1.0",
+	"description": "React unified document renderer for any content",
+	"main": "dist/index.js",
+	"module": "dist/index.module.js",
+	"types": "src/index.d.ts",
+	"keywords": [
+		"react",
+		"unified",
+		"document",
+		"content",
+		"html",
+		"markdown",
+		"text",
+		"unist",
+		"hast",
+		"rehype",
+		"annotations",
+		"highlights",
+		"redlines"
+	],
+	"author": "Chris Zhou <chrisrzhou@pm.me>",
+	"license": "MIT",
+	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/react-unified-doc",
+	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
+	"homepage": "https://unified-doc.netlify.com/",
+	"scripts": {},
+	"peerDependencies": {
+		"react": "^16.13.0"
+	},
+	"devDependencies": {
+		"react": "^16.13.0"
+	},
+	"dependencies": {
+		"@unified-doc/rehype-annotate": "*",
+		"rangy": "^1.3.0",
+		"rehype-parse": "^6.0.2",
+		"rehype-react": "^4.0.1",
+		"remark-parse": "^7.0.2",
+		"remark-rehype": "^5.0.0",
+		"unified": "^8.4.2"
+	}
+}
