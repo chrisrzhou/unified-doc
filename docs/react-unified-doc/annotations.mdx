@@ -4,9 +4,46 @@ menu: react-unified-doc
 route: react-unified-doc/annotations
 ---
 
-import ReactUnifiedDoc from "../../packages/react-unified-doc/src";
-import content from "./content";
+import { Playground } from 'docz';
+import { useState } from 'react';
+
+import ReactUnifiedDoc from '../../packages/react-unified-doc';
+import { content } from './data';
+
+import '../../packages/react-unified-doc/src/annotations.css';
+import './annotations.css';
 
 # Annotations
 
-<ReactUnifiedDoc content={content} fileType="html" />
+<Playground>
+	{() => {
+		const [annotations, setAnnotations] = useState([]);
+		const [showAnnotations, setShowAnnotations] = useState(false);
+		const callbacks = {
+			onClickAnnotation: (annotation, e) => console.log('clicked', annotation, e),
+			onHoverAnnotation: (annotation, e) => console.log('hover', annotation, e),
+			onSelectText: (selection, e) => {
+				console.log(selection);
+				setAnnotations([{
+					type: 'highlight',
+					endOffset: selection.endOffset,
+					startOffset: selection.startOffset,
+					value: selection.value,
+				}]);
+			}
+		};
+		return (
+			<div>
+				<button onClick={() => setShowAnnotations(!showAnnotations)}>
+					{showAnnotations ? 'Hide' : 'Show'} annotations
+				</button>
+				<ReactUnifiedDoc
+					annotations={annotations}
+					callbacks={callbacks}
+					content={content}
+					fileType="markdown"
+				/>
+			</div>
+		);
+	}}
+</Playground>

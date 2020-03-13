@@ -1,6 +1,7 @@
 {
 	"private": true,
 	"name": "unified-doc",
+	"description": "unified document renderer for content",
 	"workspaces": [
 		"packages/*"
 	],
@@ -11,7 +12,8 @@
 	"homepage": "https://unified-doc.netlify.com/",
 	"scripts": {
 		"clean": "rm -rf .docz",
-		"docs": "docz dev",
+		"clean:docs": "rm -rf .docz",
+		"docs": "yarn clean:docs; docz dev",
 		"lint": "xo --fix",
 		"test": "jest packages"
 	},

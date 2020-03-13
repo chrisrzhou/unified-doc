@@ -1,0 +1,13 @@
+.annotation-highlight {
+	background: blue;
+	color: white;
+}
+
+.annotation-redline {
+	text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.annotation-strikethrough {
+	text-decoration: line-through;
+}

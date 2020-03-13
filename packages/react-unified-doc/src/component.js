@@ -1,70 +1,77 @@
 import rangy from 'rangy';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
-import { getProcessor } from './parse';
+import createProcessor from './processor';
 
-function ReactUnifiedDocument({
+export default function ReactUnifiedDocument({
+	annotations,
 	content,
+	callbacks,
 	fileType = 'html',
-	highlightClassName = 'unified-highlight',
-	onClickHighlight,
-	onMouseOverHighlight,
+	offsetsDataAttribute = 'data-offsets',
 	plugins,
-	sanitizeSchema,
 }) {
+	const textOffsetsRef = useRef();
 	const ref = useRef();
-	const [highlights, setHighlights] = useState([]);
 
-	useEffect(() => {
-		rangy.init();
-	});
-
-	function handleMouseup() {
-		const selection = rangy.getSelection();
-		const bookmark = selection.getBookmark(ref.current).rangeBookmarks[0];
-		const position = bookmark
-			? {
-					startOffset: bookmark.start,
-					endOffset: bookmark.end,
-			  }
-			: null;
-		const { focusNode, anchorNode } = selection;
-		console.log(
-			'focusNode',
-			focusNode,
-			focusNode.parentNode,
-			'anchorNode',
-			anchorNode,
-			anchorNode.parentNode,
-			'position',
-			position,
-		);
-		const startOffset = 30;
-		const endOffset = 60;
-		const updatedHighlights = [
-			{
-				startOffset,
-				endOffset,
-				id: Math.random().toFixed(4),
-			},
-		];
-		setHighlights(updatedHighlights);
+	function extractTextOffsets(textOffsets) {
+		textOffsetsRef.current = textOffsets;
 	}
 
-	const processor = getProcessor({
+	function handleMouseup(e) {
+		const { onSelectText } = callbacks;
+		const selection = rangy.getSelection();
+		const bookmark = selection.getBookmark(ref.current).rangeBookmarks[0];
+
+		const canSelect =
+			onSelectText && textOffsetsRef.current && bookmark.end > bookmark.start;
+
+		if (!canSelect) {
+			return;
+		}
+
+		const value = selection.toString();
+
+		const textOffsets = textOffsetsRef.current;
+		const selectedTextOffsets = textOffsets.filter(
+			({ startOffset, endOffset }) => {
+				return endOffset >= bookmark.start && startOffset <= bookmark.end;
+			},
+		);
+
+		const firstSelectedTextOffset = selectedTextOffsets[0];
+		const lastSelectedTextOffset =
+			selectedTextOffsets[selectedTextOffsets.length - 1];
+
+		const startOffset =
+			firstSelectedTextOffset.position.start.offset +
+			(bookmark.start - firstSelectedTextOffset.startOffset);
+
+		let endOffset;
+		if (selectedTextOffsets.length === 1) {
+			endOffset = startOffset + (bookmark.end - bookmark.start);
+		} else {
+			endOffset =
+				lastSelectedTextOffset.position.start.offset +
+				(bookmark.end - lastSelectedTextOffset.startOffset);
+		}
+
+		onSelectText({ startOffset, endOffset, value }, e);
+		selection.removeAllRanges();
+	}
+
+	const processor = createProcessor({
+		annotations,
+		callbacks,
+		extractTextOffsets,
 		fileType,
-		highlightClassName,
-		highlights,
-		onClickHighlight,
-		onMouseOverHighlight,
+		offsetsDataAttribute,
 		plugins,
-		sanitizeSchema,
 	});
+
 	return (
 		<div ref={ref} onMouseUp={handleMouseup}>
 			{processor.processSync(content).contents}
 		</div>
 	);
 }
-
-export default ReactUnifiedDocument;

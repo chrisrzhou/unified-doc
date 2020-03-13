@@ -1,17 +1,19 @@
 import annotate from '@unified-doc/rehype-annotate';
+import textOffsets from '@unified-doc/rehype-text-offsets';
 import { createElement } from 'react';
 import html from 'rehype-parse';
-import markdown from 'remark-parse';
 import rehype2react from 'rehype-react';
+import markdown from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import unified from 'unified';
 
-export function getProcessor({
+import { annotationTypes } from './constants';
+
+export default function createProcessor({
+	annotations = [],
+	callbacks = {},
+	extractTextOffsets,
 	fileType,
-	highlightClassName,
-	highlights = [],
-	onClickHighlight,
-	onMouseOverHighlight,
 	plugins = [],
 }) {
 	const processor = unified();
@@ -28,17 +30,24 @@ export function getProcessor({
 	plugins.forEach(({ plugin, options }) => {
 		processor.use(plugin, options);
 	});
+
+	const styledAnnotations = annotations.map(annotation => {
+		const classNames = annotation.classNames || [];
+		if (annotationTypes.includes(annotation.type)) {
+			classNames.push(`annotation-${annotation.type}`);
+		}
+
+		return {
+			...annotation,
+			classNames,
+		};
+	});
+
+	processor.use(textOffsets, { extractTextOffsets });
 	processor.use(annotate, {
-		highlightClassName,
-		highlights,
-		onClickHighlight,
-		onMouseOverHighlight,
+		annotations: styledAnnotations,
+		callbacks,
 	});
 	processor.use(rehype2react, { createElement });
 	return processor;
-}
-
-export function parseContent(content, { fileType, plugins, highlights }) {
-	const processor = getProcessor({ fileType, plugins, highlights });
-	return processor.runSync(processor.parse(content));
 }
