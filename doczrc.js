@@ -3,9 +3,14 @@ export default {
 	menu: [
 		'Home',
 		'Readme',
-		{ name: 'react-unified-doc', menu: ['Readme'] },
-		{ name: 'rehype-annotate', menu: ['Readme'] },
-		{ name: 'hast-util-annotate', menu: ['Readme'] },
+		{
+			name: 'react-unified-doc',
+			menu: ['Readme', 'Props', 'Content', 'Annotations', 'Plugins', 'Recipes'],
+		},
+		{
+			name: 'utils',
+			menu: ['hast-util-annotate', 'hast-util-extract-text-offsets'],
+		},
 		'Changelog',
 	],
 	public: 'public',

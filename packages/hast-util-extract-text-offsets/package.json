@@ -1,7 +1,7 @@
 {
-	"name": "@unified-doc/hast-util-annotate",
+	"name": "@unified-doc/hast-util-extract-text-offsets",
 	"version": "0.1.0",
-	"description": "hast utility to annotate text nodes",
+	"description": "hast utility to extract text-based offsets and unist positions of text nodes",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
 	"types": "src/index.d.ts",
@@ -12,17 +12,16 @@
 		"utility",
 		"html",
 		"text",
-		"annotations",
-		"redlines",
-		"highlights"
+		"offsets",
+		"position"
 	],
 	"author": "Chris Zhou <chrisrzhou@pm.me>",
 	"license": "MIT",
-	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/hast-util-annotate",
+	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/hast-util-extract-text-offsets",
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
 	"dependencies": {
-		"hastscript": "^5.1.2",
-		"unist-util-map": "^2.0.1"
-	}
+		"unist-util-visit": "^2.0.2"
+	},
+	"devDependencies": {}
 }

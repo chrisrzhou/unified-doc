@@ -4,6 +4,7 @@
 
 ### react-unified-doc
 
-### rehype-annotate
-
 ### hast-util-annotate
+
+### hast-util-extract-text-offsets
+

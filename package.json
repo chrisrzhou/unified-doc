@@ -14,18 +14,20 @@
 		"clean": "rm -rf .docz",
 		"clean:docs": "rm -rf .docz",
 		"docs": "yarn clean:docs; docz dev",
-		"lint": "xo --fix",
+		"lint": "xo --fix; tsc",
 		"test": "jest packages"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.8.7",
 		"@babel/preset-env": "^7.8.7",
+		"@types/jest": "^25.1.4",
 		"babel-jest": "^25.1.0",
 		"docz": "^2.2.0",
 		"eslint-config-xo-react": "^0.23.0",
 		"eslint-config-xo-typescript": "^0.26.0",
 		"husky": "^4.2.3",
 		"jest": "^25.1.0",
+		"react": "^16.13.0",
 		"react-dom": "^16.13.0",
 		"typescript": "^3.8.3",
 		"xo": "^0.27.2"

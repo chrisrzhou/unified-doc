@@ -1,20 +1,19 @@
 import rangy from 'rangy';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import createProcessor from './processor';
 
 export default function ReactUnifiedDocument({
 	annotations,
-	content,
 	callbacks,
+	content,
 	fileType = 'html',
-	offsetsDataAttribute = 'data-offsets',
-	plugins,
+	rehypePlugins,
 }) {
 	const textOffsetsRef = useRef();
 	const ref = useRef();
 
-	function extractTextOffsets(textOffsets) {
+	function extractor(textOffsets) {
 		textOffsetsRef.current = textOffsets;
 	}
 
@@ -34,10 +33,13 @@ export default function ReactUnifiedDocument({
 
 		const textOffsets = textOffsetsRef.current;
 		const selectedTextOffsets = textOffsets.filter(
-			({ startOffset, endOffset }) => {
-				return endOffset >= bookmark.start && startOffset <= bookmark.end;
+			({ startOffset, endOffset, position }) => {
+				return (
+					position && bookmark.start <= endOffset && bookmark.end >= startOffset
+				);
 			},
 		);
+		console.log(textOffsets);
 
 		const firstSelectedTextOffset = selectedTextOffsets[0];
 		const lastSelectedTextOffset =
@@ -63,10 +65,9 @@ export default function ReactUnifiedDocument({
 	const processor = createProcessor({
 		annotations,
 		callbacks,
-		extractTextOffsets,
+		extractor,
 		fileType,
-		offsetsDataAttribute,
-		plugins,
+		rehypePlugins,
 	});
 
 	return (

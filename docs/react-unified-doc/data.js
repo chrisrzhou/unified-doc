@@ -8,14 +8,22 @@ export const content = `
 
 <div className="custom-class" style="background: red; color: white; font-weight: bold">Custom HTML div node</div>
 
+
+	undefined position text
+
 # Markdown Heading 1
 
 ## Markdown Heading 2
 
 > Markdown block
 
+${'```'}
 This is
-a paragraph.
+a paragraph
+
+in a codeblock
+
+${'```'}
 
 quote with __bold__ and _em_ text
 <script>

@@ -1,5 +1,5 @@
-import annotate from '@unified-doc/rehype-annotate';
-import textOffsets from '@unified-doc/rehype-text-offsets';
+import annotateUtil from '@unified-doc/hast-util-annotate';
+import extractTextOffsetsUtil from '@unified-doc/hast-util-extract-text-offsets';
 import { createElement } from 'react';
 import html from 'rehype-parse';
 import rehype2react from 'rehype-react';
@@ -9,12 +9,17 @@ import unified from 'unified';
 
 import { annotationTypes } from './constants';
 
+const createPlugin = transform => (...args) => tree => transform(tree, ...args);
+
+const annotate = createPlugin(annotateUtil);
+const extractTextOffsets = createPlugin(extractTextOffsetsUtil);
+
 export default function createProcessor({
 	annotations = [],
 	callbacks = {},
-	extractTextOffsets,
+	extractor,
 	fileType,
-	plugins = [],
+	rehypePlugins = [],
 }) {
 	const processor = unified();
 	switch (fileType) {
@@ -26,10 +31,6 @@ export default function createProcessor({
 		default:
 			processor.use(html);
 	}
-
-	plugins.forEach(({ plugin, options }) => {
-		processor.use(plugin, options);
-	});
 
 	const styledAnnotations = annotations.map(annotation => {
 		const classNames = annotation.classNames || [];
@@ -43,11 +44,13 @@ export default function createProcessor({
 		};
 	});
 
-	processor.use(textOffsets, { extractTextOffsets });
-	processor.use(annotate, {
-		annotations: styledAnnotations,
-		callbacks,
+	processor.use(extractTextOffsets, extractor);
+	processor.use(annotate, styledAnnotations, callbacks);
+
+	rehypePlugins.forEach(([plugin, ...args]) => {
+		processor.use(plugin, ...args);
 	});
+
 	processor.use(rehype2react, { createElement });
 	return processor;
 }
