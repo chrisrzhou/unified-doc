@@ -6,6 +6,8 @@
 	"module": "dist/index.module.js",
 	"types": "src/index.d.ts",
 	"keywords": [
+		"unified",
+		"doc",
 		"unist",
 		"hast",
 		"util",

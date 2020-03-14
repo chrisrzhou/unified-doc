@@ -1,22 +1,31 @@
 import { Node } from 'unist';
 
-export interface Annotation {
-	[key: string]: any; // Additional annotation data
-	startOffset: number;
-	endOffset: number;
-	classNames?: string[];
-}
-
-export type Optional<T> = {
+type Optional<T> = {
 	[P in keyof T]?: T[P];
 };
 
-export type Callback = (annotation: Annotation, event: MouseEvent) => void;
-
-export interface Callbacks {
-	onClickAnnotation: Callback;
-	onHoverAnnotation: Callback;
+export interface Annotation {
+	/** Additional annotation data */
+	[key: string]: any;
+	/** Start offset relative to the source content */
+	startOffset: number;
+	/** End offset relative to the source content */
+	endOffset: number;
+	/** Array of CSS classnames that will be appiled on text content that matches the annotation offsets */
+	classNames?: string[];
 }
+
+export type AnnotationCallback = (
+	annotation: Annotation,
+	event?: MouseEvent,
+) => void;
+
+interface AnnotationCallbacks {
+	onClickAnnotation: AnnotationCallback;
+	onHoverAnnotation: AnnotationCallback;
+}
+
+export type OptionalAnnotationCallbacks = Optional<AnnotationCallbacks>;
 
 export function splitText(
 	node: Node,
@@ -26,5 +35,5 @@ export function splitText(
 export default function annotate(
 	tree: Node,
 	annotations: Annotation[],
-	callbacks: Optional<Callbacks>,
+	annotationCallbacks?: OptionalAnnotationCallbacks,
 ): Node;

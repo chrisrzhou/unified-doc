@@ -34,13 +34,13 @@ export function splitText(node, annotation) {
 	return [leftText, matchedText, rightText];
 }
 
-export default function annotate(tree, annotations, callbacks) {
+export default function annotate(tree, annotations, annotationCallbacks = {}) {
 	return map(tree, node => {
 		if (node.type !== 'text') {
 			return node;
 		}
 
-		const { onClickAnnotation, onHoverAnnotation } = callbacks;
+		const { onClickAnnotation, onHoverAnnotation } = annotationCallbacks;
 		let annotatedNode = node;
 		annotations.forEach(annotation => {
 			const textSegments = splitText(node, annotation);
@@ -56,7 +56,7 @@ export default function annotate(tree, annotations, callbacks) {
 								onclick: e =>
 									onClickAnnotation && onClickAnnotation(annotation, e),
 								onmouseover: e =>
-									onHoverAnnotation && onHoverAnnotation(annotation, e),
+									onClickAnnotation && onHoverAnnotation(annotation, e),
 							},
 							[matchedText],
 						),

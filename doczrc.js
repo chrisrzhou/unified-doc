@@ -7,10 +7,9 @@ export default {
 			name: 'react-unified-doc',
 			menu: ['Readme', 'Props', 'Content', 'Annotations', 'Plugins', 'Recipes'],
 		},
-		{
-			name: 'utils',
-			menu: ['hast-util-annotate', 'hast-util-extract-text-offsets'],
-		},
+		'processor',
+		'hast-util-annotate',
+		'hast-util-extract-text-offsets',
 		'Changelog',
 	],
 	public: 'public',

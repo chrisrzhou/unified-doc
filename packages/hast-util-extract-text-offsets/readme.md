@@ -88,12 +88,8 @@ Yields:
 		"startOffset": 5,  // previous text endOffset
 		"endOffset": 6,  // 5 + 'a'.length
 		"position": "MockUnistPosition3",
-	},
-	{
-		"startOffset": 6,  // previous text endOffset
-		"endOffset": 8,  // 6 + 'h2'.length
-		"position": undefined,
-	},
+	}
+	// text node with value 'h2' is not extracted because it does not have a source unist position
 ];
 ```
 
@@ -102,15 +98,13 @@ Yields:
 ```ts
 function textOffsets(tree: Node, extractor: Extractor): Node;
 ```
-Extracts an array of `TextOffset` with an `Extractor` callback from a tree.  Returns the original unmodified tree.
+From an input tree, extract an array of `TextOffset` with an `Extractor` callback.  Returns the original unmodified tree.
 
-A `TextOffset` provides text-based offsets and positional data from the original text `Node`.  Text-based offsets are calculated against the original root node that is collapsed to a single string representation.
+A `TextOffset` provides text-based offsets and positional data from the original text `Node`.  Text-based offsets are calculated against the original root node that is collapsed to a single string representation.  Note that only text nodes with defined `position` are extracted.
 
 ### Types
 
 ```ts
-import { Node, Position } from 'unist';
-
 interface TextOffset {
 	startOffset: number;
 	endOffset: number;

@@ -1,3 +1,5 @@
+import { Annotation } from '../../packages/react-unified-doc';
+
 export const content = `
   <h1 test="woohoo">HTML Heading 1</h1>
 <h2>HTML Heading 2</h2>
@@ -34,7 +36,7 @@ quote with __bold__ and _em_ text
 </script>
 `;
 
-export const annotations = [
+export const annotations: Annotation[] = [
 	{
 		type: 'highlight',
 		classNames: ['custom-highlight'],

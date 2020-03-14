@@ -6,6 +6,8 @@
 	"module": "dist/index.module.js",
 	"types": "src/index.d.ts",
 	"keywords": [
+		"unified",
+		"doc",
 		"unist",
 		"hast",
 		"util",
@@ -13,8 +15,8 @@
 		"html",
 		"text",
 		"annotations",
-		"redlines",
-		"highlights"
+		"highlights",
+		"redlining"
 	],
 	"author": "Chris Zhou <chrisrzhou@pm.me>",
 	"license": "MIT",

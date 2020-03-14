@@ -12,7 +12,7 @@ describe('hast-util-extract-text-offsets.js', () => {
 		expect(textOffsets).toEqual([]);
 	});
 
-	it('[readme-example] should extract text offsets for text nodes and copy source unist positions', () => {
+	it('[readme-example] should extract text offsets for text nodes that have source unist positions', () => {
 		const tree = {
 			type: 'element',
 			tagName: 'div',
@@ -78,11 +78,6 @@ describe('hast-util-extract-text-offsets.js', () => {
 				startOffset: 5, // Previous text endOffset
 				endOffset: 6, // 5 + 'a'.length
 				position: 'MockUnistPosition3',
-			},
-			{
-				startOffset: 6, // Previous text endOffset
-				endOffset: 8, // 6 + 'h2'.length
-				position: undefined,
 			},
 		]);
 	});
