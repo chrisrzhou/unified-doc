@@ -2,6 +2,8 @@
 
 [unified][unified] document renderer for content.
 
+> This project is a work in progress.  Stay tuned for exciting updates!
+
 ## Table of Contents
 - [Motivation](#motivation)
 - [Architecture](#architecture)
