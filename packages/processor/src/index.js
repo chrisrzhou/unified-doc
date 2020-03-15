@@ -5,6 +5,8 @@ import markdown from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import unified from 'unified';
 
+import text from './text-parse';
+
 const createPlugin = transform => (...args) => tree => transform(tree, ...args);
 
 const annotate = createPlugin(annotateUtil);
@@ -23,9 +25,12 @@ export function createProcessor(
 			processor.use(markdown).use(remark2rehype);
 			break;
 		case 'html':
+			processor.use(html);
+			break;
 		case 'text':
 		default:
-			processor.use(html);
+			// @ts-ignore: [help-needed] to type this correctly
+			processor.use(text);
 	}
 
 	processor.use(extractTextOffsets, extractor);

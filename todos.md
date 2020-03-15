@@ -1,11 +1,10 @@
 # todos
 
 - [x] Split `processor` into package
-- [ ] Finish features in `hast-util-annotate`
-	- [ ] anchors/permalinks
-	- [ ] replace text value
-- [ ] Finish features in `react-unified-doc`
-	- [ ] Support `text` format.
+- [x] Finish features in `hast-util-annotate`
+	- [x] anchors/permalinks
+- [x] Finish features in `react-unified-doc`
+	- [x] Support `text` format.
   -[x] Support for `rangy` selections and applying new annotations.
   -[x] Render different types of annotations (highlights, redlining, strikethroughs).
   -[x] Click/hover on existing annotations.
@@ -13,8 +12,8 @@
 	- [ ] `processor`
 	- [ ] `hast-util-annotate`
 	- [x] `hast-util-extract-text-offsets`
-- [ ] Type all packages with `ts`
-	- [ ] `react-unified-doc`
+- [x] Type all packages with `ts`
+	- [x] `react-unified-doc`
 	- [x] `processor`
 	- [x] `hast-util-annotate`
 	- [x] `hast-util-extract-text-offsets`

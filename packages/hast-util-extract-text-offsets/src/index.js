@@ -8,7 +8,7 @@ export default function textOffsets(tree, extractor) {
 		if (position && value) {
 			textOffsets.push({
 				startOffset: textStartOffset,
-				// @ts-ignore: value is typed as unknown
+				// @ts-ignore: [help-needed] value is typed as unknown
 				endOffset: (textStartOffset += value.length),
 				position,
 			});

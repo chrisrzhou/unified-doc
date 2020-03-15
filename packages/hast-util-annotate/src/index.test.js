@@ -85,4 +85,6 @@ describe('hast-util-annotate.js', () => {
 	it('should apply classnames', () => {});
 
 	it('should apply callbacks', () => {});
+
+	it('should create anchor links', () => {});
 });

@@ -1,6 +1,7 @@
 import { Annotation } from '../../packages/react-unified-doc';
 
 export const content = `
+<div style="background: yellow; height: 1000px; width: "600px"}}>stuff</div>
   <h1 test="woohoo">HTML Heading 1</h1>
 <h2>HTML Heading 2</h2>
 <blockquote>
@@ -42,18 +43,16 @@ export const annotations: Annotation[] = [
 		classNames: ['custom-highlight'],
 		startOffset: 0,
 		endOffset: 100,
-		id: Math.random().toFixed(4),
 	},
 	{
+		anchorId: 'test-anchor',
 		type: 'redline',
 		startOffset: 101,
 		endOffset: 200,
-		id: Math.random().toFixed(4),
 	},
 	{
 		type: 'strikethrough',
 		startOffset: 201,
 		endOffset: 300,
-		id: Math.random().toFixed(4),
 	},
 ];

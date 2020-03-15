@@ -47,12 +47,25 @@ export default function annotate(tree, annotations, annotationCallbacks = {}) {
 			if (textSegments) {
 				const [leftText, matchedText, rightText] = textSegments;
 				if (matchedText) {
+					// Handle anchors
+					const { anchorId, classNames } = annotation;
+					let tagName = 'span';
+					let properties = {};
+					if (anchorId) {
+						tagName = 'a';
+						properties = {
+							id: anchorId,
+							href: `#${anchorId}`,
+						};
+					}
+
 					annotatedNode = h('span', [
 						leftText,
 						h(
-							'span',
+							tagName,
 							{
-								class: annotation.classNames,
+								...properties,
+								class: classNames,
 								onclick: e =>
 									onClickAnnotation && onClickAnnotation(annotation, e),
 								onmouseover: e =>
