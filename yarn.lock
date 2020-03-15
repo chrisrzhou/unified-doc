@@ -1022,9 +1022,9 @@
   integrity sha512-zM9PFmgVSqBw4zL101Q0HrBVTGmpAxFZH/pYx/cjJT5advXguvcgjHFTCaIO3enL/xr89vK2bh0Mfyj9aa0ANA==
 
 "@emotion/styled-base@^10.0.27":
-  version "10.0.30"
-  resolved "https://registry.yarnpkg.com/@emotion/styled-base/-/styled-base-10.0.30.tgz#f8a99c7923f4dd51d0afb34d5b987a061d9ac021"
-  integrity sha512-pjAZxjnDzLQ5F0Wv3DgTLvg8pw4bMSABP9GHDdCaDjZak/8Il5mQRLs15h9AKC95E8QG1NEr11GfHO1SGYV5ZA==
+  version "10.0.31"
+  resolved "https://registry.yarnpkg.com/@emotion/styled-base/-/styled-base-10.0.31.tgz#940957ee0aa15c6974adc7d494ff19765a2f742a"
+  integrity sha512-wTOE1NcXmqMWlyrtwdkqg87Mu6Rj1MaukEoEmEkHirO5IoHDJ8LgCQL4MjJODgxWxXibGR3opGp1p7YvkNEdXQ==
   dependencies:
     "@babel/runtime" "^7.5.5"
     "@emotion/is-prop-valid" "0.8.8"
@@ -1269,11 +1269,6 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
-
-"@jsdevtools/rehype-toc@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@jsdevtools/rehype-toc/-/rehype-toc-3.0.0.tgz#2af755e33f9fba80b4342bf2bd660c31aaf148eb"
-  integrity sha512-Fg4KgtFF6EWKBxOkVMsE1g1pje1LcULz+6wmL/s+ZeY7g7TgNgUOTrZowJPmMet4ujEsFFzo71b+fjoW4WL5GQ==
 
 "@loadable/component@^5.10.2":
   version "5.12.0"
@@ -4319,7 +4314,7 @@ deep-strict-equal@^0.2.0:
   dependencies:
     core-assert "^0.2.0"
 
-deepmerge@^4.0.0:
+deepmerge@^4.0.0, deepmerge@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
   integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
@@ -5306,9 +5301,9 @@ eslint-plugin-unicorn@^16.1.1:
     semver "^7.1.2"
 
 eslint-rule-docs@^1.1.5:
-  version "1.1.181"
-  resolved "https://registry.yarnpkg.com/eslint-rule-docs/-/eslint-rule-docs-1.1.181.tgz#ddcd5d5a3228940d03c33dd5e447620426c13bfe"
-  integrity sha512-V8rGxWaMeW/AVWRbLLF6xVKq2BcZv+7D9OTBjAy/yfVnaGuxx3xmK5QYBzTM5nhaNWtfYcqJQkkkMMQQde99FQ==
+  version "1.1.182"
+  resolved "https://registry.yarnpkg.com/eslint-rule-docs/-/eslint-rule-docs-1.1.182.tgz#f56dfe57479c0199c26b812cb1695247cd36c9af"
+  integrity sha512-J+6vR2t1Z9+3uFS6rnrw9nN1V2XtoyIs5bGd52WOYN3glc1bJPa6TUxgj/ZjZ0z5rbZyqKT42RwzBMdAMxL+mg==
 
 eslint-scope@^4.0.3:
   version "4.0.3"
@@ -7160,6 +7155,13 @@ hast-util-raw@5.0.1:
     web-namespaces "^1.0.0"
     xtend "^4.0.1"
     zwitch "^1.0.0"
+
+hast-util-sanitize@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/hast-util-sanitize/-/hast-util-sanitize-2.0.2.tgz#8a4299bccba6cc8836284466d446060d2ecb2f5c"
+  integrity sha512-ppfgtI6pVb0/dopboV/N2SZju/CKEJzLs6jm58NxoYU1c1ib+/sh14JV5bjLDOEYvyeb5hYIttFKanYm0rtnHQ==
+  dependencies:
+    xtend "^4.0.0"
 
 hast-util-to-parse5@^5.0.0:
   version "5.1.2"
@@ -12307,13 +12309,6 @@ rehype-slug@^2.0.3:
     hast-util-is-element "^1.0.0"
     hast-util-to-string "^1.0.0"
     unist-util-visit "^1.1.0"
-
-rehype-toc@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/rehype-toc/-/rehype-toc-3.0.0.tgz#d714fe9f0ee35fda704ddade7965d97188bb22cd"
-  integrity sha512-OPrAKs2qYf/l8j4S8wpipXPSU+Gan9Vmic1s+l/hiHv0CT/DtbJQ1RUQWRqYrNXc3TR0aKoAg7x6+KldSHzxHg==
-  dependencies:
-    "@jsdevtools/rehype-toc" "3.0.0"
 
 relateurl@0.2.x:
   version "0.2.7"

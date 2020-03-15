@@ -8,9 +8,9 @@
   -[x] Support for `rangy` selections and applying new annotations.
   -[x] Render different types of annotations (highlights, redlining, strikethroughs).
   -[x] Click/hover on existing annotations.
-- [ ] Add Tests
-	- [ ] `processor`
-	- [ ] `hast-util-annotate`
+- [x] Add Tests
+	- [x] `processor`
+	- [x] `hast-util-annotate`
 	- [x] `hast-util-extract-text-offsets`
 - [x] Type all packages with `ts`
 	- [x] `react-unified-doc`

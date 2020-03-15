@@ -84,7 +84,6 @@ export default function ReactUnifiedDocument({
 		}
 
 		onSelectText({ startOffset, endOffset, value: selection.toString() }, e);
-
 		selection.removeAllRanges();
 	}
 

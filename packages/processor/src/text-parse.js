@@ -13,31 +13,20 @@ export function parser(doc) {
 		type: 'root',
 		children: [
 			{
-				type: 'element',
-				tagName: 'div',
-				properties: {
-					style: {
-						whiteSpace: 'pre',
+				type: 'text',
+				value: doc,
+				position: {
+					start: {
+						column: 1,
+						line: 1,
+						offset: 0,
+					},
+					end: {
+						column: lastLine.length + 1,
+						line: lines.length,
+						offset: doc.length,
 					},
 				},
-				children: [
-					{
-						type: 'text',
-						value: doc,
-						position: {
-							start: {
-								column: 1,
-								line: 1,
-								offset: 0,
-							},
-							end: {
-								column: lastLine.length,
-								line: lines.length,
-								offset: doc.length - 1,
-							},
-						},
-					},
-				],
 			},
 		],
 	};

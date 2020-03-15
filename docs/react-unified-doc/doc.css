@@ -1,3 +1,7 @@
+.doc {
+	white-space: pre;
+}
+
 .custom-highlight {
 	background: black;
 	font-size: 10px;

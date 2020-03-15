@@ -8,8 +8,8 @@ import { Processor } from 'unified';
 export type ContentType = 'html' | 'markdown' | 'text';
 
 export function createProcessor(
-	contentType: ContentType,
-	annotations: Annotation[],
-	annotationCallbacks: OptionalAnnotationCallbacks,
-	extractor: Extractor,
+	contentType?: ContentType,
+	annotations?: Annotation[],
+	annotationCallbacks?: OptionalAnnotationCallbacks,
+	extractor?: Extractor,
 ): Processor;

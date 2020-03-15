@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { annotations as defaultAnnotations, content } from './data';
 import ReactUnifiedDoc from '../../packages/react-unified-doc/src';
 
+import './doc.css';
+import '../../packages/react-unified-doc/src/index.css';
+
 export default function ExampleAnnotations(): JSX.Element {
 	const [annotations, setAnnotations] = useState(defaultAnnotations);
 
@@ -14,12 +17,14 @@ export default function ExampleAnnotations(): JSX.Element {
 		}
 	}, []);
 
+	const contentType = 'text';
+
 	return (
-		<div>
+		<div className={contentType === 'text' ? 'doc' : undefined}>
 			<ReactUnifiedDoc
 				annotations={annotations}
 				content={content}
-				contentType="html"
+				contentType={contentType}
 				onClickAnnotation={(annotation, e) =>
 					console.log('clicked', annotation, e)
 				}

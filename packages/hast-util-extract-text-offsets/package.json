@@ -24,6 +24,5 @@
 	"homepage": "https://unified-doc.netlify.com/",
 	"dependencies": {
 		"unist-util-visit": "^2.0.2"
-	},
-	"devDependencies": {}
+	}
 }

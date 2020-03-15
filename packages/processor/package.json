@@ -1,7 +1,7 @@
 {
 	"name": "@unified-doc/processor",
 	"version": "0.1.0",
-	"description": "unified-doc processor",
+	"description": "unified processor for unified-doc content processing",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
 	"types": "src/index.d.ts",
@@ -26,6 +26,8 @@
 	"dependencies": {
 		"@unified-doc/hast-util-annotate": "*",
 		"@unified-doc/hast-util-extract-text-offsets": "*",
+		"deepmerge": "^4.2.2",
+		"hast-util-sanitize": "^2.0.2",
 		"rehype-parse": "^6.0.2",
 		"remark-parse": "^7.0.2",
 		"remark-rehype": "^5.0.0",

@@ -14,31 +14,20 @@ describe('text-parse.js', () => {
 				type: 'root',
 				children: [
 					{
-						type: 'element',
-						tagName: 'div',
-						properties: {
-							style: {
-								whiteSpace: 'pre',
+						type: 'text',
+						value: 'a to the b to the c',
+						position: {
+							start: {
+								column: 1,
+								line: 1,
+								offset: 0,
+							},
+							end: {
+								column: 20,
+								line: 1,
+								offset: 19,
 							},
 						},
-						children: [
-							{
-								type: 'text',
-								value: 'a to the b to the c',
-								position: {
-									start: {
-										column: 1,
-										line: 1,
-										offset: 0,
-									},
-									end: {
-										column: 19,
-										line: 1,
-										offset: 18,
-									},
-								},
-							},
-						],
 					},
 				],
 			});
@@ -49,31 +38,20 @@ describe('text-parse.js', () => {
 				type: 'root',
 				children: [
 					{
-						type: 'element',
-						tagName: 'div',
-						properties: {
-							style: {
-								whiteSpace: 'pre',
+						type: 'text',
+						value: '\na to the \nb to the \n\nc to the d',
+						position: {
+							start: {
+								column: 1,
+								line: 1,
+								offset: 0,
+							},
+							end: {
+								column: 11,
+								line: 5,
+								offset: 32,
 							},
 						},
-						children: [
-							{
-								type: 'text',
-								value: '\na to the \nb to the \n\nc to the d',
-								position: {
-									start: {
-										column: 1,
-										line: 1,
-										offset: 0,
-									},
-									end: {
-										column: 10,
-										line: 5,
-										offset: 31,
-									},
-								},
-							},
-						],
 					},
 				],
 			});
