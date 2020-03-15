@@ -4,7 +4,6 @@ import { annotations as defaultAnnotations, content } from './data';
 import ReactUnifiedDoc from '../../packages/react-unified-doc/src';
 
 import './doc.css';
-import '../../packages/react-unified-doc/src/index.css';
 
 export default function ExampleAnnotations(): JSX.Element {
 	const [annotations, setAnnotations] = useState(defaultAnnotations);
@@ -17,7 +16,7 @@ export default function ExampleAnnotations(): JSX.Element {
 		}
 	}, []);
 
-	const contentType = 'text';
+	const contentType = 'html';
 
 	return (
 		<div className={contentType === 'text' ? 'doc' : undefined}>
@@ -35,7 +34,7 @@ export default function ExampleAnnotations(): JSX.Element {
 					console.log(selection, e);
 					setAnnotations([
 						{
-							type: 'highlight',
+							classNames: ['highlight'],
 							endOffset: selection.endOffset,
 							startOffset: selection.startOffset,
 							value: selection.value,

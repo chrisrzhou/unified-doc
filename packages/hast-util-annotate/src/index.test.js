@@ -111,7 +111,7 @@ describe('hast-util-annotate.js', () => {
 		],
 	};
 
-	it('should not highlight anything if offset is not covering any text nodes', () => {
+	it('should not annotate anything if offset is not covering any text nodes', () => {
 		expect(annotate(tree, [])).toEqual(tree);
 		expect(
 			annotate(treeWithNoTextNodes, [{ startOffset: 0, endOffset: 100 }]),
@@ -124,7 +124,7 @@ describe('hast-util-annotate.js', () => {
 		).toEqual(tree);
 	});
 
-	it('should highlight text node if offset is within text node', () => {
+	it('should annotate text node if offset is within text node', () => {
 		const annotatedTree = annotate(tree, [{ startOffset: 10, endOffset: 20 }]);
 		const annotatedSpanNode = annotatedTree.children[0];
 		const [leftNode, matchedNode, rightNode] = annotatedSpanNode.children;
@@ -140,7 +140,7 @@ describe('hast-util-annotate.js', () => {
 		expect(rightNode.value).toEqual('to the d');
 	});
 
-	it('should highlight text node if offset is exactly within text node', () => {
+	it('should annotate text node if offset is exactly within text node', () => {
 		const annotatedTree = annotate(tree, [{ startOffset: 0, endOffset: 28 }]);
 		const annotatedSpanNode = annotatedTree.children[0];
 		const [leftNode, matchedNode, rightNode] = annotatedSpanNode.children;
@@ -156,7 +156,7 @@ describe('hast-util-annotate.js', () => {
 		expect(rightNode.value).toEqual('');
 	});
 
-	it('should highlight text node if text node is within offset', () => {
+	it('should annotate text node if text node is within offset', () => {
 		const annotatedTree = annotate(shiftedTree, [
 			{ startOffset: 0, endOffset: 50 },
 		]);
@@ -174,7 +174,7 @@ describe('hast-util-annotate.js', () => {
 		expect(rightNode.value).toEqual('');
 	});
 
-	it('should highlight text node if text node is left of offset', () => {
+	it('should annotate text node if text node is left of offset', () => {
 		const annotatedTree = annotate(tree, [{ startOffset: 10, endOffset: 50 }]);
 		const annotatedSpanNode = annotatedTree.children[0];
 		const [leftNode, matchedNode, rightNode] = annotatedSpanNode.children;
@@ -190,7 +190,7 @@ describe('hast-util-annotate.js', () => {
 		expect(rightNode.value).toEqual('');
 	});
 
-	it('should highlight text node if text node is right of offset', () => {
+	it('should annotate text node if text node is right of offset', () => {
 		const annotatedTree = annotate(shiftedTree, [
 			{ startOffset: 0, endOffset: 15 },
 		]);
@@ -227,7 +227,7 @@ describe('hast-util-annotate.js', () => {
 		expect(rightNode.value).toEqual('');
 	});
 
-	it('should highlight multiple text nodes and skipping non-text nodes if offset covers them', () => {
+	it('should annotate multiple text nodes and skipping non-text nodes if offset covers them', () => {
 		const annotatedTree = annotate(complexTree, [
 			{ startOffset: 15, endOffset: 110 },
 		]);

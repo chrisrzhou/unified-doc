@@ -1,27 +1,13 @@
 # todos
 
-- [x] Split `processor` into package
-- [x] Finish features in `hast-util-annotate`
-	- [x] anchors/permalinks
-- [x] Finish features in `react-unified-doc`
-	- [x] Support `text` format.
-  -[x] Support for `rangy` selections and applying new annotations.
-  -[x] Render different types of annotations (highlights, redlining, strikethroughs).
-  -[x] Click/hover on existing annotations.
-- [x] Add Tests
-	- [x] `processor`
-	- [x] `hast-util-annotate`
-	- [x] `hast-util-extract-text-offsets`
-- [x] Type all packages with `ts`
-	- [x] `react-unified-doc`
-	- [x] `processor`
-	- [x] `hast-util-annotate`
-	- [x] `hast-util-extract-text-offsets`
+
 - [ ] Update docs for other packages
 	- [ ] `processor`
 	- [ ] `hast-util-annotate`
 	- [x] `hast-util-extract-text-offsets`
-- [ ] Comprehensive docs for `react-unified-doc`
+- [ ] write custom build script
+- [ ] confirm `remark-rehype` behaviors of text nodes without positions.
+- [ ] Comprehensive docs and interactive examples for `react-unified-doc`
   - Overview of goals
 		- Explain motivations (unified renderer for content with annotation support based on offsets against the original content).
     - unified renderer for any document that can be mapped to `hast`

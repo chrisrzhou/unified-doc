@@ -1,7 +1,7 @@
 {
 	"name": "@unified-doc/processor",
 	"version": "0.1.0",
-	"description": "unified processor for unified-doc content processing",
+	"description": "unified processor for processing content in unified-doc",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
 	"types": "src/index.d.ts",
@@ -32,5 +32,6 @@
 		"remark-parse": "^7.0.2",
 		"remark-rehype": "^5.0.0",
 		"unified": "^8.4.2"
-	}
+	},
+	"devDependencies": {}
 }

@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-npm install @unified-doc/hast-util-annotate
+yarn add @unified-doc/hast-util-annotate
 ```
 
 ## Use

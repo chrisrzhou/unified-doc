@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-npm install @unified-doc/hast-util-extract-text-offsets
+yarn add @unified-doc/hast-util-extract-text-offsets
 ```
 
 ## Use

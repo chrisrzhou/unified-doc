@@ -2,7 +2,20 @@
 	white-space: pre;
 }
 
+.highlight {
+	background: blue;
+	color: white;
+}
+
 .custom-highlight {
-	background: black;
-	font-size: 10px;
+	background: yellow;
+}
+
+.redline {
+	text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.strikethrough {
+	text-decoration: line-through;
 }

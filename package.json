@@ -11,6 +11,7 @@
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
 	"scripts": {
+		"build": "echo 'todo: add custom build script'",
 		"build:docs": "yarn clean:docs; docz build",
 		"clean": "rm -rf .docz",
 		"clean:docs": "rm -rf .docz",
@@ -35,7 +36,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-push": "yarn lint"
+			"pre-push": "yarn lint && yarn test && yarn build"
 		}
 	},
 	"prettier": {

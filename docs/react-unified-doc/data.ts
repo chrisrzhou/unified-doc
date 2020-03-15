@@ -1,8 +1,7 @@
 import { Annotation } from '../../packages/react-unified-doc';
 
 export const content = `
-<div style="background: yellow; height: 1000px; width: "600px"}}>stuff</div>
-  <h1 test="woohoo">HTML Heading 1</h1>
+<h1 test="woohoo">HTML Heading 1</h1>
 <h2>HTML Heading 2</h2>
 <blockquote>
 	HTML blockquote with
@@ -39,20 +38,32 @@ quote with __bold__ and _em_ text
 
 export const annotations: Annotation[] = [
 	{
-		type: 'highlight',
 		classNames: ['custom-highlight'],
 		startOffset: 0,
 		endOffset: 100,
 	},
 	{
 		anchorId: 'test-anchor',
-		type: 'redline',
+		classNames: ['highlight'],
 		startOffset: 101,
 		endOffset: 200,
 	},
 	{
-		type: 'strikethrough',
+		classNames: ['redline'],
 		startOffset: 201,
 		endOffset: 300,
+	},
+];
+
+export const overlappedAnnotations: Annotation[] = [
+	{
+		classNames: ['custom-highlight'],
+		startOffset: 10,
+		endOffset: 50,
+	},
+	{
+		classNames: ['highlight'],
+		startOffset: 20,
+		endOffset: 30,
 	},
 ];

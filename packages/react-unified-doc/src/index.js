@@ -3,8 +3,6 @@ import rangy from 'rangy';
 import React, { createElement, useRef } from 'react';
 import rehype2react from 'rehype-react';
 
-const annotationTypes = ['highlight', 'redline', 'strikethrough'];
-
 export default function ReactUnifiedDocument({
 	annotations = [],
 	content,
@@ -17,17 +15,6 @@ export default function ReactUnifiedDocument({
 	const textOffsetsRef = useRef();
 	const ref = useRef();
 
-	// Auto-apply annotation styles based on annotation type
-	const styledAnnotations = annotations.map(annotation => {
-		const classNames = annotation.classNames || [];
-		return {
-			...annotation,
-			classNames: annotationTypes.includes(annotation.type)
-				? [`annotation-${annotation.type}`, ...classNames]
-				: classNames,
-		};
-	});
-
 	function extractor(textOffsets) {
 		textOffsetsRef.current = textOffsets;
 	}
@@ -35,7 +22,7 @@ export default function ReactUnifiedDocument({
 	// Set up unified processor to compile content
 	const processor = createProcessor(
 		contentType,
-		styledAnnotations,
+		annotations,
 		{
 			onClickAnnotation,
 			onHoverAnnotation,
