@@ -13,6 +13,10 @@ export default function textOffsets(tree, extractor) {
 				endOffset: (textStartOffset += value.length),
 				position,
 			};
+			if (value === '\n') {
+				textOffset.isNewline = true;
+			}
+
 			textOffsets.push(textOffset);
 		}
 	});

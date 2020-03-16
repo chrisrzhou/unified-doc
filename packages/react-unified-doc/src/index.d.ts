@@ -26,6 +26,8 @@ export interface Props {
 	onSelectText?: (selectedText: SelectedText, e?: MouseEvent) => void;
 	/** Valid rehype plugins to run after annotations are applied */
 	rehypePlugins?: Plugin[];
+	/** HTML Sanitize schema (see https://github.com/syntax-tree/hast-util-sanitize#schema) */
+	sanitizeSchema?: { [key: string]: any };
 }
 
 export default function ReactUnifiedDocument(props: Props): JSX.Element;

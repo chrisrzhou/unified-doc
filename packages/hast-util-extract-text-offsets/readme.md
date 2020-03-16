@@ -109,6 +109,7 @@ interface TextOffset {
 	startOffset: number;
 	endOffset: number;
 	position: Position;
+	isNewline?: boolean;
 }
 
 type Extractor = (textOffsets: TextOffset[]) => void;

@@ -7,9 +7,16 @@ import { Processor } from 'unified';
 
 export type ContentType = 'html' | 'markdown' | 'text';
 
+export interface ProcessorOptions {
+	extractor?: Extractor;
+	sanitizeSchema: {
+		[key: string]: any;
+	};
+}
+
 export function createProcessor(
 	contentType?: ContentType,
 	annotations?: Annotation[],
 	annotationCallbacks?: OptionalAnnotationCallbacks,
-	extractor?: Extractor,
+	options?: ProcessorOptions,
 ): Processor;

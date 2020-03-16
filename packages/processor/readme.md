@@ -23,7 +23,7 @@ const withAnnotations = createProcessor('text', annotations)
 	.parse('a to the b to the c');
 ```
 
-Yields [**hast**][hast] trees with annotated text nodes.  See [hast-util-annotate](../hast-util-annotate/) for more details on how annotating text nodes behave.
+Yields [hast][hast] trees with annotated text nodes.  See [hast-util-annotate](../hast-util-annotate/) for more details on how annotating text nodes behave.
 
 You can also add relevant `rehype/hast` plugins after creating the processor:
 
@@ -57,13 +57,15 @@ export function createProcessor(
 	contentType?: ContentType,
 	annotations?: Annotation[],
 	annotationCallbacks?: OptionalAnnotationCallbacks,
-	extractor?: Extractor,
+	options?: ProcessorOptions,
 ): Processor;
 ```
 
-Returns a [unified][unified] `Processor` that supports annotating text nodes.  This processor supports content processing for the provided `contentType` (`html`, `markdown`, `text`).  Note that any supported content is parsed and mapped into [**hast**][hast].
+Returns a [unified][unified] `Processor` that supports annotating text nodes.  This processor supports content processing for the provided `contentType` (`html`, `markdown`, `text`).  Note that any supported content is parsed and mapped into [hast][hast].
 
-If an `extractor` callback is provided, the processor will extract/capture all `textOffsets` of text nodes as well.
+If an `extractor` callback is provided in `options`, the processor will extract/capture all `textOffsets` of text nodes as well.
+
+Provide a valid [sanitize-schema][sanitize-schema] to apply custom HTML sanitization . Improper use of this schema can open you up to a cross-site scripting (XSS) attack. The defaults are safe, but deviating from them is likely unsafe.
 
 ### Types
 
@@ -75,6 +77,13 @@ import {
 import { Extractor } from '@unified-doc/hast-util-extract-text-offsets';
 
 type ContentType = 'html' | 'markdown' | 'text';
+
+interface ProcessorOptions {
+	extractor?: Extractor;
+	sanitizeSchema: {
+		[key: string]: any;
+	};
+}
 ```
 
 Refer to [hast-util-annotate](../hast-util-annotate/) and [hast-util-extract-text-offsets](../hast-util-extract-text-offsets) for imported types.
@@ -82,6 +91,7 @@ Refer to [hast-util-annotate](../hast-util-annotate/) and [hast-util-extract-tex
 <!-- Definition -->
 [unified]: https://unifiedjs.com/
 [hast]: https://github.com/syntax-tree/hast
+[sanitize-schema]: https://github.com/syntax-tree/hast-util-sanitize#schema
 
 <!-- Unfortunate hack to make importing gatsby in mdx work... -->
 export default ({ children }) => children

@@ -11,6 +11,7 @@ export default function ReactUnifiedDocument({
 	onHoverAnnotation,
 	onSelectText,
 	rehypePlugins = [],
+	sanitizeSchema = {},
 }) {
 	const textOffsetsRef = useRef();
 	const ref = useRef();
@@ -27,7 +28,10 @@ export default function ReactUnifiedDocument({
 			onClickAnnotation,
 			onHoverAnnotation,
 		},
-		extractor,
+		{
+			extractor,
+			sanitizeSchema,
+		},
 	);
 	rehypePlugins.forEach(([plugin, ...args]) => {
 		processor.use(plugin, ...args);
@@ -37,6 +41,7 @@ export default function ReactUnifiedDocument({
 
 	function handleMouseup(e) {
 		const selection = rangy.getSelection();
+		const value = selection.toString();
 		const bookmark = selection.getBookmark(ref.current).rangeBookmarks[0] || {};
 
 		const canSelect =
@@ -47,12 +52,18 @@ export default function ReactUnifiedDocument({
 
 		const textOffsets = textOffsetsRef.current;
 		const selectedTextOffsets = textOffsets.filter(
-			({ startOffset, endOffset, position }) => {
+			({ startOffset, endOffset, position, isNewline }) => {
 				return (
-					position && bookmark.start <= endOffset && bookmark.end >= startOffset
+					position &&
+					bookmark.start <= endOffset &&
+					bookmark.end >= startOffset &&
+					!isNewline
 				);
 			},
 		);
+
+		console.log(value, selectedTextOffsets);
+
 		const firstSelectedTextOffset = selectedTextOffsets[0];
 		const lastSelectedTextOffset =
 			selectedTextOffsets[selectedTextOffsets.length - 1];
@@ -70,7 +81,7 @@ export default function ReactUnifiedDocument({
 				(bookmark.end - lastSelectedTextOffset.startOffset);
 		}
 
-		onSelectText({ startOffset, endOffset, value: selection.toString() }, e);
+		onSelectText({ startOffset, endOffset, value }, e);
 		selection.removeAllRanges();
 	}
 

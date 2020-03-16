@@ -8,25 +8,32 @@ import markdown from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import unified from 'unified';
 
+import coerceTextPositionsUtil from './hast-util-coerce-text-positions';
 import text from './text-parse';
 
 const createPlugin = transform => (...args) => tree => transform(tree, ...args);
 
+const coerceTextPositions = createPlugin(coerceTextPositionsUtil);
 const sanitize = createPlugin(sanitizeUtil);
 const annotate = createPlugin(annotateUtil);
 const extractTextOffsets = createPlugin(extractTextOffsetsUtil);
 
 export function createProcessor(
-	contentType,
-	annotations,
-	annotationCallbacks,
-	extractor,
+	contentType = 'text',
+	annotations = [],
+	annotationCallbacks = {},
+	options = {},
 ) {
+	const { extractor, sanitizeSchema = {} } = options;
+
 	const processor = unified();
 
 	switch (contentType) {
 		case 'markdown':
-			processor.use(markdown).use(remark2rehype);
+			processor
+				.use(markdown)
+				.use(remark2rehype)
+				.use(coerceTextPositions);
 			break;
 		case 'html':
 			processor.use(html);
@@ -37,10 +44,7 @@ export function createProcessor(
 			processor.use(text);
 	}
 
-	processor.use(
-		sanitize,
-		deepmerge(gh, { attributes: { '*': ['className', 'style'] } }),
-	);
+	processor.use(sanitize, deepmerge(gh, sanitizeSchema));
 
 	if (extractor) {
 		processor.use(extractTextOffsets, extractor);

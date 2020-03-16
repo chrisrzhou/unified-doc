@@ -16,7 +16,7 @@ export default function ExampleAnnotations(): JSX.Element {
 		}
 	}, []);
 
-	const contentType = 'markdown';
+	const contentType = 'html';
 
 	return (
 		<div className={contentType === 'text' ? 'doc' : undefined}>
@@ -24,12 +24,17 @@ export default function ExampleAnnotations(): JSX.Element {
 				annotations={annotations}
 				content={content}
 				contentType={contentType}
-				onClickAnnotation={(annotation, e) =>
-					console.log('clicked', annotation, e)
-				}
-				onHoverAnnotation={(annotation, e) =>
-					console.log('hover', annotation, e)
-				}
+				sanitizeSchema={{
+					attributes: {
+						'*': ['className', 'style'],
+					},
+				}}
+				onClickAnnotation={(annotation, e) => {
+					console.log('clicked', annotation, e);
+				}}
+				onHoverAnnotation={(annotation, e) => {
+					console.log('hover', annotation, e);
+				}}
 				onSelectText={(selection, e) => {
 					console.log(selection, e);
 					setAnnotations([
