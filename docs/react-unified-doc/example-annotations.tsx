@@ -16,7 +16,7 @@ export default function ExampleAnnotations(): JSX.Element {
 		}
 	}, []);
 
-	const contentType = 'html';
+	const contentType = 'markdown';
 
 	return (
 		<div className={contentType === 'text' ? 'doc' : undefined}>

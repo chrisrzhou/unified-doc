@@ -37,7 +37,7 @@ export default function ReactUnifiedDocument({
 
 	function handleMouseup(e) {
 		const selection = rangy.getSelection();
-		const bookmark = selection.getBookmark(ref.current).rangeBookmarks[0];
+		const bookmark = selection.getBookmark(ref.current).rangeBookmarks[0] || {};
 
 		const canSelect =
 			onSelectText && textOffsetsRef.current && bookmark.end > bookmark.start;

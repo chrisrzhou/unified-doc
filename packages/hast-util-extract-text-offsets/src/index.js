@@ -1,17 +1,19 @@
-import visit from 'unist-util-visit';
+import visit from 'unist-util-visit-parents';
 
 export default function textOffsets(tree, extractor) {
 	const textOffsets = [];
 	let textStartOffset = 0;
 	visit(tree, 'text', node => {
 		const { position, value } = node;
-		if (position && value) {
-			textOffsets.push({
+
+		if (value && position) {
+			const textOffset = {
 				startOffset: textStartOffset,
 				// @ts-ignore: TODO ts unknown type
 				endOffset: (textStartOffset += value.length),
 				position,
-			});
+			};
+			textOffsets.push(textOffset);
 		}
 	});
 	extractor(textOffsets);
