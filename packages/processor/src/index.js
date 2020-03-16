@@ -33,7 +33,7 @@ export function createProcessor(
 			break;
 		case 'text':
 		default:
-			// @ts-ignore: [help-needed] to type this correctly
+			// @ts-ignore: TODO type this correctly
 			processor.use(text);
 	}
 

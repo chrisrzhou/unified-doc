@@ -32,7 +32,7 @@ describe('processor.js', () => {
 			const processor = createProcessor('html');
 			const tree = processor.parse('<div>some <h1>heading</h1> content</div>');
 
-			// [DEBUG] processor not using plugins in test
+			// TODO processor not using plugins in test
 			expect(tree.children[0].children[1].children).toEqual([
 				{
 					type: 'element',

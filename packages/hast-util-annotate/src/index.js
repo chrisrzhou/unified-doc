@@ -1,16 +1,18 @@
-import h from 'hastscript';
-import map from 'unist-util-map';
+import visit from 'unist-util-visit-parents';
 
 import splitText from './split-text';
 
 export default function annotate(tree, annotations, annotationCallbacks = {}) {
-	return map(tree, node => {
-		if (node.type !== 'text') {
-			return node;
-		}
+	const { onClickAnnotation, onHoverAnnotation } = annotationCallbacks;
 
-		const { onClickAnnotation, onHoverAnnotation } = annotationCallbacks;
-		let annotatedNode = node;
+	visit(tree, 'text', (node, parents) => {
+		const parent = parents[parents.length - 1];
+		const siblings = parent.children;
+		// @ts-ignore: TODO ts unknown type
+		const currentNodeIndex = siblings.indexOf(node);
+		let nodes = [node];
+
+		// Annotate node codea
 		annotations.forEach(annotation => {
 			const textSegments = splitText(node, annotation);
 			if (textSegments) {
@@ -19,34 +21,49 @@ export default function annotate(tree, annotations, annotationCallbacks = {}) {
 					// Handle anchors
 					const { anchorId, classNames } = annotation;
 					let tagName = 'span';
-					let properties = {};
+					const properties = {
+						class: classNames,
+						onclick: e => onClickAnnotation && onClickAnnotation(annotation, e),
+						onmouseover: e =>
+							onClickAnnotation && onHoverAnnotation(annotation, e),
+					};
 					if (anchorId) {
 						tagName = 'a';
-						properties = {
-							id: anchorId,
-							href: `#${anchorId}`,
-						};
+						properties.id = anchorId;
+						properties.href = `#${anchorId}`;
 					}
 
-					annotatedNode = h('span', [
-						leftText,
-						h(
-							tagName,
+					nodes = [];
+					if (leftText) {
+						nodes.push({ type: 'text', value: leftText });
+					}
+
+					nodes.push({
+						type: 'element',
+						tagName,
+						properties,
+						children: [
 							{
-								...properties,
-								class: classNames,
-								onclick: e =>
-									onClickAnnotation && onClickAnnotation(annotation, e),
-								onmouseover: e =>
-									onClickAnnotation && onHoverAnnotation(annotation, e),
+								type: 'text',
+								value: matchedText,
 							},
-							[matchedText],
-						),
-						rightText,
-					]);
+						],
+					});
+
+					if (rightText) {
+						nodes.push({ type: 'text', value: rightText });
+					}
 				}
 			}
 		});
-		return annotatedNode;
+
+		parent.children = siblings
+			// @ts-ignore: TODO ts unknown type
+			.slice(0, currentNodeIndex)
+			.concat(nodes)
+			// @ts-ignore: TODO ts unknown type
+			.concat(siblings.slice(currentNodeIndex + 1));
 	});
+
+	return tree;
 }

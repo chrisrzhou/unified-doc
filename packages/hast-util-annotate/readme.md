@@ -27,7 +27,7 @@ function annotate(
 	annotationCallbacks?: Optional<AnnotationCallbacks>,
 ): Node
 ```
-Annotates text nodes in a tree when `annotations` are provided.  A new tree is returned.  Annotated text nodes are replaced with styled `span` nodes split on the matched offsets.
+Annotates text nodes in a tree when `annotations` are provided.  The original tree is *mutated*.  Annotated text nodes are replaced with styled `span` nodes split on the matched offsets.
 
 The following scenarios show how text node and annotation offsets are matched.  `L`, `R` denotes the left and right parts of the unmatched text while `M` denotes the matched text that will be annotated as a styled `span` node.  Note that annotation offsets are defined relative to the *source* content.
 
