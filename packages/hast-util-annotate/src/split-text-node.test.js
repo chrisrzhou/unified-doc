@@ -1,6 +1,6 @@
-import { splitText } from '.';
+import splitTextNode from './split-text-node';
 
-describe('split-text.js', () => {
+describe('split-text-node.js', () => {
 	const node = {
 		type: 'test',
 		position: {
@@ -19,15 +19,19 @@ describe('split-text.js', () => {
 	};
 
 	it('should not split if annotation is strictly left of position', () => {
-		expect(splitText(node, { startOffset: 0, endOffset: 40 })).toEqual(null);
+		expect(splitTextNode(node, { startOffset: 0, endOffset: 40 })).toEqual(
+			null,
+		);
 	});
 
 	it('should not split if annotation is strictly right of position', () => {
-		expect(splitText(node, { startOffset: 100, endOffset: 200 })).toEqual(null);
+		expect(splitTextNode(node, { startOffset: 100, endOffset: 200 })).toEqual(
+			null,
+		);
 	});
 
 	it('should split if annotation is exactly the same as position', () => {
-		expect(splitText(node, { startOffset: 40, endOffset: 100 })).toEqual([
+		expect(splitTextNode(node, { startOffset: 40, endOffset: 100 })).toEqual([
 			'',
 			'abcdefghijklmnopqrstuvwxyz',
 			'',
@@ -35,7 +39,7 @@ describe('split-text.js', () => {
 	});
 
 	it('should split if position is contained within annotation', () => {
-		expect(splitText(node, { startOffset: 0, endOffset: 200 })).toEqual([
+		expect(splitTextNode(node, { startOffset: 0, endOffset: 200 })).toEqual([
 			'',
 			'abcdefghijklmnopqrstuvwxyz',
 			'',
@@ -43,7 +47,7 @@ describe('split-text.js', () => {
 	});
 
 	it('should split if annotation is contained within position', () => {
-		expect(splitText(node, { startOffset: 44, endOffset: 54 })).toEqual([
+		expect(splitTextNode(node, { startOffset: 44, endOffset: 54 })).toEqual([
 			'abcd',
 			'efghijklmn',
 			'opqrstuvwxyz',
@@ -51,7 +55,7 @@ describe('split-text.js', () => {
 	});
 
 	it('should split if annotation is contained left of position', () => {
-		expect(splitText(node, { startOffset: 0, endOffset: 50 })).toEqual([
+		expect(splitTextNode(node, { startOffset: 0, endOffset: 50 })).toEqual([
 			'',
 			'abcdefghij',
 			'klmnopqrstuvwxyz',
@@ -59,7 +63,7 @@ describe('split-text.js', () => {
 	});
 
 	it('should split if annotation is contained right of position', () => {
-		expect(splitText(node, { startOffset: 60, endOffset: 200 })).toEqual([
+		expect(splitTextNode(node, { startOffset: 60, endOffset: 200 })).toEqual([
 			'abcdefghijklmnopqrst',
 			'uvwxyz',
 			'',

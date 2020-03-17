@@ -1,5 +1,6 @@
 import annotateUtil from '@unified-doc/hast-util-annotate';
 import extractTextOffsetsUtil from '@unified-doc/hast-util-extract-text-offsets';
+import text from '@unified-doc/text-parse';
 import deepmerge from 'deepmerge';
 import sanitizeUtil from 'hast-util-sanitize';
 import gh from 'hast-util-sanitize/lib/github.json';
@@ -9,7 +10,6 @@ import remark2rehype from 'remark-rehype';
 import unified from 'unified';
 
 import coerceTextPositionsUtil from './hast-util-coerce-text-positions';
-import text from './text-parse';
 
 const createPlugin = transform => (...args) => tree => transform(tree, ...args);
 
@@ -40,7 +40,6 @@ export function createProcessor(
 			break;
 		case 'text':
 		default:
-			// @ts-ignore: TODO type this correctly
 			processor.use(text);
 	}
 

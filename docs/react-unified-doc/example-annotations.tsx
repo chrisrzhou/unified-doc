@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { annotations as defaultAnnotations, content } from './data';
+import { overlappedAnnotations as defaultAnnotations, content } from './data';
 import ReactUnifiedDoc from '../../packages/react-unified-doc/src';
 
 import './doc.css';

@@ -1,8 +1,7 @@
 import visit from 'unist-util-visit-parents';
 
 /**
- * TODO: this is a temporary hack for remark-rehype to ensure all text nodes in
- * a tree have positional information.
+ * TODO: this is a temporary hack for remark-rehype to add positional information to all text nodes, to support features in unified-doc
  *
  * https://spectrum.chat/unified/remark/remark-rehype-n-text-nodes-do-not-have-positions~06b59340-3be7-4d55-82bc-4a3d8db6562e
  **/

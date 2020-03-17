@@ -1,20 +1,33 @@
 import visit from 'unist-util-visit-parents';
 
-import splitText from './split-text';
+import sortAnnotations from './sort-annotations';
+import splitTextNode from './split-text-node';
 
+/**
+ * Annotation algorithm
+ * - Visit every text node in the tree.
+ * - Identify the currentNodeIndex relative to the parent.
+ * - For each text node, loop over sorted (for performance) annotations and continuously split nodes.
+ * - Gather nodes and create a new annotated node for the currentNodeIndex
+ * - Update all nodes under the parent.
+ */
 export default function annotate(tree, annotations, annotationCallbacks = {}) {
 	const { onClickAnnotation, onHoverAnnotation } = annotationCallbacks;
+	const sortedAnnotations = sortAnnotations(annotations);
 
 	visit(tree, 'text', (node, parents) => {
 		const parent = parents[parents.length - 1];
 		const siblings = parent.children;
-		// @ts-ignore: TODO ts unknown type
+
+		if (!Array.isArray(siblings)) {
+			return;
+		}
+
 		const currentNodeIndex = siblings.indexOf(node);
 		let nodes = [node];
 
-		// Annotate node codea
-		annotations.forEach(annotation => {
-			const textSegments = splitText(node, annotation);
+		sortedAnnotations.forEach(annotation => {
+			const textSegments = splitTextNode(node, annotation);
 			if (textSegments) {
 				const [leftText, matchedText, rightText] = textSegments;
 				if (matchedText) {
@@ -57,11 +70,10 @@ export default function annotate(tree, annotations, annotationCallbacks = {}) {
 			}
 		});
 
+		// Reconstruct nodes under parent
 		parent.children = siblings
-			// @ts-ignore: TODO ts unknown type
 			.slice(0, currentNodeIndex)
 			.concat(nodes)
-			// @ts-ignore: TODO ts unknown type
 			.concat(siblings.slice(currentNodeIndex + 1));
 	});
 

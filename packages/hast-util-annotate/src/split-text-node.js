@@ -7,7 +7,7 @@
  * LLMMMMRR | LLMMMMRR | MMMMMMMM | LLMMRRRR | LLLLMMRR |
  * Return null if no matches are found.
  **/
-export default function splitText(node, annotation) {
+export default function splitTextNode(node, annotation) {
 	const { position, value } = node;
 	if (!position || !value) {
 		return null;

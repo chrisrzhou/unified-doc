@@ -58,12 +58,12 @@ export const annotations: Annotation[] = [
 export const overlappedAnnotations: Annotation[] = [
 	{
 		classNames: ['custom-highlight'],
-		startOffset: 10,
-		endOffset: 50,
+		startOffset: 0,
+		endOffset: 25,
 	},
 	{
 		classNames: ['highlight'],
-		startOffset: 20,
-		endOffset: 30,
+		startOffset: 30,
+		endOffset: 40,
 	},
 ];

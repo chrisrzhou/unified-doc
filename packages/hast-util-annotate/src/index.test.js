@@ -121,7 +121,7 @@ function createTree(type) {
 	}
 }
 
-describe('hast-util-annotate.js', () => {
+describe('index.js', () => {
 	it('should not annotate anything if offset is not covering any text nodes', () => {
 		const tree = createTree();
 		const treeWithNoTextNodes = createTree();
@@ -140,9 +140,12 @@ describe('hast-util-annotate.js', () => {
 	it('should annotate text node if offset is within text node', () => {
 		const tree = createTree();
 		const annotatedTree = annotate(tree, [{ startOffset: 10, endOffset: 20 }]);
-		// @ts-ignore: TODO ts unknown type
-		const [leftNode, matchedNode, rightNode] = annotatedTree.children;
 
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
+		const [leftNode, matchedNode, rightNode] = annotatedTree.children;
 		expect(leftNode.type).toEqual('text');
 		expect(leftNode.value).toEqual('a to the b');
 		expect(matchedNode.tagName).toEqual('span');
@@ -155,7 +158,11 @@ describe('hast-util-annotate.js', () => {
 	it('should annotate text node if offset is exactly within text node', () => {
 		const tree = createTree();
 		const annotatedTree = annotate(tree, [{ startOffset: 0, endOffset: 28 }]);
-		// @ts-ignore: TODO ts unknown type
+
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
 		const [matchedNode] = annotatedTree.children;
 
 		expect(matchedNode.tagName).toEqual('span');
@@ -170,9 +177,12 @@ describe('hast-util-annotate.js', () => {
 		const annotatedTree = annotate(shiftedTree, [
 			{ startOffset: 0, endOffset: 50 },
 		]);
-		// @ts-ignore: TODO ts unknown type
-		const [matchedNode, rightNode] = annotatedTree.children;
 
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
+		const [matchedNode, rightNode] = annotatedTree.children;
 		expect(matchedNode.tagName).toEqual('span');
 		expect(matchedNode.children[0].type).toEqual('text');
 		expect(matchedNode.children[0].value).toEqual(
@@ -184,9 +194,12 @@ describe('hast-util-annotate.js', () => {
 	it('should annotate text node if text node is left of offset', () => {
 		const tree = createTree();
 		const annotatedTree = annotate(tree, [{ startOffset: 10, endOffset: 50 }]);
-		// @ts-ignore: TODO ts unknown type
-		const [leftNode, matchedNode, rightNode] = annotatedTree.children;
 
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
+		const [leftNode, matchedNode, rightNode] = annotatedTree.children;
 		expect(leftNode.type).toEqual('text');
 		expect(leftNode.value).toEqual('a to the b');
 		expect(matchedNode.tagName).toEqual('span');
@@ -200,9 +213,12 @@ describe('hast-util-annotate.js', () => {
 		const annotatedTree = annotate(shiftedTree, [
 			{ startOffset: 0, endOffset: 15 },
 		]);
-		// @ts-ignore: TODO ts unknown type
-		const [matchedNode, rightNode] = annotatedTree.children;
 
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
+		const [matchedNode, rightNode] = annotatedTree.children;
 		expect(matchedNode.tagName).toEqual('span');
 		expect(matchedNode.children[0].type).toEqual('text');
 		expect(matchedNode.children[0].value).toEqual('a to ');
@@ -210,21 +226,14 @@ describe('hast-util-annotate.js', () => {
 		expect(rightNode.value).toEqual('the b to the c to the d');
 	});
 
-	it('should apply latest annotation if multiple annotations cover the same nodes', () => {
+	it('should apply mutilple annotations across the same text node', () => {
 		const tree = createTree();
-		const annotatedTree = annotate(tree, [
-			{ startOffset: 0, endOffset: 15 },
-			{ startOffset: 15, endOffset: 40 },
-		]);
-		// @ts-ignore: TODO ts unknown type
-		const [leftNode, matchedNode, rightNode] = annotatedTree.children;
-
-		expect(leftNode.type).toEqual('text');
-		expect(leftNode.value).toEqual('a to the b to t');
-		expect(matchedNode.tagName).toEqual('span');
-		expect(matchedNode.children[0].type).toEqual('text');
-		expect(matchedNode.children[0].value).toEqual('he c to the d');
-		expect(rightNode).toEqual(undefined);
+		const annotations = [
+			{ startOffset: 10, endOffset: 20 },
+			{ startOffset: 15, endOffset: 25 },
+		];
+		const annotatedTree = annotate(tree, annotations);
+		console.log(annotatedTree);
 	});
 
 	it('should annotate multiple text nodes and skipping non-text nodes if offset covers them', () => {
@@ -232,10 +241,13 @@ describe('hast-util-annotate.js', () => {
 		const annotatedTree = annotate(complexTree, [
 			{ startOffset: 15, endOffset: 110 },
 		]);
-		// @ts-ignore: TODO ts unknown type
+
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
 		const [leftNode, matchedNode, divNode, bNode] = annotatedTree.children;
 		const [bMatchedNode, bRightNode] = bNode.children;
-
 		expect(leftNode.type).toEqual('text');
 		expect(leftNode.value).toEqual('a to ');
 		expect(matchedNode.tagName).toEqual('span');
@@ -255,9 +267,12 @@ describe('hast-util-annotate.js', () => {
 		const annotatedTree = annotate(tree, [
 			{ classNames: ['class1', 'class2'], startOffset: 0, endOffset: 15 },
 		]);
-		// @ts-ignore: TODO ts unknown type
-		const [matchedNode] = annotatedTree.children;
 
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
+		const [matchedNode] = annotatedTree.children;
 		expect(matchedNode.tagName).toEqual('span');
 		expect(matchedNode.properties.class).toEqual(['class1', 'class2']);
 	});
@@ -267,9 +282,12 @@ describe('hast-util-annotate.js', () => {
 		const annotatedTree = annotate(tree, [
 			{ anchorId: 'test-anchor', startOffset: 0, endOffset: 15 },
 		]);
-		// @ts-ignore: TODO ts unknown type
-		const [matchedNode] = annotatedTree.children;
 
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
+		const [matchedNode] = annotatedTree.children;
 		expect(matchedNode.tagName).toEqual('a');
 		expect(matchedNode.properties.href).toEqual('#test-anchor');
 		expect(matchedNode.properties.id).toEqual('test-anchor');
@@ -294,9 +312,12 @@ describe('hast-util-annotate.js', () => {
 			onClickAnnotation,
 			onHoverAnnotation,
 		});
-		// @ts-ignore: TODO ts unknown type
-		const [matchedNode] = annotatedTree.children;
 
+		if (!Array.isArray(annotatedTree.children)) {
+			return;
+		}
+
+		const [matchedNode] = annotatedTree.children;
 		expect(matchedNode.tagName).toEqual('span');
 		matchedNode.properties.onclick();
 		expect(testEvent).toEqual('click');

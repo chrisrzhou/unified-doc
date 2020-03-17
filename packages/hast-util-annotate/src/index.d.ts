@@ -29,11 +29,6 @@ interface AnnotationCallbacks {
 
 export type OptionalAnnotationCallbacks = Optional<AnnotationCallbacks>;
 
-export function splitText(
-	node: Node,
-	annotation: Annotation,
-): null | [string, string, string];
-
 export default function annotate(
 	tree: Node,
 	annotations: Annotation[],

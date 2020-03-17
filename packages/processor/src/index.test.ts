@@ -1,6 +1,6 @@
 import { createProcessor } from '.';
 
-describe('processor.js', () => {
+describe('index.js', () => {
 	describe('createProcessor', () => {
 		it('should parse text (default) content', () => {
 			const processor = createProcessor();

@@ -26,6 +26,7 @@
 	"dependencies": {
 		"@unified-doc/hast-util-annotate": "*",
 		"@unified-doc/hast-util-extract-text-offsets": "*",
+		"@unified-doc/text-parse": "*",
 		"deepmerge": "^4.2.2",
 		"hast-util-sanitize": "^2.0.2",
 		"rehype-parse": "^6.0.2",
@@ -34,5 +35,7 @@
 		"unified": "^8.4.2",
 		"unist-util-visit-parents": "^3.0.2"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"lodash": "^4.17.15"
+	}
 }

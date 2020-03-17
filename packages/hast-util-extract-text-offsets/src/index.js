@@ -6,10 +6,9 @@ export default function textOffsets(tree, extractor) {
 	visit(tree, 'text', node => {
 		const { position, value } = node;
 
-		if (value && position) {
+		if (typeof value === 'string' && value && position) {
 			const textOffset = {
 				startOffset: textStartOffset,
-				// @ts-ignore: TODO ts unknown type
 				endOffset: (textStartOffset += value.length),
 				position,
 			};

@@ -1,0 +1,23 @@
+{
+	"name": "@unified-doc/text-parse",
+	"version": "0.1.0",
+	"description": "Primitive unified parser to parse raw text into a single div text node",
+	"main": "dist/index.js",
+	"module": "dist/index.module.js",
+	"types": "src/index.d.ts",
+	"keywords": [
+		"unified",
+		"doc",
+		"content",
+		"text",
+		"unist",
+		"hast",
+		"rehype",
+		"parse"
+	],
+	"author": "Chris Zhou <chrisrzhou@pm.me>",
+	"license": "MIT",
+	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/react-unified-doc",
+	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
+	"homepage": "https://unified-doc.netlify.com/"
+}

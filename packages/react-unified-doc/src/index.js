@@ -57,12 +57,10 @@ export default function ReactUnifiedDocument({
 					position &&
 					bookmark.start <= endOffset &&
 					bookmark.end >= startOffset &&
-					!isNewline
+					!isNewline // TODO: this is hacky but works
 				);
 			},
 		);
-
-		console.log(value, selectedTextOffsets);
 
 		const firstSelectedTextOffset = selectedTextOffsets[0];
 		const lastSelectedTextOffset =

@@ -1,6 +1,6 @@
 import extractTextOffsets from '.';
 
-describe('hast-util-extract-text-offsets.js', () => {
+describe('index.js', () => {
 	let textOffsets = [];
 	function extractor(extractedTextOffsets) {
 		textOffsets = extractedTextOffsets;

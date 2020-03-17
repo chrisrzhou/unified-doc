@@ -1,6 +1,6 @@
-import { parser } from './text-parse';
+import { parser } from '.';
 
-describe('text-parse.js', () => {
+describe('index.js', () => {
 	describe('parser', () => {
 		it('should parse a file with empty content', () => {
 			expect(parser('')).toEqual({
