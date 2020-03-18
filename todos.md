@@ -2,18 +2,14 @@
 
 - [ ] Resolve `// TODO` comments.
 - [ ] Check if tree mutation (in `hast-util-annotate` and `hast-util-coerce-text-positions`) is bad practice when taking performance into account.
-- [ ] Find a better way to address the temporary solution in `hast-util-coerce-text-positions`.
+- [ ] Find a better way to address the temporary hacks for markdown in `hast-util-coerce-text-positions` and using `isNewline`
 - [ ] Get review/library feedback from unified team.
 
 ## MVP
-- [ ] Support multi annotations (HARD), this is a requirement because highlighting is useless without it.
+- [ ] Add tests for `annotate-node`.
 - [ ] Add Renderer pattern or track refs for annotated span nodes.
 - [ ] Update docs for other packages
-	- [x] `processor`
-	- [ ] `hast-util-annotate`
-	- [x] `hast-util-extract-text-offsets`
 - [ ] write custom build script
-- [ ] confirm `remark-rehype` behaviors of text nodes without positions.
 - [ ] Build a badass homepage
 - [ ] Comprehensive docs and interactive examples for `react-unified-doc`
   - Overview of goals

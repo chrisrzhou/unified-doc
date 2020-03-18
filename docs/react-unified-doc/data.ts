@@ -40,17 +40,17 @@ export const annotations: Annotation[] = [
 	{
 		classNames: ['custom-highlight'],
 		startOffset: 0,
-		endOffset: 100,
+		endOffset: 60,
 	},
 	{
 		anchorId: 'test-anchor',
 		classNames: ['highlight'],
-		startOffset: 101,
+		startOffset: 100,
 		endOffset: 200,
 	},
 	{
 		classNames: ['redline'],
-		startOffset: 201,
+		startOffset: 240,
 		endOffset: 300,
 	},
 ];
@@ -59,11 +59,19 @@ export const overlappedAnnotations: Annotation[] = [
 	{
 		classNames: ['custom-highlight'],
 		startOffset: 0,
-		endOffset: 25,
+		endOffset: 30,
 	},
 	{
 		classNames: ['highlight'],
-		startOffset: 30,
+		startOffset: 25,
 		endOffset: 40,
+	},
+];
+
+export const testAnnotations: Annotation[] = [
+	{
+		classNames: ['custom-highlight'],
+		startOffset: 24,
+		endOffset: 26,
 	},
 ];

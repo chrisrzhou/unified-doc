@@ -233,7 +233,6 @@ describe('index.js', () => {
 			{ startOffset: 15, endOffset: 25 },
 		];
 		const annotatedTree = annotate(tree, annotations);
-		console.log(annotatedTree);
 	});
 
 	it('should annotate multiple text nodes and skipping non-text nodes if offset covers them', () => {
