@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { annotations as defaultAnnotations, content } from './data';
+import { overlappedAnnotations as defaultAnnotations, content } from './data';
 import ReactUnifiedDoc from '../../packages/react-unified-doc/src';
 
 import './doc.css';
@@ -29,15 +29,16 @@ export default function ExampleAnnotations(): JSX.Element {
 						'*': ['className', 'style'],
 					},
 				}}
-				onClickAnnotation={(annotation, e) => {
-					// Console.log('clicked', annotation, e);
+				onClickAnnotation={(annotation, _e) => {
+					console.log('clicked', annotation);
 				}}
-				onHoverAnnotation={(annotation, e) => {
-					// Console.log('hover', annotation, e);
+				onHoverAnnotation={(annotation, _e) => {
+					console.log('hover', annotation);
 				}}
 				onSelectText={(selection, _e) => {
 					console.log(selection);
 					setAnnotations([
+						...annotations,
 						{
 							classNames: ['highlight'],
 							endOffset: selection.endOffset,

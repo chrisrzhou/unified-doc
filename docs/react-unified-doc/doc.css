@@ -3,17 +3,18 @@
 }
 
 .highlight {
-	background: blue;
-	color: white;
-}
-
-.custom-highlight {
-	background: yellow;
+	background: orange;
 }
 
 .redline {
 	text-decoration: underline;
   text-decoration-color: red;
+}
+
+.custom-highlight {
+	background: blue;
+	position: relative;
+	color: white;
 }
 
 .strikethrough {

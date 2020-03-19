@@ -1,7 +1,7 @@
 export default function annotateNode(nodeData, annotationCallbacks) {
 	const { annotations, value } = nodeData;
 	const node = { type: 'text', value };
-	if (annotations.length === 0) {
+	if (annotations.length === 0 || value === '\n') {
 		return node;
 	}
 
@@ -14,7 +14,7 @@ export default function annotateNode(nodeData, annotationCallbacks) {
 		.reverse()
 		.forEach(annotation => {
 			const { anchorId, classNames } = annotation;
-			let tagName = 'span';
+
 			const properties = {
 				class: classNames,
 				onclick: e => {
@@ -30,6 +30,8 @@ export default function annotateNode(nodeData, annotationCallbacks) {
 					}
 				},
 			};
+
+			let tagName = 'span';
 			if (anchorId) {
 				tagName = 'a';
 				properties.id = anchorId;
