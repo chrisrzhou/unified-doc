@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-import { overlappedAnnotations as defaultAnnotations, content } from './data';
+import { annotations as defaultAnnotations, content } from './data';
 import ReactUnifiedDoc from '../../packages/react-unified-doc/src';
 
 import './doc.css';
@@ -24,15 +25,18 @@ export default function ExampleAnnotations(): JSX.Element {
 				annotations={annotations}
 				content={content}
 				contentType={contentType}
+				getAnnotationTooltip={annotation => {
+					return JSON.stringify(annotation, null, 2);
+				}}
 				sanitizeSchema={{
 					attributes: {
 						'*': ['className', 'style'],
 					},
 				}}
-				onClickAnnotation={(annotation, _e) => {
+				onAnnotationClick={annotation => {
 					console.log('clicked', annotation);
 				}}
-				onHoverAnnotation={(annotation, _e) => {
+				onAnnotationHover={annotation => {
 					console.log('hover', annotation);
 				}}
 				onSelectText={(selection, _e) => {
@@ -40,7 +44,8 @@ export default function ExampleAnnotations(): JSX.Element {
 					setAnnotations([
 						...annotations,
 						{
-							classNames: ['highlight'],
+							id: uuidv4(),
+							className: 'highlight',
 							endOffset: selection.endOffset,
 							startOffset: selection.startOffset,
 							value: selection.value,

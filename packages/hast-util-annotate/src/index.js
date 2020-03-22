@@ -1,79 +1,69 @@
 import visit from 'unist-util-visit-parents';
+import { v4 as uuidv4 } from 'uuid';
 
-import annotateNode from './annotate-node';
-import sortAnnotations from './sort-annotations';
+import { getAnnotatedNodes } from './get-annotated-nodes';
+import { validateAnnotations } from './validate-annotations';
 
+/**
+ * Annotation algorithm
+ */
 export default function annotate(tree, annotations, annotationCallbacks = {}) {
-	const sortedAnnotations = sortAnnotations(annotations);
+	const sortedAnnotations = validateAnnotations(annotations);
+	const allAnnotations = sortedAnnotations.reduce(
+		(map, annotation) => ({
+			...map,
+			[annotation.id]: annotation,
+		}),
+		{},
+	);
+	const allNodes = {};
+	const a2n = {};
+	const n2a = {};
 
 	visit(tree, 'text', (node, parents) => {
+		const nodeId = uuidv4();
 		const parent = parents[parents.length - 1];
-		const siblings = parent.children;
-		const annotatedNodes = [];
 
-		if (!Array.isArray(siblings)) {
-			return;
-		}
-
-		// Collect all offsets of valid annotations and the current sorted node.
-		// If the annotation occurs before the node, continue to the next.  If
-		// it is after, break out because there is nothing left to find.
-		const offsetsSet = new Set();
-		offsetsSet.add(node.position.start.offset);
-		offsetsSet.add(node.position.end.offset);
+		// If annotation occurs before node, continue to next.
+		// If it is after, break out because there is nothing left to find.
 		for (const annotation of sortedAnnotations) {
+			const { id } = annotation;
 			if (annotation.startOffset > node.position.end.offset) {
 				break;
 			} else if (annotation.endOffset < node.position.start.offset) {
 				continue;
 			} else {
-				offsetsSet.add(annotation.startOffset);
-				offsetsSet.add(annotation.endOffset);
-			}
-		}
+				if (!n2a[nodeId]) {
+					n2a[nodeId] = [];
+				}
 
-		// Create sorted segments from set of offsets to split text node on segments
-		const offsets = Array.from(offsetsSet).sort((a, b) => a - b);
-		const segments = [];
-		for (let i = 0; i < offsets.length - 1; i++) {
-			segments.push([offsets[i], offsets[i + 1]]);
-		}
+				if (!a2n[id]) {
+					a2n[id] = [];
+				}
 
-		segments.forEach(([startOffset, endOffset]) => {
-			if (typeof node.value !== 'string') {
-				return;
-			}
-
-			let nodeData;
-			const value = node.value.slice(
-				startOffset - node.position.start.offset,
-				endOffset - node.position.start.offset,
-			);
-			if (value) {
-				nodeData = {
-					endOffset,
-					startOffset,
-					value,
-					annotations: [],
-				};
-				// Track annotations that overalp with the node
-				for (const annotation of sortedAnnotations) {
-					if (
-						(annotation.endOffset > nodeData.startOffset &&
-							annotation.startOffset < nodeData.endOffset) ||
-						(annotation.startOffset < nodeData.endOffset &&
-							annotation.endOffset > nodeData.startOffset)
-					) {
-						nodeData.annotations.push(annotation);
-					}
+				// Keep track of all hashmaps
+				if (node.value && node.value !== '\n') {
+					allAnnotations[id] = annotation;
+					allNodes[nodeId] = { node, parent };
+					n2a[nodeId].push(id);
+					a2n[id].push(nodeId);
 				}
 			}
+		}
+	});
 
-			// Create annotated hast nodes: nest annotated spans based on annotations
-			// in nodeData, otherwise create a text node.
-			if (nodeData) {
-				annotatedNodes.push(annotateNode(nodeData, annotationCallbacks));
-			}
+	Object.keys(allNodes).forEach(nodeId => {
+		const { node, parent } = allNodes[nodeId];
+		const siblings = parent.children;
+		if (!Array.isArray(siblings)) {
+			return;
+		}
+
+		const annotatedNodes = getAnnotatedNodes(node, nodeId, {
+			allAnnotations,
+			a2n,
+			n2a,
+			callbacks: annotationCallbacks,
 		});
 
 		// Reconstruct nodes under parent

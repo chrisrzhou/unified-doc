@@ -2,13 +2,19 @@ import { createProcessor } from '@unified-doc/processor';
 import rangy from 'rangy';
 import React, { createElement, useEffect, useRef } from 'react';
 import rehype2react from 'rehype-react';
+import tippy, { followCursor } from 'tippy.js';
+
+import 'tippy.js/dist/tippy.css';
+
+let tooltip;
 
 export default function ReactUnifiedDocument({
 	annotations = [],
 	content,
 	contentType,
-	onClickAnnotation,
-	onHoverAnnotation,
+	getAnnotationTooltip,
+	onAnnotationClick,
+	onAnnotationHover,
 	onSelectText,
 	rehypePlugins = [],
 	sanitizeSchema = {},
@@ -17,13 +23,12 @@ export default function ReactUnifiedDocument({
 	const ref = useRef();
 
 	useEffect(() => {
-		function handleMouseup(e) {
+		function handleSelectText(e) {
 			const selection = rangy.getSelection();
 			const value = selection.toString();
 			const bookmark =
 				selection.getBookmark(ref.current).rangeBookmarks[0] || {};
 
-			console.log(bookmark);
 			const canSelect =
 				onSelectText && textOffsetsRef.current && bookmark.end > bookmark.start;
 			if (!canSelect) {
@@ -63,10 +68,10 @@ export default function ReactUnifiedDocument({
 			selection.removeAllRanges();
 		}
 
-		window.addEventListener('mouseup', handleMouseup);
+		window.addEventListener('mouseup', handleSelectText);
 
 		return () => {
-			window.removeEventListener('mouseup', handleMouseup);
+			window.removeEventListener('mouseup', handleSelectText);
 		};
 	});
 
@@ -74,13 +79,38 @@ export default function ReactUnifiedDocument({
 		textOffsetsRef.current = textOffsets;
 	}
 
+	function clickAnnotation(annotation, e) {
+		if (onAnnotationClick) {
+			e.stopPropagation();
+			onAnnotationClick(annotation, e);
+		}
+	}
+
+	function hoverAnnotation(annotation, e) {
+		if (onAnnotationHover) {
+			e.stopPropagation();
+			onAnnotationHover(annotation, e);
+		}
+
+		if (getAnnotationTooltip) {
+			tooltip = tippy(e.target, {
+				arrow: false,
+				followCursor: 'horizontal',
+				plugins: [followCursor],
+			});
+			tooltip.setContent(getAnnotationTooltip(annotation));
+			tooltip.show();
+		}
+	}
+
+
 	// Set up unified processor to compile content
 	const processor = createProcessor(
 		contentType,
 		annotations,
 		{
-			onClickAnnotation,
-			onHoverAnnotation,
+			clickAnnotation,
+			hoverAnnotation,
 		},
 		{
 			extractor,

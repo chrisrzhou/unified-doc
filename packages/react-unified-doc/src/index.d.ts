@@ -19,9 +19,9 @@ export interface Props {
 	/** Supported content type ('html', 'markdown', 'text') */
 	contentType?: ContentType;
 	/** Callback to capture annotation object and mouse click event */
-	onClickAnnotation?: AnnotationCallback;
+	onAnnotationClick?: AnnotationCallback;
 	/** Callback to capture annotation object and mouse hover event */
-	onHoverAnnotation?: AnnotationCallback;
+	onAnnotationHover?: AnnotationCallback;
 	/** Callback to capture selected text and mouse up event */
 	onSelectText?: (selectedText: SelectedText, e?: MouseEvent) => void;
 	/** Valid rehype plugins to run after annotations are applied */

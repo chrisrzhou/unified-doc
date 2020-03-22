@@ -1,5 +1,5 @@
 /** Always sort annotations by { startOffset: 'asc', endOffset: 'desc' }] */
-export default function sortAnnotations(annotations) {
+export function validateAnnotations(annotations) {
 	const sortedAnnotations = annotations.sort((a, b) => {
 		if (a.startOffset < b.startOffset) {
 			return -1;

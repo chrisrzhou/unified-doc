@@ -24,6 +24,8 @@
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
 	"dependencies": {
-		"unist-util-visit-parents": "^3.0.2"
+		"hastscript": "^5.1.2",
+		"unist-util-visit-parents": "^3.0.2",
+		"uuid": "^7.0.2"
 	}
 }

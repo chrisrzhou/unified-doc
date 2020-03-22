@@ -38,18 +38,23 @@ quote with __bold__ and _em_ text
 
 export const annotations: Annotation[] = [
 	{
-		classNames: ['custom-highlight'],
+		id: 'a',
+		className: 'custom-highlight',
+		label: 'drugs',
 		startOffset: 0,
 		endOffset: 60,
 	},
 	{
-		anchorId: 'test-anchor',
-		classNames: ['highlight'],
+		anchor: true,
+		id: 'b',
+		className: 'highlight',
+		label: 'link',
 		startOffset: 100,
 		endOffset: 200,
 	},
 	{
-		classNames: ['redline'],
+		id: 'c',
+		className: 'redline',
 		startOffset: 240,
 		endOffset: 300,
 	},
@@ -57,12 +62,20 @@ export const annotations: Annotation[] = [
 
 export const overlappedAnnotations: Annotation[] = [
 	{
-		classNames: ['custom-highlight'],
+		id: 'a',
+		className: 'custom-highlight',
+		startOffset: 35,
+		endOffset: 45,
+	},
+	{
+		id: 'b',
+		className: 'custom-highlight',
 		startOffset: 0,
 		endOffset: 80,
 	},
 	{
-		classNames: ['highlight'],
+		id: 'c',
+		className: 'highlight',
 		startOffset: 25,
 		endOffset: 50,
 	},
@@ -70,7 +83,8 @@ export const overlappedAnnotations: Annotation[] = [
 
 export const testAnnotations: Annotation[] = [
 	{
-		classNames: ['custom-highlight'],
+		id: 'a',
+		className: 'custom-highlight',
 		startOffset: 24,
 		endOffset: 26,
 	},

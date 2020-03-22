@@ -2,13 +2,50 @@
 	white-space: pre;
 }
 
+mark[layer="1"] {
+	padding: 4px 0;
+}
+
+mark[layer="2"] {
+	padding: 8px 0;
+}
+
+mark[layer="3"] {
+	padding: 12px 0;
+}
+
+mark[layer="4"] {
+	padding: 16px 0;
+}
+
+mark[start="1"] {
+	position: relative;
+}
+
+mark[start="1"]::before {
+	background-color: white;
+	color: gray;
+	content: attr(label);
+	font-size: 6px;
+	font-weight: normal;
+	position: absolute;
+	text-transform: uppercase;
+	top: -10px;
+}
+
 .highlight {
 	background: orange;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+
+.highlight[start="1"] {
+	border-left: 1px solid black;
+	padding-left: 2px;
 }
 
 .redline {
-	text-decoration: underline;
-  text-decoration-color: red;
+	border-bottom: 1px solid red;
 }
 
 .custom-highlight {

@@ -40,7 +40,7 @@ will yield the corresponding valid matches:
 LLMMMMRR | LLMMMMRR | MMMMMMMM | LLMMRRRR | LLLLMMRR |
 ```
 
-The `annotation.classNames` is applied on the matched `span` node and can be styled with provided or custom CSS.  If `annotationCallbacks` are provided, apply the callbacks to capture the annotation object and mouse event.
+The `annotation.className` is applied on the matched `span` node and can be styled with provided or custom CSS.  If `annotationCallbacks` are provided, apply the callbacks to capture the annotation object and mouse event.
 
 If `annotation.anchorId` is provided, an `anchor` element will be created using the provided `anchorId` as an anchor link.  This feature easily supports implementing "bookmarkable" annotations and relies on the browser anchor link behaviors to autoscroll to the annotation in the document.
 
@@ -52,8 +52,8 @@ interface Annotation {
 	[key: string]: any;
 	/** If specified, will create anchor links  with provided ID value */
 	anchorId?: string;
-	/** Array of CSS classnames that will be appiled on text content that matches the annotation offsets */
-	classNames?: string[];
+	/** CSS classname that will be appiled on text content that matches the annotation offsets */
+	className?: string;
 	/** End offset relative to the source content */
 	endOffset: number;
 	/** Start offset relative to the source content */
@@ -66,8 +66,8 @@ type AnnotationCallback = (
 ) => void
 
 interface AnnotationCallbacks {
-	onClickAnnotation: AnnotationCallback;
-	onHoverAnnotation: AnnotationCallback;
+	clickAnnotation: AnnotationCallback;
+	hoverAnnotation: AnnotationCallback;
 }
 ```
 

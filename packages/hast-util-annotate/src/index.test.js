@@ -264,7 +264,7 @@ describe('index.js', () => {
 	it('should apply classnames', () => {
 		const tree = createTree();
 		const annotatedTree = annotate(tree, [
-			{ classNames: ['class1', 'class2'], startOffset: 0, endOffset: 15 },
+			{ className: 'class1', startOffset: 0, endOffset: 15 },
 		]);
 
 		if (!Array.isArray(annotatedTree.children)) {
@@ -273,7 +273,7 @@ describe('index.js', () => {
 
 		const [matchedNode] = annotatedTree.children;
 		expect(matchedNode.tagName).toEqual('span');
-		expect(matchedNode.properties.class).toEqual(['class1', 'class2']);
+		expect(matchedNode.properties.class).toEqual(['class1']);
 	});
 
 	it('should create anchor links', () => {

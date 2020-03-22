@@ -36,6 +36,7 @@
 		"@unified-doc/hast-util-annotate": "*",
 		"@unified-doc/processor": "*",
 		"rangy": "^1.3.0",
-		"rehype-react": "^4.0.1"
+		"rehype-react": "^4.0.1",
+		"tippy.js": "^6.1.0"
 	}
 }
