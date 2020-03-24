@@ -2,5 +2,5 @@
 
 React unified document renderer for content.
 
-<!-- Unfortunate hack to make importing gatsby in mdx work... -->
+<!-- Hack to make importing mdx work in docz/gatsby... -->
 export default ({ children }) => children

@@ -1,19 +1,19 @@
 {
 	"name": "@unified-doc/text-parse",
 	"version": "0.1.0",
-	"description": "Primitive unified parser to parse raw text into a single div text node",
+	"description": "unified parser to parse text content into a hast tree with a single text node",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
 	"types": "src/index.d.ts",
 	"keywords": [
 		"unified",
 		"doc",
-		"content",
 		"text",
+		"parse",
+		"content",
 		"unist",
 		"hast",
-		"rehype",
-		"parse"
+		"rehype"
 	],
 	"author": "Chris Zhou <chrisrzhou@pm.me>",
 	"license": "MIT",

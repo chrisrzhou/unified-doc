@@ -1,4 +1,3 @@
-// Primitive unified parser to parse raw text into a single div text node
 export function parser(doc) {
 	if (!doc) {
 		return {
@@ -9,6 +8,7 @@ export function parser(doc) {
 
 	const lines = doc.split(/\n/g);
 	const lastLine = lines[lines.length - 1];
+
 	return {
 		type: 'root',
 		children: [

@@ -34,10 +34,10 @@ export default function ExampleAnnotations(): JSX.Element {
 					},
 				}}
 				onAnnotationClick={annotation => {
-					console.log('clicked', annotation);
+					// Console.log('clicked', annotation);
 				}}
 				onAnnotationHover={annotation => {
-					console.log('hover', annotation);
+					// Console.log('hover', annotation);
 				}}
 				onSelectText={(selection, _e) => {
 					console.log(selection);
@@ -46,6 +46,7 @@ export default function ExampleAnnotations(): JSX.Element {
 						{
 							id: uuidv4(),
 							className: 'highlight',
+							label: 'selected',
 							endOffset: selection.endOffset,
 							startOffset: selection.startOffset,
 							value: selection.value,

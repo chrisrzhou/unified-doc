@@ -2,27 +2,14 @@
 	white-space: pre;
 }
 
-mark[layer="1"] {
-	padding: 4px 0;
-}
-
-mark[layer="2"] {
-	padding: 8px 0;
-}
-
-mark[layer="3"] {
-	padding: 12px 0;
-}
-
-mark[layer="4"] {
-	padding: 16px 0;
-}
-
-mark[start="1"] {
+mark {
+	display: inline-block;
+	padding: 1px 0;
 	position: relative;
 }
 
-mark[start="1"]::before {
+
+mark[data-start="true"]::before {
 	background-color: white;
 	color: gray;
 	content: attr(label);
@@ -39,9 +26,14 @@ mark[start="1"]::before {
 	border-top: 1px solid black;
 }
 
-.highlight[start="1"] {
+.highlight[data-start="true"] {
 	border-left: 1px solid black;
 	padding-left: 2px;
+}
+
+.highlight[data-end="true"] {
+	border-right: 1px solid black;
+	padding-right: 2px;
 }
 
 .redline {

@@ -6,7 +6,7 @@
 - [ ] Get review/library feedback from unified team.
 
 ## MVP
-- [ ] Debug start/end (especially end) of annotations
+- [x] Debug start/end (especially end) of annotations
 - [ ] find/search text with Rangy's `findText`: https://github.com/timdown/rangy/wiki/Text-Range-Module#findtextmixed-searchterm-object-options
 - [ ] export utils (`overlaps` return annotations that overlap with candidate).
 - [ ] Add tests for `annotate-node`.

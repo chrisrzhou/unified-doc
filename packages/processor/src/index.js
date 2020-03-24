@@ -24,7 +24,7 @@ export function createProcessor(
 	annotationCallbacks = {},
 	options = {},
 ) {
-	const { extractor, sanitizeSchema = {} } = options;
+	const { extractor, sanitizeSchema } = options;
 
 	const processor = unified();
 
@@ -43,7 +43,9 @@ export function createProcessor(
 			processor.use(text);
 	}
 
-	processor.use(sanitize, deepmerge(gh, sanitizeSchema));
+	if (sanitizeSchema) {
+		processor.use(sanitize, deepmerge(gh, sanitizeSchema));
+	}
 
 	if (extractor) {
 		processor.use(extractTextOffsets, extractor);

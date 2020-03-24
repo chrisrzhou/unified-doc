@@ -47,6 +47,7 @@ export function getAnnotatedNodes(node, nodeId, data) {
 		}
 	});
 
+	const visited = {};
 	// Construct annotated nodes
 	const annotatedNodes = [];
 	nodeSegments.forEach(nodeSegment => {
@@ -62,38 +63,42 @@ export function getAnnotatedNodes(node, nodeId, data) {
 				.slice()
 				.reverse() // Create inner nodes first
 				.forEach(annotation => {
-					const { anchor, className, id, label } = annotation;
-
-					// TODO determine the correct logic for this
-					// It should care about nodeSegment, not the whole node
-					const layer = n2a[nodeId]
-						.slice()
-						.reverse()
-						.indexOf(id);
+					const {
+						id: annotationId,
+						anchor,
+						className,
+						label,
+						style,
+					} = annotation;
 
 					const properties = {
 						class: className,
 						label,
+						style,
 						onclick: e => clickAnnotation(annotation, e),
 						onmouseenter: e => hoverAnnotation(annotation, e),
 					};
 
-					if (layer > 0) {
-						properties.layer = layer;
+					const annotationNodes = a2n[annotationId];
+					const annotationNodeIndex = annotationNodes.indexOf(nodeId);
+					const annotationNodeId = `${nodeId}-${annotationId}`;
+					if (!visited[annotationNodeId]) {
+						visited[annotationNodeId] = true;
+						if (annotationNodeIndex === 0) {
+							properties.dataStart = true;
+						}
 					}
 
-					const annotationNodes = a2n[id];
-					const annotationNodeIndex = annotationNodes.indexOf(nodeId);
-					if (annotationNodeIndex === 0) {
-						properties.start = true;
+					if (annotation.endOffset === nodeSegment.endOffset) {
+						properties.dataEnd = true;
 					}
 
 					if (anchor) {
 						annotatedNode = h(
 							'a',
 							{
-								id,
-								href: `#${id}`,
+								id: annotationId,
+								href: `#${annotationId}`,
 							},
 							h('mark', properties, annotatedNode),
 						);

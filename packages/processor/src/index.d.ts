@@ -9,7 +9,7 @@ export type ContentType = 'html' | 'markdown' | 'text';
 
 export interface ProcessorOptions {
 	extractor?: Extractor;
-	sanitizeSchema: {
+	sanitizeSchema?: {
 		[key: string]: any;
 	};
 }

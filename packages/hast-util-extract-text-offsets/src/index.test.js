@@ -12,7 +12,7 @@ describe('index.js', () => {
 		expect(textOffsets).toEqual([]);
 	});
 
-	it('[readme-example] should extract text offsets for text nodes that have source unist positions', () => {
+	it('should extract text offsets for text nodes that have source unist positions', () => {
 		const tree = {
 			type: 'element',
 			tagName: 'div',
@@ -79,6 +79,7 @@ describe('index.js', () => {
 				endOffset: 6, // 5 + 'a'.length
 				position: 'MockUnistPosition3',
 			},
+			// Text node with value 'h2' is not extracted because it does not have a source unist position
 		]);
 	});
 });

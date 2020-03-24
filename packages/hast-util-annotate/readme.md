@@ -74,5 +74,5 @@ interface AnnotationCallbacks {
 <!-- Definition -->
 [hast]: https://github.com/syntax-tree/hast
 
-<!-- Unfortunate hack to make importing gatsby in mdx work... -->
+<!-- Hack to make importing mdx work in docz/gatsby... -->
 export default ({ children }) => children

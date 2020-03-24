@@ -50,11 +50,15 @@ export const annotations: Annotation[] = [
 		className: 'highlight',
 		label: 'link',
 		startOffset: 100,
-		endOffset: 200,
+		endOffset: 130,
+		style: {
+			background: 'red',
+		},
 	},
 	{
 		id: 'c',
 		className: 'redline',
+		label: 'redline',
 		startOffset: 240,
 		endOffset: 300,
 	},
@@ -64,18 +68,21 @@ export const overlappedAnnotations: Annotation[] = [
 	{
 		id: 'a',
 		className: 'custom-highlight',
+		label: 'label 1',
 		startOffset: 35,
 		endOffset: 45,
 	},
 	{
 		id: 'b',
 		className: 'custom-highlight',
+		label: 'label 2',
 		startOffset: 0,
 		endOffset: 80,
 	},
 	{
 		id: 'c',
 		className: 'highlight',
+		label: 'label 3',
 		startOffset: 25,
 		endOffset: 50,
 	},
@@ -85,6 +92,7 @@ export const testAnnotations: Annotation[] = [
 	{
 		id: 'a',
 		className: 'custom-highlight',
+		label: 'test',
 		startOffset: 24,
 		endOffset: 26,
 	},

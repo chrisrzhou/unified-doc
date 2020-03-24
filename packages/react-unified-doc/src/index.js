@@ -103,7 +103,6 @@ export default function ReactUnifiedDocument({
 		}
 	}
 
-
 	// Set up unified processor to compile content
 	const processor = createProcessor(
 		contentType,
