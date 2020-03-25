@@ -23,8 +23,6 @@
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
 	"dependencies": {
-		"@unified-doc/hast-util-annotate": "*",
-		"@unified-doc/hast-util-extract-text-offsets": "*",
 		"@unified-doc/text-parse": "*",
 		"deepmerge": "^4.2.2",
 		"hast-util-sanitize": "^2.0.2",

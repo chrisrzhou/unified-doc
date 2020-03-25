@@ -11,8 +11,9 @@
 - [ ] export utils (`overlaps` return annotations that overlap with candidate).
 - [ ] Add tests for `annotate-node`.
 - [ ] Add Renderer pattern or track refs for annotated span nodes.
-- [ ] Update docs for other packages
+- [x] Update docs for other packages
 - [ ] write custom build script
+- [ ] Add gallery
 - [ ] Build a badass homepage
 - [ ] Comprehensive docs and interactive examples for `react-unified-doc`
   - Overview of goals

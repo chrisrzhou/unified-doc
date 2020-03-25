@@ -39,7 +39,7 @@ quote with __bold__ and _em_ text
 export const annotations: Annotation[] = [
 	{
 		id: 'a',
-		className: 'custom-highlight',
+		classNames: ['custom-highlight'],
 		label: 'drugs',
 		startOffset: 0,
 		endOffset: 60,
@@ -47,7 +47,7 @@ export const annotations: Annotation[] = [
 	{
 		anchor: true,
 		id: 'b',
-		className: 'highlight',
+		classNames: ['highlight'],
 		label: 'link',
 		startOffset: 100,
 		endOffset: 130,
@@ -57,7 +57,7 @@ export const annotations: Annotation[] = [
 	},
 	{
 		id: 'c',
-		className: 'redline',
+		classNames: ['redline'],
 		label: 'redline',
 		startOffset: 240,
 		endOffset: 300,
@@ -67,21 +67,21 @@ export const annotations: Annotation[] = [
 export const overlappedAnnotations: Annotation[] = [
 	{
 		id: 'a',
-		className: 'custom-highlight',
+		classNames: ['custom-highlight'],
 		label: 'label 1',
 		startOffset: 35,
 		endOffset: 45,
 	},
 	{
 		id: 'b',
-		className: 'custom-highlight',
+		classNames: ['custom-highlight'],
 		label: 'label 2',
 		startOffset: 0,
 		endOffset: 80,
 	},
 	{
 		id: 'c',
-		className: 'highlight',
+		classNames: ['highlight'],
 		label: 'label 3',
 		startOffset: 25,
 		endOffset: 50,
@@ -91,7 +91,7 @@ export const overlappedAnnotations: Annotation[] = [
 export const testAnnotations: Annotation[] = [
 	{
 		id: 'a',
-		className: 'custom-highlight',
+		classNames: ['custom-highlight'],
 		label: 'test',
 		startOffset: 24,
 		endOffset: 26,

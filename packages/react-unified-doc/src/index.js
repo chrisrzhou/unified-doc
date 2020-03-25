@@ -1,3 +1,5 @@
+import annotateUtil from '@unified-doc/hast-util-annotate';
+import extractTextOffsetsUtil from '@unified-doc/hast-util-extract-text-offsets';
 import { createProcessor } from '@unified-doc/processor';
 import rangy from 'rangy';
 import React, { createElement, useEffect, useRef } from 'react';
@@ -5,6 +7,11 @@ import rehype2react from 'rehype-react';
 import tippy, { followCursor } from 'tippy.js';
 
 import 'tippy.js/dist/tippy.css';
+
+const createPlugin = transform => (...args) => tree => transform(tree, ...args);
+
+const annotate = createPlugin(annotateUtil);
+const extractTextOffsets = createPlugin(extractTextOffsetsUtil);
 
 let tooltip;
 
@@ -19,23 +26,23 @@ export default function ReactUnifiedDocument({
 	rehypePlugins = [],
 	sanitizeSchema = {},
 }) {
+	const docRef = useRef();
 	const textOffsetsRef = useRef();
-	const ref = useRef();
 
 	useEffect(() => {
 		function handleSelectText(e) {
+			const textOffsets = textOffsetsRef.current;
 			const selection = rangy.getSelection();
 			const value = selection.toString();
 			const bookmark =
-				selection.getBookmark(ref.current).rangeBookmarks[0] || {};
+				selection.getBookmark(docRef.current).rangeBookmarks[0] || {};
 
 			const canSelect =
-				onSelectText && textOffsetsRef.current && bookmark.end > bookmark.start;
+				onSelectText && textOffsets && bookmark.end > bookmark.start;
 			if (!canSelect) {
 				return;
 			}
 
-			const textOffsets = textOffsetsRef.current;
 			const selectedTextOffsets = textOffsets.filter(
 				({ startOffset, endOffset, position, isNewline }) => {
 					return (
@@ -98,29 +105,24 @@ export default function ReactUnifiedDocument({
 				followCursor: 'horizontal',
 				plugins: [followCursor],
 			});
+			// @ts-ignore TODO: fix type
 			tooltip.setContent(getAnnotationTooltip(annotation));
+			// @ts-ignore TODO: fix type
 			tooltip.show();
 		}
 	}
 
 	// Set up unified processor to compile content
-	const processor = createProcessor(
-		contentType,
-		annotations,
-		{
-			clickAnnotation,
-			hoverAnnotation,
-		},
-		{
-			extractor,
-			sanitizeSchema,
-		},
-	);
+	const processor = createProcessor(contentType, sanitizeSchema);
+	processor.use(extractTextOffsets, extractor).use(annotate, annotations, {
+		clickAnnotation,
+		hoverAnnotation,
+	});
 	rehypePlugins.forEach(([plugin, ...args]) => {
 		processor.use(plugin, ...args);
 	});
 	processor.use(rehype2react, { createElement });
 	const compiled = processor.processSync(content).contents;
 
-	return <div ref={ref}>{compiled}</div>;
+	return <div ref={docRef}>{compiled}</div>;
 }

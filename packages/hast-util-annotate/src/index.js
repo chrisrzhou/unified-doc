@@ -1,15 +1,32 @@
 import visit from 'unist-util-visit-parents';
 import { v4 as uuidv4 } from 'uuid';
 
-import { getAnnotatedNodes } from './get-annotated-nodes';
-import { validateAnnotations } from './validate-annotations';
+import getAnnotatedNodes from './get-annotated-nodes';
+import validateAnnotations from './validate-annotations';
 
 /**
- * Annotation algorithm
+ * Annotation algorithm:
+ * - Validate and sort annotations (check id, startOffset, endOffset)
+ * - Visit all text nodes of the tree.
+ * - Use the fact that annotations are sorted to:
+ * 		- Move to next annotation if they occur before the current text node.
+ * 		- Skip remaining annotations if they occur after the current text node.
+ * - Keep track of various hashmaps for easy retrieval when annotations and text node overlap:
+ * 		- allAnnotations: normalized map of annotations
+ *		- allNodes: normalized map of text nodes (with generated uuids)
+ *		- a2n: Track text node IDs associated with a given annotation ID.  Order of the text nodes is important here, and is preserved.
+ *		- n2a: Track all annotations applied to a given text node.
+ * - With the hashmaps, use the getAnnotatedNodes method to split the current text node into nodeSegments (text nodes + annotated span nodes).
+ * 		- For the current text node, segment the node by checking all possible offset intervals using n2a hashmap.
+ * 		- Keep track of relevant data for the node segment (startOffset, endOffset, annotations, value) which will be needed to construct new hast nodes.
+ * 		- If nodeSegments do not contain annotations, construct a <text /> node.
+ * 		- If nodeSegments contain annotations, construct a <mark /> or <a /> node based on the annotation definition.  Apply annotation definitions and callbacks.  Keep track of which nodeSegments represents the start/end of the annotation
+ * - With reference to the current text node, replace it with the annotated nodeSegments by splicing it in place with its siblings under its parent.
+ * - Return the mutated tree.
  */
 export default function annotate(tree, annotations, annotationCallbacks = {}) {
-	const sortedAnnotations = validateAnnotations(annotations);
-	const allAnnotations = sortedAnnotations.reduce(
+	const validatedAnnotations = validateAnnotations(annotations);
+	const allAnnotations = validatedAnnotations.reduce(
 		(map, annotation) => ({
 			...map,
 			[annotation.id]: annotation,
@@ -26,7 +43,7 @@ export default function annotate(tree, annotations, annotationCallbacks = {}) {
 
 		// If annotation occurs before node, continue to next.
 		// If it is after, break out because there is nothing left to find.
-		for (const annotation of sortedAnnotations) {
+		for (const annotation of validatedAnnotations) {
 			const { id } = annotation;
 			if (annotation.startOffset > node.position.end.offset) {
 				break;

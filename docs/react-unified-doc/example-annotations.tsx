@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import { annotations as defaultAnnotations, content } from './data';
 import ReactUnifiedDoc from '../../packages/react-unified-doc/src';
@@ -33,10 +32,10 @@ export default function ExampleAnnotations(): JSX.Element {
 						'*': ['className', 'style'],
 					},
 				}}
-				onAnnotationClick={annotation => {
+				onAnnotationClick={_annotation => {
 					// Console.log('clicked', annotation);
 				}}
-				onAnnotationHover={annotation => {
+				onAnnotationHover={_annotation => {
 					// Console.log('hover', annotation);
 				}}
 				onSelectText={(selection, _e) => {
@@ -44,8 +43,8 @@ export default function ExampleAnnotations(): JSX.Element {
 					setAnnotations([
 						...annotations,
 						{
-							id: uuidv4(),
-							className: 'highlight',
+							id: Math.random().toFixed(8),
+							classNames: ['highlight'],
 							label: 'selected',
 							endOffset: selection.endOffset,
 							startOffset: selection.startOffset,

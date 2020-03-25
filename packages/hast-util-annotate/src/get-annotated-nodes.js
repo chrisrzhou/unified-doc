@@ -1,7 +1,7 @@
 import h from 'hastscript';
 
-export function getAnnotatedNodes(node, nodeId, data) {
-	const { allAnnotations, a2n, n2a, callbacks } = data;
+export default function getAnnotatedNodes(node, nodeId, annotationData) {
+	const { allAnnotations, a2n, n2a, callbacks } = annotationData;
 	const nodeAnnotations = (n2a[nodeId] || []).map(
 		annotationId => allAnnotations[annotationId],
 	);
@@ -66,17 +66,17 @@ export function getAnnotatedNodes(node, nodeId, data) {
 					const {
 						id: annotationId,
 						anchor,
-						className,
+						classNames,
 						label,
 						style,
 					} = annotation;
 
 					const properties = {
-						class: className,
+						className: classNames,
 						label,
 						style,
-						onclick: e => clickAnnotation(annotation, e),
-						onmouseenter: e => hoverAnnotation(annotation, e),
+						onClick: e => clickAnnotation(annotation, e),
+						onMouseEnter: e => hoverAnnotation(annotation, e),
 					};
 
 					const annotationNodes = a2n[annotationId];

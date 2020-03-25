@@ -8,14 +8,15 @@
 	"keywords": [
 		"unified",
 		"doc",
-		"unist",
 		"hast",
 		"util",
-		"utility",
-		"html",
+		"extract",
 		"text",
 		"offsets",
-		"position"
+		"unist",
+		"html",
+		"position",
+		"utility"
 	],
 	"author": "Chris Zhou <chrisrzhou@pm.me>",
 	"license": "MIT",

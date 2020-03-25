@@ -5,7 +5,11 @@ export default {
 		'Readme',
 		{
 			name: 'react-unified-doc',
-			menu: ['Readme', 'Props', 'Content', 'Annotations', 'Plugins', 'Recipes'],
+			menu: ['Readme', 'Props', 'Content', 'Annotations', 'Recipes'],
+		},
+		{
+			name: 'Gallery',
+			menu: [],
 		},
 		'hast-util-annotate',
 		'hast-util-extract-text-offsets',

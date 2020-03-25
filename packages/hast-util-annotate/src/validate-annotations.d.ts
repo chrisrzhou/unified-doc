@@ -1,3 +1,5 @@
 import { Annotation } from '.';
 
-export function validateAnnotations(annotations: Annotation[]): Annotation[];
+export default function validateAnnotations(
+	annotations: Annotation[],
+): Annotation[];

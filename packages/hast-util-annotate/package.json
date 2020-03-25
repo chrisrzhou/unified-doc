@@ -8,15 +8,16 @@
 	"keywords": [
 		"unified",
 		"doc",
-		"unist",
 		"hast",
 		"util",
-		"utility",
+		"annotate",
+		"unist",
 		"html",
 		"text",
-		"annotations",
-		"highlights",
-		"redlining"
+		"annotation",
+		"highlight",
+		"redlining",
+		"utility"
 	],
 	"author": "Chris Zhou <chrisrzhou@pm.me>",
 	"license": "MIT",

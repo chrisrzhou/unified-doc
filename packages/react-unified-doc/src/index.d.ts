@@ -12,12 +12,14 @@ export interface SelectedText extends Annotation {
 }
 
 export interface Props {
-	/** An array of annotation objects to apply to the document */
+	/** An array of annotations to apply to the content */
 	annotations: Annotation[];
 	/** Source content represented as a string */
 	content: string;
 	/** Supported content type ('html', 'markdown', 'text') */
 	contentType?: ContentType;
+	/** Renders annotation tooltips when hovering on the annotation */
+	getAnnotationTooltip?: (annotation: Annotation) => string;
 	/** Callback to capture annotation object and mouse click event */
 	onAnnotationClick?: AnnotationCallback;
 	/** Callback to capture annotation object and mouse hover event */

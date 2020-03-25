@@ -1,5 +1,3 @@
-import annotateUtil from '@unified-doc/hast-util-annotate';
-import extractTextOffsetsUtil from '@unified-doc/hast-util-extract-text-offsets';
 import text from '@unified-doc/text-parse';
 import deepmerge from 'deepmerge';
 import sanitizeUtil from 'hast-util-sanitize';
@@ -15,17 +13,8 @@ const createPlugin = transform => (...args) => tree => transform(tree, ...args);
 
 const coerceTextPositions = createPlugin(coerceTextPositionsUtil);
 const sanitize = createPlugin(sanitizeUtil);
-const annotate = createPlugin(annotateUtil);
-const extractTextOffsets = createPlugin(extractTextOffsetsUtil);
 
-export function createProcessor(
-	contentType = 'text',
-	annotations = [],
-	annotationCallbacks = {},
-	options = {},
-) {
-	const { extractor, sanitizeSchema } = options;
-
+export function createProcessor(contentType = 'text', sanitizeSchema = {}) {
 	const processor = unified();
 
 	switch (contentType) {
@@ -43,17 +32,7 @@ export function createProcessor(
 			processor.use(text);
 	}
 
-	if (sanitizeSchema) {
-		processor.use(sanitize, deepmerge(gh, sanitizeSchema));
-	}
-
-	if (extractor) {
-		processor.use(extractTextOffsets, extractor);
-	}
-
-	if (annotations) {
-		processor.use(annotate, annotations, annotationCallbacks);
-	}
+	processor.use(sanitize, deepmerge(gh, sanitizeSchema));
 
 	return processor;
 }
