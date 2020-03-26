@@ -222,7 +222,7 @@ interface Annotation {
 	classNames?: string[];
 	/** If provided, will add the value to the 'label' tag attribute.  Useful for displaying the label with custom CSS:before selectors. */
 	label?: string;
-	/** Apply custom styles to the annotated node. Note that use of classNames prop is preferred. */
+	/** Apply custom styles to the annotated node. Note that use of `classNames` prop is preferred. */
 	style?: { [key: string]: any };
 }
 
@@ -232,8 +232,9 @@ type AnnotationCallback = (
 ) => void;
 
 interface AnnotationCallbacks {
-	clickAnnotation: AnnotationCallback;
-	hoverAnnotation: AnnotationCallback;
+	onClick: AnnotationCallback;
+	onMouseEnter: AnnotationCallback;
+	onMouseOut: AnnotationCallback;
 }
 ```
 

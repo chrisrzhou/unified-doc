@@ -5,7 +5,15 @@ export default {
 		'Readme',
 		{
 			name: 'react-unified-doc',
-			menu: ['Readme', 'Props', 'Content', 'Annotations', 'Recipes'],
+			menu: [
+				'Readme',
+				'Props',
+				'Content',
+				'Annotations',
+				'Selecting Text',
+				'Styling',
+				'Plugins',
+			],
 		},
 		{
 			name: 'Gallery',

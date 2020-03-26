@@ -7,6 +7,7 @@ import rehype2react from 'rehype-react';
 import tippy, { followCursor } from 'tippy.js';
 
 import 'tippy.js/dist/tippy.css';
+import './index.css';
 
 const createPlugin = transform => (...args) => tree => transform(tree, ...args);
 
@@ -19,12 +20,13 @@ export default function ReactUnifiedDocument({
 	annotations = [],
 	content,
 	contentType,
-	getAnnotationTooltip,
-	onAnnotationClick,
-	onAnnotationHover,
-	onSelectText,
 	rehypePlugins = [],
 	sanitizeSchema = {},
+	getAnnotationTooltip,
+	onAnnotationClick,
+	onAnnotationMouseEnter,
+	onAnnotationMouseLeave,
+	onSelectText,
 }) {
 	const docRef = useRef();
 	const textOffsetsRef = useRef();
@@ -38,7 +40,10 @@ export default function ReactUnifiedDocument({
 				selection.getBookmark(docRef.current).rangeBookmarks[0] || {};
 
 			const canSelect =
-				onSelectText && textOffsets && bookmark.end > bookmark.start;
+				rehypePlugins.length === 0 &&
+				onSelectText &&
+				textOffsets &&
+				bookmark.end > bookmark.start;
 			if (!canSelect) {
 				return;
 			}
@@ -86,17 +91,17 @@ export default function ReactUnifiedDocument({
 		textOffsetsRef.current = textOffsets;
 	}
 
-	function clickAnnotation(annotation, e) {
+	function onClick(annotation, e) {
 		if (onAnnotationClick) {
 			e.stopPropagation();
 			onAnnotationClick(annotation, e);
 		}
 	}
 
-	function hoverAnnotation(annotation, e) {
-		if (onAnnotationHover) {
+	function onMouseEnter(annotation, e) {
+		if (onAnnotationMouseEnter) {
 			e.stopPropagation();
-			onAnnotationHover(annotation, e);
+			onAnnotationMouseEnter(annotation, e);
 		}
 
 		if (getAnnotationTooltip) {
@@ -112,14 +117,28 @@ export default function ReactUnifiedDocument({
 		}
 	}
 
+	function onMouseOut(annotation, e) {
+		if (onAnnotationMouseLeave) {
+			e.stopPropagation();
+			onAnnotationMouseLeave(annotation, e);
+		}
+
+		if (tooltip) {
+			e.stopPropagation();
+			tooltip.destroy();
+			tooltip = null;
+		}
+	}
+
 	// Set up unified processor to compile content
 	const processor = createProcessor(contentType, sanitizeSchema);
 	processor.use(extractTextOffsets, extractor).use(annotate, annotations, {
-		clickAnnotation,
-		hoverAnnotation,
+		onClick,
+		onMouseEnter,
+		onMouseOut,
 	});
-	rehypePlugins.forEach(([plugin, ...args]) => {
-		processor.use(plugin, ...args);
+	rehypePlugins.forEach(plugin => {
+		processor.use(plugin);
 	});
 	processor.use(rehype2react, { createElement });
 	const compiled = processor.processSync(content).contents;

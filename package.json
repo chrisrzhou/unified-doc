@@ -23,6 +23,7 @@
 		"@babel/core": "^7.8.7",
 		"@babel/preset-env": "^7.8.7",
 		"@types/jest": "^25.1.4",
+		"@types/theme-ui": "^0.3.1",
 		"babel-jest": "^25.1.0",
 		"docz": "^2.2.0",
 		"eslint-config-xo-react": "^0.23.0",
@@ -31,7 +32,11 @@
 		"jest": "^25.1.0",
 		"react": "^16.13.0",
 		"react-dom": "^16.13.0",
+		"rehype-highlight": "^4.0.0",
+		"rehype-toc": "^3.0.1",
+		"theme-ui": "^0.3.1",
 		"typescript": "^3.8.3",
+		"uuid": "^7.0.2",
 		"xo": "^0.27.2"
 	},
 	"husky": {

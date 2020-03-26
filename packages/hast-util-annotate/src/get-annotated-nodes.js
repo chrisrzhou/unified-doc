@@ -58,7 +58,7 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 			annotatedNodes.push(node);
 		} else {
 			let annotatedNode = node;
-			const { clickAnnotation, hoverAnnotation } = callbacks;
+			const { onClick, onMouseEnter, onMouseOut } = callbacks;
 			annotations
 				.slice()
 				.reverse() // Create inner nodes first
@@ -75,8 +75,9 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 						className: classNames,
 						label,
 						style,
-						onClick: e => clickAnnotation(annotation, e),
-						onMouseEnter: e => hoverAnnotation(annotation, e),
+						onClick: e => onClick(annotation, e),
+						onMouseEnter: e => onMouseEnter(annotation, e),
+						onMouseOut: e => onMouseOut(annotation, e),
 					};
 
 					const annotationNodes = a2n[annotationId];

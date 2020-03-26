@@ -1,0 +1,27 @@
+.custom-highlight {
+	background: orange;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+
+.custom-highlight[data-start="true"] {
+	border-left: 1px solid black;
+	padding-left: 2px;
+}
+
+.custom-highlight[data-end="true"] {
+	border-right: 1px solid black;
+	padding-right: 2px;
+}
+
+.redline {
+	background-color: inherit;
+	text-decoration: underline;
+	text-decoration-color: red;
+}
+
+.strikethrough {
+	background-color: inherit;
+	text-decoration: line-through;
+	text-decoration-color: red;
+}

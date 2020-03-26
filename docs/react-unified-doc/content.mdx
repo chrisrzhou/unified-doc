@@ -4,10 +4,16 @@ menu: react-unified-doc
 route: react-unified-doc/content
 ---
 
+import ContentExample from './examples/content';
+
 # Content
 
-Supports rendering the following content format:
+[View source](https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/examples/content.tsx)
 
-- `text`
-- `html`
-- `markdown`
+Easily render any `html`, `markdown`, or `text` content.  Note that the rendered document resembles the native source content and is a simple non-opinionated HTML document.  You can style and enrich the document with custom CSS.
+
+By default, all HTML content is safely sanitized.  You can provide a valid [sanitize-schema](https://github.com/syntax-tree/hast-util-sanitize#schema) to apply custom HTML sanitization.  Improper use of this schema can open you up to a cross-site scripting (XSS) attack.  The defaults are safe, but deviating from them is likely unsafe.
+
+<hr />
+
+<ContentExample />

@@ -51,7 +51,7 @@ function createProcessor(
 
 Returns a [unified][unified] `Processor` which operates on hast trees.
 
-Provide a valid [sanitize-schema][sanitize-schema] to apply custom HTML sanitization . Improper use of this schema can open you up to a cross-site scripting (XSS) attack. The defaults are safe, but deviating from them is likely unsafe.
+Provide a valid [sanitize-schema][sanitize-schema] to apply custom HTML sanitization.  Improper use of this schema can open you up to a cross-site scripting (XSS) attack.  The defaults are safe, but deviating from them is likely unsafe.
 
 ### Types
 

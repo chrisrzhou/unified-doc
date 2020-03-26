@@ -1,0 +1,17 @@
+---
+name: Plugins
+menu: react-unified-doc
+route: react-unified-doc/plugins
+---
+
+import PluginsExample from './examples/plugins';
+
+# Plugins
+
+[View source](https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/examples/plugins.tsx)
+
+Apply valid [rehype](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md) plugins to supercharge your document.  Note that annotations will not work on source nodes that mutated (added/updated/removed) from plugins.  The `onSelectText` callback is also disabled since we cannot guarantee immutability of the existing tree when custom plugins are applied.
+
+<hr />
+
+<PluginsExample />

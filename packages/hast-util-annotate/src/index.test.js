@@ -355,22 +355,28 @@ describe('index.js', () => {
 		let testAnnotation;
 		let testEvent;
 
-		function clickAnnotation(annotation) {
+		function onClick(annotation) {
 			testAnnotation = annotation;
 			testEvent = 'click';
 		}
 
-		function hoverAnnotation(annotation) {
+		function onMouseEnter(annotation) {
 			testAnnotation = annotation;
-			testEvent = 'hover';
+			testEvent = 'mouseenter';
+		}
+
+		function onMouseOut(annotation) {
+			testAnnotation = annotation;
+			testEvent = 'mouseout';
 		}
 
 		const annotatedTree = annotate(
 			tree,
 			[{ id: 'a', startOffset: 0, endOffset: 15 }],
 			{
-				clickAnnotation,
-				hoverAnnotation,
+				onClick,
+				onMouseEnter,
+				onMouseOut,
 			},
 		);
 
@@ -386,7 +392,10 @@ describe('index.js', () => {
 		testAnnotation = null;
 		expect(testAnnotation).toEqual(null);
 		matchedNode.properties.onMouseEnter();
-		expect(testEvent).toEqual('hover');
+		expect(testEvent).toEqual('mouseenter');
+		expect(testAnnotation).toEqual({ id: 'a', startOffset: 0, endOffset: 15 });
+		matchedNode.properties.onMouseOut();
+		expect(testEvent).toEqual('mouseout');
 		expect(testAnnotation).toEqual({ id: 'a', startOffset: 0, endOffset: 15 });
 	});
 
