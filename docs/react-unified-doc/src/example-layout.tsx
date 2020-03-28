@@ -8,7 +8,7 @@ interface Props {
 	rightContentTitle?: string;
 }
 
-export default function Layout({
+export default function ExampleLayout({
 	children,
 	content,
 	rightContent,
@@ -32,7 +32,7 @@ export default function Layout({
 				<h3>Source content</h3>
 				<Box
 					as="pre"
-					bg="#eee"
+					bg="rgba(200, 200, 200, 0.3)"
 					p={3}
 					sx={{ borderRadius: 8, fontSize: 12, whiteSpace: 'pre-wrap' }}>
 					{content}
@@ -43,7 +43,7 @@ export default function Layout({
 					<h3>{rightContentTitle}</h3>
 					<Box
 						as="pre"
-						bg="#eee"
+						bg="rgba(0, 0, 0, 0.1)"
 						p={3}
 						sx={{ borderRadius: 8, fontSize: 12, whiteSpace: 'pre-wrap' }}>
 						{rightContent}

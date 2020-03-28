@@ -1,13 +1,13 @@
-import ReactUnifiedDoc from '../../../packages/react-unified-doc/src';
 import React, { useState } from 'react';
 import { Box, Checkbox, Flex, Label } from 'theme-ui';
 
 import { annotations as initialAnnotations, htmlContent } from './data';
-import Layout from './layout';
+import ExampleLayout from './example-layout';
+import ReactUnifiedDoc from './react-unified-doc';
 
 import './doc.css';
 
-export default function AnnotationsExample(): JSX.Element {
+export default function ExampleAnnotations(): JSX.Element {
 	const [showTooltips, setShowTooltips] = useState(false);
 	const [showLabels, setShowLabels] = useState(false);
 	const [enableAnchors, setEnableAnchors] = useState(false);
@@ -62,7 +62,7 @@ export default function AnnotationsExample(): JSX.Element {
 				<b>Clicked annotation</b>:{' '}
 				{clickedAnnotation ? clickedAnnotation.id : '-'}
 			</p>
-			<Layout
+			<ExampleLayout
 				content={htmlContent}
 				rightContentTitle="Annotations"
 				rightContent={JSON.stringify(annotations, null, 2)}>
@@ -77,7 +77,7 @@ export default function AnnotationsExample(): JSX.Element {
 					}
 					onAnnotationMouseLeave={_annotation => setHoveredAnnotation(null)}
 				/>
-			</Layout>
+			</ExampleLayout>
 		</Box>
 	);
 }

@@ -1,19 +1,19 @@
-import ReactUnifiedDoc from '../../../packages/react-unified-doc/src';
 import React from 'react';
 import toc from 'rehype-toc';
 
 import { annotations, htmlContent } from './data';
-import Layout from './layout';
+import ExampleLayout from './example-layout';
+import ReactUnifiedDoc from './react-unified-doc';
 
-export default function SelectingTextExample(): JSX.Element {
+export default function ExampleStyling(): JSX.Element {
 	return (
-		<Layout content={htmlContent}>
+		<ExampleLayout content={htmlContent}>
 			<ReactUnifiedDoc
 				annotations={annotations}
 				content={htmlContent}
 				contentType="html"
 				rehypePlugins={[toc]}
 			/>
-		</Layout>
+		</ExampleLayout>
 	);
 }

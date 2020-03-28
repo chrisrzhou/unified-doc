@@ -1,16 +1,14 @@
-import ReactUnifiedDoc, {
-	ContentType,
-} from '../../../packages/react-unified-doc';
 import React, { useState } from 'react';
 import { Box, Checkbox, Flex, Label, Select } from 'theme-ui';
 
 import { htmlContent, markdownContent } from './data';
-import Layout from './layout';
+import ExampleLayout from './example-layout';
+import ReactUnifiedDoc, { ContentType } from './react-unified-doc';
 
 const classNames = ['doc', 'dark', 'ewww'];
 const contentTypes = ['text', 'markdown', 'html'];
 
-export default function ContentExample(): JSX.Element {
+export default function ExampleContent(): JSX.Element {
 	const [className, setClassName] = useState('doc');
 	const [contentType, setContentType] = useState<ContentType>('html');
 	const [enableCustomSanitize, setEnableCustomSanitize] = useState(false);
@@ -79,7 +77,7 @@ export default function ContentExample(): JSX.Element {
 					Use custom sanitize schema
 				</Label>
 			</Flex>
-			<Layout
+			<ExampleLayout
 				content={content}
 				rightContentTitle="Sanitize Schema"
 				rightContent={JSON.stringify(sanitizeSchema, null, 2)}>
@@ -90,7 +88,7 @@ export default function ContentExample(): JSX.Element {
 						sanitizeSchema={sanitizeSchema}
 					/>
 				</Box>
-			</Layout>
+			</ExampleLayout>
 		</Box>
 	);
 }

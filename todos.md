@@ -6,6 +6,7 @@
 - [ ] Get review/library feedback from unified team.
 
 ## MVP
+- [ ] `Layout` example should support highlighting text in source content.  Account for responsive screens.
 - [x] Debug start/end (especially end) of annotations
 - [ ] find/search text with Rangy's `findText`: https://github.com/timdown/rangy/wiki/Text-Range-Module#findtextmixed-searchterm-object-options
 - [ ] export utils (`overlaps` return annotations that overlap with candidate).

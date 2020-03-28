@@ -1,15 +1,15 @@
-import ReactUnifiedDoc from '../../../packages/react-unified-doc/src';
 import React, { useState } from 'react';
 import highlight from 'rehype-highlight';
 import toc from 'rehype-toc';
 import { Box, Checkbox, Flex, Label } from 'theme-ui';
 
 import { annotations, htmlContent } from './data';
-import Layout from './layout';
+import ExampleLayout from './example-layout';
+import ReactUnifiedDoc from './react-unified-doc';
 
 import './github.css';
 
-export default function PluginsExample(): JSX.Element {
+export default function ExamplePlugins(): JSX.Element {
 	const [applyToc, setApplyToc] = useState(true);
 	const [applyHighlight, setApplyHighlight] = useState(true);
 	const plugins = [];
@@ -41,7 +41,7 @@ export default function PluginsExample(): JSX.Element {
 					rehype-highlight
 				</Label>
 			</Flex>
-			<Layout
+			<ExampleLayout
 				content={htmlContent}
 				rightContentTitle="Rehype Plugins"
 				rightContent={JSON.stringify(
@@ -55,7 +55,7 @@ export default function PluginsExample(): JSX.Element {
 					contentType="html"
 					rehypePlugins={plugins.map(({ plugin }) => plugin)}
 				/>
-			</Layout>
+			</ExampleLayout>
 		</Box>
 	);
 }
