@@ -75,9 +75,9 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 						className: classNames,
 						label,
 						style,
-						onClick: e => onClick(annotation, e),
-						onMouseEnter: e => onMouseEnter(annotation, e),
-						onMouseOut: e => onMouseOut(annotation, e),
+						onClick: event => onClick(annotation, event),
+						onMouseEnter: event => onMouseEnter(annotation, event),
+						onMouseOut: event => onMouseOut(annotation, event),
 					};
 
 					const annotationNodes = a2n[annotationId];

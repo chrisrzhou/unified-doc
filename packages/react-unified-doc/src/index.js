@@ -34,7 +34,7 @@ export default function ReactUnifiedDocument({
 	const textOffsetsRef = useRef();
 
 	useEffect(() => {
-		function handleSelectText(e) {
+		function handleSelectText(event) {
 			const textOffsets = textOffsetsRef.current;
 			const selection = rangy.getSelection();
 			const value = selection.toString();
@@ -78,7 +78,7 @@ export default function ReactUnifiedDocument({
 					(bookmark.end - lastSelectedTextOffset.startOffset);
 			}
 
-			onSelectText({ id: uuidv4(), startOffset, endOffset, value }, e);
+			onSelectText({ id: uuidv4(), startOffset, endOffset, value }, event);
 			selection.removeAllRanges();
 		}
 
@@ -93,21 +93,21 @@ export default function ReactUnifiedDocument({
 		textOffsetsRef.current = textOffsets;
 	}
 
-	function onClick(annotation, e) {
+	function onClick(annotation, event) {
 		if (onAnnotationClick) {
-			e.stopPropagation();
-			onAnnotationClick(annotation, e);
+			event.stopPropagation();
+			onAnnotationClick(annotation, event);
 		}
 	}
 
-	function onMouseEnter(annotation, e) {
+	function onMouseEnter(annotation, event) {
 		if (onAnnotationMouseEnter) {
-			e.stopPropagation();
-			onAnnotationMouseEnter(annotation, e);
+			event.stopPropagation();
+			onAnnotationMouseEnter(annotation, event);
 		}
 
 		if (getAnnotationTooltip) {
-			tooltip = tippy(e.target, {
+			tooltip = tippy(event.target, {
 				arrow: false,
 				followCursor: 'horizontal',
 				plugins: [followCursor],
@@ -119,14 +119,14 @@ export default function ReactUnifiedDocument({
 		}
 	}
 
-	function onMouseOut(annotation, e) {
+	function onMouseOut(annotation, event) {
 		if (onAnnotationMouseLeave) {
-			e.stopPropagation();
-			onAnnotationMouseLeave(annotation, e);
+			event.stopPropagation();
+			onAnnotationMouseLeave(annotation, event);
 		}
 
 		if (tooltip) {
-			e.stopPropagation();
+			event.stopPropagation();
 			tooltip.destroy();
 			tooltip = null;
 		}

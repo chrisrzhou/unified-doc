@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import highlight from 'rehype-highlight';
 import toc from 'rehype-toc';
+import { Processor, Transformer } from 'unified';
 
 import { annotations, htmlContent } from './data';
 import ExampleLayout from './example-layout';
@@ -8,7 +9,14 @@ import { Checkbox, ContentArea, FlexLayout } from './ui';
 
 import './github.css';
 
-const plugins = {
+type PluginType = 'highlight' | 'toc';
+
+interface Plugin {
+	name: string;
+	plugin: (this: Processor) => Transformer;
+}
+
+const plugins: Record<PluginType, Plugin> = {
 	highlight: {
 		name: 'rehype-highlight',
 		plugin: highlight,
@@ -23,7 +31,7 @@ export default function ExamplePlugins(): JSX.Element {
 	const [applyToc, setApplyToc] = useState(true);
 	const [applyHighlight, setApplyHighlight] = useState(true);
 
-	const pluginIds = [];
+	const pluginIds: PluginType[] = [];
 	if (applyToc) {
 		pluginIds.push('toc');
 	}

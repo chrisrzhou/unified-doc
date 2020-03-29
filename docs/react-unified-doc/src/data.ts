@@ -95,7 +95,7 @@ export const annotations = [
 // Keep in sync with doc.css
 export const cssProperties = `
 .doc {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, ’Segoe UI’, Roboto, Oxygen, Ubuntu, Cantarell, ’Open Sans’, ’Helvetica Neue’, sans-serif;
 }
 
 .doc-dark {

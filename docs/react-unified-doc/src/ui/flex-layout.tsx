@@ -12,7 +12,7 @@ interface Props {
 	flex?: any;
 	flexDirection?: any;
 	flexWrap?: any;
-	flexWrapSpace?: any;
+	flexWrapSpace?: Space;
 	justifyContent?: any;
 	space?: Space;
 	sx?: SxStyleProp;

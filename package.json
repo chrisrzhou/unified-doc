@@ -24,20 +24,22 @@
 		"@babel/preset-env": "^7.8.7",
 		"@types/jest": "^25.1.4",
 		"@types/theme-ui": "^0.3.1",
-		"babel-jest": "^25.1.0",
+		"@types/uuid": "^7.0.2",
+		"babel-jest": "^25.2.3",
 		"docz": "^2.2.0",
 		"eslint-config-xo-react": "^0.23.0",
-		"eslint-config-xo-typescript": "^0.26.0",
+		"eslint-config-xo-typescript": "^0.27.0",
 		"husky": "^4.2.3",
-		"jest": "^25.1.0",
+		"jest": "^25.2.3",
 		"react": "^16.13.0",
 		"react-dom": "^16.13.0",
 		"rehype-highlight": "^4.0.0",
 		"rehype-toc": "^3.0.1",
 		"theme-ui": "^0.3.1",
 		"typescript": "^3.8.3",
+		"unified": "^8.4.2",
 		"uuid": "^7.0.2",
-		"xo": "^0.27.2"
+		"xo": "^0.28.1"
 	},
 	"husky": {
 		"hooks": {
@@ -59,7 +61,13 @@
 			"xo-react"
 		],
 		"rules": {
+			"@typescript-eslint/prefer-readonly-parameter-types": "off",
+			"@typescript-eslint/no-unsafe-call": "off",
+			"@typescript-eslint/no-unsafe-member-access": "off",
+			"@typescript-eslint/no-unsafe-return": "off",
+			"import/extensions": "off",
 			"import/no-unassigned-import": "off",
+			"no-unused-vars": [2, { "argsIgnorePattern": "^_" }],
 			"react/function-component-definition": "off",
 			"react/prop-types": "off"
 		}

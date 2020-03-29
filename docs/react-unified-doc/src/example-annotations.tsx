@@ -64,11 +64,11 @@ export default function ExampleAnnotations(): JSX.Element {
 		annotations,
 		content: htmlContent,
 		getAnnotationTooltip: enableTooltips
-			? annotations => annotations.tooltip
+			? (annotation: Annotation): string => annotation.tooltip
 			: undefined,
 		onAnnotationClick: annotation => setClickedAnnotation(annotation),
 		onAnnotationMouseEnter: annotation => setHoveredAnnotation(annotation),
-		onAnnotationMouseLeave: _annotation => setHoveredAnnotation(null),
+		onAnnotationMouseLeave: () => setHoveredAnnotation(null),
 	};
 
 	return (

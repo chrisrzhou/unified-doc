@@ -40,7 +40,7 @@ export function Select({
 					width,
 				}}
 				value={value}
-				onChange={e => onChange(e.target.value)}>
+				onChange={event => onChange(event.target.value)}>
 				{options.map(({ label, value }) => (
 					<option key={value} value={value}>
 						{label}
