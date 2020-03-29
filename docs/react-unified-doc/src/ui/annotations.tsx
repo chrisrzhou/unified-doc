@@ -35,7 +35,6 @@ export function Annotations({
 					<Box
 						key={id}
 						px="s"
-						py="xs"
 						sx={{
 							borderColor: anchor ? 'link' : 'border',
 							borderRadius: 'm',

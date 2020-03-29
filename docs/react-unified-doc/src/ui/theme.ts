@@ -1,6 +1,6 @@
 export const theme = {
 	colors: {
-		border: 'rgba(200, 200, 200, 0.4)',
+		border: '#ddd',
 		link: '#0b5fff',
 		black1: '#333',
 		black2: '#999',

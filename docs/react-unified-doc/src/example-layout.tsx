@@ -26,9 +26,11 @@ export default function ExampleLayout({
 }: Props): JSX.Element {
 	const [selectedSection, setSelectedSection] = useState('source');
 
-	const { annotations, content, contentType = 'html' } = docProps;
+	const { annotations, content } = docProps;
 
-	const doc = <ReactUnifiedDoc contentType={contentType} {...docProps} />;
+	const doc = (
+		<ReactUnifiedDoc className="doc" contentType="html" {...docProps} />
+	);
 
 	const sourceContent = (
 		<ContentArea help="View the source content and annotations applied relative to it.">

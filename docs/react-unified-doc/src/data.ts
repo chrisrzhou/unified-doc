@@ -96,17 +96,20 @@ export const annotations = [
 export const cssProperties = `
 .doc {
 	font-family: -apple-system, BlinkMacSystemFont, ’Segoe UI’, Roboto, Oxygen, Ubuntu, Cantarell, ’Open Sans’, ’Helvetica Neue’, sans-serif;
+	font-size: 16px;
 }
 
 .doc-dark {
 	background: black;
 	color: white;
+	font-size: 16px;
 }
 
 .doc-yucks {
 	background: brown;
 	color: white;
 	font-family: impact;
+	font-size: 16px;
 }
 
 .custom-highlight {
@@ -135,5 +138,10 @@ export const cssProperties = `
 	background-color: inherit;
 	text-decoration: line-through;
 	text-decoration-color: red;
+}
+
+.tippy-box {
+	font-family: -apple-system, BlinkMacSystemFont, ’Segoe UI’, Roboto, Oxygen, Ubuntu, Cantarell, ’Open Sans’, ’Helvetica Neue’, sans-serif;
+	font-size: 12px;
 }
 `;
