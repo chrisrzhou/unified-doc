@@ -5,6 +5,7 @@ import rangy from 'rangy';
 import React, { createElement, useEffect, useRef } from 'react';
 import rehype2react from 'rehype-react';
 import tippy, { followCursor } from 'tippy.js';
+import { v4 as uuidv4 } from 'uuid';
 
 import 'tippy.js/dist/tippy.css';
 import './index.css';
@@ -18,6 +19,7 @@ let tooltip;
 
 export default function ReactUnifiedDocument({
 	annotations = [],
+	className,
 	content,
 	contentType,
 	rehypePlugins = [],
@@ -76,7 +78,7 @@ export default function ReactUnifiedDocument({
 					(bookmark.end - lastSelectedTextOffset.startOffset);
 			}
 
-			onSelectText({ startOffset, endOffset, value }, e);
+			onSelectText({ id: uuidv4(), startOffset, endOffset, value }, e);
 			selection.removeAllRanges();
 		}
 
@@ -143,5 +145,9 @@ export default function ReactUnifiedDocument({
 	processor.use(rehype2react, { createElement });
 	const compiled = processor.processSync(content).contents;
 
-	return <div ref={docRef}>{compiled}</div>;
+	return (
+		<div ref={docRef} className={className}>
+			{compiled}
+		</div>
+	);
 }

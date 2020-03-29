@@ -14,6 +14,8 @@ export interface SelectedText extends Annotation {
 export interface Props {
 	/** An array of annotations to apply to the content */
 	annotations?: Annotation[];
+	/** Provide optional CSS to style the document */
+	className?: string;
 	/** Source content represented as a string */
 	content: string;
 	/** Supported content type ('html', 'markdown', 'text') */

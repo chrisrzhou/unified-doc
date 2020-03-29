@@ -57,7 +57,14 @@ export const annotations = [
 		endOffset: 300,
 		label: 'default',
 		tooltip: 'commented by John (3 weeks ago)',
-		anchor: true,
+	},
+	{
+		id: uuidv4(),
+		startOffset: 220,
+		endOffset: 280,
+		label: 'styled',
+		style: { background: 'green', color: 'white' },
+		tooltip: 'commented by John (3 weeks ago)',
 	},
 	{
 		id: uuidv4(),
@@ -66,7 +73,6 @@ export const annotations = [
 		label: 'strikethrough',
 		classNames: ['strikethrough'],
 		tooltip: 'removed by Jack (2 months ago)',
-		anchor: true,
 	},
 	{
 		id: uuidv4(),
@@ -75,7 +81,6 @@ export const annotations = [
 		label: 'redline',
 		classNames: ['redline'],
 		tooltip: 'annotated by Jane (2 weeks ago)',
-		anchor: true,
 	},
 	{
 		id: uuidv4(),
@@ -84,6 +89,51 @@ export const annotations = [
 		label: 'custom highlight',
 		classNames: ['custom-highlight'],
 		tooltip: 'marked as HIGH PRIORITY by Jill (2 days ago)',
-		anchor: true,
 	},
 ];
+
+// Keep in sync with doc.css
+export const cssProperties = `
+.doc {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.doc-dark {
+	background: black;
+	color: white;
+}
+
+.doc-yucks {
+	background: brown;
+	color: white;
+	font-family: impact;
+}
+
+.custom-highlight {
+	background: orange;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+
+.custom-highlight[data-start="true"] {
+	border-left: 1px solid black;
+	padding-left: 2px;
+}
+
+.custom-highlight[data-end="true"] {
+	border-right: 1px solid black;
+	padding-right: 2px;
+}
+
+.redline {
+	background-color: inherit;
+	text-decoration: underline;
+	text-decoration-color: red;
+}
+
+.strikethrough {
+	background-color: inherit;
+	text-decoration: line-through;
+	text-decoration-color: red;
+}
+`;

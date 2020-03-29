@@ -14,8 +14,6 @@ yarn add @unified-doc/react-unified-doc
 
 ## Examples
 
-[![Edit unified-doc](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/p5lwvkp7x)
-
 ## Docs
 View the official docs and examples at https://unified-doc.netlify.com/.
 

@@ -8,12 +8,8 @@ import ExampleContent from './src/example-content';
 
 # Content
 
-[View source](https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/src/example-content.tsx)
+Easily render any `html`, `markdown`, or `text` content.  The rendered document is a safely-sanitized HTML document that maintains high fidelity with the source content.
 
-Easily render any `html`, `markdown`, or `text` content.  Note that the rendered document resembles the native source content and is a simple non-opinionated HTML document.  You can style and enrich the document with custom CSS.
-
-By default, all HTML content is safely sanitized.  You can provide a valid [sanitize-schema](https://github.com/syntax-tree/hast-util-sanitize#schema) to apply custom HTML sanitization.  Improper use of this schema can open you up to a cross-site scripting (XSS) attack.  The defaults are safe, but deviating from them is likely unsafe.
-
-<hr />
+You can provide a valid [sanitize-schema](https://github.com/syntax-tree/hast-util-sanitize#schema) to apply custom HTML sanitization.  Improper use of this schema can open you up to a cross-site scripting (XSS) attack.  The defaults are safe, but deviating from them is likely unsafe.
 
 <ExampleContent />

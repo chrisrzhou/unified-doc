@@ -4,14 +4,10 @@ menu: react-unified-doc
 route: react-unified-doc/styling
 ---
 
-import ExampleStyling from './src/examplestyling';
+import ExampleStyling from './src/example-styling';
 
 # Styling
 
-[View source](https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/src/styling.tsx)
-
-Since `react-unified-doc` renders a non-opinionated and barebones HTML document that resembles the source content, you can easily style the document with regular CSS.  The renderer only creates `<mark />` tags with data attributes `data-start` and `data-end` to mark the start/end of annotations spanning multiple HTML elements.
-
-<hr />
+`react-unified-doc` renders a HTML document that maintains high fidelity with the source content.  The only additional rendered nodes are `mark` elements (with `data-start` and `data-end` attributes), which are created to indicate annotated text nodes.  This low-level and non-opinionated approach to rendering and annotating documents allows for simple customizations with familiar CSS.
 
 <ExampleStyling />

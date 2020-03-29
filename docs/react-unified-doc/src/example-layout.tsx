@@ -1,55 +1,82 @@
-import React from 'react';
-import { Box, Flex } from 'theme-ui';
+import React, { useState } from 'react';
+import { Card, ContentArea, FlexLayout, Link, Provider, Select } from './ui';
+
+import ReactUnifiedDoc, { Props as DocProps } from './react-unified-doc';
+
+import './doc.css';
+
+interface Section {
+	label: string;
+	content: React.ReactElement;
+	value: string;
+}
 
 interface Props {
-	children: React.ReactNode;
-	content: string;
-	rightContent?: string;
-	rightContentTitle?: string;
+	docProps: DocProps;
+	header: React.ReactElement;
+	name: string;
+	sections?: Section[];
 }
 
 export default function ExampleLayout({
-	children,
-	content,
-	rightContent,
-	rightContentTitle,
+	docProps,
+	header,
+	name,
+	sections = [],
 }: Props): JSX.Element {
+	const [selectedSection, setSelectedSection] = useState('source');
+
+	const { annotations, content, contentType = 'html' } = docProps;
+
+	const doc = <ReactUnifiedDoc contentType={contentType} {...docProps} />;
+
+	const sourceContent = (
+		<ContentArea help="View the source content and annotations applied relative to it.">
+			<ReactUnifiedDoc
+				annotations={annotations}
+				content={content}
+				contentType="text"
+			/>
+		</ContentArea>
+	);
+
+	const sectionOptions = [
+		...sections,
+		{
+			label: 'Source content',
+			content: sourceContent,
+			value: 'source',
+		},
+	];
+
+	const sectionContent = sectionOptions.find(
+		option => option.value === selectedSection,
+	).content;
+
 	return (
-		<Flex sx={{ fontSize: 14 }}>
-			<Box>
-				<h3>Document</h3>
-				<Box
-					p={3}
-					sx={{
-						border: '1px solid lightgray',
-						borderRadius: 8,
-						flex: '1 1 auto',
-					}}>
-					{children}
-				</Box>
-			</Box>
-			<Box ml={3} sx={{ flex: '0 0 300px' }}>
-				<h3>Source content</h3>
-				<Box
-					as="pre"
-					bg="rgba(200, 200, 200, 0.3)"
-					p={3}
-					sx={{ borderRadius: 8, fontSize: 12, whiteSpace: 'pre-wrap' }}>
-					{content}
-				</Box>
-			</Box>
-			{rightContent && rightContentTitle && (
-				<Box ml={3} sx={{ flex: '0 0 300px' }}>
-					<h3>{rightContentTitle}</h3>
-					<Box
-						as="pre"
-						bg="rgba(0, 0, 0, 0.1)"
-						p={3}
-						sx={{ borderRadius: 8, fontSize: 12, whiteSpace: 'pre-wrap' }}>
-						{rightContent}
-					</Box>
-				</Box>
-			)}
-		</Flex>
+		<Provider>
+			<FlexLayout flexDirection="column">
+				<Link
+					href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/src/example-${name}.tsx
+				`}
+					sx={{ alignSelf: 'flex-start' }}>
+					Source code
+				</Link>
+				<Card>{header}</Card>
+				<FlexLayout>
+					<Card>{doc}</Card>
+					<Card sx={{ flex: '0 0 400px' }}>
+						<Select
+							id="view"
+							label="View"
+							options={sectionOptions}
+							value={selectedSection}
+							onChange={setSelectedSection}
+						/>
+						{sectionContent}
+					</Card>
+				</FlexLayout>
+			</FlexLayout>
+		</Provider>
 	);
 }

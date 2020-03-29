@@ -1,9 +1,16 @@
 mark {
-	display: inline-block;
-	padding: 1px 0;
+	border-bottom: 1px solid currentColor;
+	border-top: 1px solid currentColor;
 	position: relative;
 }
 
+mark[data-start="true"] {
+	border-left: 1px solid currentColor;
+}
+
+mark[data-end="true"] {
+	border-right: 1px solid currentColor;
+}
 
 mark[data-start="true"]::before {
 	background-color: white;

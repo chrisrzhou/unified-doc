@@ -1,83 +1,82 @@
 import React, { useState } from 'react';
-import { Box, Checkbox, Flex, Label } from 'theme-ui';
 
-import { annotations as initialAnnotations, htmlContent } from './data';
+import { annotations as annotationsData, htmlContent } from './data';
 import ExampleLayout from './example-layout';
-import ReactUnifiedDoc from './react-unified-doc';
-
-import './doc.css';
+import { Annotation } from './react-unified-doc';
+import { Checkbox, ContentArea, FlexLayout, Text } from './ui';
 
 export default function ExampleAnnotations(): JSX.Element {
-	const [showTooltips, setShowTooltips] = useState(false);
-	const [showLabels, setShowLabels] = useState(false);
-	const [enableAnchors, setEnableAnchors] = useState(false);
-	const [clickedAnnotation, setClickedAnnotation] = useState(null);
-	const [hoveredAnnotation, setHoveredAnnotation] = useState(null);
+	const [enableLabels, setEnableLabels] = useState(false);
+	const [enableTooltips, setEnableTooltips] = useState(false);
+	const [enablePermalinks, setEnablePermalinks] = useState(false);
+	const [hoveredAnnotation, setHoveredAnnotation] = useState<Annotation>();
+	const [clickedAnnotation, setClickedAnnotation] = useState<Annotation>();
 
-	const annotations = initialAnnotations.map(annotation => {
-		return {
-			...annotation,
-			anchor: enableAnchors,
-			label: showLabels ? annotation.label : undefined,
-		};
-	});
+	const header = (
+		<FlexLayout flexDirection="column" space="s">
+			<FlexLayout>
+				<Checkbox
+					label="Enable labels"
+					value={enableLabels}
+					onChange={setEnableLabels}
+				/>
+				<Checkbox
+					label="Enable Tooltips"
+					value={enableTooltips}
+					onChange={setEnableTooltips}
+				/>
+				<Checkbox
+					label="Enable permalinks"
+					value={enablePermalinks}
+					onChange={setEnablePermalinks}
+				/>
+			</FlexLayout>
+			<Text variant="help">
+				<b>Hovered annotation:</b>{' '}
+				{hoveredAnnotation ? hoveredAnnotation.id : '-'}
+			</Text>
+			<Text variant="help">
+				<b>Clicked annotation:</b>{' '}
+				{clickedAnnotation ? clickedAnnotation.id : '-'}
+			</Text>
+		</FlexLayout>
+	);
 
-	const getAnnotationTooltip = showTooltips
-		? annotations => annotations.tooltip
-		: undefined;
+	const annotations = annotationsData.map(annotation => ({
+		...annotation,
+		label: enableLabels ? annotation.label : undefined,
+		anchor: enablePermalinks,
+	}));
+
+	const sections = [
+		{
+			label: 'Annotations',
+			content: (
+				<ContentArea help="Annotations are simple and declarative.">
+					{JSON.stringify(annotations, null, 2)}
+				</ContentArea>
+			),
+			value: 'annotations',
+		},
+	];
+
+	const docProps = {
+		annotations,
+		content: htmlContent,
+		getAnnotationTooltip: enableTooltips
+			? annotations => annotations.tooltip
+			: undefined,
+		onAnnotationClick: annotation => setClickedAnnotation(annotation),
+		onAnnotationMouseEnter: annotation => setHoveredAnnotation(annotation),
+		onAnnotationMouseLeave: _annotation => setHoveredAnnotation(null),
+	};
 
 	return (
-		<Box>
-			<Flex>
-				<Label sx={{ flex: '0 0 200px' }}>
-					<Checkbox
-						checked={showTooltips}
-						onChange={_e => setShowTooltips(!showTooltips)}
-					/>
-					Show tooltips
-				</Label>
-				<Label ml={4} sx={{ flex: '0 0 200px' }}>
-					<Checkbox
-						checked={showLabels}
-						onChange={_e => {
-							setShowLabels(!showLabels);
-						}}
-					/>
-					Show labels
-				</Label>
-				<Label ml={4} sx={{ flex: '0 0 200px' }}>
-					<Checkbox
-						checked={enableAnchors}
-						onChange={_e => {
-							setEnableAnchors(!enableAnchors);
-						}}
-					/>
-					Enable Anchors
-				</Label>
-			</Flex>
-			<p>
-				<b>Active annotation</b>:{' '}
-				{hoveredAnnotation ? hoveredAnnotation.id : '-'}
-				<br />
-				<b>Clicked annotation</b>:{' '}
-				{clickedAnnotation ? clickedAnnotation.id : '-'}
-			</p>
-			<ExampleLayout
-				content={htmlContent}
-				rightContentTitle="Annotations"
-				rightContent={JSON.stringify(annotations, null, 2)}>
-				<ReactUnifiedDoc
-					annotations={annotations}
-					content={htmlContent}
-					contentType="html"
-					getAnnotationTooltip={getAnnotationTooltip}
-					onAnnotationClick={annotation => setClickedAnnotation(annotation)}
-					onAnnotationMouseEnter={annotation =>
-						setHoveredAnnotation(annotation)
-					}
-					onAnnotationMouseLeave={_annotation => setHoveredAnnotation(null)}
-				/>
-			</ExampleLayout>
-		</Box>
+		<ExampleLayout
+			docProps={docProps}
+			header={header}
+			name="annotations"
+			sections={sections}
+		/>
 	);
 }

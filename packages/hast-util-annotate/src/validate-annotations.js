@@ -20,7 +20,7 @@ export default function validateAnnotations(annotations) {
 		console.warn('All annotations should have "startOffset" < "endOffset"');
 	}
 
-	const sortedAnnotations = annotations.sort((a, b) => {
+	const sortedAnnotations = annotations.slice().sort((a, b) => {
 		if (a.startOffset > a.endOffset) {
 			invalidOffsets = true;
 		}
