@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { htmlContent, markdownContent } from './data';
 import ExampleLayout from './example-layout';
-import { Checkbox, ContentArea, FlexLayout, Select } from './ui';
+import { Checkbox, ContentArea, FlexLayout, Select } from '../../ui';
 
 const contentTypes = [
 	{ label: 'text', value: 'text' },

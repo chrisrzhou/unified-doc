@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, theme } from '.';
+import { Box } from '.';
+import { theme } from '../../src/gatsby-theme-docz/theme';
 
 export function FlexLayout({
 	alignItems,

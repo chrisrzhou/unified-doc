@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, ContentArea, FlexLayout, Link, Provider, Select } from './ui';
+import { Card, ContentArea, FlexLayout, Link, Select } from '../../ui';
 
 import ReactUnifiedDoc from './react-unified-doc';
 
@@ -43,29 +43,27 @@ export default function ExampleLayout({
 	).content;
 
 	return (
-		<Provider>
-			<FlexLayout flexDirection="column">
-				<Link
-					href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/src/example-${name}.tsx
+		<FlexLayout flexDirection="column">
+			<Link
+				href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/src/example-${name}.tsx
 				`}
-					sx={{ alignSelf: 'flex-start' }}>
-					Source code
-				</Link>
-				<Card>{header}</Card>
-				<FlexLayout>
-					<Card>{doc}</Card>
-					<Card sx={{ flex: '0 0 400px' }}>
-						<Select
-							id="view"
-							label="View"
-							options={sectionOptions}
-							value={selectedSection}
-							onChange={setSelectedSection}
-						/>
-						{sectionContent}
-					</Card>
-				</FlexLayout>
+				sx={{ alignSelf: 'flex-start' }}>
+				Source code
+			</Link>
+			<Card>{header}</Card>
+			<FlexLayout>
+				<Card>{doc}</Card>
+				<Card sx={{ flex: '0 0 400px' }}>
+					<Select
+						id="view"
+						label="View"
+						options={sectionOptions}
+						value={selectedSection}
+						onChange={setSelectedSection}
+					/>
+					{sectionContent}
+				</Card>
 			</FlexLayout>
-		</Provider>
+		</FlexLayout>
 	);
 }

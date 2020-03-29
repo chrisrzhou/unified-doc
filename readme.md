@@ -1,31 +1,40 @@
 # 📜 unified-doc
-
 [unified][unified] document renderer for content.
-
-> This project is a work in progress.  Stay tuned for exciting updates!
 
 ## Table of Contents
 - [Motivation](#motivation)
+- [Philosophy](#philosophy)
 - [Architecture](#architecture)
-- [Content](#content)
-- [Annotations](#annotations)
-- [Plugins](#plugins)
+  - [Content](#content)
+  - [Annotations](#annotations)
+  - [Plugins](#plugins)
 - [unified](#unified)
 - [contribute](#contribute)
 
+
 ## Motivation
+
+
+## Philosophy
+
 
 ## Architecture
 
-## Content
 
-## Annotations
+### Content
 
-## Plugins
+
+### Annotations
+
+
+### Plugins
+
 
 ## unified
 
+
 ## Contribute
 
-<!-- Definition -->
+
+<!-- Links -->
 [unified]: https://unifiedjs.com/

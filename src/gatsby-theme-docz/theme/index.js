@@ -1,3 +1,6 @@
+import baseTheme from 'gatsby-theme-docz/src/theme/index';
+import { merge } from 'lodash/fp';
+
 export const theme = {
 	colors: {
 		border: '#ddd',
@@ -15,8 +18,8 @@ export const theme = {
 	},
 	fontSizes: {
 		xs: '10px',
-		s: '12px',
-		m: '14px',
+		s: '14px',
+		m: '18px',
 		l: '20px',
 		xl: '32px',
 	},
@@ -47,6 +50,19 @@ export const theme = {
 	},
 
 	// Variants
+	buttons: {
+		primary: {
+			cursor: 'pointer',
+			fontSize: 's',
+			paddingBottom: 'xs',
+			paddingLeft: 's',
+			paddingRight: 's',
+			paddingTop: 'xs',
+			':hover': {
+				opacity: 0.8,
+			},
+		},
+	},
 	cards: {
 		primary: {
 			padding: 'm',
@@ -78,4 +94,12 @@ export const theme = {
 			fontWeight: 'bold',
 		},
 	},
+	styles: {
+		root: {
+			fontFamily: 'body',
+			fontSize: 'm',
+		},
+	},
 };
+
+export default merge(baseTheme, theme);

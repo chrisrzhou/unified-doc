@@ -1,7 +1,6 @@
 # Changelog
 
 ## 0.1.0 (2020-03-30)
-
 Official release! Check out the [docs][docs] to get started!
 
 ### react-unified-doc
@@ -12,5 +11,6 @@ Official release! Check out the [docs][docs] to get started!
 
 ### processor
 
-<!-- Definition -->
+
+<!-- Links -->
 [docs]: https://unified-doc.netlify.com/

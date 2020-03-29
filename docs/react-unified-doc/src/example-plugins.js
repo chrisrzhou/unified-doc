@@ -4,9 +4,9 @@ import toc from 'rehype-toc';
 
 import { annotations, htmlContent } from './data';
 import ExampleLayout from './example-layout';
-import { Checkbox, ContentArea, FlexLayout } from './ui';
+import { Checkbox, ContentArea, FlexLayout } from '../../ui';
 
-import './github.css';
+import './rehype-highlight.css';
 
 const plugins = {
 	highlight: {

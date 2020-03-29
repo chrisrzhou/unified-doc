@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { annotations, cssProperties, htmlContent } from './data';
 import ExampleLayout from './example-layout';
-import { ContentArea, Select } from './ui';
+import { ContentArea, Select } from '../../ui';
 
 const classNames = [
 	{ label: 'doc', value: 'doc' },

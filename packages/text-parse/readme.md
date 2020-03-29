@@ -1,15 +1,14 @@
 # text-parse
-
 [**unified**][unified] [parser][parser] to parse text content into a [hast][hast] tree with a single text node.
 
-## Install
 
+## Install
 ```sh
 yarn add @unified-doc/text-parse
 ```
 
-## Use
 
+## Use
 ```js
 import text from '@unified-doc/text-parse';
 import unified from 'unified';
@@ -50,17 +49,17 @@ Yields a [hast][hast] tree where the input content string is represented as a si
 
 
 ## API
-
 ```ts
 export default function parse(): void;
 ```
 
 Simply use the plugin with any unified processor.
 
-<!-- Definition -->
-[unified]: https://unifiedjs.com/
-[parser]: https://github.com/unifiedjs/unified#parser
+
+<!-- Links -->
 [hast]: https://github.com/syntax-tree/hast
+[parser]: https://github.com/unifiedjs/unified#parser
+[unified]: https://unifiedjs.com/
 
 <!-- Hack to make importing mdx work in docz/gatsby... -->
 export default ({ children }) => children

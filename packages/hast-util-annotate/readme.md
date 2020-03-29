@@ -1,12 +1,12 @@
 # hast-util-annotate
-
 [**hast**][hast] utility to annotate text nodes.
 
-## Install
 
+## Install
 ```sh
 yarn add @unified-doc/hast-util-annotate
 ```
+
 
 ## Description
 > `hast-util-annotate` is the primary engine for annotating documents in [react-unified-doc][react-unified-doc].
@@ -71,7 +71,6 @@ const actualAnnotatedNodes = { // preserves the original tree structure
 
 
 ## Use
-
 ```js
 const tree = {
 	type: 'root',
@@ -99,7 +98,6 @@ const annotated = annotate(tree, annotations)
 ```
 
 Yields
-
 ```js
 const annotated = {
 	type: 'root',
@@ -129,7 +127,6 @@ const annotated = {
 
 Note that the utility also supports annotating text nodes with multiple overlapping annotations as demonstrated in the example below.  Please check out the [react-unified-doc][react-unified-doc] docs for interactive examples of this behavior!
 
-
 ```js
 // using same tree in the earlier example
 
@@ -141,7 +138,6 @@ const annotated = annotate(tree, annotations);
 ```
 
 Yields:
-
 ```js
 const annotated = {
 	type: 'root',
@@ -194,8 +190,8 @@ const annotated = {
 };
 ```
 
-## API
 
+## API
 ```ts
 function annotate(
 	tree: Node,
@@ -205,7 +201,6 @@ function annotate(
 ```
 
 ### Types
-
 ```ts
 interface Annotation {
 	/** Additional annotation data */
@@ -238,7 +233,8 @@ interface AnnotationCallbacks {
 }
 ```
 
-<!-- Definition -->
+
+<!-- Links -->
 [hast]: https://github.com/syntax-tree/hast
 [react-unified-doc]: ../react-unified-doc/readme
 

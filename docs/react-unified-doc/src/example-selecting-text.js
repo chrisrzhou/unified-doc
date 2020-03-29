@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 
 import { htmlContent } from './data';
 import ExampleLayout from './example-layout';
-import { Annotations, Checkbox, ContentArea, FlexLayout, Select } from './ui';
+import {
+	Annotations,
+	Checkbox,
+	ContentArea,
+	FlexLayout,
+	Select,
+} from '../../ui';
 
 const annotationTypes = [
 	{ label: 'default', value: 'default' },

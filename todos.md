@@ -35,5 +35,4 @@
 	- Explain architecture/mechanisms on how everything works.
 
 <!-- Links -->
-
 [unified]: https://unifiedjs.com/

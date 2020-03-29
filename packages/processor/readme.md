@@ -2,8 +2,8 @@
 
 [**unified**][unified] [processor][processor] for processing content and annotations in `unified-doc`.
 
-## Install
 
+## Install
 ```sh
 yarn add @unified-doc/processor
 ```
@@ -11,8 +11,8 @@ yarn add @unified-doc/processor
 ## Description
 `unified-doc` uses a unified/[unified][unified] processor to map content into [hast][hast] trees.  It provides a single entry point to define content (e.g. text, HTML, markdown) and converts it into a common syntax tree where an ecosytem of hast plugins can operate on it.
 
-## Use
 
+## Use
 ```js
 import { createProcessor } from '@unified-doc/processor';
 
@@ -38,8 +38,8 @@ const toStringProcessor = createProcessor();
 const toReactProcessor = createProcessor().use(rehype2react, { createElement });
 ```
 
-## API
 
+## API
 ```ts
 function createProcessor(
 	contentType?: ContentType,
@@ -53,17 +53,18 @@ Returns a [unified][unified] `Processor` which operates on hast trees.
 
 Provide a valid [sanitize-schema][sanitize-schema] to apply custom HTML sanitization.  Improper use of this schema can open you up to a cross-site scripting (XSS) attack.  The defaults are safe, but deviating from them is likely unsafe.
 
-### Types
 
+### Types
 ```ts
 export type ContentType = 'html' | 'markdown' | 'text';
 ```
 
-<!-- Definition -->
-[unified]: https://unifiedjs.com/
-[processor]: https://github.com/unifiedjs/unified#processor
+
+<!-- Links -->
 [hast]: https://github.com/syntax-tree/hast
+[processor]: https://github.com/unifiedjs/unified#processor
 [sanitize-schema]: https://github.com/syntax-tree/hast-util-sanitize#schema
+[unified]: https://unifiedjs.com/
 
 <!-- Hack to make importing mdx work in docz/gatsby... -->
 export default ({ children }) => children
