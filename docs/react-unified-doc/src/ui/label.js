@@ -1,17 +1,7 @@
 import React from 'react';
 import { Label as ThemeUILabel } from 'theme-ui';
 
-interface Props {
-	children: React.ReactNode;
-	direction?: 'column' | 'row';
-	htmlFor?: string;
-}
-
-export function Label({
-	children,
-	direction = 'column',
-	htmlFor,
-}: Props): JSX.Element {
+export function Label({ children, direction = 'column', htmlFor }) {
 	return (
 		<ThemeUILabel
 			htmlFor={htmlFor}

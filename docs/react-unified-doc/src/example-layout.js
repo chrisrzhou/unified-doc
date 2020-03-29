@@ -1,29 +1,16 @@
 import React, { useState } from 'react';
 import { Card, ContentArea, FlexLayout, Link, Provider, Select } from './ui';
 
-import ReactUnifiedDoc, { Props as DocProps } from './react-unified-doc';
+import ReactUnifiedDoc from './react-unified-doc';
 
 import './doc.css';
-
-interface Section {
-	label: string;
-	content: React.ReactElement;
-	value: string;
-}
-
-interface Props {
-	docProps: DocProps;
-	header: React.ReactElement;
-	name: string;
-	sections?: Section[];
-}
 
 export default function ExampleLayout({
 	docProps,
 	header,
 	name,
 	sections = [],
-}: Props): JSX.Element {
+}) {
 	const [selectedSection, setSelectedSection] = useState('source');
 
 	const { annotations, content } = docProps;

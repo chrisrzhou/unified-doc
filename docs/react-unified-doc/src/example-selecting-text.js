@@ -11,7 +11,7 @@ const annotationTypes = [
 	{ label: 'strikethrough', value: 'strikethrough' },
 ];
 
-export default function ExampleSelectingText(): JSX.Element {
+export default function ExampleSelectingText() {
 	const [annotations, setAnnotations] = useState([]);
 	const [annotationType, setAnnotationType] = useState('default');
 	const [enablePermalinks, setEnablePermalinks] = useState(false);
@@ -27,6 +27,7 @@ export default function ExampleSelectingText(): JSX.Element {
 					onChange={setAnnotationType}
 				/>
 				<Checkbox
+					id="enable-permalinks"
 					label="Enable permalinks"
 					value={enablePermalinks}
 					onChange={setEnablePermalinks}

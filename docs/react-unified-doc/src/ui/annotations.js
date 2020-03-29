@@ -1,19 +1,12 @@
 import React from 'react';
-import { Annotation } from '../react-unified-doc';
 
 import { Box, FlexLayout, Link, Text } from '.';
-
-interface Props {
-	annotations: Annotation[];
-	onClearAnnotations: () => void;
-	onRemoveAnnotation: (annotation: Annotation) => void;
-}
 
 export function Annotations({
 	annotations,
 	onClearAnnotations,
 	onRemoveAnnotation,
-}: Props): JSX.Element {
+}) {
 	return (
 		<FlexLayout alignItems="center" flexWrap="wrap" space="xs">
 			{annotations.map(annotation => {

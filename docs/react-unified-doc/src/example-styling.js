@@ -10,7 +10,7 @@ const classNames = [
 	{ label: 'doc-yucks', value: 'doc-yucks' },
 ];
 
-export default function ExampleStyling(): JSX.Element {
+export default function ExampleStyling() {
 	const [className, setClassName] = useState('doc');
 
 	const header = (

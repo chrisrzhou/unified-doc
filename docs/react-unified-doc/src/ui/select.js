@@ -3,22 +3,6 @@ import { Select as ThemeUISelect } from 'theme-ui';
 
 import { Label } from '.';
 
-type Value = string | number;
-
-interface Option {
-	label: string;
-	value: Value;
-}
-
-interface Props {
-	id: string;
-	label: string;
-	options: Option[];
-	value: Value;
-	width?: string;
-	onChange: (value: any) => void;
-}
-
 export function Select({
 	id,
 	label,
@@ -26,7 +10,7 @@ export function Select({
 	value,
 	width = '160px',
 	onChange,
-}: Props): JSX.Element {
+}) {
 	return (
 		<Label htmlFor={id}>
 			{label}

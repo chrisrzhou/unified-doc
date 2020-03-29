@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { htmlContent, markdownContent } from './data';
 import ExampleLayout from './example-layout';
-import { ContentType } from './react-unified-doc';
 import { Checkbox, ContentArea, FlexLayout, Select } from './ui';
 
 const contentTypes = [
@@ -11,11 +10,9 @@ const contentTypes = [
 	{ label: 'html', value: 'html' },
 ];
 
-export default function ExampleContent(): JSX.Element {
-	const [contentType, setContentType] = useState<ContentType>('html');
-	const [enableCustomSanitize, setEnableCustomSanitize] = useState<boolean>(
-		true,
-	);
+export default function ExampleContent() {
+	const [contentType, setContentType] = useState('html');
+	const [enableCustomSanitize, setEnableCustomSanitize] = useState(true);
 
 	const sanitizeSchema = enableCustomSanitize
 		? { attributes: { '*': ['className', 'style'] } }
@@ -38,6 +35,7 @@ export default function ExampleContent(): JSX.Element {
 				}}
 			/>
 			<Checkbox
+				id="custom-sanitize"
 				label="Custom Sanitize"
 				value={enableCustomSanitize}
 				onChange={value => {

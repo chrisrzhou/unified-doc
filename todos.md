@@ -11,6 +11,7 @@
 ## MVP
 - [x] `Layout` example should support highlighting text in source content.  Account for responsive screens.
 - [x] Debug start/end (especially end) of annotations
+- [ ] Randomize annotations
 - [ ] find/search text with Rangy's `findText`: https://github.com/timdown/rangy/wiki/Text-Range-Module#findtextmixed-searchterm-object-options
 - [x] Update docs for other packages
 - [ ] Add gallery
