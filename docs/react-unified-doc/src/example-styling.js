@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { annotations, cssProperties, htmlContent } from './data';
+import { annotations, content, cssProperties } from './data';
 import ExampleLayout from './example-layout';
 import { ContentArea, Select } from '../../ui';
 
@@ -38,7 +38,7 @@ export default function ExampleStyling() {
 	const docProps = {
 		annotations,
 		className,
-		content: htmlContent,
+		content,
 	};
 
 	return (

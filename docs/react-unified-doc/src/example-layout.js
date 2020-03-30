@@ -45,7 +45,7 @@ export default function ExampleLayout({
 	return (
 		<FlexLayout flexDirection="column">
 			<Link
-				href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/src/example-${name}.tsx
+				href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/src/example-${name}.js
 				`}
 				sx={{ alignSelf: 'flex-start' }}>
 				Source code

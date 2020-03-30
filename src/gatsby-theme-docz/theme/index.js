@@ -1,13 +1,32 @@
 import baseTheme from 'gatsby-theme-docz/src/theme/index';
 import { merge } from 'lodash/fp';
 
+const primary = '#0b5fff';
+
+const button = {
+	background: 'primary',
+	borderColor: 'primary',
+	borderStyle: 'solid',
+	borderWidth: 1,
+	cursor: 'pointer',
+	fontSize: 's',
+	paddingBottom: 'xs',
+	paddingLeft: 's',
+	paddingRight: 's',
+	paddingTop: 'xs',
+	':hover': {
+		opacity: 0.8,
+	},
+};
+
 export const theme = {
 	colors: {
+		primary,
 		border: '#ddd',
-		link: '#0b5fff',
+		link: primary,
 		black1: '#333',
 		black2: '#999',
-		black3: '#ddd',
+		black3: '#ccc',
 		wash: 'rgba(200, 200, 200, 0.2)',
 	},
 	fonts: {
@@ -52,15 +71,12 @@ export const theme = {
 	// Variants
 	buttons: {
 		primary: {
-			cursor: 'pointer',
-			fontSize: 's',
-			paddingBottom: 'xs',
-			paddingLeft: 's',
-			paddingRight: 's',
-			paddingTop: 'xs',
-			':hover': {
-				opacity: 0.8,
-			},
+			...button,
+		},
+		secondary: {
+			...button,
+			background: 'transparent',
+			color: primary,
 		},
 	},
 	cards: {

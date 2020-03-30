@@ -10,7 +10,6 @@ React unified document renderer for content.
 - [Props](#props)
 - [Use](#use)
 - [Docs](#docs)
-- [TODOs](#todos)
 
 
 ## Install
@@ -106,15 +105,8 @@ yarn && yarn docs
 ```
 
 
-## TODOs
-- [ ] Better address `hast-util-coerce-text-positions`, `text-parse` implementations.
-- [ ] Review/Feedback from [unified][unified] team.
-- [ ] Export useful annotation utilities.
-
-
 <!-- Links -->
 [hast]: https://github.com/syntax-tree/hast
-[position]: https://github.com/syntax-tree/unist#position
 [props]: https://unified-doc.netlify.com/react-unified-doc/props
 [react]: https://github.com/facebook/react
 [rehype]: https://github.com/rehypejs

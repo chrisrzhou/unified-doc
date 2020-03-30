@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { annotations as annotationsData, htmlContent } from './data';
+import { annotations as annotationsData, content } from './data';
 import ExampleLayout from './example-layout';
 import { Button, Checkbox, ContentArea, FlexLayout, Text } from '../../ui';
 
@@ -8,7 +8,7 @@ function getId(annotation) {
 	return annotation ? annotation.id : '-';
 }
 
-function getRandomNumberRange(min = 0, max = 1000) {
+function getRandomNumberRange(min = 0, max = 5000) {
 	const number1 = Math.floor(Math.random() * (max - min + 1) + min);
 	const number2 = Math.floor(Math.random() * (max - min + 1) + min);
 	return [Math.min(number1, number2), Math.max(number1, number2)];
@@ -19,9 +19,9 @@ let currentRandomizeId = 0;
 export default function ExampleAnnotations() {
 	const [annotations, setAnnotations] = useState(annotationsData);
 	const [randomizeId, setRandomizeId] = useState(currentRandomizeId);
-	const [enableLabels, setEnableLabels] = useState(false);
+	const [enableLabels, setEnableLabels] = useState(true);
 	const [enablePermalinks, setEnablePermalinks] = useState(false);
-	const [enableTooltips, setEnableTooltips] = useState(false);
+	const [enableTooltips, setEnableTooltips] = useState(true);
 	const [hoveredAnnotation, setHoveredAnnotation] = useState();
 	const [clickedAnnotation, setClickedAnnotation] = useState();
 
@@ -33,7 +33,6 @@ export default function ExampleAnnotations() {
 
 			if (currentRandomizeId !== randomizeId) {
 				[startOffset, endOffset] = getRandomNumberRange();
-				currentRandomizeId = randomizeId;
 			}
 
 			return {
@@ -44,6 +43,7 @@ export default function ExampleAnnotations() {
 				anchor,
 			};
 		});
+		currentRandomizeId = randomizeId;
 		setAnnotations(updatedAnnotations);
 	}, [enableLabels, enablePermalinks, randomizeId]);
 
@@ -69,7 +69,7 @@ export default function ExampleAnnotations() {
 					onChange={setEnablePermalinks}
 				/>
 				<Button onClick={() => setRandomizeId(randomizeId + 1)}>
-					Randomize annotations
+					Reset/Randomize
 				</Button>
 			</FlexLayout>
 			<Text variant="help">
@@ -95,13 +95,24 @@ export default function ExampleAnnotations() {
 
 	const docProps = {
 		annotations,
-		content: htmlContent,
+		content,
 		getAnnotationTooltip: enableTooltips
 			? annotation => annotation.tooltip
 			: undefined,
 		onAnnotationClick: annotation => setClickedAnnotation(annotation),
 		onAnnotationMouseEnter: annotation => setHoveredAnnotation(annotation),
 		onAnnotationMouseLeave: () => setHoveredAnnotation(null),
+		onSelectText: annotation => {
+			setAnnotations([
+				...annotations,
+				{
+					...annotation,
+					anchor: enablePermalinks,
+					label: 'User-selected',
+					classNames: ['custom-highlight'],
+				},
+			]);
+		},
 	};
 
 	return (

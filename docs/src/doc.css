@@ -1,0 +1,6 @@
+.doc-mini {
+	font-size: 6px;
+	max-height: 50vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+}

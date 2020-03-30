@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { htmlContent } from './data';
+import { content } from './data';
 import ExampleLayout from './example-layout';
 import {
 	Annotations,
@@ -65,7 +65,7 @@ export default function ExampleSelectingText() {
 
 	const docProps = {
 		annotations,
-		content: htmlContent,
+		content,
 		onSelectText: annotation => {
 			setAnnotations([
 				...annotations,

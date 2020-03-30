@@ -3,6 +3,7 @@
 type Space = 'none' | 'xs' | 's' | 'm' | 'l' | 'xl';
 
 interface Props {
+	[key: string]: any;
 	alignItems?: string;
 	children: React.ReactNode;
 	flexDirection?: string;

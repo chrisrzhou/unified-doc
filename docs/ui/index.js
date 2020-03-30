@@ -9,3 +9,5 @@ export * from './label';
 export * from './link';
 export * from './select';
 export * from './text';
+
+export * from './animated-trail';

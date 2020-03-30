@@ -4,7 +4,7 @@
 
 .doc-dark {
 	background: black;
-	color: white;
+	color: rgb(236, 113, 113);
 }
 
 .doc-yucks {
@@ -32,12 +32,6 @@
 .redline {
 	background-color: inherit;
 	text-decoration: underline;
-	text-decoration-color: red;
-}
-
-.strikethrough {
-	background-color: inherit;
-	text-decoration: line-through;
 	text-decoration-color: red;
 }
 
