@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import highlight from 'rehype-highlight';
 import toc from 'rehype-toc';
 
-import { annotations, content } from './data';
+import { annotations, htmlContent as content } from './data';
 import ExampleLayout from './example-layout';
 import { Checkbox, ContentArea, FlexLayout } from '../../ui';
 

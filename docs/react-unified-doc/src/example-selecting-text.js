@@ -14,7 +14,6 @@ const annotationTypes = [
 	{ label: 'default', value: 'default' },
 	{ label: 'custom-highlight', value: 'custom-highlight' },
 	{ label: 'redline', value: 'redline' },
-	{ label: 'strikethrough', value: 'strikethrough' },
 ];
 
 export default function ExampleSelectingText() {

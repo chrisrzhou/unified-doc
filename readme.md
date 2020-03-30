@@ -85,7 +85,7 @@ Useful info about the project:
 - Tests are managed with `jest`.
 - Docs are managed with `docz`.
 - Todos:
-	- [ ] Revisit `anchor` property in `hast-util-annotate` (nested `<a />` tags is not semantic in HTML).
+  - [ ] Revisit `anchor` property in `hast-util-annotate` (nested `<a />` tags is not semantic in HTML).
   - [ ] Cypress tests for `react-unified-doc`.
   - [ ] Export useful annotation utilities for `react-unified-doc`.
   - [ ] Jest tests for `get-annotated-nodes` in `hast-util-annotate`.
