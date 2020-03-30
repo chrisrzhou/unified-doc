@@ -1,6 +1,8 @@
 # 📜 unified-doc
 [unified][unified] document renderer for content.
 
+![image](./public/unified-doc-thumbnail.png)
+
 ## Table of Contents
 - [Motivations](#motivations)
 - [Architecture](#architecture)
