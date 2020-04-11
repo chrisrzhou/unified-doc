@@ -31,7 +31,7 @@ export const hast = {
 		},
 		{
 			type: 'element',
-			tagName: 'blockqote',
+			tagName: 'blockquote',
 			children: [
 				{
 					type: 'text',
@@ -70,7 +70,7 @@ export const hastAnnotated = {
 		},
 		{
 			type: 'element',
-			tagName: 'blockqote',
+			tagName: 'blockquote',
 			children: [
 				{
 					type: 'text',

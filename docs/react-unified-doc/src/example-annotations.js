@@ -1,51 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import { annotations as annotationsData, content } from './data';
+import { annotations as initialAnnotationsData, content } from './data';
 import ExampleLayout from './example-layout';
-import { Button, Checkbox, ContentArea, FlexLayout, Text } from '../../ui';
+import { Checkbox, ContentArea, FlexLayout, Text } from '../../ui';
 
 function getId(annotation) {
 	return annotation ? annotation.id : '-';
 }
 
-function getRandomNumberRange(min = 0, max = 5000) {
-	const number1 = Math.floor(Math.random() * (max - min + 1) + min);
-	const number2 = Math.floor(Math.random() * (max - min + 1) + min);
-	return [Math.min(number1, number2), Math.max(number1, number2)];
-}
-
-let currentRandomizeId = 0;
+const initialEnableLabels = true;
+const initialEnablePermalinks = false;
+const initialEnableTooltips = false;
 
 export default function ExampleAnnotations() {
-	const [annotations, setAnnotations] = useState(annotationsData);
-	const [randomizeId, setRandomizeId] = useState(currentRandomizeId);
-	const [enableLabels, setEnableLabels] = useState(true);
-	const [enablePermalinks, setEnablePermalinks] = useState(false);
-	const [enableTooltips, setEnableTooltips] = useState(true);
-	const [hoveredAnnotation, setHoveredAnnotation] = useState();
-	const [clickedAnnotation, setClickedAnnotation] = useState();
+	const [annotationsData, setAnnotationsData] = useState(
+		initialAnnotationsData,
+	);
+	const [enableLabels, setEnableLabels] = useState(initialEnableLabels);
+	const [enablePermalinks, setEnablePermalinks] = useState(
+		initialEnablePermalinks,
+	);
+	const [enableTooltips, setEnableTooltips] = useState(initialEnableTooltips);
+	const [hoveredAnnotation, setHoveredAnnotation] = useState(null);
+	const [clickedAnnotation, setClickedAnnotation] = useState(null);
 
-	useEffect(() => {
-		const updatedAnnotations = annotationsData.map(annotation => {
-			const label = enableLabels ? annotation.label : undefined;
-			const anchor = enablePermalinks;
-			let { startOffset, endOffset } = annotation;
-
-			if (currentRandomizeId !== randomizeId) {
-				[startOffset, endOffset] = getRandomNumberRange();
-			}
-
-			return {
-				...annotation,
-				startOffset,
-				endOffset,
-				label,
-				anchor,
-			};
-		});
-		currentRandomizeId = randomizeId;
-		setAnnotations(updatedAnnotations);
-	}, [enableLabels, enablePermalinks, randomizeId]);
+	const annotations = annotationsData.map((annotation) => ({
+		...annotation,
+		anchor: enablePermalinks,
+		label: enableLabels ? annotation.label : undefined,
+	}));
 
 	const header = (
 		<FlexLayout flexDirection="column" space="s">
@@ -68,9 +51,6 @@ export default function ExampleAnnotations() {
 					value={enablePermalinks}
 					onChange={setEnablePermalinks}
 				/>
-				<Button onClick={() => setRandomizeId(randomizeId + 1)}>
-					Reset/Randomize
-				</Button>
 			</FlexLayout>
 			<Text variant="help">
 				<b>Hovered annotation:</b> {getId(hoveredAnnotation)}
@@ -97,18 +77,22 @@ export default function ExampleAnnotations() {
 		annotations,
 		content,
 		getAnnotationTooltip: enableTooltips
-			? annotation => annotation.tooltip
+			? (annotation) => annotation.tooltip
 			: undefined,
-		onAnnotationClick: annotation => setClickedAnnotation(annotation),
-		onAnnotationMouseEnter: annotation => setHoveredAnnotation(annotation),
+		onAnnotationClick: (annotation) => setClickedAnnotation(annotation),
+		onAnnotationMouseEnter: (annotation) => setHoveredAnnotation(annotation),
 		onAnnotationMouseLeave: () => setHoveredAnnotation(null),
-		onSelectText: annotation => {
-			setAnnotations([
-				...annotations,
+		onSelectText: (annotation) => {
+			setAnnotationsData([
+				...annotationsData,
 				{
 					...annotation,
 					anchor: enablePermalinks,
 					label: 'User-selected',
+					tooltip: `You created "${annotation.value.slice(
+						0,
+						30,
+					)}…" at ${new Date()}`,
 					classNames: ['custom-highlight'],
 				},
 			]);

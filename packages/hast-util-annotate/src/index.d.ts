@@ -7,17 +7,17 @@ type Optional<T> = {
 export interface Annotation {
 	/** Additional annotation data */
 	[key: string]: any;
-	/** Unique ID is required for annotation algorithm to work */
+	/** Unique ID is required for annotation algorithm to work.  It is also used to uniquely assign ID values to generated <mark /> nodes which is convenient for selecting the element itself. */
 	id: string;
 	/** Start offset relative to the source content */
 	startOffset: number;
 	/** End offset relative to the source content */
 	endOffset: number;
-	/** If provided, will create <a /> instead of <mark /> tags and use the annotation ID as the href.  Useful for creating annotation permalinks. */
+	/** If true, will update the `location.hash` using the annotation ID as the hash.  Useful for creating annotation permalinks. Note that this disables the annotation `onClick` handler since the intention is explicit to create anchor links for the `onClick` event. */
 	anchor?: boolean;
 	/** CSS classnames that will be applied on the annotated nodes */
 	classNames?: string[];
-	/** If provided, will add the value to the "label" tag attribute.  Useful for displaying the label with custom CSS:before selectors. */
+	/** If true, will add the value to the `label` tag attribute.  Useful for displaying the label with custom CSS:before selectors. */
 	label?: string;
 	/** Apply custom styles to the annotated node. Note that use of `classNames` prop is preferred. */
 	style?: any;

@@ -21,14 +21,14 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.8.7",
-		"@babel/preset-env": "^7.8.7",
-		"@types/jest": "^25.1.4",
+		"@babel/preset-env": "^7.9.5",
+		"@types/jest": "^25.2.1",
 		"@types/uuid": "^7.0.2",
-		"babel-jest": "^25.2.3",
-		"docz": "^2.2.0",
+		"babel-jest": "^25.3.0",
+		"docz": "^2.3.1",
 		"eslint-config-xo-react": "^0.23.0",
-		"husky": "^4.2.3",
-		"jest": "^25.2.3",
+		"husky": "^4.2.5",
+		"jest": "^25.3.0",
 		"react": "^16.13.0",
 		"react-dom": "^16.13.0",
 		"react-spring": "^8.0.27",
@@ -36,9 +36,9 @@
 		"rehype-toc": "^3.0.1",
 		"theme-ui": "^0.3.1",
 		"typescript": "^3.8.3",
-		"unified": "^8.4.2",
-		"uuid": "^7.0.2",
-		"xo": "^0.28.1"
+		"unified": "^9.0.0",
+		"uuid": "^7.0.3",
+		"xo": "^0.29.0"
 	},
 	"husky": {
 		"hooks": {

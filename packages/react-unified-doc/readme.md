@@ -1,5 +1,5 @@
 # react-unified-doc
-React unified document renderer for content.
+React [**unified-doc**][unified-doc] renderer for content.
 
 ![image](../../public/react-unified-doc-thumbnail.png)
 
@@ -18,15 +18,15 @@ yarn add @unified-doc/react-unified-doc
 ```
 
 ## Description
-`react-unified-doc` provides a [React][react] wrapper around the [**unified-doc**][unified-doc] ecosystem to render content.  It uses the [unified][unified] ecosystem to parse, transform and render content through [rehype][rehype] plugins.  Supported source content (`text`, `markdown`, `html`) is parsed into a [hast][hast] tree which is then marked up with React into a safely sanitized HTML document.  The rendering process is robust because it acts on a unified syntax tree instead of custom string parsing operations.  The rendered document is **non-opinionated** and maintains **high fidelity** with the source content, and supports easy customizations with standard CSS.
+`react-unified-doc` provides a [React][react] wrapper around the [**unified-doc**][unified-doc] project to render content.  It uses the [unified][unified] ecosystem to parse, transform and render content through [rehype][rehype] plugins.  Supported source content (`text`, `markdown`, `html`) is parsed into a [hast][hast] tree which is then marked up with React into a safely sanitized HTML document.  This document is *non-opinionated* and maintains *high fidelity* with the source content, and supports easy customizations with standard web technologies.
 
-Annotating documents is easily done with specifying a simple and declarative `annotations` prop.  Annotations are performed on matching `text` nodes and are rendered as `<mark />` tags.  They do not involve JS nor affect the document layout, but are simply **semantic additions** to the document enriching text nodes.  An annotation is an object containing the following information:
-- `startOffset`, `endOffset`: offsets relative to the source content informing the renderer where to apply annotations.
-- `classNames`, `style`: apply specific styles on annotated nodes.
+Annotating documents is easily accomplished by declaratively specifying the `annotations` prop. The annotation algorithm is a pure *semantic addition* to the document converting matching `text` nodes into `<mark />` tags, and leaves the rest of the document unchanged.  An annotation is an object containing the following information:
+- `startOffset`, `endOffset`: positional string offsets relative to the source content.
+- `classNames`, `style`: ways to customize the annotated nodes.
 - `anchor`, `label`: support features such as anchor permalinks or rendering a label for the annotation.
 - any other data that is useful for working with annotation callbacks.
 
-Various callbacks that support annotations interactions (click, hover, tooltips), and capturing text-selection events allow for building interactive applications for rendering and annotating documents.
+Various annotation callbacks (click, hover, tooltips), and text-selection callbacks allow for building interactive applications involving rendering and annotating documents.
 
 `react-unified-doc` is a part of the [unified][unified] ecosystem, which allows it to benefit from many plugins.  It accepts [rehype][rehype] plugins via the `rehypePlugins` prop to enrich documents with additional features.
 
@@ -36,15 +36,15 @@ For a more detailed overview, please refer to the formal [props][props] document
 
 ```ts
 interface Props {
-	/** An array of annotations to apply to the content */
-	annotations?: Annotation[];
-	/** Provide optional CSS to style the document */
-	className?: string;
 	/** Source content represented as a string */
 	content: string;
 	/** Supported content type ('html', 'markdown', 'text') */
 	contentType?: ContentType;
-	/** Valid rehype plugins can be applied after annotations.  Note that this will disable the `onSelectText` callback because we can no longer guarantee the relative text offsets if other plugins mutate the tree. */
+	/** An array of annotations to apply to the content */
+	annotations?: Annotation[];
+	/** Provide optional CSS to style the document */
+	className?: string;
+	/** Valid rehype plugins can be applied after annotations.  Note that this will disable the `onSelectText` callback because we can no longer guarantee accurate text positions since other plugins may mutate the tree. */
 	rehypePlugins?: Plugin[];
 	/** HTML Sanitize schema (see https://github.com/syntax-tree/hast-util-sanitize#schema) */
 	sanitizeSchema?: { [key: string]: any };
@@ -56,7 +56,7 @@ interface Props {
 	onAnnotationMouseEnter?: AnnotationCallback;
 	/** Callback to capture annotation object and mouse leave event */
 	onAnnotationMouseLeave?: AnnotationCallback;
-	/** Callback to capture selected text and mouse up event */
+	/** Callback to capture selected text and mouse up event.  The `SelectedText` extends the `Annotation` object, and can be used to updated the `annotations` prop in a controlled manner.  This callback is disabled if `rehypePlugins` are specifieds */
 	onSelectText?: (selectedText: SelectedText, e?: MouseEvent) => void;
 }
 ```
@@ -64,19 +64,19 @@ interface Props {
 
 ## Use
 ```js
-import ReactUnifiedDoc from 'react-unified-doc';
+import Document from 'react-unified-doc';
 import toc from 'rehype-toc';
 
 const content = '<blockquote>Blockquote with <b>bold</b> content.</blockquote>';
 const annotations = [
-	{ id: 'a1', startOffset: 0, endOffset: 30, tooltip: 'cool!' },
+	{ id: 'a1', startOffset: 0, endOffset: 30, label: 'annotation', tooltip: 'cool!' },
 ];
 
 import './my-document.css';
 
 function MyDocument() {
 	return (
-		<ReactUnifiedDoc
+		<Document
 			annotations={annotations}
 			className="custom-doc-classname"
 			content={content}

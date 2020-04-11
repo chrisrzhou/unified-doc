@@ -10,7 +10,7 @@ import {
 	FlexLayout,
 	Text,
 } from '../ui';
-import ReactUnifiedDocument from '../react-unified-doc/src/react-unified-doc';
+import Document from '../react-unified-doc/src/react-unified-doc';
 import {
 	annotations as initialAnnotations,
 	content,
@@ -31,7 +31,7 @@ export default function Home() {
 			nextButtonLabel = 'Parse content';
 			break;
 		case 1:
-			nextButtonLabel = 'Render tree';
+			nextButtonLabel = 'Markup tree';
 			break;
 		case 2:
 			nextButtonLabel = 'Demo';
@@ -45,11 +45,11 @@ export default function Home() {
 		<FlexLayout space="l">
 			{step >= 0 && (
 				<Section
-					description="Accepts the following supported content types"
+					description="Accepts any supported content types"
 					title="content">
 					<AnimatedTrail
 						items={contentTypes}
-						renderItem={item => (
+						renderItem={(item) => (
 							<Text
 								bg="wash"
 								color="black1"
@@ -73,8 +73,12 @@ export default function Home() {
 					description="Source content is parsed into a unified hast syntax tree"
 					title="hast">
 					<AnimatedTrail
-						items={[hast, 'apply annotations: [a1, a2, a3, …]', hastAnnotated]}
-						renderItem={item => (
+						items={[
+							hast,
+							'apply hast plugins (e.g. annotations)',
+							hastAnnotated,
+						]}
+						renderItem={(item) => (
 							<Box sx={{ maxHeight: '20vh', overflow: 'auto' }}>
 								<ContentArea>{JSON.stringify(item, null, 2)}</ContentArea>
 							</Box>
@@ -85,25 +89,26 @@ export default function Home() {
 			{step >= 2 && (
 				<Section
 					grow
-					description="Semantic HTML markup customizable with standard web technologies and rehype plugins"
+					description="Semantic HTML markup customizable with standard web technologies.  Try selecting text to highlight the document!"
 					title="html">
-					<ReactUnifiedDocument
+					<Document
 						annotations={annotations}
 						className="doc-mini"
 						content={content}
 						contentType="html"
-						getAnnotationTooltip={annotation => annotation.tooltip}
-						onSelectText={annotation => {
+						getAnnotationTooltip={(annotation) => annotation.tooltip}
+						onSelectText={(annotation) => {
 							setAnnotations([
 								...annotations,
 								{
 									...annotation,
 									label: 'User-selected',
+									type: 'User-selected',
 									classNames: ['custom-highlight'],
 									tooltip: `You created "${annotation.value.slice(
 										0,
 										30,
-									)}…" on ${new Date()}`,
+									)}…" at ${new Date()}`,
 								},
 							]);
 						}}

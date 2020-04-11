@@ -4,6 +4,10 @@ mark {
 	position: relative;
 }
 
+mark[data-anchor="true"] {
+	cursor: pointer;
+}
+
 mark[data-start="true"] {
 	border-left: 1px solid currentColor;
 }

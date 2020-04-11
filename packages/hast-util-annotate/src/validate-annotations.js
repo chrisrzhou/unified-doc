@@ -5,7 +5,7 @@ export default function validateAnnotations(annotations) {
 	const uniqueIds = new Set();
 	let invalidOffsets = false;
 
-	annotations.forEach(annotation => {
+	annotations.forEach((annotation) => {
 		uniqueIds.add(annotation.id);
 		if (annotation.startOffset > annotation.endOffset) {
 			invalidOffsets = true;

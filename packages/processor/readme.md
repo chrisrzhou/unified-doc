@@ -1,6 +1,6 @@
 # processor
 
-[**unified**][unified] [processor][processor] for processing content and annotations in `unified-doc`.
+[unified][unified] [processor][processor] for processing content and annotations in `unified-doc`.
 
 
 ## Install
@@ -9,7 +9,7 @@ yarn add @unified-doc/processor
 ```
 
 ## Description
-`unified-doc` uses a unified/[unified][unified] processor to map content into [hast][hast] trees.  It provides a single entry point to define content (e.g. text, HTML, markdown) and converts it into a common syntax tree where an ecosytem of hast plugins can operate on it.
+[**unified-doc**][unified-doc] uses a unified/[unified][unified] processor to map content into [hast][hast] trees.  It provides a single entry point to define content (e.g. text, HTML, markdown) and converts it into a common syntax tree where an ecosytem of hast plugins can operate on it.
 
 
 ## Use
@@ -26,7 +26,7 @@ markdownProcessor.parse('# heading');
 htmlProcessor.parse('\na to the \nb to the \n\nc to the d');
 ```
 
-Yields [hast][hast] trees.  To compile the hast tree, please use a relevant `unified` compiler that works with `hast`, e.g.
+Yields [hast][hast] trees.  To compile the hast tree, please use a relevant [unified][unified] compiler that works with `hast`, e.g.
 
 ```js
 import { createProcessor } from '@unified-doc/processor';
@@ -65,6 +65,7 @@ export type ContentType = 'html' | 'markdown' | 'text';
 [processor]: https://github.com/unifiedjs/unified#processor
 [sanitize-schema]: https://github.com/syntax-tree/hast-util-sanitize#schema
 [unified]: https://unifiedjs.com/
+[unified-doc]: https://github.com/chrisrzhou/unified-doc
 
 <!-- Hack to make importing mdx work in docz/gatsby... -->
 export default ({ children }) => children

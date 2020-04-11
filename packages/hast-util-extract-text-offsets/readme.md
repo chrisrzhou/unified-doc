@@ -1,5 +1,5 @@
 # hast-util-extract-text-offsets
-[**hast**][hast] utility to extract text-based offsets and unist positions of text nodes.
+[hast][hast] utility to extract text-based offsets and unist positions of text nodes.
 
 
 ## Install
@@ -11,7 +11,7 @@ yarn add @unified-doc/hast-util-extract-text-offsets
 ## Description
 This utility goes through all text nodes in a [hast][hast] tree and extracts text offsets into a provided extractor callback.
 
-A `TextOffset` contains the following positional information:
+A `TextOffset` contains the following information:
 - `position`: the [unist position][position] of the text node.
 - `startOffset`: The offset of the text node's string content relative to the tree's string content.
 - `endOffset`: The offset of the text node's string content relative to the tree's string content.

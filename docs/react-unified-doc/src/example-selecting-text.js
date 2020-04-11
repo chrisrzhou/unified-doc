@@ -41,7 +41,7 @@ export default function ExampleSelectingText() {
 			<Annotations
 				annotations={annotations}
 				onClearAnnotations={() => setAnnotations([])}
-				onRemoveAnnotation={annotationToRemove =>
+				onRemoveAnnotation={(annotationToRemove) =>
 					setAnnotations(
 						annotations.filter(({ id }) => id !== annotationToRemove.id),
 					)
@@ -65,7 +65,7 @@ export default function ExampleSelectingText() {
 	const docProps = {
 		annotations,
 		content,
-		onSelectText: annotation => {
+		onSelectText: (annotation) => {
 			setAnnotations([
 				...annotations,
 				{

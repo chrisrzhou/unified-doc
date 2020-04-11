@@ -12,15 +12,15 @@ export interface SelectedText extends Annotation {
 }
 
 export interface Props {
-	/** An array of annotations to apply to the content */
-	annotations?: Annotation[];
-	/** Provide optional CSS to style the document */
-	className?: string;
 	/** Source content represented as a string */
 	content: string;
 	/** Supported content type ('html', 'markdown', 'text') */
 	contentType?: ContentType;
-	/** Valid rehype plugins can be applied after annotations.  Note that this will disable the `onSelectText` callback because we can no longer guarantee the relative text offsets if other plugins mutate the tree. */
+	/** An array of annotations to apply to the content */
+	annotations?: Annotation[];
+	/** Provide optional CSS to style the document */
+	className?: string;
+	/** Valid rehype plugins can be applied after annotations.  Note that this will disable the `onSelectText` callback because we can no longer guarantee accurate text positions since other plugins may mutate the tree. */
 	rehypePlugins?: Plugin[];
 	/** HTML Sanitize schema (see https://github.com/syntax-tree/hast-util-sanitize#schema) */
 	sanitizeSchema?: { [key: string]: any };
@@ -32,8 +32,8 @@ export interface Props {
 	onAnnotationMouseEnter?: AnnotationCallback;
 	/** Callback to capture annotation object and mouse leave event */
 	onAnnotationMouseLeave?: AnnotationCallback;
-	/** Callback to capture selected text and mouse up event */
+	/** Callback to capture selected text and mouse up event.  The `SelectedText` extends the `Annotation` object, and can be used to updated the `annotations` prop in a controlled manner.  This callback is disabled if `rehypePlugins` are specified. */
 	onSelectText?: (selectedText: SelectedText, e?: MouseEvent) => void;
 }
 
-export default function ReactUnifiedDocument(props: Props): JSX.Element;
+export default function Document(props: Props): JSX.Element;

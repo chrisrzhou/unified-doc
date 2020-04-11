@@ -9,7 +9,8 @@ import unified from 'unified';
 
 import coerceTextPositionsUtil from './hast-util-coerce-text-positions';
 
-const createPlugin = transform => (...args) => tree => transform(tree, ...args);
+const createPlugin = (transform) => (...args) => (tree) =>
+	transform(tree, ...args);
 
 const coerceTextPositions = createPlugin(coerceTextPositionsUtil);
 const sanitize = createPlugin(sanitizeUtil);
@@ -19,10 +20,7 @@ export function createProcessor(contentType = 'text', sanitizeSchema = {}) {
 
 	switch (contentType) {
 		case 'markdown':
-			processor
-				.use(markdown)
-				.use(remark2rehype)
-				.use(coerceTextPositions);
+			processor.use(markdown).use(remark2rehype).use(coerceTextPositions);
 			break;
 		case 'html':
 			processor.use(html);

@@ -8,6 +8,6 @@ import ExampleStyling from './src/example-styling';
 
 # Styling
 
-`react-unified-doc` renders a HTML document that maintains high fidelity with the source content.  The only additional rendered nodes are `mark` elements (with `data-start` and `data-end` attributes), which are created to indicate annotated text nodes.  This low-level and non-opinionated approach to rendering and annotating documents allows for simple customizations with familiar CSS.
+`react-unified-doc` renders a HTML document that maintains high fidelity with the source content.  The only modifications made to the document is semantic additions of `mark` nodes (with `data-start` and `data-end` attributes) when `text` nodes are annotated.  This non-opinionated approach allows for easy document customizations with familiar web technologies such as CSS.
 
 <ExampleStyling />

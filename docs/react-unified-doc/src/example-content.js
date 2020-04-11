@@ -12,9 +12,11 @@ const contentTypes = [
 
 export default function ExampleContent() {
 	const [contentType, setContentType] = useState('html');
-	const [enableCustomSanitize, setEnableCustomSanitize] = useState(true);
+	const [enableCustomSanitizeSchema, setEnableCustomSanitizeSchema] = useState(
+		false,
+	);
 
-	const sanitizeSchema = enableCustomSanitize
+	const sanitizeSchema = enableCustomSanitizeSchema
 		? { attributes: { '*': ['className', 'style'] } }
 		: {};
 
@@ -27,19 +29,19 @@ export default function ExampleContent() {
 				label="Content Type"
 				value={contentType}
 				options={contentTypes}
-				onChange={value => {
+				onChange={(value) => {
 					setContentType(value);
 					if (value !== 'html') {
-						setEnableCustomSanitize(false);
+						setEnableCustomSanitizeSchema(false);
 					}
 				}}
 			/>
 			<Checkbox
-				id="custom-sanitize"
-				label="Custom Sanitize"
-				value={enableCustomSanitize}
-				onChange={value => {
-					setEnableCustomSanitize(value);
+				id="custom-sanitize-schema"
+				label="Custom Sanitize Schema"
+				value={enableCustomSanitizeSchema}
+				onChange={(value) => {
+					setEnableCustomSanitizeSchema(value);
 					if (value) {
 						setContentType('html');
 					}

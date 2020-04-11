@@ -10,14 +10,15 @@ import { v4 as uuidv4 } from 'uuid';
 import 'tippy.js/dist/tippy.css';
 import './index.css';
 
-const createPlugin = transform => (...args) => tree => transform(tree, ...args);
+const createPlugin = (transform) => (...args) => (tree) =>
+	transform(tree, ...args);
 
 const annotate = createPlugin(annotateUtil);
 const extractTextOffsets = createPlugin(extractTextOffsetsUtil);
 
 let tooltip;
 
-export default function ReactUnifiedDocument({
+export default function Document({
 	annotations = [],
 	className,
 	content,
@@ -139,7 +140,7 @@ export default function ReactUnifiedDocument({
 		onMouseEnter,
 		onMouseOut,
 	});
-	rehypePlugins.forEach(plugin => {
+	rehypePlugins.forEach((plugin) => {
 		processor.use(plugin);
 	});
 	processor.use(rehype2react, { createElement });

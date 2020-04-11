@@ -1,5 +1,5 @@
 # text-parse
-[**unified**][unified] [parser][parser] to parse text content into a [hast][hast] tree with a single text node.
+[unified][unified] [parser][parser] to parse text content into a [hast][hast] tree with a single text node.
 
 
 ## Install

@@ -53,9 +53,9 @@ export default function ExamplePlugins() {
 		{
 			label: 'Plugins',
 			content: (
-				<ContentArea help="https://github.com/rehypejs/rehype/blob/master/doc/plugins.md">
+				<ContentArea help="Rehype plugins applied:">
 					{JSON.stringify(
-						pluginIds.map(id => plugins[id].name),
+						pluginIds.map((id) => plugins[id].name),
 						null,
 						2,
 					)}
@@ -68,7 +68,7 @@ export default function ExamplePlugins() {
 	const docProps = {
 		annotations,
 		content,
-		rehypePlugins: pluginIds.map(id => plugins[id].plugin),
+		rehypePlugins: pluginIds.map((id) => plugins[id].plugin),
 	};
 
 	return (

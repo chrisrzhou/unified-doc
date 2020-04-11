@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, ContentArea, FlexLayout, Link, Select } from '../../ui';
 
-import ReactUnifiedDoc from './react-unified-doc';
+import Document from './react-unified-doc';
 
 import './doc.css';
 
@@ -15,44 +15,35 @@ export default function ExampleLayout({
 
 	const { annotations, content } = docProps;
 
-	const doc = (
-		<ReactUnifiedDoc className="doc" contentType="html" {...docProps} />
-	);
-
-	const sourceContent = (
-		<ContentArea help="View the source content and annotations applied relative to it.">
-			<ReactUnifiedDoc
-				annotations={annotations}
-				content={content}
-				contentType="text"
-			/>
-		</ContentArea>
-	);
-
 	const sectionOptions = [
 		...sections,
 		{
 			label: 'Source content',
-			content: sourceContent,
+			content: (
+				<ContentArea help="View the source content and annotations applied relative to it.">
+					<Document
+						annotations={annotations}
+						content={content}
+						contentType="text"
+					/>
+				</ContentArea>
+			),
 			value: 'source',
 		},
 	];
 
-	const sectionContent = sectionOptions.find(
-		option => option.value === selectedSection,
-	).content;
-
 	return (
-		<FlexLayout flexDirection="column">
+		<FlexLayout alignItems="flex-start" flexDirection="column">
 			<Link
 				href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/react-unified-doc/src/example-${name}.js
-				`}
-				sx={{ alignSelf: 'flex-start' }}>
+				`}>
 				Source code
 			</Link>
-			<Card>{header}</Card>
+			<Card sx={{ width: '100%' }}>{header}</Card>
 			<FlexLayout>
-				<Card>{doc}</Card>
+				<Card>
+					<Document className="doc" contentType="html" {...docProps} />
+				</Card>
 				<Card sx={{ flex: '0 0 400px' }}>
 					<Select
 						id="view"
@@ -61,7 +52,10 @@ export default function ExampleLayout({
 						value={selectedSection}
 						onChange={setSelectedSection}
 					/>
-					{sectionContent}
+					{
+						sectionOptions.find((option) => option.value === selectedSection)
+							.content
+					}
 				</Card>
 			</FlexLayout>
 		</FlexLayout>

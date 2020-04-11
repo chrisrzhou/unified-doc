@@ -3,14 +3,14 @@ import h from 'hastscript';
 export default function getAnnotatedNodes(node, nodeId, annotationData) {
 	const { allAnnotations, a2n, n2a, callbacks } = annotationData;
 	const nodeAnnotations = (n2a[nodeId] || []).map(
-		annotationId => allAnnotations[annotationId],
+		(annotationId) => allAnnotations[annotationId],
 	);
 
 	// Generate all possible sorted node segments for text node + annotations
 	const offsetsSet = new Set();
 	offsetsSet.add(node.position.start.offset);
 	offsetsSet.add(node.position.end.offset);
-	nodeAnnotations.forEach(nodeAnnotation => {
+	nodeAnnotations.forEach((nodeAnnotation) => {
 		offsetsSet.add(nodeAnnotation.startOffset);
 		offsetsSet.add(nodeAnnotation.endOffset);
 	});
@@ -33,7 +33,7 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 				value,
 				annotations: [],
 			};
-			nodeAnnotations.forEach(nodeAnnotation => {
+			nodeAnnotations.forEach((nodeAnnotation) => {
 				if (
 					(nodeAnnotation.endOffset > nodeSegment.startOffset &&
 						nodeAnnotation.startOffset < nodeSegment.endOffset) ||
@@ -50,7 +50,7 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 	const visited = {};
 	// Construct annotated nodes
 	const annotatedNodes = [];
-	nodeSegments.forEach(nodeSegment => {
+	nodeSegments.forEach((nodeSegment) => {
 		const { annotations, value } = nodeSegment;
 		const node = { type: 'text', value };
 
@@ -62,7 +62,7 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 			annotations
 				.slice()
 				.reverse() // Create inner nodes first
-				.forEach(annotation => {
+				.forEach((annotation) => {
 					const {
 						id: annotationId,
 						anchor,
@@ -73,11 +73,12 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 
 					const properties = {
 						className: classNames,
+						id: annotationId,
 						label,
 						style,
-						onClick: event => onClick(annotation, event),
-						onMouseEnter: event => onMouseEnter(annotation, event),
-						onMouseOut: event => onMouseOut(annotation, event),
+						onClick: (event) => onClick(annotation, event),
+						onMouseEnter: (event) => onMouseEnter(annotation, event),
+						onMouseOut: (event) => onMouseOut(annotation, event),
 					};
 
 					const annotationNodes = a2n[annotationId];
@@ -95,17 +96,14 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 					}
 
 					if (anchor) {
-						annotatedNode = h(
-							'a',
-							{
-								id: annotationId,
-								href: `#${annotationId}`,
-							},
-							h('mark', properties, annotatedNode),
-						);
-					} else {
-						annotatedNode = h('mark', properties, annotatedNode);
+						properties.onClick = () => {
+							window.location.hash = annotationId;
+						};
+
+						properties.dataAnchor = anchor;
 					}
+
+					annotatedNode = h('mark', properties, annotatedNode);
 				});
 
 			annotatedNodes.push(annotatedNode);

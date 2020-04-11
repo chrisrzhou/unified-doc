@@ -3,7 +3,7 @@ import visit from 'unist-util-visit-parents';
 export default function textOffsets(tree, extractor) {
 	const textOffsets = [];
 	let textStartOffset = 0;
-	visit(tree, 'text', node => {
+	visit(tree, 'text', (node) => {
 		const { position, value } = node;
 
 		if (typeof value === 'string' && value && position) {

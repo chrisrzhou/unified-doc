@@ -20,7 +20,7 @@ import validateAnnotations from './validate-annotations';
  * 		- For the current text node, segment the node by checking all possible offset intervals using n2a hashmap.
  * 		- Keep track of relevant data for the node segment (startOffset, endOffset, annotations, value) which will be needed to construct new hast nodes.
  * 		- If nodeSegments do not contain annotations, construct a <text /> node.
- * 		- If nodeSegments contain annotations, construct a <mark /> or <a /> node based on the annotation definition.  Apply annotation definitions and callbacks.  Keep track of which nodeSegments represents the start/end of the annotation
+ * 		- If nodeSegments contain annotations, construct a <mark />  node based on the annotation definition.  Apply annotation definitions and callbacks.  Keep track of which nodeSegments represents the start/end of the annotation
  * - With reference to the current text node, replace it with the annotated nodeSegments by splicing it in place with its siblings under its parent.
  * - Return the mutated tree.
  */
@@ -69,7 +69,7 @@ export default function annotate(tree, annotations, annotationCallbacks = {}) {
 		}
 	});
 
-	Object.keys(allNodes).forEach(nodeId => {
+	Object.keys(allNodes).forEach((nodeId) => {
 		const { node, parent } = allNodes[nodeId];
 		const siblings = parent.children;
 		if (!Array.isArray(siblings)) {

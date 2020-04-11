@@ -415,8 +415,8 @@ describe('index.js', () => {
 		}
 
 		const [matchedNode] = annotatedTree.children;
-		expect(matchedNode.tagName).toEqual('a');
-		expect(matchedNode.properties.href).toEqual('#annotation-permalink');
+		expect(matchedNode.tagName).toEqual('mark');
 		expect(matchedNode.properties.id).toEqual('annotation-permalink');
+		expect(matchedNode.properties.dataAnchor).toEqual(true);
 	});
 });
