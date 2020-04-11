@@ -3,7 +3,7 @@ import Document from '../../../packages/react-unified-doc/src';
 
 import { Card, ContentArea, FlexLayout, Link, Select } from '../../ui';
 
-import './doc.css';
+import '../../src/doc.css';
 
 export default function Layout({ docProps, header, name, sections = [] }) {
 	const [selectedSection, setSelectedSection] = useState('source');

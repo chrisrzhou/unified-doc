@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { content } from './data';
 import Layout from './layout';
+import { content } from '../../src/data';
 import {
 	Annotations,
 	Checkbox,

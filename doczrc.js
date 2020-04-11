@@ -3,7 +3,10 @@ export default {
 	menu: [
 		'Home',
 		'Readme',
-		'Gallery',
+		{
+			name: 'Gallery',
+			menu: ['EBook', 'Search', 'Comments', 'Transform', 'Diff'],
+		},
 		{
 			name: 'react-unified-doc',
 			menu: [

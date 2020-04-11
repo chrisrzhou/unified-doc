@@ -1,0 +1,18 @@
+import React from 'react';
+import { Input as ThemeUIInput } from 'theme-ui';
+
+import { Label } from '.';
+
+export function Input({ id, label, placeholder, value, onChange }) {
+	return (
+		<Label htmlFor={id}>
+			{label}
+			<ThemeUIInput
+				id={id}
+				placeholder={placeholder}
+				value={value}
+				onChange={(event) => onChange(event.target.value)}
+			/>
+		</Label>
+	);
+}

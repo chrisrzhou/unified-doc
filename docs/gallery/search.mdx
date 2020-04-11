@@ -4,10 +4,14 @@ menu: Gallery
 route: gallery/search
 ---
 
-import Search from './src/ebook';
+import Search from './src/search';
 
 # Search
 
-An example showing how to search on a document and highlight matched entries and jumping to a specific entry.
+An example showing how to search a document and jump to the matched entry when clicking on a search result snippet.
+
+This example uses a naive Javascript `match` implementation to generate search results snippets.  Search result snippets may contain 'broken' DOM substrings. You can expand on this example by implementing search features with formal libraries or integrate with backend services through API calls.
+
+> Note that in the future, we could implement a `unified` approach to search within `text` nodes of `hast` trees with a `hast-util-text-search` utility.
 
 <Search />

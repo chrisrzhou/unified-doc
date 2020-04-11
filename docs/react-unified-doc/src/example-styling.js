@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-import { annotations, content, cssProperties } from './data';
 import Layout from './layout';
+import { annotations, content, cssProperties } from '../../src/data';
 import { ContentArea, Select } from '../../ui';
 
 const classNames = [
 	{ label: 'doc', value: 'doc' },
 	{ label: 'doc-dark', value: 'doc-dark' },
 	{ label: 'doc-yucks', value: 'doc-yucks' },
+	{ label: 'doc-mini', value: 'doc-mini' },
 ];
 
 export default function ExampleStyling() {

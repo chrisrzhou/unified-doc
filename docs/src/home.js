@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import Document from '../../packages/react-unified-doc';
 
-import { contentTypes, hast, hastAnnotated } from './data';
+import {
+	contentTypes,
+	hast,
+	hastAnnotated,
+	annotations as initialAnnotations,
+	content,
+} from './data';
 import Section from './section';
 import {
 	AnimatedTrail,
@@ -11,10 +17,7 @@ import {
 	FlexLayout,
 	Text,
 } from '../ui';
-import {
-	annotations as initialAnnotations,
-	content,
-} from '../react-unified-doc/src/data';
+
 import ExampleAnnotations from '../react-unified-doc/src/example-annotations';
 
 import './doc.css';

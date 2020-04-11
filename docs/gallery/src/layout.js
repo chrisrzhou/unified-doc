@@ -3,13 +3,7 @@ import Document from '../../../packages/react-unified-doc/src';
 
 import { Card, FlexLayout, Link } from '../../ui';
 
-import './doc.scss';
-
-const sanitizeSchema = {
-	attributes: {
-		'*': ['className', 'style'],
-	},
-};
+import '../../src/doc.css';
 
 export default function Layout({
 	docProps,
@@ -31,12 +25,7 @@ export default function Layout({
 			)}
 			<FlexLayout>
 				<Card sx={{ flexGrow: 1 }}>
-					<Document
-						className="doc"
-						contentType="html"
-						sanitizeSchema={sanitizeSchema}
-						{...docProps}
-					/>
+					<Document className="doc" contentType="html" {...docProps} />
 				</Card>
 				{sidebar && <Card sx={{ flex: '0 0 400px' }}>{sidebar}</Card>}
 			</FlexLayout>
