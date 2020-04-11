@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { annotations, content, cssProperties } from './data';
-import ExampleLayout from './example-layout';
+import Layout from './layout';
 import { ContentArea, Select } from '../../ui';
 
 const classNames = [
@@ -42,7 +42,7 @@ export default function ExampleStyling() {
 	};
 
 	return (
-		<ExampleLayout
+		<Layout
 			docProps={docProps}
 			header={header}
 			name="styling"

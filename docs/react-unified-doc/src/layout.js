@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import { Card, ContentArea, FlexLayout, Link, Select } from '../../ui';
+import Document from '../../../packages/react-unified-doc/src';
 
-import Document from './react-unified-doc';
+import { Card, ContentArea, FlexLayout, Link, Select } from '../../ui';
 
 import './doc.css';
 
-export default function ExampleLayout({
-	docProps,
-	header,
-	name,
-	sections = [],
-}) {
+export default function Layout({ docProps, header, name, sections = [] }) {
 	const [selectedSection, setSelectedSection] = useState('source');
 
 	const { annotations, content } = docProps;
@@ -41,7 +36,7 @@ export default function ExampleLayout({
 			</Link>
 			<Card sx={{ width: '100%' }}>{header}</Card>
 			<FlexLayout>
-				<Card>
+				<Card sx={{ flexGrow: 1 }}>
 					<Document className="doc" contentType="html" {...docProps} />
 				</Card>
 				<Card sx={{ flex: '0 0 400px' }}>

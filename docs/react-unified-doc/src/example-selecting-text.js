@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { content } from './data';
-import ExampleLayout from './example-layout';
+import Layout from './layout';
 import {
 	Annotations,
 	Checkbox,
@@ -25,7 +25,7 @@ export default function ExampleSelectingText() {
 		<FlexLayout flexDirection="column">
 			<FlexLayout alignItems="flex-end">
 				<Select
-					id="annotationt-type"
+					id="annotation-type"
 					label="Annotation type"
 					options={annotationTypes}
 					value={annotationType}
@@ -79,7 +79,7 @@ export default function ExampleSelectingText() {
 	};
 
 	return (
-		<ExampleLayout
+		<Layout
 			docProps={docProps}
 			header={header}
 			name="selecting-text"

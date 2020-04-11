@@ -3,6 +3,7 @@ export default {
 	menu: [
 		'Home',
 		'Readme',
+		'Gallery',
 		{
 			name: 'react-unified-doc',
 			menu: [
@@ -14,10 +15,6 @@ export default {
 				'Styling',
 				'Plugins',
 			],
-		},
-		{
-			name: 'Gallery',
-			menu: [],
 		},
 		'hast-util-annotate',
 		'hast-util-extract-text-offsets',

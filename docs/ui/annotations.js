@@ -10,7 +10,7 @@ export function Annotations({
 	return (
 		<FlexLayout alignItems="center" flexWrap="wrap" space="xs">
 			{annotations.map((annotation) => {
-				const { anchor, id, value, classNames } = annotation;
+				const { anchor, id, value, classNames = [] } = annotation;
 				const text = (
 					<Text
 						className={classNames.join(' ')}

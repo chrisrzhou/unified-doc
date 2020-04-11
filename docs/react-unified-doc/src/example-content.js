@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { htmlContent, markdownContent } from './data';
-import ExampleLayout from './example-layout';
+import Layout from './layout';
 import { Checkbox, ContentArea, FlexLayout, Select } from '../../ui';
 
 const contentTypes = [
@@ -69,7 +69,7 @@ export default function ExampleContent() {
 	};
 
 	return (
-		<ExampleLayout
+		<Layout
 			docProps={docProps}
 			header={header}
 			name="content"

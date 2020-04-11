@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Document from '../../packages/react-unified-doc';
 
 import { contentTypes, hast, hastAnnotated } from './data';
 import Section from './section';
@@ -10,7 +11,6 @@ import {
 	FlexLayout,
 	Text,
 } from '../ui';
-import Document from '../react-unified-doc/src/react-unified-doc';
 import {
 	annotations as initialAnnotations,
 	content,

@@ -3,7 +3,7 @@ import highlight from 'rehype-highlight';
 import toc from 'rehype-toc';
 
 import { annotations, htmlContent as content } from './data';
-import ExampleLayout from './example-layout';
+import Layout from './layout';
 import { Checkbox, ContentArea, FlexLayout } from '../../ui';
 
 import './rehype-highlight.css';
@@ -72,7 +72,7 @@ export default function ExamplePlugins() {
 	};
 
 	return (
-		<ExampleLayout
+		<Layout
 			docProps={docProps}
 			header={header}
 			name="plugins"

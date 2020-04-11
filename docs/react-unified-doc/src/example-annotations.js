@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { annotations as initialAnnotationsData, content } from './data';
-import ExampleLayout from './example-layout';
+import Layout from './layout';
 import { Checkbox, ContentArea, FlexLayout, Text } from '../../ui';
 
 function getId(annotation) {
@@ -100,7 +100,7 @@ export default function ExampleAnnotations() {
 	};
 
 	return (
-		<ExampleLayout
+		<Layout
 			docProps={docProps}
 			header={header}
 			name="annotations"
