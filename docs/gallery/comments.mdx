@@ -8,8 +8,20 @@ import Comments from './src/comments';
 
 # Comments
 
-This example shows how commenting can be implemented using just the `annotations` prop and rendering comment nodes relative to the annotated nodes.  Since all annotated nodes contain the `data-id` attribute, you can select these nodes with the relevant document `querySelector`. Note that the `id` attribute is conveniently and *uniquely* provided for annotated nodes that have the `data-start="true"` attribute values.  This example demonstrates how to make use of the `data-start`, `data-end` attributes to determine how comment nodes are placed.
+## Description
+This example shows how commenting (and other similar custom post-annotation rendering) can be implemented using just the `annotations` prop and rendering comment nodes relative to the annotated nodes.
 
-The comment data is mocked in a simple way using the array index as data.  This implementation uses an effect hook and vanilla DOM methods to render comment nodes with cleanup effects.  You can expand on this example and implement it with a more robust and formal rendering strategy.
+## Implementation
+The comment data is mocked in a simple way using the array index as data.  This implementation uses an effect hook and vanilla DOM methods to render comment nodes.
+
+Since all annotated nodes contain the `data-id` attribute, you can select these nodes with the relevant document `querySelector`. Note that the `id` attribute is conveniently and *uniquely* provided for annotated nodes that have the `data-start="true"` attribute values.  This example uses the `data-start`, `data-end` attributes to determine how comment nodes are placed.
+
+## Improvements
+You can improve this example by formally building out a commenting workflow with relevant data.  Note that the `annotation` object could hold onto the `comments` data related to the annotation.  You can also improve the comment nodes with better CSS and design.
+
+## Concepts
+- Custom Post-annotation rendering with web technologies.
+- Annotation `data-` attributes.
+- Custom CSS.
 
 <Comments />

@@ -8,10 +8,16 @@ import Search from './src/search';
 
 # Search
 
-An example showing how to search a document and jump to the matched entry when clicking on a search result snippet.
+## Description
+An example showing how to search a document, and jump to the matched entry in the document when clicking on a search results.
 
-This example uses a naive Javascript `match` implementation to generate search result snippets.  Search result snippets may contain 'broken' DOM substrings. You can expand on this example by using formal search libraries or integrating with a backend search API.
+## Implementation
+This example uses a naive Javascript `match` implementation to generate search result snippets.  These snippets assume the `annotation` shape naturally, and can therefore be easily integrated as annotations in the document.  Linking to the annotated node in the document is done using default browser behaviors with anchor links.
 
-> Note that in the future, it is possible to implement a `unified` approach to search `text` nodes of `hast` trees (e.g. `hast-util-text-search`).
+## Improvements
+You can use formal search libraries or integrate with a backend search API.  Note that the snippets algorithm used in this example is naive, and you may notice broken 'DOM' substrings.  In the future, it is possible to implement a `unified` approach to search `text` nodes of `hast` trees (e.g. `hast-util-text-search`).
+
+## Concepts
+- Permalinks to annotated nodes.
 
 <Search />

@@ -6,6 +6,7 @@ import { content } from '../../src/data';
 import { FlexLayout, Input, Link, Text } from '../../ui';
 
 const SNIPPET_CHARS = 20;
+const MIN_QUERY_LENGTH = 3;
 
 function Search() {
 	const [searchResults, setSearchResults] = useState([]);
@@ -19,7 +20,7 @@ function Search() {
 		event.preventDefault();
 		const searchResults = [];
 		let match;
-		if (searchInput) {
+		if (searchInput && searchInput.length >= MIN_QUERY_LENGTH) {
 			while ((match = searchInputRegExp.exec(content)) !== null) {
 				const startOffset = match.index;
 				const endOffset = searchInputRegExp.lastIndex;
@@ -55,12 +56,12 @@ function Search() {
 					}}
 				/>
 			</form>
-			{searchQuery.length < 3 && (
+			{searchQuery.length < MIN_QUERY_LENGTH && (
 				<Text variant="help">
-					Search term must be at least 3 characters long.
+					Search term must be at least {MIN_QUERY_LENGTH} characters long.
 				</Text>
 			)}
-			{searchQuery && searchResults.length === 0 && (
+			{searchQuery.length >= MIN_QUERY_LENGTH && searchResults.length === 0 && (
 				<Text variant="help">No results found.</Text>
 			)}
 			<ul>
