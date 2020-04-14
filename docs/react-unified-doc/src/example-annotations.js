@@ -9,7 +9,6 @@ function getId(annotation) {
 }
 
 const initialEnableLabels = true;
-const initialEnablePermalinks = false;
 const initialEnableTooltips = false;
 
 export default function ExampleAnnotations() {
@@ -17,16 +16,12 @@ export default function ExampleAnnotations() {
 		initialAnnotationsData,
 	);
 	const [enableLabels, setEnableLabels] = useState(initialEnableLabels);
-	const [enablePermalinks, setEnablePermalinks] = useState(
-		initialEnablePermalinks,
-	);
 	const [enableTooltips, setEnableTooltips] = useState(initialEnableTooltips);
 	const [hoveredAnnotation, setHoveredAnnotation] = useState(null);
 	const [clickedAnnotation, setClickedAnnotation] = useState(null);
 
 	const annotations = annotationsData.map((annotation) => ({
 		...annotation,
-		anchor: enablePermalinks,
 		label: enableLabels ? annotation.label : undefined,
 	}));
 
@@ -44,12 +39,6 @@ export default function ExampleAnnotations() {
 					label="Enable Tooltips"
 					value={enableTooltips}
 					onChange={setEnableTooltips}
-				/>
-				<Checkbox
-					id="enable-permalinks"
-					label="Enable permalinks"
-					value={enablePermalinks}
-					onChange={setEnablePermalinks}
 				/>
 			</FlexLayout>
 			<Text variant="help">
@@ -87,13 +76,12 @@ export default function ExampleAnnotations() {
 				...annotationsData,
 				{
 					...annotation,
-					anchor: enablePermalinks,
 					label: 'User-selected',
 					tooltip: `You created "${annotation.value.slice(
 						0,
 						30,
 					)}…" at ${new Date()}`,
-					classNames: ['custom-highlight'],
+					classNames: ['important'],
 				},
 			]);
 		},

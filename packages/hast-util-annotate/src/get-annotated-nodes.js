@@ -63,17 +63,11 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 				.slice()
 				.reverse() // Create inner nodes first
 				.forEach((annotation) => {
-					const {
-						id: annotationId,
-						anchor,
-						classNames,
-						label,
-						style,
-					} = annotation;
+					const { id: annotationId, classNames, label, style } = annotation;
 
 					const properties = {
 						className: classNames,
-						id: annotationId,
+						dataId: annotationId,
 						label,
 						style,
 						onClick: (event) => onClick(annotation, event),
@@ -88,19 +82,12 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 						visited[annotationNodeId] = true;
 						if (annotationNodeIndex === 0) {
 							properties.dataStart = true;
+							properties.id = annotationId; // Assign ID attribute only to the first annotated node to ensure uniqueness of IDs in the marked document nodes.
 						}
 					}
 
 					if (annotation.endOffset === nodeSegment.endOffset) {
 						properties.dataEnd = true;
-					}
-
-					if (anchor) {
-						properties.onClick = () => {
-							window.location.hash = annotationId;
-						};
-
-						properties.dataAnchor = anchor;
 					}
 
 					annotatedNode = h('mark', properties, annotatedNode);

@@ -9,11 +9,11 @@ import Ebook from './src/ebook';
 # Ebook
 
 An Ebook example supporting simple bookmark management.
-- To create a bookmark, select some text and confirm the action.
-- To remove a bookmark, click on the marked text and confirm the action.
+- To create a bookmark, select some text in the document and confirm the action.
+- To remove a bookmark, click on the marked text in the document and confirm the action.
 - Configure the bookmark category to visually distinguish types of bookmarks.
 - Click on the bookmark tags to jump to the bookmark in the document.
 
-This example is simplistic and uses the `window.confirm` method to confirm bookmark actions.  You can expand on this example by using the mouse event returned by the relevant callback props (`onAnnotationClick`, `onSelectText`) to build more advanced and interactive user experiences.
+This example is simplistic and uses the `window.confirm` method to implement bookmark actions.  You can expand on this example by using the mouse event returned by the relevant callback props (`onAnnotationClick`, `onSelectText`) to build more advanced and interactive user experiences.
 
 <Ebook />

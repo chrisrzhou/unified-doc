@@ -13,8 +13,6 @@ export interface Annotation {
 	startOffset: number;
 	/** End offset relative to the source content */
 	endOffset: number;
-	/** If true, will update the `location.hash` using the annotation ID as the hash.  Useful for creating annotation permalinks. Note that this disables the annotation `onClick` handler since the intention is explicit to create anchor links for the `onClick` event. */
-	anchor?: boolean;
 	/** CSS classnames that will be applied on the annotated nodes */
 	classNames?: string[];
 	/** If true, will add the value to the `label` tag attribute.  Useful for displaying the label with custom CSS:before selectors. */

@@ -8,6 +8,8 @@ import ExamplePlugins from './src/example-plugins';
 
 # Plugins
 
-Apply valid [rehype](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md) plugins to supercharge your document.  Note that annotations may not work on nodes that are mutated (added/updated/removed) by plugins.  The `onSelectText` callback is also disabled because we can no longer guarantee accurate text positions since other plugins may mutate the tree.
+Apply valid [rehype](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md) plugins to supercharge your document.
+
+> Note that the `annotations` and `onSelectText` props may not behave correctly if plugins modify the rendered content of the document since the these props behave correctly in relation to the source content.
 
 <ExamplePlugins />

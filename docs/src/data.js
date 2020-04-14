@@ -59,7 +59,7 @@ export const hastAnnotated = {
 					type: 'element',
 					tagName: 'mark',
 					properties: {
-						class: ['custom-highlight'],
+						class: ['important'],
 					},
 					children: [
 						{
@@ -86,7 +86,7 @@ export const hastAnnotated = {
 export const annotations = [
 	{
 		id: uuidv4(),
-		startOffset: 0,
+		startOffset: 1,
 		endOffset: 200,
 		label: 'default',
 		type: 'default',
@@ -111,21 +111,30 @@ export const annotations = [
 	},
 	{
 		id: uuidv4(),
-		startOffset: 3000,
+		startOffset: 3200,
 		endOffset: 3500,
-		label: 'redline',
-		type: 'redline',
-		classNames: ['redline'],
+		label: 'quote',
+		type: 'quote',
+		classNames: ['quote'],
 		tooltip: 'annotated by Jane (2 weeks ago)',
 	},
 	{
 		id: uuidv4(),
 		startOffset: 4000,
 		endOffset: 4500,
-		label: 'custom highlight',
-		type: 'custom highlight',
-		classNames: ['custom-highlight'],
+		label: 'important',
+		type: 'important',
+		classNames: ['important'],
 		tooltip: 'marked as HIGH PRIORITY by Jill (2 days ago)',
+	},
+	{
+		id: uuidv4(),
+		startOffset: 5000,
+		endOffset: 5500,
+		label: 'redline',
+		type: 'redline',
+		classNames: ['redline'],
+		tooltip: 'annotated by Jane (2 weeks ago)',
 	},
 ];
 
@@ -279,20 +288,48 @@ export const cssProperties = `
 	font-size: 12px;
 }
 
-.custom-highlight {
+.doc-mini {
+	font-size: 6px;
+	max-height: 50vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.important {
 	background: orange;
 	border-bottom: 1px solid black;
 	border-top: 1px solid black;
+	font-weight: bold;
 }
 
-.custom-highlight[data-start="true"] {
+.important[data-start="true"] {
 	border-left: 1px solid black;
 	padding-left: 2px;
 }
 
-.custom-highlight[data-end="true"] {
+.important[data-end="true"] {
 	border-right: 1px solid black;
 	padding-right: 2px;
+}
+
+.quote {
+	color: #666666;
+	background: #dddddd;
+	border-bottom: 1px solid #999999;
+	border-top: 1px solid #999999;
+	font-style: italic;
+}
+
+.quote[data-start="true"] {
+	border-left: 1px solid #bbbbbb;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+.quote[data-end="true"] {
+	border-right: 1px solid #bbbbbb;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 .redline {

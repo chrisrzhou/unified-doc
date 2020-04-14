@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (2020-03-30)
+## 0.1.0 (2020-04-19)
 Official release! Check out the [docs][docs] to get started!
 
 ### react-unified-doc

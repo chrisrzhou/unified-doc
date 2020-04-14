@@ -6,18 +6,14 @@ import { Annotations, FlexLayout, Select } from '../../ui';
 
 const bookmarkCategories = [
 	{ label: 'default', value: 'default' },
-	{ label: 'quote', value: 'quote' },
 	{ label: 'important', value: 'important' },
+	{ label: 'quote', value: 'quote' },
+	{ label: 'redline', value: 'redline' },
 ];
 
 function Ebook() {
 	const [annotations, setAnnotations] = useState([]);
 	const [bookmarkCategory, setbookmarkCategory] = useState('default');
-
-	const annotationsWithPermalinks = annotations.map((annotation) => ({
-		...annotation,
-		anchor: true,
-	}));
 
 	const header = (
 		<FlexLayout flexDirection="column" space="xs">
@@ -29,7 +25,7 @@ function Ebook() {
 				onChange={setbookmarkCategory}
 			/>
 			<Annotations
-				annotations={annotationsWithPermalinks}
+				annotations={annotations}
 				onClearAnnotations={() => setAnnotations([])}
 				onRemoveAnnotation={(annotationToRemove) =>
 					setAnnotations(

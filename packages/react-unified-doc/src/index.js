@@ -43,10 +43,7 @@ export default function Document({
 				selection.getBookmark(docRef.current).rangeBookmarks[0] || {};
 
 			const canSelect =
-				rehypePlugins.length === 0 &&
-				onSelectText &&
-				textOffsets &&
-				bookmark.end > bookmark.start;
+				onSelectText && textOffsets && bookmark.end > bookmark.start;
 			if (!canSelect) {
 				return;
 			}

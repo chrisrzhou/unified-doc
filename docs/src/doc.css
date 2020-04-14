@@ -23,37 +23,28 @@
 	overflow-y: auto;
 }
 
-.custom-highlight {
+.important {
 	background: orange;
 	border-bottom: 1px solid black;
 	border-top: 1px solid black;
+	font-weight: bold;
 }
 
-.custom-highlight[data-start="true"] {
+.important[data-start="true"] {
 	border-left: 1px solid black;
 	padding-left: 2px;
 }
 
-.custom-highlight[data-end="true"] {
+.important[data-end="true"] {
 	border-right: 1px solid black;
 	padding-right: 2px;
 }
 
-.redline {
-	background-color: inherit;
-	text-decoration: underline;
-	text-decoration-color: red;
-}
-
-.tippy-box {
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	font-size: 12px;
-}
-
 .quote {
 	color: #666666;
-	background: #eeeeee;
-	border-color: #999999;
+	background: #dddddd;
+	border-bottom: 1px solid #999999;
+	border-top: 1px solid #999999;
 	font-style: italic;
 }
 
@@ -69,7 +60,13 @@
 	border-bottom-right-radius: 8px;
 }
 
-.important {
-	background: gold;
-	font-weight: bold;
+.redline {
+	background-color: inherit;
+	text-decoration: underline;
+	text-decoration-color: red;
+}
+
+.tippy-box {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 12px;
 }

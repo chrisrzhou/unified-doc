@@ -20,7 +20,7 @@ export interface Props {
 	annotations?: Annotation[];
 	/** Provide optional CSS to style the document */
 	className?: string;
-	/** Valid rehype plugins can be applied after annotations.  Note that this will disable the `onSelectText` callback because we can no longer guarantee accurate text positions since other plugins may mutate the tree. */
+	/** Valid rehype plugins can be applied after annotations.  `annotations` and `onSelectText` prop may misbehave depending on how the plugins mutate the rendered content relative to the source content. */
 	rehypePlugins?: Plugin[];
 	/** HTML Sanitize schema (see https://github.com/syntax-tree/hast-util-sanitize#schema) */
 	sanitizeSchema?: { [key: string]: any };
@@ -32,7 +32,7 @@ export interface Props {
 	onAnnotationMouseEnter?: AnnotationCallback;
 	/** Callback to capture annotation object and mouse leave event */
 	onAnnotationMouseLeave?: AnnotationCallback;
-	/** Callback to capture selected text and mouse up event.  The `SelectedText` extends the `Annotation` object, and can be used to updated the `annotations` prop in a controlled manner.  This callback is disabled if `rehypePlugins` are specified. */
+	/** Callback to capture selected text and mouse up event.  The `SelectedText` extends the `Annotation` object, and can be used to updated the `annotations` prop in a controlled manner.  Note that the this callback may not behave correctly if plugins modify the text content of the document since the callback is applied in relation to the source content. */
 	onSelectText?: (selectedText: SelectedText, e?: MouseEvent) => void;
 }
 

@@ -21,9 +21,10 @@ yarn add @unified-doc/react-unified-doc
 `react-unified-doc` provides a [React][react] wrapper around the [**unified-doc**][unified-doc] project to render content.  It uses the [unified][unified] ecosystem to parse, transform and render content through [rehype][rehype] plugins.  Supported source content (`text`, `markdown`, `html`) is parsed into a [hast][hast] tree which is then marked up with React into a safely sanitized HTML document.  This document is *non-opinionated* and maintains *high fidelity* with the source content, and supports easy customizations with standard web technologies.
 
 Annotating documents is easily accomplished by declaratively specifying the `annotations` prop. The annotation algorithm is a pure *semantic addition* to the document converting matching `text` nodes into `<mark />` tags, and leaves the rest of the document unchanged.  An annotation is an object containing the following information:
+- `id`: unique ID to identify the annotation.  Useful for assigning unique ID to the rendered DOM element.
 - `startOffset`, `endOffset`: positional string offsets relative to the source content.
 - `classNames`, `style`: ways to customize the annotated nodes.
-- `anchor`, `label`: support features such as anchor permalinks or rendering a label for the annotation.
+- `label`: render label above the annotated node.
 - any other data that is useful for working with annotation callbacks.
 
 Various annotation callbacks (click, hover, tooltips), and text-selection callbacks allow for building interactive applications involving rendering and annotating documents.
@@ -44,7 +45,7 @@ interface Props {
 	annotations?: Annotation[];
 	/** Provide optional CSS to style the document */
 	className?: string;
-	/** Valid rehype plugins can be applied after annotations.  Note that this will disable the `onSelectText` callback because we can no longer guarantee accurate text positions since other plugins may mutate the tree. */
+	/** Valid rehype plugins can be applied after annotations.  `annotations` and `onSelectText` prop may misbehave depending on how the plugins mutate the rendered content relative to the source content. */
 	rehypePlugins?: Plugin[];
 	/** HTML Sanitize schema (see https://github.com/syntax-tree/hast-util-sanitize#schema) */
 	sanitizeSchema?: { [key: string]: any };
@@ -56,7 +57,7 @@ interface Props {
 	onAnnotationMouseEnter?: AnnotationCallback;
 	/** Callback to capture annotation object and mouse leave event */
 	onAnnotationMouseLeave?: AnnotationCallback;
-	/** Callback to capture selected text and mouse up event.  The `SelectedText` extends the `Annotation` object, and can be used to updated the `annotations` prop in a controlled manner.  This callback is disabled if `rehypePlugins` are specifieds */
+	/** Callback to capture selected text and mouse up event.  The `SelectedText` extends the `Annotation` object, and can be used to updated the `annotations` prop in a controlled manner.  Note that the this callback may not behave correctly if plugins modify the text content of the document since the callback is applied in relation to the source content. */
 	onSelectText?: (selectedText: SelectedText, e?: MouseEvent) => void;
 }
 ```

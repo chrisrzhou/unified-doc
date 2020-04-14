@@ -52,7 +52,7 @@ Renderers should use the `processor` module internally so that it can support al
 
 One of the more important and useful features when rendering documents is supporting annotations.  Here are some use cases of annotations in common document workflows:
 - *Highlighting*: Text content is highlighted in the document with custom styles.  This is the broadest domain and there are many UIUX implementations to tailored for specific document workflows.
-- *Bookmarking*: Loading a document with a valid anchor link will scroll to the bookmarked annotation.
+- *Bookmarking*: Loading a document with a and clicking on a valid anchor link will scroll to the bookmarked annotation.
 - *Commenting*: Clicking on an annotation loads associated comments.
 - *Redlining*: Text content is underlined, showing the difference between two versions of the document.
 
@@ -89,13 +89,13 @@ Useful infomation about the project:
 - Tests are managed with `jest`.
 - Docs are managed with `docz`.
 - Todos:
+	- [ ] `mark` and whitespace text nodes may not always be valid child elements (e.g. invalid with `tr`, `tbody`).  May need to consider using `span` (not-ideal), or potentially ignore the React DOM nesting errors.
   - [ ] Cypress tests for `react-unified-doc`.
   - [ ] Jest tests for `get-annotated-nodes` in `hast-util-annotate`.
+	- [ ] Resolve XO/TS suppressed lint errors, and TODO comments
+	- [ ] Improve Typescript typings.
   - [ ] Export useful annotation utilities for `react-unified-doc`.
   - [ ] Revisit/formalize `hast-util-coerce-text-positions`, `text-parse` implementations.
-	- [ ] Improve Typescript typings.
-	- [ ] Resolve XO/TS suppressed lint errors, and TODO comments
-  - [ ] Add more Gallery examples in `docs` (search, kindle, redlining, elastic-search/server ML/AI annotations, non-annotation (signatures), effects (find/replace using dom selectors))
   - [ ] Review/feedback from [unified][unified] team.
 
 

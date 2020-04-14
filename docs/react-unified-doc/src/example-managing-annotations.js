@@ -2,24 +2,18 @@ import React, { useState } from 'react';
 
 import Layout from './layout';
 import { content } from '../../src/data';
-import {
-	Annotations,
-	Checkbox,
-	ContentArea,
-	FlexLayout,
-	Select,
-} from '../../ui';
+import { Annotations, ContentArea, FlexLayout, Select } from '../../ui';
 
 const annotationTypes = [
 	{ label: 'default', value: 'default' },
-	{ label: 'custom-highlight', value: 'custom-highlight' },
+	{ label: 'important', value: 'important' },
+	{ label: 'quote', value: 'quote' },
 	{ label: 'redline', value: 'redline' },
 ];
 
-export default function ExampleSelectingText() {
+export default function ExampleManagingAnnotations() {
 	const [annotations, setAnnotations] = useState([]);
 	const [annotationType, setAnnotationType] = useState('default');
-	const [enablePermalinks, setEnablePermalinks] = useState(false);
 
 	const header = (
 		<FlexLayout flexDirection="column">
@@ -30,12 +24,6 @@ export default function ExampleSelectingText() {
 					options={annotationTypes}
 					value={annotationType}
 					onChange={setAnnotationType}
-				/>
-				<Checkbox
-					id="enable-permalinks"
-					label="Enable permalinks"
-					value={enablePermalinks}
-					onChange={setEnablePermalinks}
 				/>
 			</FlexLayout>
 			<Annotations
@@ -58,23 +46,39 @@ export default function ExampleSelectingText() {
 					{JSON.stringify(annotations, null, 2)}
 				</ContentArea>
 			),
-			value: 'selecting-text',
+			value: 'managing-annotations',
 		},
 	];
 
 	const docProps = {
 		annotations,
 		content,
+		onAnnotationClick: (annotation) => {
+			// eslint-disable-next-line no-alert
+			const removeAnnotation = window.confirm(
+				'Do you want to remove this annotation?',
+			);
+			if (removeAnnotation) {
+				setAnnotations(annotations.filter(({ id }) => annotation.id !== id));
+			}
+		},
 		onSelectText: (annotation) => {
-			setAnnotations([
-				...annotations,
-				{
-					...annotation,
-					anchor: enablePermalinks,
-					label: annotationType,
-					classNames: annotationType ? [annotationType] : [],
-				},
-			]);
+			const { value } = annotation;
+			// eslint-disable-next-line no-alert
+			const addAnnotation = window.confirm(
+				`Do you want to annotation:\n\n"${
+					value.length < 100 ? value : value.slice(0, 100) + '…'
+				}"?`,
+			);
+			if (addAnnotation) {
+				setAnnotations([
+					...annotations,
+					{
+						...annotation,
+						classNames: [annotationType],
+					},
+				]);
+			}
 		},
 	};
 
@@ -82,7 +86,7 @@ export default function ExampleSelectingText() {
 		<Layout
 			docProps={docProps}
 			header={header}
-			name="selecting-text"
+			name="managing-annotations"
 			sections={sections}
 		/>
 	);

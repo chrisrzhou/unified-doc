@@ -16,9 +16,10 @@ This utility goes through all text nodes in a [hast][hast] tree and annotates te
 The annotation algorithm is focused on preserving the structure of the tree, and annotations are applied as `<mark />` tags immediately above the text nodes.  The annotation process is data-driven and declarative.  Features are supported easily by specifying simple data on the `Annotation` object.
 
 At a high level, an `Annotation` object contains the following important information:
+- `id`: unique ID to identify the annotation.  Useful for assigning unique ID to the rendered DOM element.
 - `startOffset`, `endOffset`: positional string offsets relative to the source content.
 - `classNames`, `style`: ways to customize the annotated nodes.
-- `anchor`, `label`: support features such as anchor permalinks or rendering a label for the annotation.
+- `label`: support rendering a label above the annotated node.
 - any other data that is useful for working with annotation callbacks.
 
 One powerful feature of this utility is the ability to define annotations as simple start/end offsets relative to the source content, and the annotation algorithm will correctly annotate text nodes without breaking the tree structure or affect the document rendering. The following example demonstrates how the utility can correctly annotate offsets covering 'incomplete' nodes.
@@ -209,8 +210,6 @@ interface Annotation {
 	startOffset: number;
 	/** End offset relative to the source content */
 	endOffset: number;
-	/** If true, will update the `location.hash` using the annotation ID as the hash.  Useful for creating annotation permalinks. Note that this disables the annotation `onClick` handler since the intention is explicit to create anchor links for the `onClick` event. */
-	anchor?: boolean;
 	/** CSS classnames that will be applied on the annotated nodes */
 	classNames?: string[];
 	/** If true, will add the provided value to the `label` tag attribute.  Useful for displaying the label with custom CSS:before selectors. */

@@ -107,7 +107,7 @@ export default function Home() {
 									...annotation,
 									label: 'User-selected',
 									type: 'User-selected',
-									classNames: ['custom-highlight'],
+									classNames: ['important'],
 									tooltip: `You created "${annotation.value.slice(
 										0,
 										30,

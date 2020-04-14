@@ -10,11 +10,13 @@ export function Annotations({
 	return (
 		<FlexLayout alignItems="center" flexWrap="wrap" space="xs">
 			{annotations.map((annotation) => {
-				const { anchor, id, value, classNames = [] } = annotation;
+				const { id, value, classNames = [] } = annotation;
 				const text = (
 					<Text
+						as="mark"
 						className={classNames.join(' ')}
 						sx={{
+							display: 'block',
 							maxWidth: 200,
 							overflow: 'hidden',
 							textOverflow: 'ellipsis',
@@ -29,21 +31,17 @@ export function Annotations({
 						key={id}
 						px="s"
 						sx={{
-							borderColor: anchor ? 'link' : 'border',
+							borderColor: 'link',
 							borderRadius: 'm',
 							borderStyle: 'solid',
 							borderWidth: 1,
 						}}>
 						<FlexLayout alignItems="center" space="s">
-							{anchor ? (
-								<Link
-									href={`#${id}`}
-									sx={{ color: 'unset', textDecoration: 'none' }}>
-									{text}
-								</Link>
-							) : (
-								text
-							)}
+							<Link
+								href={`#${id}`}
+								sx={{ color: 'unset', textDecoration: 'none' }}>
+								{text}
+							</Link>
 							<Text
 								variant="icon"
 								onClick={() => onRemoveAnnotation(annotation)}>
