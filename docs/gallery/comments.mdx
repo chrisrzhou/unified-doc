@@ -8,4 +8,8 @@ import Comments from './src/comments';
 
 # Comments
 
-> TODO: An example showing how to support comments with annotated documents.
+This example shows how commenting can be implemented using just the `annotations` prop and rendering comment nodes relative to the annotated nodes.  Since all annotated nodes contain the `data-id` attribute, you can select these nodes with the relevant document `querySelector`. Note that the `id` attribute is conveniently and *uniquely* provided for annotated nodes that have the `data-start="true"` attribute values.  This example demonstrates how to make use of the `data-start`, `data-end` attributes to determine how comment nodes are placed.
+
+The comment data is mocked in a simple way using the array index as data.  This implementation uses an effect hook and vanilla DOM methods to render comment nodes with cleanup effects.  You can expand on this example and implement it with a more robust and formal rendering strategy.
+
+<Comments />

@@ -1,0 +1,31 @@
+.comment {
+	--padding: 4px;
+	--size: 10px;
+	align-items: center;
+	border-radius: 50%;
+	background: #0b5fff;
+	color: white;
+	cursor: pointer;
+	display: flex;
+	font-size: 8px;
+	font-style: normal;
+	font-weight: bold;
+	height: var(--size);
+	justify-content: center;
+	padding: var(--padding);
+	position: absolute;
+	top: calc(-1 * (var(--size) + var(--padding)));
+	width: var(--size);
+	z-index: 1;
+}
+.comment:hover {
+	opacity: 0.8;
+}
+
+.comment-start {
+	left: 0;
+}
+
+.comment-end {
+	right: 0;
+}

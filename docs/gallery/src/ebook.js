@@ -13,7 +13,7 @@ const bookmarkCategories = [
 
 function Ebook() {
 	const [annotations, setAnnotations] = useState([]);
-	const [bookmarkCategory, setbookmarkCategory] = useState('default');
+	const [bookmarkCategory, setBookmarkCategory] = useState('default');
 
 	const header = (
 		<FlexLayout flexDirection="column" space="xs">
@@ -22,7 +22,7 @@ function Ebook() {
 				label="Bookmark Category"
 				options={bookmarkCategories}
 				value={bookmarkCategory}
-				onChange={setbookmarkCategory}
+				onChange={setBookmarkCategory}
 			/>
 			<Annotations
 				annotations={annotations}

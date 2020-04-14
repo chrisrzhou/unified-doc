@@ -76,7 +76,8 @@
 			],
 			"react/function-component-definition": "off",
 			"react/jsx-no-useless-fragment": "off",
-			"react/prop-types": "off"
+			"react/prop-types": "off",
+			"unicorn/string-content": "off"
 		}
 	}
 }
