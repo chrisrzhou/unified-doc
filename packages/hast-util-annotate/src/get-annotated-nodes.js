@@ -86,7 +86,7 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 						}
 					}
 
-					if (annotation.endOffset === nodeSegment.endOffset) {
+					if (annotationNodeIndex === annotationNodes.length - 1) {
 						properties.dataEnd = true;
 					}
 

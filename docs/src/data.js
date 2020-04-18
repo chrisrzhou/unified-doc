@@ -239,43 +239,33 @@ export const content = `
 </p>
 
 <div class="center">
-  <table class="rabbithole" summary="rabbithole">
-    <tbody>
-      <tr>
-        <td align="left">
-          <div class="blockquot2">
-            <p>
-              Either the well was very deep, or she fell very slowly, for she
-              had plenty of time as she went down to look about her, and to
-              wonder what was going to happen next. First, she<span
-                class="pagenum"
-                ><a name="Page_3" id="Page_3">[3]</a></span
-              >
-              tried to look down and make out what she was coming to, but it was
-              too dark to see anything; then she looked at the sides of the well
-              and noticed that they were filled with cupboards and book-shelves:
-              here and there she saw maps and pictures hung upon pegs. She took
-              down a jar from one of the shelves as she passed; it was labelled
-              "ORANGE MARMALADE," but to her disappointment it was empty; she
-              did not like to drop the jar for fear of killing somebody<span
-                class="pagenum"
-                ><a name="Page_4" id="Page_4">[4]</a></span
-              >
-              underneath, so managed to put it into one of the cupboards as she
-              fell past it.
-            </p>
+  <div class="blockquot2">
+    <p>
+      Either the well was very deep, or she fell very slowly, for she had plenty
+      of time as she went down to look about her, and to wonder what was going
+      to happen next. First, she<span class="pagenum"
+        ><a name="Page_3" id="Page_3">[3]</a></span
+      >
+      tried to look down and make out what she was coming to, but it was too
+      dark to see anything; then she looked at the sides of the well and noticed
+      that they were filled with cupboards and book-shelves: here and there she
+      saw maps and pictures hung upon pegs. She took down a jar from one of the
+      shelves as she passed; it was labelled "ORANGE MARMALADE," but to her
+      disappointment it was empty; she did not like to drop the jar for fear of
+      killing somebody<span class="pagenum"
+        ><a name="Page_4" id="Page_4">[4]</a></span
+      >
+      underneath, so managed to put it into one of the cupboards as she fell
+      past it.
+    </p>
 
-            <p>
-              "Well!" thought Alice to herself. "After such a fall as this, I
-              shall think nothing of tumbling down stairs! How brave they’ll all
-              think me at home! Why, I wouldn’t say anything about it, even if I
-              fell off the top of the house!" (Which was very likely true.)
-            </p>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <p>
+      "Well!" thought Alice to herself. "After such a fall as this, I shall
+      think nothing of tumbling down stairs! How brave they’ll all think me at
+      home! Why, I wouldn’t say anything about it, even if I fell off the top of
+      the house!" (Which was very likely true.)
+    </p>
+  </div>
 </div>
 
 <p>
