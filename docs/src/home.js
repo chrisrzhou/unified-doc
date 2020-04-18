@@ -137,7 +137,7 @@ export default function Home() {
 		<FlexLayout
 			flexDirection="column"
 			justifyContent="space-between"
-			style={{ height: '70vh' }}>
+			sx={{ height: '70vh' }}>
 			{step === LAST_STEP && backButton}
 			{step < LAST_STEP ? steps : <ExampleAnnotations />}
 			{step < LAST_STEP && (

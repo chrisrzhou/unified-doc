@@ -32,8 +32,10 @@ function Comments() {
 					: `[data-id='${id}'][data-end='true']`;
 			const annotatedNode = document.querySelector(selector);
 			const commentNode = document.createElement('div');
-			commentNode.className = `comment ${
-				commentPosition === 'start' ? 'comment-start' : 'comment-end'
+			commentNode.className = `unified-doc-comment ${
+				commentPosition === 'start'
+					? 'unified-doc-comment-start'
+					: 'unified-doc-comment-end'
 			}`;
 			const commentCount = getRandomInt();
 			commentNode.textContent = commentCount.toString();
@@ -42,8 +44,10 @@ function Comments() {
 				setComments(new Array(commentCount).fill(0));
 				setActiveAnnotation(annotation);
 			});
-			annotatedNode.append(commentNode);
 			commentNodes.push(commentNode);
+			if (annotatedNode) {
+				annotatedNode.append(commentNode);
+			}
 		});
 
 		return () => {

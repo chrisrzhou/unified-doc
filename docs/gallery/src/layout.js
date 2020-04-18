@@ -11,6 +11,8 @@ export default function Layout({
 	name,
 	sidebar = null,
 }) {
+	const { contentType = 'html' } = docProps;
+
 	return (
 		<FlexLayout alignItems="flex-start" flexDirection="column">
 			<Link
@@ -23,9 +25,13 @@ export default function Layout({
 					{header}
 				</Card>
 			)}
-			<FlexLayout>
-				<Card sx={{ flexGrow: 1 }}>
-					<Document className="doc" contentType="html" {...docProps} />
+			<FlexLayout sx={{ width: '100%' }}>
+				<Card sx={{ width: '100%' }}>
+					<Document
+						className={`doc ${contentType === 'text' ? ' doc-text' : ''}`}
+						contentType={contentType}
+						{...docProps}
+					/>
 				</Card>
 				{sidebar && <Card sx={{ flex: '0 0 400px' }}>{sidebar}</Card>}
 			</FlexLayout>

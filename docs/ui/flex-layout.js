@@ -11,6 +11,7 @@ export function FlexLayout({
 	flexWrapSpace = 'xs',
 	justifyContent,
 	space = 'm',
+	sx,
 	...rest
 }) {
 	const marginDirection =
@@ -21,6 +22,7 @@ export function FlexLayout({
 	return (
 		<Box
 			sx={{
+				...sx,
 				alignItems,
 				display: 'flex',
 				flexDirection,

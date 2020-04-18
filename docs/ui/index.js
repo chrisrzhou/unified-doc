@@ -10,5 +10,6 @@ export * from './label';
 export * from './link';
 export * from './select';
 export * from './text';
+export * from './textarea';
 
 export * from './animated-trail';

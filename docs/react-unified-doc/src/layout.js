@@ -8,7 +8,7 @@ import '../../src/doc.css';
 export default function Layout({ docProps, header, name, sections = [] }) {
 	const [selectedSection, setSelectedSection] = useState('source');
 
-	const { annotations, content } = docProps;
+	const { annotations, content, contentType = 'html' } = docProps;
 
 	const sectionOptions = [
 		...sections,
@@ -35,9 +35,13 @@ export default function Layout({ docProps, header, name, sections = [] }) {
 				Source code
 			</Link>
 			<Card sx={{ width: '100%' }}>{header}</Card>
-			<FlexLayout>
-				<Card sx={{ flexGrow: 1 }}>
-					<Document className="doc" contentType="html" {...docProps} />
+			<FlexLayout sx={{ width: '100%' }}>
+				<Card sx={{ width: '100%' }}>
+					<Document
+						className={`doc ${contentType === 'text' ? ' doc-text' : ''}`}
+						contentType={contentType}
+						{...docProps}
+					/>
 				</Card>
 				<Card sx={{ flex: '0 0 400px' }}>
 					<Select
