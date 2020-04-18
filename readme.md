@@ -88,16 +88,17 @@ Useful infomation about the project:
 - While the project uses `typescript`, it is not a `typescript` project and uses it purely to aid development.  This is intentional to make the code more accessible to the broader JS community.
 - Tests are managed with `jest`.
 - Docs are managed with `docz`.
-- Todos:
-	- [ ] `mark` and whitespace text nodes may not always be valid child elements (e.g. invalid with `tr`, `tbody`).  May need to consider using `span` (not-ideal), or potentially ignore the React DOM nesting errors.
-	- [ ] `data-end` attribute does not seem to be 100% accurate when HTML tagnames are the annotated end nodes.  Debug the logic.
-  - [ ] Cypress tests for `react-unified-doc`.
-  - [ ] Jest tests for `get-annotated-nodes` in `hast-util-annotate`.
-	- [ ] Resolve XO/TS suppressed lint errors, and TODO comments
-	- [ ] Improve Typescript typings.
-  - [ ] Export useful annotation utilities for `react-unified-doc`.
-  - [ ] Revisit/formalize `hast-util-coerce-text-positions`, `text-parse` implementations.
-  - [ ] Review/feedback from [unified][unified] team.
+
+## TODOs
+- [ ] `mark` and whitespace text nodes may not always be valid child elements (e.g. invalid with `tr`, `tbody`).  May need to consider using `span` (not-ideal), or potentially ignore the React DOM nesting errors.
+- [ ] `data-end` attribute does not seem to be 100% accurate when HTML tagnames are the annotated end nodes.  Debug the logic.
+- [ ] Cypress tests for `react-unified-doc`.
+- [ ] Jest tests for `get-annotated-nodes` in `hast-util-annotate`.
+- [ ] Resolve XO/TS suppressed lint errors, and TODO comments
+- [ ] Improve Typescript typings.
+- [ ] Export useful annotation utilities for `react-unified-doc`.
+- [ ] Revisit/formalize `hast-util-coerce-text-positions`, `text-parse` implementations.
+- [ ] Review/feedback from [unified][unified] team.
 
 
 <!-- Links -->

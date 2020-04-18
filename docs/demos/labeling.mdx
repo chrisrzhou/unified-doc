@@ -1,0 +1,24 @@
+---
+name: Labeling
+menu: Demos
+route: demos/labeling
+---
+
+import DemoLabeling from './src/demo-labeling';
+
+# Labeling
+
+## Description
+In various document applications, it maybe useful to replace text content with categorized labels generated from a machine learning pipeline.  This demo demonstrates a simple way to transform annotated `mark` nodes into visually labeled nodes and provide an aggregate summary of these labeled nodes.
+
+## Implementation
+Use a simple `search` method to return search results that can be used as annotations.  Apply relevant styles to various annotations.  After annotations are created, find the annotated nodes in the document using the relevant ID query selector and update the `textContent` and annotation styles.
+
+## Improvement
+A better machine learning pipeline that returns relevant annotations would make this demo more meaningful.  You can also implement interactive annotation features when clicking/hovering annotated nodes.
+
+## Concepts
+- Custom post-annotation rendering with web technologies.
+- Transforming/replacing annotated nodes text content.
+
+<DemoLabeling />

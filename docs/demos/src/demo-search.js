@@ -8,12 +8,12 @@ import { FlexLayout, Input, Link, Text } from '../../ui';
 const SNIPPET_CHARS = 20;
 const MIN_QUERY_LENGTH = 3;
 
-export function getSearchResults(searchInput) {
-	const searchInputRegExp = new RegExp(searchInput, 'gi');
+export function search(content, query) {
+	const searchInputRegExp = new RegExp(query, 'gi');
 
 	const searchResults = [];
 	let match;
-	if (searchInput && searchInput.length >= MIN_QUERY_LENGTH) {
+	if (query && query.length >= MIN_QUERY_LENGTH) {
 		while ((match = searchInputRegExp.exec(content)) !== null) {
 			const startOffset = match.index;
 			const endOffset = searchInputRegExp.lastIndex;
@@ -28,6 +28,7 @@ export function getSearchResults(searchInput) {
 				startOffset,
 				endOffset,
 				snippet,
+				value: content.slice(startOffset, endOffset),
 			});
 		}
 	}
@@ -35,16 +36,15 @@ export function getSearchResults(searchInput) {
 	return searchResults;
 }
 
-function ExampleSearch() {
+function DemoSearch() {
 	const [searchResults, setSearchResults] = useState([]);
-	const [searchInput, setSearchInput] = useState('');
-	const [searchQuery, setSearchQuery] = useState('');
+	const [query, setQuery] = useState('');
+	const [submittedQuery, setSubmittedQuery] = useState('');
 
 	function submitSearch(event) {
 		event.preventDefault();
-		const searchResults = getSearchResults(searchInput);
-
-		setSearchQuery(searchInput);
+		const searchResults = search(content, query);
+		setSubmittedQuery(query);
 		setSearchResults(searchResults);
 	}
 
@@ -54,27 +54,26 @@ function ExampleSearch() {
 				<Input
 					id="search-input"
 					label="Search"
-					placeholder="e.g. ’alice’, ’wonder’, ’oh dear’"
-					value={searchInput}
-					onChange={(value) => {
-						setSearchInput(value);
-					}}
+					placeholder="e.g. ’alice’, ’rabbit’, ’wonder’"
+					value={query}
+					onChange={setQuery}
 				/>
 			</form>
-			{searchQuery.length < MIN_QUERY_LENGTH && (
+			{submittedQuery.length < MIN_QUERY_LENGTH && (
 				<Text variant="help">
 					Search term must be at least {MIN_QUERY_LENGTH} characters long.
 				</Text>
 			)}
-			{searchQuery.length >= MIN_QUERY_LENGTH && searchResults.length === 0 && (
-				<Text variant="help">No results found.</Text>
-			)}
+			{submittedQuery.length >= MIN_QUERY_LENGTH &&
+				searchResults.length === 0 && (
+					<Text variant="help">No results found.</Text>
+				)}
 			<ul>
 				{searchResults.map(({ id, snippet }) => {
-					const [left, right] = snippet.split(new RegExp(searchQuery, 'gi'));
+					const [left, right] = snippet.split(new RegExp(submittedQuery, 'gi'));
 					const matched = snippet.slice(
 						left.length,
-						left.length + searchQuery.length,
+						left.length + submittedQuery.length,
 					);
 					return (
 						<li key={id}>
@@ -100,4 +99,4 @@ function ExampleSearch() {
 	return <Layout docProps={docProps} name="search" sidebar={sidebar} />;
 }
 
-export default ExampleSearch;
+export default DemoSearch;

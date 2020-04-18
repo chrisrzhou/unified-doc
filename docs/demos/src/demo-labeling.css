@@ -1,0 +1,23 @@
+.annotation-1 {
+	background: #ffcccc;
+}
+
+.annotation-2 {
+	background: #ccffcc;
+}
+
+.annotation-3 {
+	background: #ccccff;
+}
+
+.annotation-labeled {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 20px;
+	font-weight: bold;
+	padding: 0 8px;
+	text-transform: uppercase;
+}
+mark[data-start="true"].annotation-labeled::before {
+	content: '';
+	display: hidden;
+}

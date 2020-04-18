@@ -1,20 +1,19 @@
 ---
 name: Diff
-menu: Gallery
-route: gallery/diff
+menu: Demos
+route: demos/diff
 ---
 
-import ExampleDiff from './src/example-diff';
+import DemoDiff from './src/demo-diff';
 
 # Diff
-An example showing how to diff two files and using different ways to display the diffs.
 
 ## Description
-This example preloads HTML and markdown content for comparison.  This is a cool way to visualize how markdown differs *just slightly* from HTML, and why markdown is an *awesome* markup language that is interoperable with HTML!
+A demo showing how to diff two files and using different ways to display the diffs.  This demo preloads HTML and markdown content for comparison.  This is a cool way to visualize how markdown differs *just slightly* from HTML, and why markdown is an *awesome* markup language that is interoperable with HTML!
 
 Use the sidebar to customize your own contents for diffing.  You can view the old, new, and diff documents using the dropdown below.
 
-An interesting application of this example is the ability to visually diff only the text content (ignoring non-textual changes e.g. HTML elements).  To explore this use case, try the following:
+An interesting application of this demo is the ability to visually diff only the text content (ignoring non-textual changes e.g. HTML elements).  To explore this use case, try the following:
 - Apply the same *HTML* content in both text editor.
 - Make edits to the new content (e.g. change `<h1 />` to `<h4 />` and update the inner content, or simply wrap various text with `<strong />` and `<em />` tags).
 - Select `html` in the content type dropdown.
@@ -23,7 +22,7 @@ An interesting application of this example is the ability to visually diff only 
 
 
 ## Implementation
-The example uses the [`diff`](https://github.com/kpdecker/jsdiff) package to diff two string content with the `diffChars` method.  Upon receiving the diffed parts, we can loop over it to construct the `diffContent` and easily keep track and assemble `annotations` in a single loop!  We apply very simple CSS to style removed/added parts.
+The demo uses the [`diff`](https://github.com/kpdecker/jsdiff) package to diff two string content with the `diffChars` method.  Upon receiving the diffed parts, we can loop over it to construct the `diffContent` and easily keep track and assemble `annotations` in a single loop!  We apply very simple CSS to style removed/added parts.
 
 ## Improvement
 It would be interesting to find a way to apply Github diff styles that highlight the lines that are changed in addition to the diff characters.  It is possible to approach this with the `Diff.diffLines` method and ensuring that we render the document with `contentType = 'text'` and respect the newlines in the source content.
@@ -32,4 +31,4 @@ It would be interesting to find a way to apply Github diff styles that highlight
 - Constructing annotations from other data.
 - Custom CSS.
 
-<ExampleDiff />
+<DemoDiff />

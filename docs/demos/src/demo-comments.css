@@ -1,4 +1,4 @@
-.example-comment {
+.demo-comment {
 	--padding: 4px;
 	--size: 10px;
 	align-items: center;
@@ -17,14 +17,14 @@
 	top: calc(-1 * (var(--size) + var(--padding)));
 	width: var(--size);
 }
-.example-comment:hover {
+.demo-comment:hover {
 	opacity: 0.8;
 }
 
-.example-comment-start {
+.demo-comment-start {
 	left: 0;
 }
 
-.example-comment-end {
+.demo-comment-end {
 	right: 0;
 }

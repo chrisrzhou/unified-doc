@@ -4,7 +4,7 @@ export default {
 		'Home',
 		'Readme',
 		{
-			name: 'Gallery',
+			name: 'Demos',
 			menu: ['EBook', 'Search', 'Diff', 'Comments', 'Labeling'],
 		},
 		{

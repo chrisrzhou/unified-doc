@@ -11,7 +11,7 @@ const bookmarkCategories = [
 	{ label: 'redline', value: 'redline' },
 ];
 
-function ExampleEbook() {
+function DemoEbook() {
 	const [annotations, setAnnotations] = useState([]);
 	const [bookmarkCategory, setBookmarkCategory] = useState('default');
 
@@ -71,4 +71,4 @@ function ExampleEbook() {
 	return <Layout docProps={docProps} header={header} name="ebook" />;
 }
 
-export default ExampleEbook;
+export default DemoEbook;

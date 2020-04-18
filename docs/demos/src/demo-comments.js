@@ -4,7 +4,7 @@ import Layout from './layout';
 import { annotations, content } from '../../src/data';
 import { Button, FlexLayout, Select, Text } from '../../ui';
 
-import './example-comments.css';
+import './demo-comments.css';
 
 const positionOptions = [
 	{ label: 'start', value: 'start' },
@@ -12,10 +12,10 @@ const positionOptions = [
 ];
 
 function getRandomInt(max = 20) {
-	return Math.floor(Math.random() * Math.floor(max));
+	return Math.ceil(Math.random() * Math.floor(max));
 }
 
-function ExampleComments() {
+function DemoComments() {
 	const [commentPosition, setCommentPosition] = useState('start');
 	const [activeAnnotation, setActiveAnnotation] = useState(null);
 	const [comments, setComments] = useState([]);
@@ -33,10 +33,8 @@ function ExampleComments() {
 			const annotatedNode = document.querySelector(selector);
 
 			const commentNode = document.createElement('div');
-			commentNode.className = `example-comment ${
-				commentPosition === 'start'
-					? 'example-comment-start'
-					: 'example-comment-end'
+			commentNode.className = `demo-comment ${
+				commentPosition === 'start' ? 'demo-comment-start' : 'demo-comment-end'
 			}`;
 			const commentCount = getRandomInt();
 			commentNode.textContent = commentCount.toString();
@@ -55,7 +53,7 @@ function ExampleComments() {
 		};
 	}, [commentPosition]);
 
-	function reset() {
+	function clearComments() {
 		setActiveAnnotation(null);
 		setComments([]);
 	}
@@ -83,8 +81,8 @@ function ExampleComments() {
 				))}
 			</FlexLayout>
 			{activeAnnotation && (
-				<Button sx={{ alignSelf: 'flex-start' }} onClick={reset}>
-					Reset
+				<Button sx={{ alignSelf: 'flex-start' }} onClick={clearComments}>
+					Clear comments
 				</Button>
 			)}
 		</FlexLayout>
@@ -98,4 +96,4 @@ function ExampleComments() {
 	return <Layout docProps={docProps} name="comments" sidebar={sidebar} />;
 }
 
-export default ExampleComments;
+export default DemoComments;
