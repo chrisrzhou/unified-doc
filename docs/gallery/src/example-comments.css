@@ -1,5 +1,4 @@
-/* use this classname instead of '.comment' to avoid global CSS conflicts */
-.unified-doc-comment {
+.example-comment {
 	--padding: 4px;
 	--size: 10px;
 	align-items: center;
@@ -18,14 +17,14 @@
 	top: calc(-1 * (var(--size) + var(--padding)));
 	width: var(--size);
 }
-.unified-doc-comment:hover {
+.example-comment:hover {
 	opacity: 0.8;
 }
 
-.unified-doc-comment-start {
+.example-comment-start {
 	left: 0;
 }
 
-.unified-doc-comment-end {
+.example-comment-end {
 	right: 0;
 }

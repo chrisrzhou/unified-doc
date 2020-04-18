@@ -5,7 +5,7 @@ export default {
 		'Readme',
 		{
 			name: 'Gallery',
-			menu: ['EBook', 'Search', 'Comments', 'ESignature', 'Diff'],
+			menu: ['EBook', 'Search', 'Diff', 'Comments', 'Labeling'],
 		},
 		{
 			name: 'react-unified-doc',

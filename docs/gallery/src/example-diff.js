@@ -6,9 +6,9 @@ import Layout from './layout';
 import { htmlContent, markdownContent } from '../../src/data';
 import { FlexLayout, Textarea, Select } from '../../ui';
 
-import './diff.css';
+import './example-diff.css';
 
-function Diff() {
+function ExampleDiff() {
 	const [oldContent, setOldContent] = useState(htmlContent);
 	const [newContent, setNewContent] = useState(markdownContent);
 	const [contentType, setContentType] = useState('text');
@@ -113,4 +113,4 @@ function Diff() {
 	);
 }
 
-export default Diff;
+export default ExampleDiff;

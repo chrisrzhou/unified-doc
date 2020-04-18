@@ -4,7 +4,7 @@ import Layout from './layout';
 import { annotations, content } from '../../src/data';
 import { Button, FlexLayout, Select, Text } from '../../ui';
 
-import './comment.css';
+import './example-comments.css';
 
 const positionOptions = [
 	{ label: 'start', value: 'start' },
@@ -15,7 +15,7 @@ function getRandomInt(max = 20) {
 	return Math.floor(Math.random() * Math.floor(max));
 }
 
-function Comments() {
+function ExampleComments() {
 	const [commentPosition, setCommentPosition] = useState('start');
 	const [activeAnnotation, setActiveAnnotation] = useState(null);
 	const [comments, setComments] = useState([]);
@@ -33,10 +33,10 @@ function Comments() {
 			const annotatedNode = document.querySelector(selector);
 
 			const commentNode = document.createElement('div');
-			commentNode.className = `unified-doc-comment ${
+			commentNode.className = `example-comment ${
 				commentPosition === 'start'
-					? 'unified-doc-comment-start'
-					: 'unified-doc-comment-end'
+					? 'example-comment-start'
+					: 'example-comment-end'
 			}`;
 			const commentCount = getRandomInt();
 			commentNode.textContent = commentCount.toString();
@@ -98,4 +98,4 @@ function Comments() {
 	return <Layout docProps={docProps} name="comments" sidebar={sidebar} />;
 }
 
-export default Comments;
+export default ExampleComments;

@@ -8,36 +8,41 @@ import { FlexLayout, Input, Link, Text } from '../../ui';
 const SNIPPET_CHARS = 20;
 const MIN_QUERY_LENGTH = 3;
 
-function Search() {
+export function getSearchResults(searchInput) {
+	const searchInputRegExp = new RegExp(searchInput, 'gi');
+
+	const searchResults = [];
+	let match;
+	if (searchInput && searchInput.length >= MIN_QUERY_LENGTH) {
+		while ((match = searchInputRegExp.exec(content)) !== null) {
+			const startOffset = match.index;
+			const endOffset = searchInputRegExp.lastIndex;
+			const snippet = content.slice(
+				Math.max(0, startOffset - SNIPPET_CHARS),
+				Math.min(content.length, endOffset + SNIPPET_CHARS),
+			);
+
+			searchResults.push({
+				// Similar shape as annotation
+				id: uuidv4(),
+				startOffset,
+				endOffset,
+				snippet,
+			});
+		}
+	}
+
+	return searchResults;
+}
+
+function ExampleSearch() {
 	const [searchResults, setSearchResults] = useState([]);
 	const [searchInput, setSearchInput] = useState('');
 	const [searchQuery, setSearchQuery] = useState('');
 
-	const searchInputRegExp = new RegExp(searchInput, 'gi');
-	const searchQueryRegExp = new RegExp(searchQuery, 'gi');
-
 	function submitSearch(event) {
 		event.preventDefault();
-		const searchResults = [];
-		let match;
-		if (searchInput && searchInput.length >= MIN_QUERY_LENGTH) {
-			while ((match = searchInputRegExp.exec(content)) !== null) {
-				const startOffset = match.index;
-				const endOffset = searchInputRegExp.lastIndex;
-				const snippet = content.slice(
-					Math.max(0, startOffset - SNIPPET_CHARS),
-					Math.min(content.length, endOffset + SNIPPET_CHARS),
-				);
-
-				searchResults.push({
-					// Similar shape as annotation
-					id: uuidv4(),
-					startOffset,
-					endOffset,
-					snippet,
-				});
-			}
-		}
+		const searchResults = getSearchResults(searchInput);
 
 		setSearchQuery(searchInput);
 		setSearchResults(searchResults);
@@ -66,7 +71,7 @@ function Search() {
 			)}
 			<ul>
 				{searchResults.map(({ id, snippet }) => {
-					const [left, right] = snippet.split(searchQueryRegExp);
+					const [left, right] = snippet.split(new RegExp(searchQuery, 'gi'));
 					const matched = snippet.slice(
 						left.length,
 						left.length + searchQuery.length,
@@ -95,4 +100,4 @@ function Search() {
 	return <Layout docProps={docProps} name="search" sidebar={sidebar} />;
 }
 
-export default Search;
+export default ExampleSearch;
