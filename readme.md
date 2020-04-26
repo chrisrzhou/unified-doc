@@ -3,7 +3,7 @@
 
 ![image](./public/unified-doc-thumbnail.png)
 
-## Table of Contents
+## Contents
 - [Motivations](#motivations)
 - [Architecture](#architecture)
   - [Content](#content)

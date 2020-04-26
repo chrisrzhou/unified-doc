@@ -4,7 +4,7 @@ React [**unified-doc**][unified-doc] renderer for content.
 ![image](../../public/react-unified-doc-thumbnail.png)
 
 
-## Table of Contents
+## Contents
 - [Install](#install)
 - [Description](#description)
 - [Props](#props)

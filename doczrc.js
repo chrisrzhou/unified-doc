@@ -3,6 +3,7 @@ export default {
 	ignore: ['todos.md'],
 	menu: [
 		'Home',
+		'Quick Start',
 		'Readme',
 		{
 			name: 'Demos',
@@ -20,10 +21,15 @@ export default {
 				'Plugins',
 			],
 		},
-		'hast-util-annotate',
-		'hast-util-extract-text-offsets',
-		'processor',
-		'text-parse',
+		{
+			name: 'Packages',
+			menu: [
+				'hast-util-annotate',
+				'hast-util-extract-text-offsets',
+				'processor',
+				'text-parse',
+			],
+		},
 		'Changelog',
 	],
 	public: 'public',

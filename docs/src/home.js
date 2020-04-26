@@ -1,3 +1,4 @@
+import { navigate } from 'gatsby';
 import React, { useState } from 'react';
 import Document from '../../packages/react-unified-doc';
 
@@ -18,11 +19,9 @@ import {
 	Text,
 } from '../ui';
 
-import ExampleAnnotations from '../react-unified-doc/src/example-annotations';
-
 import './doc.css';
 
-const LAST_STEP = 3;
+const LAST_STEP = 2;
 
 export default function Home() {
 	const [annotations, setAnnotations] = useState(initialAnnotations);
@@ -37,7 +36,7 @@ export default function Home() {
 			nextButtonLabel = 'Markup tree';
 			break;
 		case 2:
-			nextButtonLabel = 'Demo';
+			nextButtonLabel = 'Quick Start';
 			break;
 		default:
 			nextButtonLabel = 'Next';
@@ -129,7 +128,7 @@ export default function Home() {
 				setStep(step - 1);
 				setAnnotations(initialAnnotations);
 			}}>
-			{step === LAST_STEP ? 'Back to overview' : 'Back'}
+			Back
 		</Button>
 	);
 
@@ -138,14 +137,20 @@ export default function Home() {
 			flexDirection="column"
 			justifyContent="space-between"
 			sx={{ height: '70vh' }}>
-			{step === LAST_STEP && backButton}
-			{step < LAST_STEP ? steps : <ExampleAnnotations />}
-			{step < LAST_STEP && (
-				<FlexLayout justifyContent="space-between">
-					{step > 0 ? backButton : <div />}
-					<Button onClick={() => setStep(step + 1)}>{nextButtonLabel}</Button>
-				</FlexLayout>
-			)}
+			{steps}
+			<FlexLayout justifyContent="space-between">
+				{step > 0 ? backButton : <div />}
+				<Button
+					onClick={() => {
+						if (step === LAST_STEP) {
+							navigate('quick-start');
+						} else {
+							setStep(step + 1);
+						}
+					}}>
+					{nextButtonLabel}
+				</Button>
+			</FlexLayout>
 		</FlexLayout>
 	);
 }
