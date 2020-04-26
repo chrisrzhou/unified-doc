@@ -1,5 +1,6 @@
 export default {
 	dest: 'dist/docs',
+	ignore: ['todos.md'],
 	menu: [
 		'Home',
 		'Readme',

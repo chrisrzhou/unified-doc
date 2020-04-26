@@ -8,7 +8,11 @@
 		"resolveJsonModule": true
 	},
 	"include": [
-		"packages/**/*",
-		"docs"
-  ]
+		"docs",
+		"packages",
+	],
+	"exclude": [
+		"**/dist",
+		"**/node_modules"
+	]
 }

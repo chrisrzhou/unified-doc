@@ -4,7 +4,8 @@
 	"description": "React unified document renderer for content",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
-	"types": "src/index.d.ts",
+	"source": "index.js",
+	"typings": "src/index.d.ts",
 	"keywords": [
 		"react",
 		"unified",

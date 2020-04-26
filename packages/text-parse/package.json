@@ -4,7 +4,8 @@
 	"description": "unified parser to parse text content into a hast tree with a single text node",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
-	"types": "src/index.d.ts",
+	"source": "index.js",
+	"typings": "src/index.d.ts",
 	"keywords": [
 		"unified",
 		"doc",

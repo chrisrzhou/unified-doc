@@ -4,7 +4,8 @@
 	"description": "unified processor for processing content in unified-doc",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
-	"types": "src/index.d.ts",
+	"source": "index.js",
+	"typings": "src/index.d.ts",
 	"keywords": [
 		"unified",
 		"doc",
