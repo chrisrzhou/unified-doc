@@ -13,4 +13,3 @@ node_modules
 # project
 dist
 .docz
-.parcel-cache

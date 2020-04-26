@@ -65,8 +65,12 @@ interface Props {
 
 ## Use
 ```js
-import Document from 'react-unified-doc';
+import Document from '@unified-doc/react-unified-doc';
 import toc from 'rehype-toc';
+
+// include optional CSS for default annotation marks and tippy tooltips
+import '@unified-doc/react-unified-doc/src/index.css';
+import 'tippy.js/dist/tippy.css';
 
 const content = '<blockquote>Blockquote with <b>bold</b> content.</blockquote>';
 const annotations = [

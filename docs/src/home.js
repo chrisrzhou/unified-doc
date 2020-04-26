@@ -1,6 +1,8 @@
 import { navigate } from 'gatsby';
 import React, { useState } from 'react';
 import Document from '../../packages/react-unified-doc';
+import 'tippy.js/dist/tippy.css';
+import '../../packages/react-unified-doc/src/index.css';
 
 import {
 	contentTypes,
@@ -18,7 +20,6 @@ import {
 	FlexLayout,
 	Text,
 } from '../ui';
-
 import './doc.css';
 
 const LAST_STEP = 2;

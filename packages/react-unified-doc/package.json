@@ -1,6 +1,6 @@
 {
 	"name": "@unified-doc/react-unified-doc",
-	"version": "0.1.0",
+	"version": "0.1.9",
 	"description": "React unified document renderer for content",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
@@ -26,6 +26,10 @@
 	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/react-unified-doc",
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
+	"scripts": {
+		"build": "microbundle build --jsx React.createElement --external react",
+		"prepare": "yarn build"
+	},
 	"peerDependencies": {
 		"react": "^16.13.0"
 	},
@@ -37,7 +41,6 @@
 		"@unified-doc/hast-util-annotate": "*",
 		"@unified-doc/hast-util-extract-text-offsets": "*",
 		"@unified-doc/processor": "*",
-		"rangy": "^1.3.0",
 		"rehype-react": "^4.0.1",
 		"tippy.js": "^6.1.0",
 		"uuid": "^7.0.2"

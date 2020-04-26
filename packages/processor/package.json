@@ -1,6 +1,6 @@
 {
 	"name": "@unified-doc/processor",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "unified processor for processing content in unified-doc",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
@@ -23,6 +23,10 @@
 	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/processor",
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
+	"scripts": {
+		"build": "microbundle build",
+		"prepare": "yarn build"
+	},
 	"dependencies": {
 		"@unified-doc/text-parse": "*",
 		"deepmerge": "^4.2.2",

@@ -1,14 +1,15 @@
 # Changelog
 
-## 0.1.0 (2020-04-25)
+## 2020-04-26
 Official release!  Check out the [docs][docs] to get started.
 
-Packages released:
-- `hast-util-annotate`
-- `hast-util-extract-text-offsets`
-- `processor`
-- `react-unified-doc`
-- `text-parse`
+### `hast-util-annotate@0.1.1`
+### `hast-util-extract-text-offsets@0.1.1`
+### `processor@0.1.1`
+### `react-unified-doc@0.1.9`
+### `text-parse@0.1.1`
+
+Note that any versions preceding these official versions probably have failing builds.
 
 
 <!-- Links -->

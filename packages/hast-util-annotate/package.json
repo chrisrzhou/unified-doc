@@ -1,6 +1,6 @@
 {
 	"name": "@unified-doc/hast-util-annotate",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "hast utility to annotate text nodes",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
@@ -25,6 +25,10 @@
 	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/hast-util-annotate",
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
+	"scripts": {
+		"build": "microbundle build",
+		"prepare": "yarn build"
+	},
 	"dependencies": {
 		"hastscript": "^5.1.2",
 		"unist-util-visit-parents": "^3.0.2",
