@@ -1,10 +1,11 @@
 {
 	"name": "@unified-doc/hast-util-extract-text-offsets",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "hast utility to extract text-based offsets and unist positions of text nodes",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
-	"types": "src/index.d.ts",
+	"source": "index.js",
+	"typings": "src/index.d.ts",
 	"keywords": [
 		"unified",
 		"doc",
@@ -23,6 +24,10 @@
 	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/hast-util-extract-text-offsets",
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
+	"scripts": {
+		"build": "microbundle build",
+		"prepare": "yarn build"
+	},
 	"dependencies": {
 		"unist-util-visit-parents": "^3.0.2"
 	}

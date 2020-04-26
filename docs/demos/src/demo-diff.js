@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 import Layout from './layout';
 import { htmlContent, markdownContent } from '../../src/data';
 import { FlexLayout, Textarea, Select } from '../../ui';
-
 import './demo-diff.css';
 
 function DemoDiff() {

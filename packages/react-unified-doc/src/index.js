@@ -1,14 +1,12 @@
 import annotateUtil from '@unified-doc/hast-util-annotate';
 import extractTextOffsetsUtil from '@unified-doc/hast-util-extract-text-offsets';
 import { createProcessor } from '@unified-doc/processor';
-import rangy from 'rangy';
 import React, { createElement, useEffect, useRef } from 'react';
 import rehype2react from 'rehype-react';
 import tippy, { followCursor } from 'tippy.js';
 import { v4 as uuidv4 } from 'uuid';
 
-import 'tippy.js/dist/tippy.css';
-import './index.css';
+import { getSelectedTextOffset } from './select-text';
 
 const createPlugin = (transform) => (...args) => (tree) =>
 	transform(tree, ...args);
@@ -35,49 +33,57 @@ export default function Document({
 	const textOffsetsRef = useRef();
 
 	useEffect(() => {
+		const textOffsets = textOffsetsRef.current;
+		const docNode = docRef.current;
+
 		function handleSelectText(event) {
-			const textOffsets = textOffsetsRef.current;
-			const selection = rangy.getSelection();
-			const value = selection.toString();
-			const bookmark =
-				selection.getBookmark(docRef.current).rangeBookmarks[0] || {};
+			const selection = window.getSelection();
+			const selectedTextOffset = getSelectedTextOffset(docNode, selection);
 
-			const canSelect =
-				onSelectText && textOffsets && bookmark.end > bookmark.start;
-			if (!canSelect) {
-				return;
+			if (
+				onSelectText &&
+				selectedTextOffset &&
+				selectedTextOffset.endOffset > selectedTextOffset.startOffset
+			) {
+				const selectedTextOffsets = textOffsets.filter(
+					({ startOffset, endOffset, position, isNewline }) => {
+						return (
+							position &&
+							selectedTextOffset.startOffset <= endOffset &&
+							selectedTextOffset.endOffset >= startOffset &&
+							!isNewline // TODO: this is hacky but works for markdown
+						);
+					},
+				);
+
+				const firstSelectedTextOffset = selectedTextOffsets[0];
+				const lastSelectedTextOffset =
+					selectedTextOffsets[selectedTextOffsets.length - 1];
+
+				const startOffset =
+					firstSelectedTextOffset.position.start.offset +
+					(selectedTextOffset.startOffset -
+						firstSelectedTextOffset.startOffset);
+
+				let endOffset;
+				if (selectedTextOffsets.length === 1) {
+					endOffset =
+						startOffset +
+						(selectedTextOffset.endOffset - selectedTextOffset.startOffset);
+				} else {
+					endOffset =
+						lastSelectedTextOffset.position.start.offset +
+						(selectedTextOffset.endOffset - lastSelectedTextOffset.startOffset);
+				}
+
+				const value = docNode.textContent.slice(
+					selectedTextOffset.startOffset,
+					selectedTextOffset.endOffset,
+				);
+
+				onSelectText({ id: uuidv4(), startOffset, endOffset, value }, event);
+				selection.removeAllRanges();
 			}
-
-			const selectedTextOffsets = textOffsets.filter(
-				({ startOffset, endOffset, position, isNewline }) => {
-					return (
-						position &&
-						bookmark.start <= endOffset &&
-						bookmark.end >= startOffset &&
-						!isNewline // TODO: this is hacky but works for markdown
-					);
-				},
-			);
-
-			const firstSelectedTextOffset = selectedTextOffsets[0];
-			const lastSelectedTextOffset =
-				selectedTextOffsets[selectedTextOffsets.length - 1];
-
-			const startOffset =
-				firstSelectedTextOffset.position.start.offset +
-				(bookmark.start - firstSelectedTextOffset.startOffset);
-
-			let endOffset;
-			if (selectedTextOffsets.length === 1) {
-				endOffset = startOffset + (bookmark.end - bookmark.start);
-			} else {
-				endOffset =
-					lastSelectedTextOffset.position.start.offset +
-					(bookmark.end - lastSelectedTextOffset.startOffset);
-			}
-
-			onSelectText({ id: uuidv4(), startOffset, endOffset, value }, event);
-			selection.removeAllRanges();
 		}
 
 		window.addEventListener('mouseup', handleSelectText);
@@ -85,7 +91,7 @@ export default function Document({
 		return () => {
 			window.removeEventListener('mouseup', handleSelectText);
 		};
-	});
+	}, [onSelectText]);
 
 	function extractor(textOffsets) {
 		textOffsetsRef.current = textOffsets;

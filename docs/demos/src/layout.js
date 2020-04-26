@@ -1,8 +1,9 @@
 import React from 'react';
 import Document from '../../../packages/react-unified-doc/src';
+import 'tippy.js/dist/tippy.css';
+import '../../../packages/react-unified-doc/src/index.css';
 
 import { Card, FlexLayout, Link } from '../../ui';
-
 import '../../src/doc.css';
 
 export default function Layout({

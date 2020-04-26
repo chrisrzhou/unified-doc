@@ -5,7 +5,6 @@ import toc from 'rehype-toc';
 import Layout from './layout';
 import { annotations, htmlContent as content } from '../../src/data';
 import { Checkbox, ContentArea, FlexLayout } from '../../ui';
-
 import './rehype-highlight.css';
 
 const plugins = {

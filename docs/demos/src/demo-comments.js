@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Layout from './layout';
 import { annotations, content } from '../../src/data';
 import { Button, FlexLayout, Select, Text } from '../../ui';
-
 import './demo-comments.css';
 
 const positionOptions = [

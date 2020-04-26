@@ -81,7 +81,7 @@ const extractedTextOffsets = [
 
 ## Use
 ```js
-import extractTextOffsets from 'hast-util-extract-text-offsets';
+import extractTextOffsets from '@unified-doc/hast-util-extract-text-offsets';
 
 const tree = {
 	type: 'element',

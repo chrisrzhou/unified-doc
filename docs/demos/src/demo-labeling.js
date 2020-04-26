@@ -4,7 +4,6 @@ import Layout from './layout';
 import { search } from './demo-search';
 import { content } from '../../src/data';
 import { Checkbox, FlexLayout, Text } from '../../ui';
-
 import './demo-labeling.css';
 
 function DemoLabeling() {
