@@ -71,8 +71,15 @@
 			"@typescript-eslint/no-unsafe-call": "off",
 			"@typescript-eslint/no-unsafe-member-access": "off",
 			"@typescript-eslint/no-unsafe-return": "off",
-			"import/extensions": "off",
-			"import/no-unassigned-import": "off",
+			"import/extensions": ["error", {
+				"pattern": {
+					"css": "always",
+					"json": "always"
+				}
+			}],
+			"import/no-unassigned-import": ["error", {
+				"allow": ["**/*.css"]
+			}],
 			"no-unused-vars": [
 				2,
 				{
