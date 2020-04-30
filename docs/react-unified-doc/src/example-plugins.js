@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import highlight from 'rehype-highlight';
 import toc from 'rehype-toc';
 
+import { annotations, htmlContent as content } from '@docs/src/data';
+import { Checkbox, ContentArea, FlexLayout } from '@docs/ui';
+
 import Layout from './layout';
-import { annotations, htmlContent as content } from '../../src/data';
-import { Checkbox, ContentArea, FlexLayout } from '../../ui';
 import './rehype-highlight.css';
 
 const plugins = {

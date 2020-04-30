@@ -2,10 +2,16 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
+		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
 		"jsx": "react",
 		"noEmit": true,
+		"paths": {
+			"@docs/*": ["./docs/*"],
+			"@packages/*": ["./packages/*"],
+			"@src/*": ["./src/*"]
+		},
 		"resolveJsonModule": true
 	},
 	"include": [

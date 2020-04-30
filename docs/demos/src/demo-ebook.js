@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+import { content } from '@docs/src/data';
+import { Annotations, FlexLayout, Select } from '@docs/ui';
+
 import Layout from './layout';
-import { content } from '../../src/data';
-import { Annotations, FlexLayout, Select } from '../../ui';
 
 const bookmarkCategories = [
 	{ label: 'default', value: 'default' },

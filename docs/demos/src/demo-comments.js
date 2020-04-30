@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+import { annotations, content } from '@docs/src/data';
+import { Button, FlexLayout, Select, Text } from '@docs/ui';
+
 import Layout from './layout';
-import { annotations, content } from '../../src/data';
-import { Button, FlexLayout, Select, Text } from '../../ui';
 import './demo-comments.css';
 
 const positionOptions = [

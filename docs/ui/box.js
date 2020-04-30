@@ -1,1 +1,3 @@
-export { Box } from 'theme-ui';
+import { Box as ThemeUIBox } from 'theme-ui';
+
+export default ThemeUIBox;

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+import { annotations as initialAnnotationsData, content } from '@docs/src/data';
+import { Checkbox, ContentArea, FlexLayout, Text } from '@docs/ui';
+
 import Layout from './layout';
-import { annotations as initialAnnotationsData, content } from '../../src/data';
-import { Checkbox, ContentArea, FlexLayout, Text } from '../../ui';
 
 function getId(annotation) {
 	return annotation ? annotation.id : '-';

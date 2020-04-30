@@ -1,9 +1,9 @@
 import React from 'react';
 import { Textarea as ThemeUITextarea } from 'theme-ui';
 
-import { Label } from '.';
+import Label from './label';
 
-export function Textarea({ id, height, label, value, onChange }) {
+export default function Textarea({ id, height, label, value, onChange }) {
 	return (
 		<Label htmlFor={id} direction="column">
 			{label}

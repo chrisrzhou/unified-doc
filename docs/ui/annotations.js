@@ -1,8 +1,11 @@
 import React from 'react';
 
-import { Box, FlexLayout, Link, Text } from '.';
+import Box from './box';
+import FlexLayout from './flex-layout';
+import Link from './link';
+import Text from './text';
 
-export function Annotations({
+export default function Annotations({
 	annotations,
 	onClearAnnotations,
 	onRemoveAnnotation,

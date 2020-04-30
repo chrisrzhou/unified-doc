@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Document from '../../../packages/react-unified-doc/src';
 import 'tippy.js/dist/tippy.css';
-import '../../../packages/react-unified-doc/src/index.css';
 
-import { Card, ContentArea, FlexLayout, Link, Select } from '../../ui';
-import '../../src/doc.css';
+import { Card, ContentArea, FlexLayout, Link, Select } from '@docs/ui';
+import Document from '@packages/react-unified-doc/src';
+import '@docs/src/doc.css';
+import '@packages/react-unified-doc/src/index.css';
 
 export default function Layout({ docProps, header, name, sections = [] }) {
 	const [selectedSection, setSelectedSection] = useState('source');

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, FlexLayout, Text } from '../ui';
+import { Box, FlexLayout, Text } from '@docs/ui';
 
 export default function Section({
 	children,

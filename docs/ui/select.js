@@ -1,9 +1,9 @@
 import React from 'react';
 import { Select as ThemeUISelect } from 'theme-ui';
 
-import { Label } from '.';
+import Label from './label';
 
-export function Select({
+export default function Select({
 	id,
 	label,
 	options,

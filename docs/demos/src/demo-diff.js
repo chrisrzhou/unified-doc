@@ -2,9 +2,10 @@ import { diffChars } from 'diff';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import { htmlContent, markdownContent } from '@docs/src/data';
+import { FlexLayout, Textarea, Select } from '@docs/ui';
+
 import Layout from './layout';
-import { htmlContent, markdownContent } from '../../src/data';
-import { FlexLayout, Textarea, Select } from '../../ui';
 import './demo-diff.css';
 
 function DemoDiff() {

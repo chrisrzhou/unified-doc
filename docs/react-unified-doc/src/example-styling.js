@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+import { annotations, content, cssProperties } from '@docs/src/data';
+import { ContentArea, Select } from '@docs/ui';
+
 import Layout from './layout';
-import { annotations, content, cssProperties } from '../../src/data';
-import { ContentArea, Select } from '../../ui';
 
 const classNames = [
 	{ label: 'doc', value: 'doc' },

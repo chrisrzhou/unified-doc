@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+import { htmlContent, markdownContent } from '@docs/src/data';
+import { Checkbox, ContentArea, FlexLayout, Select } from '@docs/ui';
+
 import Layout from './layout';
-import { htmlContent, markdownContent } from '../../src/data';
-import { Checkbox, ContentArea, FlexLayout, Select } from '../../ui';
 
 const contentTypes = [
 	{ label: 'text', value: 'text' },

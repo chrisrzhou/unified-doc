@@ -1,1 +1,3 @@
-export { Link } from 'theme-ui';
+import { Link as ThemeUILink } from 'theme-ui';
+
+export default ThemeUILink;

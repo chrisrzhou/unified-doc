@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import { content } from '@docs/src/data';
+import { FlexLayout, Input, Link, Text } from '@docs/ui';
+
 import Layout from './layout';
-import { content } from '../../src/data';
-import { FlexLayout, Input, Link, Text } from '../../ui';
 
 const SNIPPET_CHARS = 20;
 const MIN_QUERY_LENGTH = 3;

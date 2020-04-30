@@ -1,8 +1,17 @@
 import { navigate } from 'gatsby';
 import React, { useState } from 'react';
-import Document from '../../packages/react-unified-doc';
 import 'tippy.js/dist/tippy.css';
-import '../../packages/react-unified-doc/src/index.css';
+
+import {
+	AnimatedTrail,
+	Box,
+	Button,
+	ContentArea,
+	FlexLayout,
+	Text,
+} from '@docs/ui';
+import Document from '@packages/react-unified-doc';
+import '@packages/react-unified-doc/src/index.css';
 
 import {
 	contentTypes,
@@ -12,14 +21,6 @@ import {
 	content,
 } from './data';
 import Section from './section';
-import {
-	AnimatedTrail,
-	Box,
-	Button,
-	ContentArea,
-	FlexLayout,
-	Text,
-} from '../ui';
 import './doc.css';
 
 const LAST_STEP = 2;

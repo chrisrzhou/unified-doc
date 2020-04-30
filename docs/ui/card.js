@@ -1,1 +1,3 @@
-export { Card } from 'theme-ui';
+import { Card as ThemeUICard } from 'theme-ui';
+
+export default ThemeUICard;

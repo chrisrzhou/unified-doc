@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+import { content } from '@docs/src/data';
+import { Annotations, ContentArea, FlexLayout, Select } from '@docs/ui';
+
 import Layout from './layout';
-import { content } from '../../src/data';
-import { Annotations, ContentArea, FlexLayout, Select } from '../../ui';
 
 const annotationTypes = [
 	{ label: 'default', value: 'default' },

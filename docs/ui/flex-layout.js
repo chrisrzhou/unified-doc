@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Box } from '.';
-import { theme } from '../../src/gatsby-theme-docz/theme';
+import Box from './box';
+import { theme } from '@src/gatsby-theme-docz/theme';
 
-export function FlexLayout({
+export default function FlexLayout({
 	alignItems,
 	children,
 	flexDirection,

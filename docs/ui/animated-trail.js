@@ -1,7 +1,7 @@
 import React from 'react';
 import { animated, useTrail } from 'react-spring';
 
-export function AnimatedTrail({
+export default function AnimatedTrail({
 	duration = 1000,
 	from = { opacity: 0 },
 	items,

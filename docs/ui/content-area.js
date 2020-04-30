@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { FlexLayout, Text } from '.';
+import FlexLayout from './flex-layout';
+import Text from './text';
 
-export function ContentArea({ bg = 'wash', children, help = '' }) {
+export default function ContentArea({ bg = 'wash', children, help = '' }) {
 	return (
 		<FlexLayout flexDirection="column" space="s">
 			{help && <Text variant="help">{help}</Text>}

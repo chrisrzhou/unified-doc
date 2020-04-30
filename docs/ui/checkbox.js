@@ -1,9 +1,9 @@
 import React from 'react';
 import { Checkbox as ThemeUICheckbox } from 'theme-ui';
 
-import { Label } from '.';
+import Label from './label';
 
-export function Checkbox({ id, label, value, onChange }) {
+export default function Checkbox({ id, label, value, onChange }) {
 	return (
 		<Label htmlFor={id} direction="row">
 			<ThemeUICheckbox

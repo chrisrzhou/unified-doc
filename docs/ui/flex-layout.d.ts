@@ -12,4 +12,4 @@ interface Props {
 	space?: Space;
 }
 
-export function FlexLayout(props: Props): JSX.Element;
+export default function FlexLayout(props: Props): JSX.Element;
