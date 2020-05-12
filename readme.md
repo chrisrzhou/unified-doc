@@ -1,7 +1,7 @@
 # 📜 unified-doc
 [unified][unified] document renderer for content.
 
-![image](./public/unified-doc-thumbnail.png)
+![image](./public/unified-doc.png)
 
 ## Contents
 - [Motivations](#motivations)
@@ -43,9 +43,9 @@ Now that the source content is represented as unified `hast` tree, everything do
 
 ### Document
 The term `document` refers abstractly to the output of compiling and rendering the `hast` tree.  This output should be a HTML-based markup  to support easy methods to further enrich the document with available web technologies.  `unified-doc` supports the following renderers:
-- [`react-unified-doc`][react-unified-doc]
+- [`unified-doc-react`][unified-doc-react]
 
-Renderers should use the `processor` module internally so that it can support all content types that `processor` supports.  It can optionally include [rehype][rehype] plugins depending on features to be supported.  `react-unified-doc` uses the [`hast-util-annotate`][hast-util-annotate] utility to support annotation features on `hast` trees processed by `processor`.
+Renderers should use the `processor` module internally so that it can support all content types that `processor` supports.  It can optionally include [rehype][rehype] plugins depending on features to be supported.  `unified-doc-react` uses the [`unified-doc-util-annotate`][unified-doc-util-annotate] utility to support annotation features on `hast` trees processed by `processor`.
 
 
 ### Annotations
@@ -67,11 +67,11 @@ Annotations should support intuitive user interactions (e.g. clicking, hovering)
 
 > Note: As mentioned earlier, it is important to view annotations as a **pure additive** operation when rendering documents.  Annotation implementations should never couple the rendering of documents and annotations nor affect the document layout.  This ensures that downstream applications of plugins and web technologies work seamlessly.
 
-The above requirements and design choices are implemented in [`hast-util-annotate`][hast-util-annotate], which is a `hast` utility that powers annotation features in renderers such as [`react-unified-doc`][react-unified-doc].
+The above requirements and design choices are implemented in [`unified-doc-util-annotate`][unified-doc-util-annotate], which is a `hast` utility that powers annotation features in renderers such as [`unified-doc-react`][unified-doc-react].
 
 
 ### Plugins
-Just as all content and programs are interoperable in the [unified][unified] ecosystem, the `unified-doc` renderers should be compatible with the [rehype][rehype] plugin ecosystem.  See the `react-unified-doc` [plugins docs][plugins] for an example on how this is achieved.
+Just as all content and programs are interoperable in the [unified][unified] ecosystem, the `unified-doc` renderers should be compatible with the [rehype][rehype] plugin ecosystem.  See the `unified-doc-react` [plugins docs][plugins] for an example on how this is achieved.
 
 
 ## unified
@@ -92,13 +92,13 @@ Useful infomation about the project:
 <!-- Links -->
 [hast]: https://github.com/syntax-tree/hast
 [hast-util-sanitize]: https://github.com/syntax-tree/hast-util-sanitize
-[hast-util-annotate]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/hast-util-annotate
-[plugins]: https://unified-doc.netlify.com/react-unified-doc/plugins
+[unified-doc-util-annotate]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc-util-annotate
+[plugins]: https://unified-doc.netlify.com/unified-doc-react/plugins
 [position]: https://github.com/syntax-tree/unist#position
 [processor]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/processor
-[props]: https://unified-doc.netlify.com/react-unified-doc/props
+[props]: https://unified-doc.netlify.com/unified-doc-react/props
 [react]: https://github.com/facebook/react
-[react-unified-doc]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/react-unified-doc
+[unified-doc-react]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc-react
 [rehype]: https://github.com/rehypejs
 [unified]: https://unifiedjs.com/
 [unified-doc]: https://github.com/chrisrzhou/unified-doc

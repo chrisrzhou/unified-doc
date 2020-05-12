@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { annotations, content } from '@docs/src/data';
+import { annotations, content } from '@docs/data';
 import { Button, FlexLayout, Select, Text } from '@docs/ui';
 
 import Layout from './layout';

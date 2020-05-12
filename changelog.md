@@ -4,9 +4,9 @@
 Official release!  Check out the [docs][docs] to get started.
 
 ### `hast-util-annotate@0.1.1`
-### `hast-util-extract-text-offsets@0.1.1`
+### `unified-doc-extract-text-offsets@0.1.1`
 ### `processor@0.1.1`
-### `react-unified-doc@0.1.9`
+### `unified-doc-react@0.1.9`
 ### `text-parse@0.1.1`
 
 Note that any versions preceding these official versions probably have failing builds.

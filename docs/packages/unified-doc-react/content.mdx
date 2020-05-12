@@ -1,0 +1,15 @@
+---
+name: Content
+menu: unified-doc-react
+route: packages/unified-doc-react/content
+---
+
+import ExampleContent from './src/example-content';
+
+# Content
+
+Easily render any `html`, `markdown`, or `text` content.  The rendered document is a safely-sanitized HTML document that maintains high fidelity with the source content.
+
+You can provide a valid [sanitize-schema](https://github.com/syntax-tree/hast-util-sanitize#schema) to apply custom HTML sanitization.  Improper use of this schema can open you up to a cross-site scripting (XSS) attack.  The defaults are safe, but deviating from them is likely unsafe.
+
+<ExampleContent />

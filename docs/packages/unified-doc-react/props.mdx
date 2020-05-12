@@ -1,0 +1,35 @@
+---
+name: Props
+menu: unified-doc-react
+route: packages/unified-doc-react/props
+---
+
+import { Props } from "docz";
+
+import AnnotationInterface from "./src/annotation-interface";
+import ComponentProps from "./src/component-props";
+
+# Props
+
+`unified-doc-react` provides a simple set of props to render and annotate content.
+
+<Props of={ComponentProps} />
+
+## `Annotation`
+
+The `annotation` object takes the following interface. Additional data can be provided to the object, which is useful when used with relevant `AnnotationCallback` callbacks.
+
+<Props of={AnnotationInterface} />
+
+## `AnnotationCallback`
+
+```ts
+type AnnotationCallback = (annotation: Annotation, e?: MouseEvent) => void;
+```
+
+## `Plugin`
+
+[rehype][rehype] plugins are applied after annotations. Note that annotations only operate on source content, so any plugin that mutates and creates new content outside of the source content cannot be annotated.
+
+<!-- Links -->
+[rehype]: https://github.com/rehypejs

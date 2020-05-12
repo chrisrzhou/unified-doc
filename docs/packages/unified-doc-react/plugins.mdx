@@ -1,0 +1,15 @@
+---
+name: Plugins
+menu: unified-doc-react
+route: packages/unified-doc-react/plugins
+---
+
+import ExamplePlugins from './src/example-plugins';
+
+# Plugins
+
+Apply valid [rehype](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md) plugins to supercharge your document.
+
+> Note that the `annotations` and `onSelectText` props may not behave correctly if plugins modify the rendered content of the document since the these props behave correctly in relation to the source content.
+
+<ExamplePlugins />

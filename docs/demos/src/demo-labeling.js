@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { content } from '@docs/src/data';
+import { content } from '@docs/data';
 import { Checkbox, FlexLayout, Text } from '@docs/ui';
 
 import Layout from './layout';

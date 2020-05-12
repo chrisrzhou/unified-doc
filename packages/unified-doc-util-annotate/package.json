@@ -1,7 +1,7 @@
 {
-	"name": "unified-doc-parse-text",
+	"name": "unified-doc-util-annotate",
 	"version": "1.0.0",
-	"description": "unified parser to parse text content into a hast tree with a single text node",
+	"description": "hast utility to annotate text nodes",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
 	"source": "index.js",
@@ -9,21 +9,31 @@
 	"keywords": [
 		"unified",
 		"doc",
-		"parse",
-		"text",
+		"util",
+		"annotate",
 		"document",
 		"content",
 		"unist",
 		"hast",
-		"html"
+		"html",
+		"text",
+		"annotation",
+		"highlight",
+		"redlining",
+		"utility"
 	],
 	"author": "Chris Zhou <chrisrzhou@pm.me>",
 	"license": "MIT",
-	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc-parse-text",
+	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc-util-annotate",
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
 	"scripts": {
 		"build": "microbundle build",
 		"prepare": "yarn build"
+	},
+	"dependencies": {
+		"hastscript": "^5.1.2",
+		"unist-util-visit-parents": "^3.0.2",
+		"uuid": "^7.0.2"
 	}
 }

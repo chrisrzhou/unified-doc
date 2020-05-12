@@ -12,7 +12,7 @@
 		"document",
 		"content",
 		"unist",
-		"rehype",
+		"hast",
 		"html",
 		"markdown",
 		"text",

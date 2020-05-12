@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { content } from '@docs/src/data';
+import { content } from '@docs/data';
 import { FlexLayout, Input, Link, Text } from '@docs/ui';
 
 import Layout from './layout';
