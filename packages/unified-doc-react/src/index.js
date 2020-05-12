@@ -95,9 +95,12 @@ export default function Document({
 		};
 	}, [content, processor, onSelectText]);
 
+	// @ts-ignore: TODO remove when VFile typings are fixed
+	const { result } = processor.processSync(content);
+
 	return (
 		<div ref={docRef} className={className}>
-			{processor.processSync(content).contents}
+			{result}
 		</div>
 	);
 }

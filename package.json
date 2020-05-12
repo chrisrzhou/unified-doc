@@ -24,17 +24,17 @@
 		"@babel/core": "^7.8.7",
 		"@babel/preset-env": "^7.9.5",
 		"@babel/preset-react": "^7.9.4",
-		"@pmmmwh/react-refresh-webpack-plugin": "^0.2.0",
+		"@pmmmwh/react-refresh-webpack-plugin": "^0.3.1",
 		"@types/jest": "^25.2.1",
 		"@types/uuid": "^7.0.3",
-		"babel-jest": "^25.4.0",
+		"babel-jest": "^26.0.1",
 		"diff": "^4.0.2",
 		"docz": "^2.3.1",
 		"eslint-config-xo-react": "^0.23.0",
 		"gatsby-plugin-sass": "^2.2.1",
 		"husky": "^4.2.5",
-		"jest": "^25.4.0",
-		"microbundle": "^0.11.0",
+		"jest": "^26.0.1",
+		"microbundle": "^0.12.0",
 		"node-sass": "^4.14.0",
 		"react": "^16.13.0",
 		"react-dom": "^16.13.0",
@@ -44,7 +44,7 @@
 		"theme-ui": "^0.3.1",
 		"typescript": "^3.8.3",
 		"unified": "^9.0.0",
-		"uuid": "^7.0.3",
+		"uuid": "^8.0.0",
 		"xo": "^0.30.0"
 	},
 	"husky": {
@@ -71,15 +71,23 @@
 			"@typescript-eslint/no-unsafe-call": "off",
 			"@typescript-eslint/no-unsafe-member-access": "off",
 			"@typescript-eslint/no-unsafe-return": "off",
-			"import/extensions": ["error", {
-				"pattern": {
-					"css": "always",
-					"json": "always"
+			"import/extensions": [
+				"error",
+				{
+					"pattern": {
+						"css": "always",
+						"json": "always"
+					}
 				}
-			}],
-			"import/no-unassigned-import": ["error", {
-				"allow": ["**/*.css"]
-			}],
+			],
+			"import/no-unassigned-import": [
+				"error",
+				{
+					"allow": [
+						"**/*.css"
+					]
+				}
+			],
 			"no-unused-vars": [
 				2,
 				{

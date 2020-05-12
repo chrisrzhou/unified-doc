@@ -35,7 +35,7 @@
 		"react": "^16.13.0"
 	},
 	"dependencies": {
-		"rehype-react": "^4.0.1",
+		"rehype-react": "^5.0.1",
 		"tippy.js": "^6.1.0",
 		"unified-doc": "*"
 	}

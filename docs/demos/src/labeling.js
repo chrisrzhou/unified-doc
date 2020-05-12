@@ -5,6 +5,7 @@ import { Checkbox, FlexLayout, Text } from '@docs/ui';
 
 import Layout from './layout';
 import { search } from './search';
+import './labeling.css';
 
 export default function LabelingDemo() {
 	const [isLabeled, setIsLabeled] = useState(true);
