@@ -6,18 +6,25 @@ import markdown from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import unified from 'unified';
 import text from 'unified-doc-parse-text';
+import annotate from 'unified-doc-util-annotate';
 
 import coerceTextPositions from './utils/coerce-text-positions';
 
 const createPlugin = (transform) => (...args) => (tree) =>
 	transform(tree, ...args);
 
-export default function createProcessor(
-	contentType = 'text',
-	sanitizeSchema = {},
-) {
+export default function createProcessor(options = {}) {
+	const {
+		annotations = [],
+		annotationCallbacks = {},
+		contentType = 'text',
+		rehypePlugins = [],
+		sanitizeSchema = {},
+	} = options;
+
 	const processor = unified();
 
+	// Apply parsers
 	switch (contentType) {
 		case 'markdown':
 			processor
@@ -33,7 +40,12 @@ export default function createProcessor(
 			processor.use(text);
 	}
 
+	// Apply plugins (order matters)
 	processor.use(createPlugin(sanitize), deepmerge(gh, sanitizeSchema));
+	processor.use(createPlugin(annotate), annotations, annotationCallbacks);
+	rehypePlugins.forEach((plugin) => {
+		processor.use(plugin);
+	});
 
 	return processor;
 }

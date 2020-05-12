@@ -11,7 +11,6 @@ export default {
 		},
 		'Packages',
 		'unified-doc',
-		'unified-doc-extract-text-offsets',
 		'unified-doc-parse-text',
 		{
 			name: 'unified-doc-react',

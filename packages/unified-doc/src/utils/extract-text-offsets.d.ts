@@ -7,6 +7,4 @@ export interface TextOffset {
 	isNewline?: boolean;
 }
 
-export type Extractor = (textOffsets: TextOffset[]) => void;
-
-export default function textOffsets(tree: Node, extractor: Extractor): Node;
+export default function extractTextOffsets(tree: Node): TextOffset[];

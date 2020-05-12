@@ -28,7 +28,7 @@ describe('createProcessor', () => {
 	});
 
 	it('should parse html content', () => {
-		const processor = createProcessor('html');
+		const processor = createProcessor({ contentType: 'html' });
 		const tree = processor.parse('<div>some <h1>heading</h1> content</div>');
 
 		// TODO debug why processor is not using sanitize plugin in test
@@ -123,7 +123,7 @@ describe('createProcessor', () => {
 	});
 
 	it('should parse markdown content', () => {
-		const processor = createProcessor('markdown');
+		const processor = createProcessor({ contentType: 'markdown' });
 		const tree = processor.parse('# heading');
 		expect(tree.children).toEqual([
 			{

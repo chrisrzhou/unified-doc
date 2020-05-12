@@ -32,15 +32,11 @@
 		"react": "^16.13.0"
 	},
 	"devDependencies": {
-		"react": "^16.13.0",
-		"unified": "^8.4.2"
+		"react": "^16.13.0"
 	},
 	"dependencies": {
 		"rehype-react": "^4.0.1",
 		"tippy.js": "^6.1.0",
-		"unified-doc": "*",
-		"unified-doc-extract-text-offsets": "*",
-		"unified-doc-util-annotate": "*",
-		"uuid": "^7.0.2"
+		"unified-doc": "*"
 	}
 }

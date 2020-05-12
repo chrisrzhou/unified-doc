@@ -1,10 +1,19 @@
-import { Processor } from 'unified';
+import {
+	Annotation,
+	AnnotationCallbacks,
+	ContentType,
+	Optional,
+	Plugin,
+	Processor,
+	SanitizeSchema,
+} from './types';
 
-import { ContentType } from './types';
+export interface Options {
+	annotations: Annotation[];
+	annotationCallbacks: AnnotationCallbacks;
+	contentType: ContentType;
+	rehypePlugins: Plugin[];
+	sanitizeSchema: SanitizeSchema;
+}
 
-export default function createProcessor(
-	contentType?: ContentType,
-	sanitizeSchema?: {
-		[key: string]: any;
-	},
-): Processor;
+export default function createProcessor(options?: Optional<Options>): Processor;

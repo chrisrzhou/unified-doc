@@ -121,7 +121,7 @@ function createTree(type) {
 	}
 }
 
-describe('index.js', () => {
+describe('annotate', () => {
 	it('should not annotate anything if offset is not covering any text nodes', () => {
 		const tree = createTree();
 		const treeWithNoTextNodes = createTree();

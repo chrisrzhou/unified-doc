@@ -1,3 +1,3 @@
-describe('get-annotated-nodes.js', () => {
+describe('getAnnotatedNodes', () => {
 	it('should pass (TODO: add tests)', () => {});
 });

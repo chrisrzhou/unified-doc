@@ -35,9 +35,8 @@
 		"remark-rehype": "^5.0.0",
 		"unified": "^8.4.2",
 		"unified-doc-parse-text": "*",
-		"unist-util-visit-parents": "^3.0.2"
-	},
-	"devDependencies": {
-		"lodash": "^4.17.15"
+		"unified-doc-util-annotate": "*",
+		"unist-util-visit-parents": "^3.0.2",
+		"uuid": "^7.0.2"
 	}
 }

@@ -1,12 +1,12 @@
-import { Annotation, AnnotationCallback } from 'unified-doc-util-annotate';
-import { Plugin } from 'unified';
-import { ContentType } from 'unified-doc';
+import {
+	Annotation,
+	AnnotationCallback,
+	ContentType,
+	Plugin,
+	SelectedText,
+} from 'unified-doc';
 
 export { Annotation, AnnotationCallback, ContentType, Plugin };
-
-export interface SelectedText extends Annotation {
-	value: string;
-}
 
 export interface Props {
 	/** Source content represented as a string */

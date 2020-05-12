@@ -1,15 +1,9 @@
-import extractTextOffsets from '.';
+import extractTextOffsets from './extract-text-offsets';
 
-describe('index.js', () => {
-	let textOffsets = [];
-	function extractor(extractedTextOffsets) {
-		textOffsets = extractedTextOffsets;
-	}
-
+describe('extractTextOffsets', () => {
 	it('should extract nothing if tree empty tree', () => {
 		const tree = { type: 'root' };
-		extractTextOffsets(tree, extractor);
-		expect(textOffsets).toEqual([]);
+		expect(extractTextOffsets(tree)).toEqual([]);
 	});
 
 	it('should extract text offsets for text nodes that have source unist positions', () => {
@@ -62,8 +56,7 @@ describe('index.js', () => {
 				},
 			],
 		};
-		extractTextOffsets(tree, extractor);
-		expect(textOffsets).toEqual([
+		expect(extractTextOffsets(tree)).toEqual([
 			{
 				startOffset: 0,
 				endOffset: 2, // 0 + 'h1'.length
