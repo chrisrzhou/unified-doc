@@ -11,7 +11,7 @@ const contentTypes = [
 	{ label: 'html', value: 'html' },
 ];
 
-export default function ExampleContent() {
+export default function ContentExample() {
 	const [contentType, setContentType] = useState('html');
 	const [enableCustomSanitizeSchema, setEnableCustomSanitizeSchema] = useState(
 		false,

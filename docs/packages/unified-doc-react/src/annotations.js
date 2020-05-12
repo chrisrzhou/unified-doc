@@ -12,7 +12,7 @@ function getId(annotation) {
 const initialEnableLabels = true;
 const initialEnableTooltips = false;
 
-export default function ExampleAnnotations() {
+export default function AnnotationsExample() {
 	const [annotationsData, setAnnotationsData] = useState(
 		initialAnnotationsData,
 	);

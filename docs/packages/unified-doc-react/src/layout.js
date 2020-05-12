@@ -31,7 +31,7 @@ export default function Layout({ docProps, header, name, sections = [] }) {
 	return (
 		<FlexLayout alignItems="flex-start" flexDirection="column">
 			<Link
-				href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/unified-doc-react/src/example-${name}.js
+				href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/unified-doc-react/src/${name}.js
 				`}>
 				Source code
 			</Link>

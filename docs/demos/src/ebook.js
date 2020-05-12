@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
 
 import { content } from '@docs/data';
-import { Annotations, ContentArea, FlexLayout, Select } from '@docs/ui';
+import { Annotations, FlexLayout, Select } from '@docs/ui';
 
 import Layout from './layout';
 
-const annotationTypes = [
+const bookmarkCategories = [
 	{ label: 'default', value: 'default' },
 	{ label: 'important', value: 'important' },
 	{ label: 'quote', value: 'quote' },
 	{ label: 'redline', value: 'redline' },
 ];
 
-export default function ExampleManagingAnnotations() {
+export default function EbookDemo() {
 	const [annotations, setAnnotations] = useState([]);
-	const [annotationType, setAnnotationType] = useState('default');
+	const [bookmarkCategory, setBookmarkCategory] = useState('default');
 
 	const header = (
-		<FlexLayout flexDirection="column">
-			<FlexLayout alignItems="flex-end">
-				<Select
-					id="annotation-type"
-					label="Annotation type"
-					options={annotationTypes}
-					value={annotationType}
-					onChange={setAnnotationType}
-				/>
-			</FlexLayout>
+		<FlexLayout flexDirection="column" space="xs">
+			<Select
+				id="bookmark-category"
+				label="Bookmark Category"
+				options={bookmarkCategories}
+				value={bookmarkCategory}
+				onChange={setBookmarkCategory}
+			/>
 			<Annotations
 				annotations={annotations}
 				onClearAnnotations={() => setAnnotations([])}
@@ -39,56 +37,37 @@ export default function ExampleManagingAnnotations() {
 		</FlexLayout>
 	);
 
-	const sections = [
-		{
-			label: 'Selected annotations',
-			content: (
-				<ContentArea help="Add selected text to annotations.">
-					{JSON.stringify(annotations, null, 2)}
-				</ContentArea>
-			),
-			value: 'managing-annotations',
-		},
-	];
-
 	const docProps = {
 		annotations,
 		content,
 		onAnnotationClick: (annotation) => {
 			// eslint-disable-next-line no-alert
-			const removeAnnotation = window.confirm(
-				'Do you want to remove this annotation?',
+			const removeBookmark = window.confirm(
+				'Do you want to remove this bookmark?',
 			);
-			if (removeAnnotation) {
+			if (removeBookmark) {
 				setAnnotations(annotations.filter(({ id }) => annotation.id !== id));
 			}
 		},
 		onSelectText: (annotation) => {
 			const { value } = annotation;
 			// eslint-disable-next-line no-alert
-			const addAnnotation = window.confirm(
-				`Do you want to annotation:\n\n"${
+			const addBookmark = window.confirm(
+				`Do you want to bookmark:\n\n"${
 					value.length < 100 ? value : value.slice(0, 100) + '…'
 				}"?`,
 			);
-			if (addAnnotation) {
+			if (addBookmark) {
 				setAnnotations([
 					...annotations,
 					{
 						...annotation,
-						classNames: [annotationType],
+						classNames: [bookmarkCategory],
 					},
 				]);
 			}
 		},
 	};
 
-	return (
-		<Layout
-			docProps={docProps}
-			header={header}
-			name="managing-annotations"
-			sections={sections}
-		/>
-	);
+	return <Layout docProps={docProps} header={header} name="ebook" />;
 }

@@ -4,7 +4,7 @@ import { annotations, content } from '@docs/data';
 import { Button, FlexLayout, Select, Text } from '@docs/ui';
 
 import Layout from './layout';
-import './demo-comments.css';
+import './comments.css';
 
 const positionOptions = [
 	{ label: 'start', value: 'start' },
@@ -15,7 +15,7 @@ function getRandomInt(max = 20) {
 	return Math.ceil(Math.random() * Math.floor(max));
 }
 
-function DemoComments() {
+export default function CommentsDemo() {
 	const [commentPosition, setCommentPosition] = useState('start');
 	const [activeAnnotation, setActiveAnnotation] = useState(null);
 	const [comments, setComments] = useState([]);
@@ -95,5 +95,3 @@ function DemoComments() {
 
 	return <Layout docProps={docProps} name="comments" sidebar={sidebar} />;
 }
-
-export default DemoComments;

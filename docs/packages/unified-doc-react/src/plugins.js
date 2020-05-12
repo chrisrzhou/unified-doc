@@ -19,7 +19,7 @@ const plugins = {
 	},
 };
 
-export default function ExamplePlugins() {
+export default function PluginsExample() {
 	const [applyToc, setApplyToc] = useState(true);
 	const [applyHighlight, setApplyHighlight] = useState(true);
 

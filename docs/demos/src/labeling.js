@@ -4,10 +4,9 @@ import { content } from '@docs/data';
 import { Checkbox, FlexLayout, Text } from '@docs/ui';
 
 import Layout from './layout';
-import { search } from './demo-search';
-import './demo-labeling.css';
+import { search } from './search';
 
-function DemoLabeling() {
+export default function LabelingDemo() {
 	const [isLabeled, setIsLabeled] = useState(true);
 
 	const baseClassNames = isLabeled ? ['annotation-labeled'] : [];
@@ -65,5 +64,3 @@ function DemoLabeling() {
 
 	return <Layout docProps={docProps} header={header} name="labeling" />;
 }
-
-export default DemoLabeling;

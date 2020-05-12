@@ -12,7 +12,7 @@ const classNames = [
 	{ label: 'doc-mini', value: 'doc-mini' },
 ];
 
-export default function ExampleStyling() {
+export default function StylingExample() {
 	const [className, setClassName] = useState('doc');
 
 	const header = (

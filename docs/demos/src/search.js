@@ -37,7 +37,7 @@ export function search(content, query) {
 	return searchResults;
 }
 
-function DemoSearch() {
+export default function SearchDemo() {
 	const [searchResults, setSearchResults] = useState([]);
 	const [query, setQuery] = useState('');
 	const [submittedQuery, setSubmittedQuery] = useState('');
@@ -99,5 +99,3 @@ function DemoSearch() {
 
 	return <Layout docProps={docProps} name="search" sidebar={sidebar} />;
 }
-
-export default DemoSearch;

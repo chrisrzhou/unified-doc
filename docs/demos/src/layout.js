@@ -18,7 +18,7 @@ export default function Layout({
 	return (
 		<FlexLayout alignItems="flex-start" flexDirection="column">
 			<Link
-				href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/demos/src/demo-${name}.js
+				href={`https://github.com/chrisrzhou/unified-doc/tree/master/docs/demos/src/${name}.js
 				`}>
 				Source code
 			</Link>

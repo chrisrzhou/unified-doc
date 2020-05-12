@@ -6,9 +6,9 @@ import { htmlContent, markdownContent } from '@docs/data';
 import { FlexLayout, Textarea, Select } from '@docs/ui';
 
 import Layout from './layout';
-import './demo-diff.css';
+import './diff.css';
 
-function DemoDiff() {
+export default function DiffDemo() {
 	const [oldContent, setOldContent] = useState(htmlContent);
 	const [newContent, setNewContent] = useState(markdownContent);
 	const [contentType, setContentType] = useState('text');
@@ -112,5 +112,3 @@ function DemoDiff() {
 		<Layout docProps={docProps} header={header} name="diff" sidebar={sidebar} />
 	);
 }
-
-export default DemoDiff;
