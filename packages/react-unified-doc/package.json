@@ -40,9 +40,9 @@
 	"dependencies": {
 		"@unified-doc/hast-util-annotate": "*",
 		"@unified-doc/hast-util-extract-text-offsets": "*",
-		"@unified-doc/processor": "*",
 		"rehype-react": "^4.0.1",
 		"tippy.js": "^6.1.0",
+		"unified-doc": "*",
 		"uuid": "^7.0.2"
 	}
 }

@@ -1,8 +1,6 @@
-import { cloneDeep } from 'lodash';
+import coerceTextPositions from './coerce-text-positions';
 
-import coerceTextPositions from './hast-util-coerce-text-positions';
-
-describe('hast-util-coerce-text-positions.js', () => {
+describe('coerceTextPositions', () => {
 	it('should return same tree if no text node positions to coerce', () => {
 		const tree = {
 			type: 'root',
@@ -24,8 +22,7 @@ describe('hast-util-coerce-text-positions.js', () => {
 				},
 			],
 		};
-		const clonedTree = cloneDeep(tree);
-		expect(coerceTextPositions(clonedTree)).toEqual(tree);
+		expect(coerceTextPositions(tree)).toEqual(tree);
 	});
 
 	it('should coerce text position if it is undefined and use its direct parent position', () => {
@@ -58,8 +55,7 @@ describe('hast-util-coerce-text-positions.js', () => {
 				},
 			],
 		};
-		const clonedTree = cloneDeep(tree);
-		expect(coerceTextPositions(clonedTree)).toEqual({
+		expect(coerceTextPositions(tree)).toEqual({
 			type: 'root',
 			children: [
 				{

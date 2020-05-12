@@ -1,9 +1,9 @@
 import annotateUtil from '@unified-doc/hast-util-annotate';
 import extractTextOffsetsUtil from '@unified-doc/hast-util-extract-text-offsets';
-import { createProcessor } from '@unified-doc/processor';
 import React, { createElement, useEffect, useRef } from 'react';
 import rehype2react from 'rehype-react';
 import tippy, { followCursor } from 'tippy.js';
+import { createProcessor } from 'unified-doc';
 import { v4 as uuidv4 } from 'uuid';
 
 import { getSelectedTextOffset } from './select-text';

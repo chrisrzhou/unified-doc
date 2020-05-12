@@ -1,18 +1,18 @@
-# text-parse
+# unified-doc-parse-text
 [unified][unified] [parser][parser] to parse text content into a [hast][hast] tree with a single text node.
 
 
 ## Install
 ```sh
-yarn add @unified-doc/text-parse
+yarn add unified-doc-parse-text
 ```
 
 
 ## Use
 ```js
-import text from '@unified-doc/text-parse';
-import unified from 'unified';
 import html from 'rehype-stringify';
+import unified from 'unified';
+import text from 'unified-doc-parse-text';
 
 const processor = unified()
 	.use(text)

@@ -1,8 +1,8 @@
 import { Processor } from 'unified';
 
-export type ContentType = 'html' | 'markdown' | 'text';
+import { ContentType } from './types';
 
-export function createProcessor(
+export default function createProcessor(
 	contentType?: ContentType,
 	sanitizeSchema?: {
 		[key: string]: any;

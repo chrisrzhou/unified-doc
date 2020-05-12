@@ -2,8 +2,8 @@ import {
 	Annotation,
 	AnnotationCallback,
 } from '@unified-doc/hast-util-annotate';
-import { ContentType } from '@unified-doc/processor';
 import { Plugin } from 'unified';
+import { ContentType } from 'unified-doc';
 
 export { Annotation, AnnotationCallback, ContentType, Plugin };
 

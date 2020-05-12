@@ -9,6 +9,7 @@ export default {
 			name: 'Demos',
 			menu: ['EBook', 'Search', 'Diff', 'Comments', 'Labeling'],
 		},
+		'unified-doc',
 		{
 			name: 'react-unified-doc',
 			menu: [
@@ -23,13 +24,9 @@ export default {
 		},
 		{
 			name: 'Packages',
-			menu: [
-				'hast-util-annotate',
-				'hast-util-extract-text-offsets',
-				'processor',
-				'text-parse',
-			],
+			menu: ['hast-util-annotate', 'hast-util-extract-text-offsets'],
 		},
+		'unified-doc-parse-text',
 		'Changelog',
 	],
 	public: 'public',

@@ -1,4 +1,4 @@
-export function parser(doc) {
+export default function parser(doc) {
 	if (!doc) {
 		return {
 			type: 'root',
@@ -30,8 +30,4 @@ export function parser(doc) {
 			},
 		],
 	};
-}
-
-export default function parse() {
-	this.Parser = parser;
 }

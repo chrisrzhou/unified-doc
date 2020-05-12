@@ -9,5 +9,4 @@
 - [ ] Resolve XO/TS suppressed lint errors, and TODO comments
 - [ ] Improve Typescript typings.
 - [ ] Export useful annotation utilities for `react-unified-doc`.
-- [ ] Improve `hast-util-coerce-text-positions`, `text-parse` implementations.
 - [ ] Review/feedback from [unified][unified] community.

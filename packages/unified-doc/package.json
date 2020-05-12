@@ -1,7 +1,7 @@
 {
-	"name": "@unified-doc/processor",
-	"version": "0.1.1",
-	"description": "unified processor for processing content in unified-doc",
+	"name": "unified-doc",
+	"version": "1.0.0",
+	"description": "unified-doc APIs and typings",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
 	"source": "index.js",
@@ -9,18 +9,18 @@
 	"keywords": [
 		"unified",
 		"doc",
-		"processor",
+		"document",
 		"content",
 		"unist",
 		"rehype",
 		"html",
 		"markdown",
 		"text",
-		"annotations"
+		"api"
 	],
 	"author": "Chris Zhou <chrisrzhou@pm.me>",
 	"license": "MIT",
-	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/processor",
+	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc",
 	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
 	"homepage": "https://unified-doc.netlify.com/",
 	"scripts": {
@@ -28,13 +28,13 @@
 		"prepare": "yarn build"
 	},
 	"dependencies": {
-		"@unified-doc/text-parse": "*",
 		"deepmerge": "^4.2.2",
 		"hast-util-sanitize": "^2.0.2",
 		"rehype-parse": "^6.0.2",
 		"remark-parse": "^7.0.2",
 		"remark-rehype": "^5.0.0",
 		"unified": "^8.4.2",
+		"unified-doc-parse-text": "*",
 		"unist-util-visit-parents": "^3.0.2"
 	},
 	"devDependencies": {
