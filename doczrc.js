@@ -9,7 +9,6 @@ export default {
       name: 'Demos',
       menu: ['EBook', 'Search', 'Diff', 'Comments', 'Labeling'],
     },
-    'Packages',
     'unified-doc',
     'unified-doc-parse-text',
     {
@@ -20,7 +19,7 @@ export default {
         'Content',
         'Styling',
         'Annotations',
-        'Managing Annotations',
+        'Controlled Annotations',
         'Plugins',
       ],
     },

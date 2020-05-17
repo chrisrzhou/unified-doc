@@ -31,7 +31,9 @@ export default function LabelingDemo() {
   useEffect(() => {
     annotations.forEach((annotation) => {
       const { id } = annotation;
-      const annotatedNode = document.querySelector(`[data-id='${id}']`);
+      const annotatedNode = document.querySelector(
+        `[data-annotation-id='${id}']`,
+      );
       annotatedNode.textContent = isLabeled
         ? annotation.label
         : annotation.value;

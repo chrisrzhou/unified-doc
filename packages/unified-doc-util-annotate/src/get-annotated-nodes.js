@@ -11,10 +11,10 @@ export default function getAnnotatedNodes(
 ) {
   const { allAnnotations, a2n, n2a } = annotationData;
   const {
-    getTooltipContent,
     onClick,
     onMouseEnter,
     onMouseOut,
+    setTooltipContent,
   } = annotationCallbacks;
   const nodeAnnotations = (n2a[nodeId] || []).map(
     (annotationId) => allAnnotations[annotationId],
@@ -81,7 +81,7 @@ export default function getAnnotatedNodes(
 
           const properties = {
             className: classNames,
-            dataId: annotationId,
+            dataAnnotationId: annotationId,
             label,
             style,
             onClick: (event) => {
@@ -90,14 +90,14 @@ export default function getAnnotatedNodes(
               }
             },
             onMouseEnter: (event) => {
-              if (getTooltipContent) {
+              if (setTooltipContent) {
                 tooltip = tippy(event.target, {
                   arrow: false,
                   followCursor: 'horizontal',
                   plugins: [followCursor],
                 });
                 // @ts-ignore TODO: fix type
-                tooltip.setContent(getTooltipContent(annotation));
+                tooltip.setContent(setTooltipContent(annotation));
                 // @ts-ignore TODO: fix type
                 tooltip.show();
               }
@@ -124,13 +124,13 @@ export default function getAnnotatedNodes(
           if (!visited[annotationNodeId]) {
             visited[annotationNodeId] = true;
             if (annotationNodeIndex === 0) {
-              properties.dataStart = true;
+              properties.dataAnnotationStart = true;
               properties.id = annotationId; // Assign ID attribute only to the first annotated node to ensure uniqueness of IDs in the marked document nodes.
             }
           }
 
           if (annotationNodeIndex === annotationNodes.length - 1) {
-            properties.dataEnd = true;
+            properties.dataAnnotationEnd = true;
           }
 
           annotatedNode = h('mark', properties, annotatedNode);

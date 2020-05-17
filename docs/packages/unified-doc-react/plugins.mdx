@@ -10,6 +10,6 @@ import PluginsExample from "./src/plugins";
 
 Apply valid [rehype](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md) plugins to supercharge your document.
 
-> Note that the `annotations` and `onSelectText` props may not behave correctly if plugins modify the rendered content of the document since the these props behave correctly in relation to the source content.
+> Note that the `annotations` and `onSelectText` props may not behave correctly if rehype plugins modify the text content of the document since the callback is applied in relation to the source content.
 
 <PluginsExample />

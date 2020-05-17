@@ -1,6 +1,6 @@
 # 📜 unified-doc
 
-[unified][unified] document renderer for content.
+[unified][unified] document APIs and renderers.
 
 ![image](./public/unified-doc.png)
 

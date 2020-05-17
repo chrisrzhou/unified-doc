@@ -25,7 +25,7 @@ export type AnnotationCallback = (
 ) => void;
 
 interface AnnotationCallbacks {
-  getTooltipContent: (annotation: Annotation) => string;
+  setTooltipContent: (annotation: Annotation) => string;
   onClick: AnnotationCallback;
   onMouseEnter: AnnotationCallback;
   onMouseOut: AnnotationCallback;

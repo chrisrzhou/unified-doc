@@ -1,7 +1,7 @@
 {
   "name": "unified-doc",
   "version": "1.0.0",
-  "description": "unified-doc APIs and typings",
+  "description": "unified document APIs and typings",
   "main": "dist/index.js",
   "module": "dist/index.module.js",
   "source": "index.js",

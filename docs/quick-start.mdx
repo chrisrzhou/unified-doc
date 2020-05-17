@@ -3,48 +3,49 @@ name: Quick Start
 route: /quick-start
 ---
 
-import { Link } from "gatsby";
-
 # Quick Start
 
-This progressive documentation will cover various programs (processors, renderers, utilities) that support building [unified][unified] document renderers for content.
+This progressive documentation will explore all things related to the [**unified-doc**][unified-doc].
 
-## Contents
+## [Readme](./readme)
 
-The documentation is organized in the following main sections:
+An overview of the `unified-doc` initiative, covering motivations for unified document APIs and renderers.
 
-<Link to="/readme">
-  <h3>Readme</h3>
-</Link>
+## [Demos](./demos/ebook)
 
-An overview of the [**unified-doc**][unified-doc] ecosystem, covering motivations for a unified document renderer. Goals and architectural considerations are discussed towards building programs in the ecosystem.
+A small collection of document-based applications showcasing diverse features that are easily implemented using `unified-doc` packages.
 
-<Link to="/demos/ebook">
-  <h3>Demos</h3>
-</Link>
+> Demos are implemented using the [`unified-doc-react`](./packages/unified-doc-react) renderer, but the concepts are easily translatable to other renderers since the renderer packages are thin wrappers implementing the core [`unified-doc`](./packages/unified-doc) APIs.
 
-A small collection of document-based applications showcasing diverse features that are easily implemented using the `unified-doc` spec.
+## Packages
 
-<Link to="/unified-doc-react/readme">
-  <h3>unified-doc-react</h3>
-</Link>
+### Core
+Core unified document APIs covering annotations, selecting text, reading/saving files, and many more to come.
+- [`unified-doc`](./packages/unified-doc)
 
-The official [React][react] implementation of the `unified-doc` spec.
+### Parsers
+Parsers used in `unified-doc`.
+- [`rehype-parse`](https://github.com/rehypejs/rehype/tree/master/packages/rehype-parse)
+- [`remark-parse`](https://github.com/remarkjs/remark/tree/master/packages/remark-parse)
+- [`unified-doc-parse-text`](./packages/unified-doc-parse-text)
+- `unified-doc-parse-docx` (TODO)
+- `unified-doc-parse-pdf` (TODO)
 
-<Link to="/packages/unified-doc-util-annotate">
-  <h3>Packages</h3>
-</Link>
+### Renderers
+Renderers implementing `unified-doc` in vanilla JS or specific libraries.
+- [`unified-doc-react`](./packages/unified-doc-react)
+- `unified-doc-vue` (WIP)
+- `unified-doc-html` (WIP)
 
-Various interoperable packages in the `unified-doc` ecosystem that support parsing, processing, and converting content into a unified rendered document.
+### Utils
+Hast utils used in `unified-doc`
+- [`unified-doc-util-annotate`](./packages/unified-doc-util-annotate)
+- `unified-doc-download` (WIP)
+- `unified-doc-search` (WIP)
 
-<Link to="/changelog">
-  <h3>Changelog</h3>
-</Link>
-
+## [Changelog](./changelog)
 Stay up to date on any recent or breaking changes.
 
 <!-- Links -->
 
-[react]: https://github.com/facebook/react
-[unified]: https://unifiedjs.com/
 [unified-doc]: https://github.com/chrisrzhou/unified-doc

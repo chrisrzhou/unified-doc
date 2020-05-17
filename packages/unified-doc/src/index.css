@@ -4,7 +4,7 @@ mark {
   position: relative;
 }
 
-mark[data-start="true"]::before {
+mark[data-annotation-start="true"]::before {
   background-color: white;
   color: gray;
   content: attr(label);

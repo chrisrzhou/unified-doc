@@ -16,7 +16,7 @@ This demo shows how commenting (and other similar custom post-annotation renderi
 
 The comment data is mocked in a simple way using the array index as data. This implementation uses an effect hook and vanilla DOM methods to render comment nodes.
 
-Since all annotated nodes contain the `data-id` attribute, you can select these nodes with the relevant document `querySelector`. Note that the `id` attribute is conveniently and _uniquely_ provided for annotated nodes that have the `data-start="true"` attribute values. This demo uses the `data-start`, `data-end` attributes to determine how comment nodes are placed.
+Since all annotated nodes contain the `data-annotation-id` attribute, you can select these nodes with the relevant document `querySelector`. Note that the `id` attribute is conveniently and _uniquely_ provided for annotated nodes that have the `data-annotation-start="true"` attribute values. This demo uses the `data-annotation-start`, `data-annotation-end` attributes to determine how comment nodes are placed.
 
 ## Improvements
 
@@ -24,8 +24,8 @@ You can improve this demo by formally building out a commenting workflow with re
 
 ## Concepts
 
-- Custom post-annotation rendering with web technologies.
-- Annotation `data-` attributes.
+- Custom post-annotation rendering with vanilla JS.
 - Custom CSS.
+- `data-annotation-*` attributes.
 
 <CommentsDemo />

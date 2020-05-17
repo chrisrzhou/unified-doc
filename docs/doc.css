@@ -35,12 +35,12 @@
   font-weight: bold;
 }
 
-.important[data-start="true"] {
+.important[data-annotation-start="true"] {
   border-left: 1px solid black;
   padding-left: 2px;
 }
 
-.important[data-end="true"] {
+.important[data-annotation-end="true"] {
   border-right: 1px solid black;
   padding-right: 2px;
 }
@@ -53,13 +53,13 @@
   font-style: italic;
 }
 
-.quote[data-start="true"] {
+.quote[data-annotation-start="true"] {
   border-left: 1px solid #bbbbbb;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
 
-.quote[data-end="true"] {
+.quote[data-annotation-end="true"] {
   border-right: 1px solid #bbbbbb;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;

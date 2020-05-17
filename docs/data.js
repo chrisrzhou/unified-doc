@@ -3,18 +3,23 @@ import { v4 as uuidv4 } from 'uuid';
 export const contentTypes = [
   {
     id: 'text',
-    filename: 'content1',
+    filename: 'text-content',
     contentType: 'text',
   },
   {
     id: 'markdown',
-    filename: 'content2',
+    filename: 'markdown-content',
     contentType: 'markdown',
   },
   {
     id: 'html',
-    filename: 'content3',
+    filename: 'html-content',
     contentType: 'html',
+  },
+  {
+    id: '*',
+    filename: 'any-content',
+    contentType: '*',
   },
 ];
 
@@ -505,12 +510,12 @@ export const cssProperties = `
   font-weight: bold;
 }
 
-.important[data-start="true"] {
+.important[data-annotation-start="true"] {
   border-left: 1px solid black;
   padding-left: 2px;
 }
 
-.important[data-end="true"] {
+.important[data-annotation-end="true"] {
   border-right: 1px solid black;
   padding-right: 2px;
 }
@@ -523,13 +528,13 @@ export const cssProperties = `
   font-style: italic;
 }
 
-.quote[data-start="true"] {
+.quote[data-annotation-start="true"] {
   border-left: 1px solid #bbbbbb;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
 
-.quote[data-end="true"] {
+.quote[data-annotation-end="true"] {
   border-right: 1px solid #bbbbbb;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;

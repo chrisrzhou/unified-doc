@@ -64,12 +64,12 @@ export default function AnnotationsExample() {
   ];
 
   const annotationCallbacks = {
-    getTooltipContent: enableTooltips
-      ? (annotation) => annotation.tooltip
-      : undefined,
     onClick: (annotation) => setClickedAnnotation(annotation),
     onMouseEnter: (annotation) => setHoveredAnnotation(annotation),
     onMouseOut: () => setHoveredAnnotation(null),
+    setTooltipContent: enableTooltips
+      ? (annotation) => annotation.tooltip
+      : undefined,
   };
 
   const docProps = {

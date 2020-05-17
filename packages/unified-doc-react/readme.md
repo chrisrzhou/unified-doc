@@ -1,16 +1,16 @@
 # unified-doc-react
 
-[React][react] renderer for [**unified-doc**][unified-doc].
+[react][react] renderer for [**unified-doc**][unified-doc].
 
 ## Install
 
-```sh
+```bash
 npm install unified-doc-react
 ```
 
 ## Description
 
-`unified-doc-react` uses `react` as the rendering implementation for `unified-doc`, and supports the following features through a set of simple component props:
+`unified-doc-react` uses `react` as the rendering implementation for [`unified-doc`][unified-doc-package], and supports the following features through a set of simple component props:
 
 - Rendering `content` of various `contentType` using a unified processor.
 - Integrate `annotations` with the rendered document using `annotationCallbacks` and `onSelectText` callbacks.
@@ -43,9 +43,9 @@ import "./my-document.css";
 
 function MyDocument() {
   const annotationCallbacks = {
-    getTooltipContent: (annotation) => annotation.tooltip,
     onClick: (annotation) => console.log(annotation.id, " clicked"),
     onMouseEnter: (annotation) => console.log(annotation.id, " hovered"),
+    setTooltipContent: (annotation) => annotation.tooltip,
   };
 
   return (
@@ -93,7 +93,7 @@ View the official docs and examples at https://unified-doc.netlify.com/packages/
 
 You can also run the docs locally with:
 
-```sh
+```bash
 git clone git@github.com:chrisrzhou/unified-doc
 
 cd unified-doc
@@ -105,3 +105,4 @@ yarn && yarn docs
 [props]: https://unified-doc.netlify.com/packages/unified-doc-react/props
 [react]: https://github.com/facebook/react
 [unified-doc]: https://github.com/chrisrzhou/unified-doc
+[unified-doc-package]: https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc

@@ -17,7 +17,7 @@
   padding: 0 8px;
   text-transform: uppercase;
 }
-mark[data-start="true"].annotation-labeled::before {
+mark[data-annotation-start="true"].annotation-labeled::before {
   content: "";
   display: hidden;
 }

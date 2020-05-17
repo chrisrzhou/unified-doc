@@ -1,24 +1,24 @@
 # Changelog
 
 ## 2020-05-17
-`v1` refactor reorganizing packages to better separate features.  Improved and simplified docs.
+`v1` refactor reorganizing packages to better separate areas of concerns and features.  Improved and simplified docs.
 
 ### Breaking
-The old packages are now **deprecated**:
+The old packages are **deprecated**:
 - `@unified-doc/hast-util-annotate`
 - `@unified-doc/hast-util-extract-text-offsets`
 - `@unified-doc/processor`
 - `@unified-doc/react-unified-doc`
 - `@unified-doc/text-parse`
 
-In favor of the new packages:
+### Packages
 - `unified-doc@1.0.0`:
   - Core package of unified document APIs.  APIs exposed:
     - `createProcessor`: Single entry point to create a unified processor to process `hast` trees with unified document APIs (e.g. annotations, sanitize, plugins).
     - `selectText`: A generic method that accepts a DOM element and `hast` tree so that text selection events can return an annotation object with source offsets calculated.
   - More unified document API methods will be exposed in this module in the future (e.g. text search).
 - `unified-doc-parse-text@1.0.0`
-  - Simple parser to parse content into `hast` tree with a single `text` node.
+  - Simple parser to parse content into `hast` tree with a single text node.
   - Future parsers will adopt the package name convention of `unified-doc-parse-<content-type>`.
 - `unified-doc-react@1.0.0`
   - React renderer implementing `unified-doc` APIs.
@@ -31,7 +31,7 @@ In favor of the new packages:
 
 Official release! Check out the [docs][docs] to get started.
 
-Packages:
+### Packages
 - `hast-util-annotate@0.1.1`
 - `hast-util-extract-text-offsets@0.1.1`
 - `processor@0.1.1`

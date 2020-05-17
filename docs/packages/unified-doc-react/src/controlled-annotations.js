@@ -12,7 +12,7 @@ const annotationTypes = [
   { label: 'redline', value: 'redline' },
 ];
 
-export default function ManagingAnnotationsExample() {
+export default function ControlledAnnotationsExample() {
   const [annotations, setAnnotations] = useState([]);
   const [annotationType, setAnnotationType] = useState('default');
 

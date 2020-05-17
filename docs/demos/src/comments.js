@@ -29,7 +29,7 @@ export default function CommentsDemo() {
       const selector =
         commentPosition === 'start'
           ? `[id='${id}']`
-          : `[data-id='${id}'][data-end='true']`;
+          : `[data-annotation-id='${id}'][data-annotation-end='true']`;
       const annotatedNode = document.querySelector(selector);
 
       const commentNode = document.createElement('div');

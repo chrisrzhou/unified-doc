@@ -4,7 +4,7 @@
 
 ## Install
 
-```sh
+```bash
 npm install unified-doc-parse-text
 ```
 
@@ -20,7 +20,7 @@ const processor = unified().use(text);
 processor.parse("\na to the \nb to the \n\nc to the d");
 ```
 
-Yields a [hast][hast] tree where the input content string is represented as a single text node.
+Yields a `hast` tree where the input content string is represented as a single text node.
 
 ```js
 const parsed = {

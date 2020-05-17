@@ -29,7 +29,7 @@ export default function Home() {
   const [step, setStep] = useState(0);
 
   const annotationCallbacks = {
-    getTooltipContent: (annotation) => annotation.tooltip,
+    setTooltipContent: (annotation) => annotation.tooltip,
   };
 
   let nextButtonLabel;
@@ -52,7 +52,7 @@ export default function Home() {
     <FlexLayout space="l">
       {step >= 0 && (
         <Section
-          description="Accepts any supported content types"
+          description="Accepts any supported content type"
           title="content">
           <AnimatedTrail
             items={contentTypes}
@@ -82,7 +82,8 @@ export default function Home() {
           <AnimatedTrail
             items={[
               hast,
-              'apply hast plugins (e.g. annotations)',
+              'apply annotations...',
+              'apply other unified-doc APIs...',
               hastAnnotated,
             ]}
             renderItem={(item) => (

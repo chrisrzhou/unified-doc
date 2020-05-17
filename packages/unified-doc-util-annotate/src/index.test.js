@@ -287,7 +287,7 @@ describe('annotate', () => {
     expect(rightNode.value).toEqual('e d');
   });
 
-  it('should apply the data-id, data-start and data-end attributes correctly (only node with data-start contains an actual ID attribute)', () => {
+  it('should apply the data-annotation-id, data-annotation-start and data-annotation-end attributes correctly (only node with data-annotation-start contains an actual ID attribute)', () => {
     const tree = createTree();
     const annotations = [
       { id: 'a', startOffset: 10, endOffset: 20 },
@@ -309,19 +309,21 @@ describe('annotate', () => {
 
     expect(leftNode.type).toEqual('text');
 
-    expect(matchedNode1.properties.dataId).toEqual('a');
-    expect(matchedNode1.properties.dataStart).toEqual(true);
+    expect(matchedNode1.properties.dataAnnotationId).toEqual('a');
+    expect(matchedNode1.properties.dataAnnotationStart).toEqual(true);
     expect(matchedNode1.properties.id).toEqual('a');
 
-    expect(matchedNode2.properties.dataId).toEqual('a');
-    expect(matchedNode2.properties.dataEnd).toEqual(true);
+    expect(matchedNode2.properties.dataAnnotationId).toEqual('a');
+    expect(matchedNode2.properties.dataAnnotationEnd).toEqual(true);
     expect(matchedNode2.properties.id).toEqual(undefined);
-    expect(matchedNode2.children[0].properties.dataId).toEqual('b');
-    expect(matchedNode2.children[0].properties.dataStart).toEqual(true);
+    expect(matchedNode2.children[0].properties.dataAnnotationId).toEqual('b');
+    expect(matchedNode2.children[0].properties.dataAnnotationStart).toEqual(
+      true,
+    );
     expect(matchedNode2.children[0].properties.id).toEqual('b');
 
-    expect(matchedNode3.properties.dataId).toEqual('b');
-    expect(matchedNode3.properties.dataEnd).toEqual(true);
+    expect(matchedNode3.properties.dataAnnotationId).toEqual('b');
+    expect(matchedNode3.properties.dataAnnotationEnd).toEqual(true);
     expect(matchedNode3.properties.id).toEqual(undefined);
 
     expect(rightNode.type).toEqual('text');
