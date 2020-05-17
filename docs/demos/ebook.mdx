@@ -16,10 +16,10 @@ An Ebook demo supporting simple bookmark management.
 - Click on the bookmark tags to jump to the bookmark in the document.
 
 ## Implementation
-This demo is extremely simple and uses the `window.confirm` method to implement bookmark actions.  These actions are implemented using the `onSelectText` and `onAnnotationClick` props.
+This demo is extremely simple and uses the `window.confirm` method to implement bookmark actions.  These actions are implemented using the `annotationCallbacks` and `onSelectText` props.
 
 ## Improvements
-You can create more interactive bookmark workflows by taking advantage of the mouse event returned by the relevant callback props (`onAnnotationClick`, `onSelectText`).
+You can create more interactive bookmark workflows by taking advantage of the mouse event returned by the relevant callback props (`annotationCallbacks`, `onSelectText`).
 
 ## Concepts
 - Creating annotations from text selections.

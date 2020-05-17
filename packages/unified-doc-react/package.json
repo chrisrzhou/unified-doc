@@ -1,6 +1,6 @@
 {
 	"name": "unified-doc-react",
-	"version": "0.1.9",
+	"version": "1.0.0",
 	"description": "React implementation of the unified-doc spec",
 	"main": "dist/index.js",
 	"module": "dist/index.module.js",
@@ -36,7 +36,6 @@
 	},
 	"dependencies": {
 		"rehype-react": "^5.0.1",
-		"tippy.js": "^6.1.0",
 		"unified-doc": "*"
 	}
 }

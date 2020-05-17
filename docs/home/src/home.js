@@ -1,6 +1,5 @@
 import { navigate } from 'gatsby';
 import React, { useState } from 'react';
-import 'tippy.js/dist/tippy.css';
 
 import {
 	contentTypes,
@@ -18,7 +17,7 @@ import {
 	Text,
 } from '@docs/ui';
 import Document from '@packages/unified-doc-react';
-import '@packages/unified-doc-react/src/index.css';
+import '@packages/unified-doc/src/index.css';
 import '@docs/doc.css';
 
 import Section from './Section';
@@ -28,6 +27,10 @@ const LAST_STEP = 2;
 export default function Home() {
 	const [annotations, setAnnotations] = useState(initialAnnotations);
 	const [step, setStep] = useState(0);
+
+	const annotationCallbacks = {
+		getTooltipContent: (annotation) => annotation.tooltip,
+	};
 
 	let nextButtonLabel;
 	switch (step) {
@@ -97,10 +100,10 @@ export default function Home() {
 					title="html">
 					<Document
 						annotations={annotations}
+						annotationCallbacks={annotationCallbacks}
 						className="doc-mini"
 						content={content}
 						contentType="html"
-						getAnnotationTooltip={(annotation) => annotation.tooltip}
 						onSelectText={(annotation) => {
 							setAnnotations([
 								...annotations,

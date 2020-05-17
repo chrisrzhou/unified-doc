@@ -7,10 +7,7 @@
 yarn add unified-doc-util-annotate
 ```
 
-
 ## Description
-> `unified-doc-util-annotate` is the primary engine for annotating documents in [unified-doc-react][unified-doc-react].
-
 This utility goes through all text nodes in a [hast][hast] tree and annotates text nodes that overlap with a provided array of annotations.
 
 The annotation algorithm is focused on preserving the structure of the tree, and annotations are applied as `<mark />` tags immediately above the text nodes.  The annotation process is data-driven and declarative.  Features are supported easily by specifying simple data on the `Annotation` object.
@@ -124,7 +121,7 @@ const annotated = {
 ```
 
 
-Note that the utility also supports annotating text nodes with multiple overlapping annotations as demonstrated in the example below.  Please check out the [unified-doc-react][unified-doc-react] docs for interactive examples of this behavior!
+The utility also supports overlapping annotations of text nodes as demonstrated in the example below.
 
 ```js
 // using same tree in the earlier example
@@ -195,13 +192,13 @@ const annotated = {
 function annotate(
 	tree: Node,
 	annotations: Annotation[],
-	annotationCallbacks?: OptionalAnnotationCallbacks,
+	annotationCallbacks?: Optional<AnnotationCallbacks>,
 ): Node;
 ```
 
 ### Types
 ```ts
-interface Annotation {
+export interface Annotation {
 	/** Additional annotation data */
 	[key: string]: any;
 	/** Unique ID is required for annotation algorithm to work.  It is also used to uniquely assign ID values to generated <mark /> nodes which is convenient for selecting the element itself. */
@@ -212,13 +209,13 @@ interface Annotation {
 	endOffset: number;
 	/** CSS classnames that will be applied on the annotated nodes */
 	classNames?: string[];
-	/** If true, will add the provided value to the `label` tag attribute.  Useful for displaying the label with custom CSS:before selectors. */
+	/** If true, will add the value to the `label` tag attribute.  Useful for displaying the label with custom CSS:before selectors. */
 	label?: string;
 	/** Apply custom styles to the annotated node. Note that use of `classNames` prop is preferred. */
-	style?: { [key: string]: any };
+	style?: any;
 }
 
-type AnnotationCallback = (
+export type AnnotationCallback = (
 	annotation: Annotation,
 	event?: MouseEvent,
 ) => void;
@@ -233,7 +230,3 @@ interface AnnotationCallbacks {
 
 <!-- Links -->
 [hast]: https://github.com/syntax-tree/hast
-[unified-doc-react]: ../unified-doc-react/readme
-
-<!-- Hack to make importing mdx work in docz/gatsby... -->
-export default ({ children }) => children

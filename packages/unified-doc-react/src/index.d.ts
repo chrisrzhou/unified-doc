@@ -1,35 +1,30 @@
 import {
 	Annotation,
-	AnnotationCallback,
+	AnnotationCallbacks,
 	ContentType,
+	Optional,
 	Plugin,
 	SelectedText,
 } from 'unified-doc';
 
-export { Annotation, AnnotationCallback, ContentType, Plugin };
+export * from 'unified-doc';
 
 export interface Props {
-	/** Source content represented as a string */
+	/** Source string content */
 	content: string;
-	/** Supported content type ('html', 'markdown', 'text') */
+	/** Supported content types (e.g. 'html', 'markdown', 'text') */
 	contentType?: ContentType;
-	/** An array of annotations to apply to the content */
+	/** Annotations applied relative to the source content */
 	annotations?: Annotation[];
-	/** Provide optional CSS to style the document */
+	/** Callbacks to capture annotation and related mouse events */
+	annotationCallbacks?: Optional<AnnotationCallbacks>;
+	/** Optional CSS to style the document */
 	className?: string;
-	/** Valid rehype plugins can be applied after annotations.  `annotations` and `onSelectText` prop may misbehave depending on how the plugins mutate the rendered content relative to the source content. */
+	/** Optional rehype plugins can be applied.  Note that the `onSelectText` prop may misbehave if plugins modify the text content of the document. */
 	rehypePlugins?: Plugin[];
-	/** HTML Sanitize schema (see https://github.com/syntax-tree/hast-util-sanitize#schema) */
+	/** HTML Sanitize schema (https://github.com/syntax-tree/hast-util-sanitize#schema) */
 	sanitizeSchema?: { [key: string]: any };
-	/** Renders annotation tooltips when hovering on the annotation */
-	getAnnotationTooltip?: (annotation: Annotation) => string;
-	/** Callback to capture annotation object and mouse click event */
-	onAnnotationClick?: AnnotationCallback;
-	/** Callback to capture annotation object and mouse enter event */
-	onAnnotationMouseEnter?: AnnotationCallback;
-	/** Callback to capture annotation object and mouse leave event */
-	onAnnotationMouseLeave?: AnnotationCallback;
-	/** Callback to capture selected text and mouse up event.  The `SelectedText` extends the `Annotation` object, and can be used to updated the `annotations` prop in a controlled manner.  Note that the this callback may not behave correctly if plugins modify the text content of the document since the callback is applied in relation to the source content. */
+	/** Callback to capture selected text and mouse up event.  The `SelectedText` extends the `Annotation` object, and can be used with the `annotations` prop in a controlled manner.  Note that this callback may not behave correctly if rehype plugins modify the text content of the document since the callback is applied in relation to the source content. */
 	onSelectText?: (selectedText: SelectedText, e?: MouseEvent) => void;
 }
 

@@ -1,71 +1,20 @@
 import React, { createElement, useEffect, useRef } from 'react';
 import rehype2react from 'rehype-react';
-import tippy, { followCursor } from 'tippy.js';
 import { createProcessor, selectText } from 'unified-doc';
-
-let tooltip;
 
 export default function Document({
 	annotations = [],
+	annotationCallbacks = {},
 	className,
 	content,
 	contentType,
 	rehypePlugins = [],
 	sanitizeSchema = {},
-	getAnnotationTooltip,
-	onAnnotationClick,
-	onAnnotationMouseEnter,
-	onAnnotationMouseLeave,
 	onSelectText,
 }) {
 	const docRef = useRef();
 
 	// Set up unified processor to compile content
-	function onClick(annotation, event) {
-		if (onAnnotationClick) {
-			event.stopPropagation();
-			onAnnotationClick(annotation, event);
-		}
-	}
-
-	function onMouseEnter(annotation, event) {
-		if (onAnnotationMouseEnter) {
-			event.stopPropagation();
-			onAnnotationMouseEnter(annotation, event);
-		}
-
-		if (getAnnotationTooltip) {
-			tooltip = tippy(event.target, {
-				arrow: false,
-				followCursor: 'horizontal',
-				plugins: [followCursor],
-			});
-			// @ts-ignore TODO: fix type
-			tooltip.setContent(getAnnotationTooltip(annotation));
-			// @ts-ignore TODO: fix type
-			tooltip.show();
-		}
-	}
-
-	function onMouseOut(annotation, event) {
-		if (onAnnotationMouseLeave) {
-			event.stopPropagation();
-			onAnnotationMouseLeave(annotation, event);
-		}
-
-		if (tooltip) {
-			event.stopPropagation();
-			tooltip.destroy();
-			tooltip = null;
-		}
-	}
-
-	const annotationCallbacks = {
-		onClick,
-		onMouseEnter,
-		onMouseOut,
-	};
-
 	const processor = createProcessor({
 		annotations,
 		annotationCallbacks,
@@ -74,33 +23,31 @@ export default function Document({
 		sanitizeSchema,
 	});
 	processor.use(rehype2react, { createElement });
+	const tree = processor.parse(content);
+	// @ts-ignore: TODO remove when VFile typings are fixed
+	const compiled = processor.processSync(content).result;
 
+	// Setup text selection
 	useEffect(() => {
 		function handleSelectText(event) {
 			if (onSelectText) {
-				const selectedText = selectText(
-					docRef.current,
-					processor.parse(content),
-				);
+				const selectedText = selectText(docRef.current, tree);
 				if (selectedText) {
 					onSelectText(selectedText, event);
 				}
 			}
 		}
 
-		window.addEventListener('mouseup', handleSelectText);
+		document.addEventListener('mouseup', handleSelectText);
 
 		return () => {
-			window.removeEventListener('mouseup', handleSelectText);
+			document.removeEventListener('mouseup', handleSelectText);
 		};
-	}, [content, processor, onSelectText]);
-
-	// @ts-ignore: TODO remove when VFile typings are fixed
-	const { result } = processor.processSync(content);
+	}, [content, tree, onSelectText]);
 
 	return (
 		<div ref={docRef} className={className}>
-			{result}
+			{compiled}
 		</div>
 	);
 }

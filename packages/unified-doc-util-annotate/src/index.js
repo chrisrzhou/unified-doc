@@ -76,12 +76,18 @@ export default function annotate(tree, annotations, annotationCallbacks = {}) {
 			return;
 		}
 
-		const annotatedNodes = getAnnotatedNodes(node, nodeId, {
+		const annotationData = {
 			allAnnotations,
 			a2n,
 			n2a,
-			callbacks: annotationCallbacks,
-		});
+		};
+
+		const annotatedNodes = getAnnotatedNodes(
+			node,
+			nodeId,
+			annotationData,
+			annotationCallbacks,
+		);
 
 		// Reconstruct nodes under parent
 		const currentNodeIndex = siblings.indexOf(node);

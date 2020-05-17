@@ -10,7 +10,7 @@ import {
 
 export interface Options {
 	annotations: Annotation[];
-	annotationCallbacks: AnnotationCallbacks;
+	annotationCallbacks: Optional<AnnotationCallbacks>;
 	contentType: ContentType;
 	rehypePlugins: Plugin[];
 	sanitizeSchema: SanitizeSchema;

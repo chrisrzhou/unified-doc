@@ -1,6 +1,6 @@
 import { Node } from 'unist';
 
-type Optional<T> = {
+export type Optional<T> = {
 	[P in keyof T]?: T[P];
 };
 
@@ -27,15 +27,14 @@ export type AnnotationCallback = (
 ) => void;
 
 interface AnnotationCallbacks {
+	getTooltipContent: (annotation: Annotation) => string;
 	onClick: AnnotationCallback;
 	onMouseEnter: AnnotationCallback;
 	onMouseOut: AnnotationCallback;
 }
 
-export type OptionalAnnotationCallbacks = Optional<AnnotationCallbacks>;
-
 export default function annotate(
 	tree: Node,
 	annotations: Annotation[],
-	annotationCallbacks?: OptionalAnnotationCallbacks,
+	annotationCallbacks?: Optional<AnnotationCallbacks>,
 ): Node;

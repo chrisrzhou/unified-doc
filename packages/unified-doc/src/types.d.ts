@@ -23,9 +23,6 @@ export interface SanitizeSchema {
 	[key: string]: any;
 }
 
-export interface SelectedText {
-	id: string;
-	startOffset: number;
-	endOffset: number;
+export interface SelectedText extends Annotation {
 	value: string;
 }

@@ -63,15 +63,19 @@ export default function AnnotationsExample() {
 		},
 	];
 
-	const docProps = {
-		annotations,
-		content,
-		getAnnotationTooltip: enableTooltips
+	const annotationCallbacks = {
+		getTooltipContent: enableTooltips
 			? (annotation) => annotation.tooltip
 			: undefined,
-		onAnnotationClick: (annotation) => setClickedAnnotation(annotation),
-		onAnnotationMouseEnter: (annotation) => setHoveredAnnotation(annotation),
-		onAnnotationMouseLeave: () => setHoveredAnnotation(null),
+		onClick: (annotation) => setClickedAnnotation(annotation),
+		onMouseEnter: (annotation) => setHoveredAnnotation(annotation),
+		onMouseOut: () => setHoveredAnnotation(null),
+	};
+
+	const docProps = {
+		annotations,
+		annotationCallbacks,
+		content,
 		onSelectText: (annotation) => {
 			setAnnotationsData([
 				...annotationsData,

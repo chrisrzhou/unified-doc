@@ -1,8 +1,7 @@
 import React from 'react';
-import 'tippy.js/dist/tippy.css';
 
 import Document from '@packages/unified-doc-react/src';
-import '@packages/unified-doc-react/src/index.css';
+import '@packages/unified-doc/src/index.css';
 
 import '@docs/doc.css';
 import { Card, FlexLayout, Link } from '@docs/ui';

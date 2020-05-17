@@ -51,10 +51,8 @@ export default function ManagingAnnotationsExample() {
 		},
 	];
 
-	const docProps = {
-		annotations,
-		content,
-		onAnnotationClick: (annotation) => {
+	const annotationCallbacks = {
+		onClick: (annotation) => {
 			// eslint-disable-next-line no-alert
 			const removeAnnotation = window.confirm(
 				'Do you want to remove this annotation?',
@@ -63,6 +61,12 @@ export default function ManagingAnnotationsExample() {
 				setAnnotations(annotations.filter(({ id }) => annotation.id !== id));
 			}
 		},
+	};
+
+	const docProps = {
+		annotations,
+		annotationCallbacks,
+		content,
 		onSelectText: (annotation) => {
 			const { value } = annotation;
 			// eslint-disable-next-line no-alert

@@ -1,7 +1,21 @@
 import h from 'hastscript';
+import tippy, { followCursor } from 'tippy.js';
 
-export default function getAnnotatedNodes(node, nodeId, annotationData) {
-	const { allAnnotations, a2n, n2a, callbacks } = annotationData;
+let tooltip;
+
+export default function getAnnotatedNodes(
+	node,
+	nodeId,
+	annotationData,
+	annotationCallbacks,
+) {
+	const { allAnnotations, a2n, n2a } = annotationData;
+	const {
+		getTooltipContent,
+		onClick,
+		onMouseEnter,
+		onMouseOut,
+	} = annotationCallbacks;
 	const nodeAnnotations = (n2a[nodeId] || []).map(
 		(annotationId) => allAnnotations[annotationId],
 	);
@@ -58,7 +72,6 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 			annotatedNodes.push(node);
 		} else {
 			let annotatedNode = node;
-			const { onClick, onMouseEnter, onMouseOut } = callbacks;
 			annotations
 				.slice()
 				.reverse() // Create inner nodes first
@@ -70,10 +83,42 @@ export default function getAnnotatedNodes(node, nodeId, annotationData) {
 						dataId: annotationId,
 						label,
 						style,
-						onClick: (event) => onClick(annotation, event),
-						onMouseEnter: (event) => onMouseEnter(annotation, event),
-						onMouseOut: (event) => onMouseOut(annotation, event),
 					};
+
+					if (onClick) {
+						properties.onClick = (event) => {
+							onClick(annotation, event);
+						};
+					}
+
+					if (onMouseEnter) {
+						properties.onMouseEnter = (event) => {
+							if (getTooltipContent) {
+								tooltip = tippy(event.target, {
+									arrow: false,
+									followCursor: 'horizontal',
+									plugins: [followCursor],
+								});
+								// @ts-ignore TODO: fix type
+								tooltip.setContent(getTooltipContent(annotation));
+								// @ts-ignore TODO: fix type
+								tooltip.show();
+							}
+
+							onMouseEnter(annotation, event);
+						};
+					}
+
+					if (onMouseOut) {
+						properties.onMouseOut = (event) => {
+							if (tooltip) {
+								tooltip.destroy();
+								tooltip = null;
+							}
+
+							onMouseOut(annotation, event);
+						};
+					}
 
 					const annotationNodes = a2n[annotationId];
 					const annotationNodeIndex = annotationNodes.indexOf(nodeId);

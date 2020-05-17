@@ -37,10 +37,8 @@ export default function EbookDemo() {
 		</FlexLayout>
 	);
 
-	const docProps = {
-		annotations,
-		content,
-		onAnnotationClick: (annotation) => {
+	const annotationCallbacks = {
+		onClick: (annotation) => {
 			// eslint-disable-next-line no-alert
 			const removeBookmark = window.confirm(
 				'Do you want to remove this bookmark?',
@@ -49,6 +47,12 @@ export default function EbookDemo() {
 				setAnnotations(annotations.filter(({ id }) => annotation.id !== id));
 			}
 		},
+	};
+
+	const docProps = {
+		annotations,
+		annotationCallbacks,
+		content,
 		onSelectText: (annotation) => {
 			const { value } = annotation;
 			// eslint-disable-next-line no-alert

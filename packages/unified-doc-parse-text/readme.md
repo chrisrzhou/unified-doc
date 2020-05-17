@@ -1,5 +1,5 @@
 # unified-doc-parse-text
-[unified][unified] [parser][parser] to parse text content into a [hast][hast] tree with a single text node.
+[unified][unified] parser to parse text content into a [hast][hast] tree with a single text node.
 
 
 ## Install
@@ -14,9 +14,7 @@ import html from 'rehype-stringify';
 import unified from 'unified';
 import text from 'unified-doc-parse-text';
 
-const processor = unified()
-	.use(text)
-	.use(html)
+const processor = unified().use(text)
 
 processor.parse('\na to the \nb to the \n\nc to the d');
 ```
@@ -58,8 +56,4 @@ Simply use the plugin with any unified processor.
 
 <!-- Links -->
 [hast]: https://github.com/syntax-tree/hast
-[parser]: https://github.com/unifiedjs/unified#parser
 [unified]: https://unifiedjs.com/
-
-<!-- Hack to make importing mdx work in docz/gatsby... -->
-export default ({ children }) => children
