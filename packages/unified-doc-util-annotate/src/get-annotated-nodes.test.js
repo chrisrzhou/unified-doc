@@ -1,3 +1,3 @@
 describe('getAnnotatedNodes', () => {
-	it('should pass (TODO: add tests)', () => {});
+  it('should pass (TODO: add tests)', () => {});
 });

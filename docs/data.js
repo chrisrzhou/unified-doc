@@ -1,141 +1,141 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export const contentTypes = [
-	{
-		id: 'text',
-		filename: 'content1',
-		contentType: 'text',
-	},
-	{
-		id: 'markdown',
-		filename: 'content2',
-		contentType: 'markdown',
-	},
-	{
-		id: 'html',
-		filename: 'content3',
-		contentType: 'html',
-	},
+  {
+    id: 'text',
+    filename: 'content1',
+    contentType: 'text',
+  },
+  {
+    id: 'markdown',
+    filename: 'content2',
+    contentType: 'markdown',
+  },
+  {
+    id: 'html',
+    filename: 'content3',
+    contentType: 'html',
+  },
 ];
 
 export const hast = {
-	type: 'root',
-	children: [
-		{
-			type: 'element',
-			tagName: 'h3',
-			children: [
-				{
-					type: 'text',
-					value: 'In Congress, July 4, 1776',
-				},
-			],
-		},
-		{
-			type: 'element',
-			tagName: 'blockquote',
-			children: [
-				{
-					type: 'text',
-					value: 'this is a blockquote',
-				},
-			],
-		},
-	],
+  type: 'root',
+  children: [
+    {
+      type: 'element',
+      tagName: 'h3',
+      children: [
+        {
+          type: 'text',
+          value: 'In Congress, July 4, 1776',
+        },
+      ],
+    },
+    {
+      type: 'element',
+      tagName: 'blockquote',
+      children: [
+        {
+          type: 'text',
+          value: 'this is a blockquote',
+        },
+      ],
+    },
+  ],
 };
 
 export const hastAnnotated = {
-	type: 'root',
-	children: [
-		{
-			type: 'element',
-			tagName: 'h3',
-			children: [
-				{
-					type: 'text',
-					value: 'In Congress, ',
-				},
-				{
-					type: 'element',
-					tagName: 'mark',
-					properties: {
-						class: ['important'],
-					},
-					children: [
-						{
-							type: 'text',
-							value: 'July 4, 1776.',
-						},
-					],
-				},
-			],
-		},
-		{
-			type: 'element',
-			tagName: 'blockquote',
-			children: [
-				{
-					type: 'text',
-					value: 'this is a blockquote',
-				},
-			],
-		},
-	],
+  type: 'root',
+  children: [
+    {
+      type: 'element',
+      tagName: 'h3',
+      children: [
+        {
+          type: 'text',
+          value: 'In Congress, ',
+        },
+        {
+          type: 'element',
+          tagName: 'mark',
+          properties: {
+            class: ['important'],
+          },
+          children: [
+            {
+              type: 'text',
+              value: 'July 4, 1776.',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'element',
+      tagName: 'blockquote',
+      children: [
+        {
+          type: 'text',
+          value: 'this is a blockquote',
+        },
+      ],
+    },
+  ],
 };
 
 export const annotations = [
-	{
-		id: uuidv4(),
-		startOffset: 1,
-		endOffset: 200,
-		label: 'default',
-		type: 'default',
-		tooltip: 'commented by John (3 weeks ago)',
-	},
-	{
-		id: uuidv4(),
-		startOffset: 800,
-		endOffset: 850,
-		label: 'styled',
-		type: 'styled',
-		style: { background: 'green', color: 'white' },
-		tooltip: 'commented by John (3 weeks ago)',
-	},
-	{
-		id: uuidv4(),
-		startOffset: 1200,
-		endOffset: 1400,
-		label: 'default',
-		type: 'default',
-		tooltip: 'removed by Jack (2 months ago)',
-	},
-	{
-		id: uuidv4(),
-		startOffset: 3200,
-		endOffset: 3500,
-		label: 'quote',
-		type: 'quote',
-		classNames: ['quote'],
-		tooltip: 'annotated by Jane (2 weeks ago)',
-	},
-	{
-		id: uuidv4(),
-		startOffset: 4000,
-		endOffset: 4500,
-		label: 'important',
-		type: 'important',
-		classNames: ['important'],
-		tooltip: 'marked as HIGH PRIORITY by Jill (2 days ago)',
-	},
-	{
-		id: uuidv4(),
-		startOffset: 5000,
-		endOffset: 5500,
-		label: 'redline',
-		type: 'redline',
-		classNames: ['redline'],
-		tooltip: 'annotated by Jane (2 weeks ago)',
-	},
+  {
+    id: uuidv4(),
+    startOffset: 1,
+    endOffset: 200,
+    label: 'default',
+    type: 'default',
+    tooltip: 'commented by John (3 weeks ago)',
+  },
+  {
+    id: uuidv4(),
+    startOffset: 800,
+    endOffset: 850,
+    label: 'styled',
+    type: 'styled',
+    style: { background: 'green', color: 'white' },
+    tooltip: 'commented by John (3 weeks ago)',
+  },
+  {
+    id: uuidv4(),
+    startOffset: 1200,
+    endOffset: 1400,
+    label: 'default',
+    type: 'default',
+    tooltip: 'removed by Jack (2 months ago)',
+  },
+  {
+    id: uuidv4(),
+    startOffset: 3200,
+    endOffset: 3500,
+    label: 'quote',
+    type: 'quote',
+    classNames: ['quote'],
+    tooltip: 'annotated by Jane (2 weeks ago)',
+  },
+  {
+    id: uuidv4(),
+    startOffset: 4000,
+    endOffset: 4500,
+    label: 'important',
+    type: 'important',
+    classNames: ['important'],
+    tooltip: 'marked as HIGH PRIORITY by Jill (2 days ago)',
+  },
+  {
+    id: uuidv4(),
+    startOffset: 5000,
+    endOffset: 5500,
+    label: 'redline',
+    type: 'redline',
+    classNames: ['redline'],
+    tooltip: 'annotated by Jane (2 weeks ago)',
+  },
 ];
 
 export const markdownContent = `

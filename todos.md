@@ -6,7 +6,6 @@
 
 ## Others
 - [ ] Update all docs and homepage
-- [ ] Spaces instead of tabs
 - [ ] Set up `vue` and `js-` wrappers
 - [ ] General Cypress tests for renderers
 - [ ] Jest tests for

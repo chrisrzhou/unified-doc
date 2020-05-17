@@ -54,8 +54,9 @@
 	},
 	"prettier": {
 		"bracketSpacing": true,
-		"jsxBracketSameLine": true,
-		"trailingComma": "all"
+    "jsxBracketSameLine": true,
+		"trailingComma": "all",
+    "useTabs": false
 	},
 	"xo": {
 		"prettier": true,

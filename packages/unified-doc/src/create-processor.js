@@ -11,41 +11,41 @@ import annotate from 'unified-doc-util-annotate';
 import coerceTextPositions from './utils/coerce-text-positions';
 
 const createPlugin = (transform) => (...args) => (tree) =>
-	transform(tree, ...args);
+  transform(tree, ...args);
 
 export default function createProcessor(options = {}) {
-	const {
-		annotations = [],
-		annotationCallbacks = {},
-		contentType = 'text',
-		rehypePlugins = [],
-		sanitizeSchema = {},
-	} = options;
+  const {
+    annotations = [],
+    annotationCallbacks = {},
+    contentType = 'text',
+    rehypePlugins = [],
+    sanitizeSchema = {},
+  } = options;
 
-	const processor = unified();
+  const processor = unified();
 
-	// Apply parsers
-	switch (contentType) {
-		case 'markdown':
-			processor
-				.use(markdown)
-				.use(remark2rehype)
-				.use(createPlugin(coerceTextPositions));
-			break;
-		case 'html':
-			processor.use(html);
-			break;
-		case 'text':
-		default:
-			processor.use(text);
-	}
+  // Apply parsers
+  switch (contentType) {
+    case 'markdown':
+      processor
+        .use(markdown)
+        .use(remark2rehype)
+        .use(createPlugin(coerceTextPositions));
+      break;
+    case 'html':
+      processor.use(html);
+      break;
+    case 'text':
+    default:
+      processor.use(text);
+  }
 
-	// Apply plugins (order matters)
-	processor.use(createPlugin(sanitize), deepmerge(gh, sanitizeSchema));
-	processor.use(createPlugin(annotate), annotations, annotationCallbacks);
-	rehypePlugins.forEach((plugin) => {
-		processor.use(plugin);
-	});
+  // Apply plugins (order matters)
+  processor.use(createPlugin(sanitize), deepmerge(gh, sanitizeSchema));
+  processor.use(createPlugin(annotate), annotations, annotationCallbacks);
+  rehypePlugins.forEach((plugin) => {
+    processor.use(plugin);
+  });
 
-	return processor;
+  return processor;
 }
