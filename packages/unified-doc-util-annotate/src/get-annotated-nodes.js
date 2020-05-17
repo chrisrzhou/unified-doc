@@ -7,7 +7,7 @@ export default function getAnnotatedNodes(
   node,
   nodeId,
   annotationData,
-  annotationCallbacks,
+  annotationCallbacks = {},
 ) {
   const { allAnnotations, a2n, n2a } = annotationData;
   const {
@@ -61,17 +61,18 @@ export default function getAnnotatedNodes(
     }
   });
 
-  const visited = {};
   // Construct annotated nodes
   const annotatedNodes = [];
+  const visited = {};
   nodeSegments.forEach((nodeSegment) => {
     const { annotations, value } = nodeSegment;
-    const node = { type: 'text', value };
+    const textNode = { type: 'text', value };
 
+    // If there are no annotations, push a text node, otherwise generate and push an annotated node.
     if (annotations.length === 0 || value === '\n') {
-      annotatedNodes.push(node);
+      annotatedNodes.push(textNode);
     } else {
-      let annotatedNode = node;
+      let annotatedNode = textNode;
       annotations
         .slice()
         .reverse() // Create inner nodes first

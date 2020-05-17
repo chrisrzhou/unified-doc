@@ -1,6 +1,6 @@
 import { Node } from 'unist';
 
-import { Annotation, AnnotationCallbacks, Optional } from '.';
+import { Annotation, AnnotationCallbacks, Optional } from './types';
 
 interface AnnotationData {
   allAnnotations: { [key: string]: Annotation };

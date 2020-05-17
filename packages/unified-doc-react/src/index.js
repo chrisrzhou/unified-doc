@@ -23,9 +23,10 @@ export default function Document({
     sanitizeSchema,
   });
   processor.use(rehype2react, { createElement });
-  const tree = processor.parse(content);
+
   // @ts-ignore: TODO remove when VFile typings are fixed
   const compiled = processor.processSync(content).result;
+  const tree = processor.parse(content);
 
   const handleSelectText = useCallback(
     (event) => {

@@ -4,20 +4,24 @@ menu: Demos
 route: demos/search
 ---
 
-import SearchDemo from './src/search';
+import SearchDemo from "./src/search";
 
 # Search
 
 ## Description
+
 A demo showing how to search a document, and jump to the matched entry in the document when clicking on a search results.
 
 ## Implementation
-This demo uses a naive Javascript `match` implementation to generate search result snippets.  These snippets assume the `annotation` shape naturally, and can therefore be easily integrated as annotations in the document.  Linking to the annotated node in the document is done using default browser behaviors with anchor links.
+
+This demo uses a naive Javascript `match` implementation to generate search result snippets. These snippets assume the `annotation` shape naturally, and can therefore be easily integrated as annotations in the document. Linking to the annotated node in the document is done using default browser behaviors with anchor links.
 
 ## Improvements
-You can use formal search libraries or integrate with a backend search API.  Note that the snippets algorithm used in this demo is naive, and you may notice broken 'DOM' substrings.  In the future, it is possible to implement a `unified` approach to search `text` nodes of `hast` trees (e.g. `hast-util-text-search`).
+
+You can use formal search libraries or integrate with a backend search API. Note that the snippets algorithm used in this demo is naive, and you may notice broken 'DOM' substrings. In the future, it is possible to implement a `unified` approach to search `text` nodes of `hast` trees (e.g. `hast-util-text-search`).
 
 ## Concepts
+
 - Permalinks to annotated nodes.
 
 <SearchDemo />

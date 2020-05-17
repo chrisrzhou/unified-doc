@@ -1,41 +1,42 @@
 {
-	"name": "unified-doc-react",
-	"version": "1.0.0",
-	"description": "React implementation of the unified-doc spec",
-	"main": "dist/index.js",
-	"module": "dist/index.module.js",
-	"source": "index.js",
-	"typings": "src/index.d.ts",
-	"keywords": [
-		"react",
-		"unified",
-		"doc",
-		"document",
-		"content",
-		"unist",
-		"hast",
-		"html",
-		"markdown",
-		"text",
-		"annotation"
-	],
-	"author": "Chris Zhou <chrisrzhou@pm.me>",
-	"license": "MIT",
-	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc-react",
-	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
-	"homepage": "https://unified-doc.netlify.com/",
-	"scripts": {
-		"build": "microbundle build --jsx React.createElement --external react",
-		"prepare": "yarn build"
-	},
-	"peerDependencies": {
-		"react": "^16.13.0"
-	},
-	"devDependencies": {
-		"react": "^16.13.0"
-	},
-	"dependencies": {
-		"rehype-react": "^5.0.1",
-		"unified-doc": "*"
-	}
+  "name": "unified-doc-react",
+  "version": "1.0.0",
+  "description": "React renderer for unified-doc",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "source": "index.js",
+  "typings": "src/index.d.ts",
+  "keywords": [
+    "unified",
+    "doc",
+    "react",
+    "renderer",
+    "document",
+    "content",
+    "unist",
+    "hast",
+    "html",
+    "markdown",
+    "text",
+    "annotation"
+  ],
+  "author": "Chris Zhou <chrisrzhou@pm.me>",
+  "license": "MIT",
+  "repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc-react",
+  "bugs": "https://github.com/chrisrzhou/unified-doc/issues",
+  "homepage": "https://unified-doc.netlify.com/",
+  "scripts": {
+    "build": "microbundle build --jsx React.createElement --external react",
+    "prepare": "yarn build"
+  },
+  "peerDependencies": {
+    "react": "^16.13.0"
+  },
+  "devDependencies": {
+    "react": "^16.13.0"
+  },
+  "dependencies": {
+    "rehype-react": "^5.0.1",
+    "unified-doc": "*"
+  }
 }

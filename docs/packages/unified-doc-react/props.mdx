@@ -6,7 +6,6 @@ route: packages/unified-doc-react/props
 
 import { Props } from "docz";
 
-import AnnotationInterface from "./src/annotation-interface";
 import ComponentProps from "./src/component-props";
 
 # Props
@@ -17,9 +16,26 @@ import ComponentProps from "./src/component-props";
 
 ## `Annotation`
 
-The `annotation` object takes the following interface. Additional data can be provided to the object, which is useful when used with relevant `AnnotationCallback` callbacks.
+An `annotation` object takes the following interface:
 
-<Props of={AnnotationInterface} />
+```ts
+interface Annotation {
+  /** Additional annotation data */
+  [key: string]: any;
+  /** Unique ID is required for annotation algorithm to work.  It is also used to uniquely assign ID values to generated <mark /> nodes which is convenient for selecting the element itself. */
+  id: string;
+  /** Start offset relative to the source content */
+  startOffset: number;
+  /** End offset relative to the source content */
+  endOffset: number;
+  /** CSS classnames that will be applied on the annotated nodes */
+  classNames?: string[];
+  /** If true, will add the value to the `label` tag attribute.  Useful for displaying the label with custom CSS:before selectors. */
+  label?: string;
+  /** Apply custom styles to the annotated node. Note that use of `classNames` prop is preferred. */
+  style?: any;
+}
+```
 
 ## `AnnotationCallback`
 
@@ -32,4 +48,5 @@ type AnnotationCallback = (annotation: Annotation, e?: MouseEvent) => void;
 [rehype][rehype] plugins are applied after annotations. Note that annotations only operate on source content, so any plugin that mutates and creates new content outside of the source content cannot be annotated.
 
 <!-- Links -->
+
 [rehype]: https://github.com/rehypejs

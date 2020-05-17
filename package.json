@@ -1,104 +1,95 @@
 {
-	"private": true,
-	"name": "unified-doc",
-	"description": "unified document renderer for content",
-	"workspaces": [
-		"packages/*"
-	],
-	"author": "Chris Zhou <chrisrzhou@pm.me>",
-	"license": "MIT",
-	"repository": "https://github.com/chrisrzhou/unified-doc",
-	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
-	"homepage": "https://unified-doc.netlify.com/",
-	"scripts": {
-		"build": "yarn clean:build; yarn workspaces run build",
-		"build:docs": "yarn clean:docs; docz build",
-		"clean:build": "rm -rf dist packages/**/dist",
-		"clean:docs": "rm -rf .docz; yarn clean:build;",
-		"clean:workspaces": "rm -rf packages/**/node_modules",
-		"docs": "yarn clean:docs; docz dev",
-		"lint": "xo --fix; tsc",
-		"test": "jest packages"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.8.7",
-		"@babel/preset-env": "^7.9.5",
-		"@babel/preset-react": "^7.9.4",
-		"@pmmmwh/react-refresh-webpack-plugin": "^0.3.1",
-		"@types/jest": "^25.2.1",
-		"@types/uuid": "^7.0.3",
-		"babel-jest": "^26.0.1",
-		"diff": "^4.0.2",
-		"docz": "^2.3.1",
-		"eslint-config-xo-react": "^0.23.0",
-		"gatsby-plugin-sass": "^2.2.1",
-		"husky": "^4.2.5",
-		"jest": "^26.0.1",
-		"microbundle": "^0.12.0",
-		"node-sass": "^4.14.0",
-		"react": "^16.13.0",
-		"react-dom": "^16.13.0",
-		"react-spring": "^8.0.27",
-		"rehype-highlight": "^4.0.0",
-		"rehype-toc": "^3.0.1",
-		"theme-ui": "^0.3.1",
-		"typescript": "^3.8.3",
-		"unified": "^9.0.0",
-		"uuid": "^8.0.0",
-		"xo": "^0.30.0"
-	},
-	"husky": {
-		"hooks": {
-			"pre-push": "yarn lint && yarn test && yarn build"
-		}
-	},
-	"prettier": {
-		"bracketSpacing": true,
+  "private": true,
+  "name": "unified-doc",
+  "description": "unified document renderer for content",
+  "workspaces": ["packages/*"],
+  "author": "Chris Zhou <chrisrzhou@pm.me>",
+  "license": "MIT",
+  "repository": "https://github.com/chrisrzhou/unified-doc",
+  "bugs": "https://github.com/chrisrzhou/unified-doc/issues",
+  "homepage": "https://unified-doc.netlify.com/",
+  "scripts": {
+    "build": "yarn clean:build; yarn workspaces run build",
+    "build:docs": "yarn clean:docs; docz build",
+    "clean:build": "rm -rf dist packages/**/dist",
+    "clean:docs": "rm -rf .docz; yarn clean:build;",
+    "clean:workspaces": "rm -rf packages/**/node_modules",
+    "docs": "yarn clean:docs; docz dev",
+    "lint": "xo --fix; tsc",
+    "test": "jest packages"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.3.1",
+    "@types/jest": "^25.2.1",
+    "@types/uuid": "^7.0.3",
+    "babel-jest": "^26.0.1",
+    "diff": "^4.0.2",
+    "docz": "^2.3.1",
+    "eslint-config-xo-react": "^0.23.0",
+    "gatsby-plugin-sass": "^2.2.1",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "microbundle": "^0.12.0",
+    "node-sass": "^4.14.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-spring": "^8.0.27",
+    "rehype-highlight": "^4.0.0",
+    "rehype-toc": "^3.0.1",
+    "theme-ui": "^0.3.1",
+    "typescript": "^3.8.3",
+    "unified": "^9.0.0",
+    "uuid": "^8.0.0",
+    "xo": "^0.30.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint && yarn test && yarn build"
+    }
+  },
+  "prettier": {
+    "bracketSpacing": true,
     "jsxBracketSameLine": true,
-		"trailingComma": "all",
+    "trailingComma": "all",
     "useTabs": false
-	},
-	"xo": {
-		"prettier": true,
-		"env": [
-			"browser",
-			"jest"
-		],
-		"extends": [
-			"xo-react"
-		],
-		"rules": {
-			"@typescript-eslint/prefer-readonly-parameter-types": "off",
-			"@typescript-eslint/no-unsafe-call": "off",
-			"@typescript-eslint/no-unsafe-member-access": "off",
-			"@typescript-eslint/no-unsafe-return": "off",
-			"import/extensions": [
-				"error",
-				{
-					"pattern": {
-						"css": "always",
-						"json": "always"
-					}
-				}
-			],
-			"import/no-unassigned-import": [
-				"error",
-				{
-					"allow": [
-						"**/*.css"
-					]
-				}
-			],
-			"no-unused-vars": [
-				2,
-				{
-					"argsIgnorePattern": "^_"
-				}
-			],
-			"react/function-component-definition": "off",
-			"react/jsx-no-useless-fragment": "off",
-			"react/prop-types": "off",
-			"unicorn/string-content": "off"
-		}
-	}
+  },
+  "xo": {
+    "prettier": true,
+    "env": ["browser", "jest"],
+    "extends": ["xo-react"],
+    "rules": {
+      "@typescript-eslint/prefer-readonly-parameter-types": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "import/extensions": [
+        "error",
+        {
+          "pattern": {
+            "css": "always",
+            "json": "always"
+          }
+        }
+      ],
+      "import/no-unassigned-import": [
+        "error",
+        {
+          "allow": ["**/*.css"]
+        }
+      ],
+      "no-unused-vars": [
+        2,
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "react/function-component-definition": "off",
+      "react/jsx-no-useless-fragment": "off",
+      "react/prop-types": "off",
+      "unicorn/string-content": "off"
+    }
+  }
 }

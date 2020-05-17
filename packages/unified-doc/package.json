@@ -1,42 +1,42 @@
 {
-	"name": "unified-doc",
-	"version": "1.0.0",
-	"description": "unified-doc APIs and typings",
-	"main": "dist/index.js",
-	"module": "dist/index.module.js",
-	"source": "index.js",
-	"typings": "src/index.d.ts",
-	"keywords": [
-		"unified",
-		"doc",
-		"document",
-		"content",
-		"unist",
-		"hast",
-		"html",
-		"markdown",
-		"text",
-		"api"
-	],
-	"author": "Chris Zhou <chrisrzhou@pm.me>",
-	"license": "MIT",
-	"repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc",
-	"bugs": "https://github.com/chrisrzhou/unified-doc/issues",
-	"homepage": "https://unified-doc.netlify.com/",
-	"scripts": {
-		"build": "microbundle build",
-		"prepare": "yarn build"
-	},
-	"dependencies": {
-		"deepmerge": "^4.2.2",
-		"hast-util-sanitize": "^2.0.2",
-		"rehype-parse": "^6.0.2",
-		"remark-parse": "^8.0.2",
-		"remark-rehype": "^6.0.0",
-		"unified": "^9.0.0",
-		"unified-doc-parse-text": "*",
-		"unified-doc-util-annotate": "*",
-		"unist-util-visit-parents": "^3.0.2",
-		"uuid": "^8.0.0"
-	}
+  "name": "unified-doc",
+  "version": "1.0.0",
+  "description": "unified-doc APIs and typings",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "source": "index.js",
+  "typings": "src/index.d.ts",
+  "keywords": [
+    "unified",
+    "doc",
+    "document",
+    "content",
+    "unist",
+    "hast",
+    "html",
+    "markdown",
+    "text",
+    "api"
+  ],
+  "author": "Chris Zhou <chrisrzhou@pm.me>",
+  "license": "MIT",
+  "repository": "https://github.com/chrisrzhou/unified-doc/tree/master/packages/unified-doc",
+  "bugs": "https://github.com/chrisrzhou/unified-doc/issues",
+  "homepage": "https://unified-doc.netlify.com/",
+  "scripts": {
+    "build": "microbundle build",
+    "prepare": "yarn build"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "hast-util-sanitize": "^2.0.2",
+    "rehype-parse": "^6.0.2",
+    "remark-parse": "^8.0.2",
+    "remark-rehype": "^6.0.0",
+    "unified": "^9.0.0",
+    "unified-doc-parse-text": "*",
+    "unified-doc-util-annotate": "*",
+    "unist-util-visit-parents": "^3.0.2",
+    "uuid": "^8.0.0"
+  }
 }

@@ -1,4 +1,5 @@
-/** Validate annotations and return sorted annotations with sort order:
+/**
+ * Validate annotations and return sorted annotations with sort order:
  * { startOffset: 'asc', endOffset: 'desc' }]
  **/
 export default function validateAnnotations(annotations) {
@@ -21,10 +22,6 @@ export default function validateAnnotations(annotations) {
   }
 
   const sortedAnnotations = annotations.slice().sort((a, b) => {
-    if (a.startOffset > a.endOffset) {
-      invalidOffsets = true;
-    }
-
     if (a.startOffset < b.startOffset) {
       return -1;
     }
