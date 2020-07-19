@@ -1,3 +1,5 @@
+> This repository is archived and no longer being maintained.  Active development will be formally managed in the [unified-doc](https://github.com/unified-doc) organization.
+
 # 📜 unified-doc
 [unified][unified] document renderer for content.
 
